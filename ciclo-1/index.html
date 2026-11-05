@@ -727,7 +727,7 @@ const LESSONS = {
       html: () => `<div class="kicker">Exit question</div><div class="big-q">If you were the <b>Timekeeper</b> of your squad, what would you do?</div>
       <p class="hint center">Answer with <b>If I were…, I would…</b></p>` },
     { stop: 3, host: ['wave', () => ['7B', '7C'].includes(course) ? 'See you after your <b>FAS</b>, agents!' : 'See you in <b>1604</b>, agents!'],
-      note: () => ['7B', '7C'].includes(course) ? 'Para 7B/7C: su próxima clase es después del FAS (vie 13). Entregue la lista de chequeo (Anexo J) y la autorización de salida para el martes 17.' : 'Recuerde la visita del martes 17 nov a la Manzana Jesuítica. Recoja las Role Cards.',
+      note: () => ['7B', '7C'].includes(course) ? 'Para 7B/7C: su próxima clase es después del FAS (vie 13). Recuérdeles la lista de chequeo y el Chronos Field Log que les envió (los imprimen o los copian en el cuaderno) y la autorización de salida para el martes 17.' : 'Recuerde la visita del martes 17 nov a la Manzana Jesuítica. Recoja las Role Cards.',
       html: () => `<div class="kicker">Mission briefing complete</div><h1>Next class: your squad and your power.</h1>
       <div class="info">${['7B', '7C'].includes(course) ? `Your next class is on <b>Friday, November 13</b>, after your FAS. Then, on <b>Tuesday, November 17</b>, the time machine leaves from the Manzana Jesuítica (1604): bring your checklist and your permission slip.` : `On <b>Tuesday, November 17</b> the time machine leaves from the Manzana Jesuítica — the place of <b>1604</b>. There you will calibrate it.`}</div>
       <button type="button" class="endbtn" data-tomap="1">☰ Back to the cycle map</button>` },
@@ -862,7 +862,7 @@ const LESSONS = {
       <ol class="vq key">${VQ.map(([d, w]) => `<li>${d}: <span class="bl">${w}</span></li>`).join('')}</ol>
       <div class="revealbar"><button type="button" class="tbtn go" id="vqAll">Show all</button><span class="hint">Tap an item to reveal it · 5 XP each</span></div>` },
     { stop: 3, dense: true, host: ['point', 'Tick every item <b>the night before</b>!'],
-      note: 'Lista de chequeo de la visita (Anexo J) y Chronos Field Log (Anexo K), 3 min. Entregue ambas hojas y lea con ellos las cuatro misiones del Field Log para que sepan qué van a buscar el martes.',
+      note: 'Lista de chequeo de la visita y Chronos Field Log (3 min). Los estudiantes los reciben por OPEN o por correo y los imprimen o los copian en el cuaderno. Léalos con ellos en la pantalla: las cuatro misiones del Field Log son lo que van a buscar el martes.',
       html: () => `<div class="kicker">Before Tuesday, November 17 · Visit checklist</div><h2>Calibrating the Time Machine · Manzana Jesuítica</h2>
       <div class="cols4"><ul class="checklist">${CHECK.map(t => `<li>${t}</li>`).join('')}</ul>
         <div class="flog"><h3>Chronos Field Log · your missions</h3>${[['1', 'Chronal coordinates', 'three dates or inscriptions'], ['2', 'Temporal signature', 'draw one object + a caption'], ['3', 'Voices of the past', 'If I lived in 1610, I would…'], ['4', 'Ignatian question', 'Which voices do I trust, and why?']].map(([n, t, d]) => `<div><b>${n}</b><span><strong>${t}</strong>${d}</span></div>`).join('')}</div></div>` },
