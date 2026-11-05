@@ -163,7 +163,7 @@ svg.map { width: 100%; max-height: 46vh; }
 .lesson .ttl { font-family: var(--f-display); font-size: 3.1vh; line-height: 1.1; padding: .4vh 1.2vw; }
 .lesson .when { font-size: 1.9vh; padding: 0 1.2vw 1.4vh; color: #eadfc4; }
 .lesson[disabled] { cursor: not-allowed; filter: grayscale(.85) brightness(.75); }
-.lesson[disabled] .when::after { content: " · coming soon"; }
+.lesson.soon .when::after { content: " · coming soon"; }
 .lesson .lock { position: absolute; top: 1vh; right: 1vw; font-family: var(--f-caps); font-size: 1.4vh; letter-spacing: .1em; background: rgba(0, 0, 0, .55); padding: .3vh .7vw; border-radius: 99px; }
 .courses.small button { font-size: 2.6vh; padding: .8vh 1.6vw; }
 /* timeline race */
@@ -577,7 +577,7 @@ const LESSONS = {
         <div class="courserow"><span class="kicker">Course</span><div class="courses small">${COURSES.map(c => `<button type="button" data-course="${c}" aria-pressed="${c === course}">${c}</button>`).join('')}</div></div></div>
         <div class="lessons">${[['c1', 'Class 1', "The Pilgrims' Way"], ['c2', 'Class 2', 'Mission Briefing & The Role Draft'], ['c3', 'Class 3', 'What Is an Argument?'], ['c4', 'Class 4', 'Role Bootcamp']].map(([k, n, t]) => {
           const ready = !!LESSONS[k], w = course ? WHEN[k][course] : '';
-          return `<button type="button" class="lesson" data-lesson="${k}" ${ready && course ? '' : 'disabled'} style="background-image:url('${IMG.card[k]}')">${!course && ready ? '<span class="lock">choose a course</span>' : ''}<span class="num">${n}</span><span class="ttl">${t}</span><span class="when">${course ? (w === '—' ? 'not for ' + course : course + ' · ' + w) : ''}</span></button>`; }).join('')}</div>
+          return `<button type="button" class="lesson${ready ? '' : ' soon'}" data-lesson="${k}" ${ready && course ? '' : 'disabled'} style="background-image:url('${IMG.card[k]}')">${!course && ready ? '<span class="lock">choose a course</span>' : ''}<span class="num">${n}</span><span class="ttl">${t}</span><span class="when">${course ? (w === '—' ? 'not for ' + course : course + ' · ' + w) : ''}</span></button>`; }).join('')}</div>
         <p class="credits">Music: «Pippin the Hunchback», Kevin MacLeod (incompetech.com), CC BY 3.0 · Illustrations: Operation Chronos</p>` },
   ] },
   c1: { stops: ['Tabard Inn', 'Rochester', 'Ospringe', 'Canterbury'], scene: { '-1': 'inn', 0: 'inn', 1: 'roch', 2: 'osp', 3: 'cant', 4: 'inn' }, plaque: 'Harry Bailly · The Host · 1380',
