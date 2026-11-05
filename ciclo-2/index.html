@@ -475,6 +475,23 @@ a.tbtn { text-decoration: none; display: inline-block; }
 .bugdex td { padding: 1vh 1vw; border-bottom: 1px solid var(--line); }
 @media (max-aspect-ratio: 3/2) { .lessons.five { grid-template-columns: repeat(3, 1fr); } .pgrid { grid-template-columns: repeat(4, 1fr); } .vidwrap { grid-template-columns: 1fr; } .clines { grid-template-columns: 1fr; } .pvin { grid-template-columns: 18vh 1fr; } .tl3 > div { width: 17vh; } }
 @media (max-aspect-ratio: 3/2) { .pgrid { grid-template-columns: repeat(7, 1fr); gap: .5vw; } .pg b { font-size: 1.7vh; } .pg span { font-size: 0; } .pg span img { width: 2.6vh; height: 2.6vh; } .pg > img { aspect-ratio: 1/2; } }
+/* Cycle 2 · Class 2 */
+.chex { display: flex; flex-direction: column; gap: 1vh; font-size: 2.6vh; opacity: 0; transition: .4s; }
+.chex.show { opacity: 1; }
+.chex .ok { color: #2f6b3f; } .chex .bad { color: var(--red); }
+.chex b, .chex span { font-family: var(--f-caps); font-weight: 700; letter-spacing: .04em; }
+.chex i { font-family: var(--f-display); font-style: normal; font-weight: 400; letter-spacing: 0; color: var(--navy); }
+.pc { background: #dbe4f3; border-bottom: .3vh solid #0e2440; } .pr { background: #f6dcd7; border-bottom: .3vh solid #9c2a20; } .pe { background: #dcefe0; border-bottom: .3vh solid #3e7d4f; }
+.avt { font-family: var(--f-display); font-size: 3.1vh; color: var(--navy); }
+.avkey { display: none; margin-top: 1vh; } .avkey.show { display: block; }
+.rasrow { display: flex; gap: .6vw; flex-wrap: wrap; margin-bottom: .6vh; }
+.rasrow span { font-family: var(--f-caps); font-weight: 700; font-size: 2.2vh; letter-spacing: .08em; border-radius: 99px; padding: .4vh 1.1vw; color: #fff; }
+.rasrow .y { background: #3e7d4f; } .rasrow .n { background: var(--red); } .rasrow .vd { margin-left: auto; font-size: 2.4vh; }
+#avWhy { font-size: 2.5vh; margin: 0; }
+.exit2 { display: grid; gap: 1.4vh; font-size: 3vh; }
+.exit2 div { background: var(--note); border: .3vh solid var(--gold); border-radius: 1.2vh; padding: 1.2vh 1.4vw; }
+.exit2 b { font-family: var(--f-caps); font-size: 2vh; letter-spacing: .08em; display: block; color: var(--red); }
+.exit2 div:first-child b { color: #2f6b3f; }
 
 </style>
 </head>
@@ -578,8 +595,27 @@ const PTASKS = ['<b>Decode.</b> What do the three words in <span class="bw">bold
   '<b>Who is this pilgrim really?</b> Find two details that show his or her true personality.',
   '<b>Predict.</b> What will your pilgrim do in Canterbury? Use <u>will</u>, <u>be going to</u> or <u>might</u>.',
   '<b>Imagine.</b> If you were this pilgrim, what would you do differently?'];
+// ---------- Class 2 content
+const CHAIN = [['Pilgrims should travel in a big group.', 'because the forest is dangerous at night.', 'because my favourite colour is green.'],
+  ['The Host\'s storytelling contest is a good idea.', 'because stories make a long journey feel shorter.', 'because I had pizza yesterday.'],
+  ['Every agent should carry a pencil in 1380.', 'because there are no phones or computers in 1380.', 'because pencils are yellow.']];
+const ARGS = [
+  { k: 'knight', who: 'The Knight', claim: 'We should leave the Tabard Inn at dawn,', reason: 'because the road to Canterbury is long and it gets dark early in April.', evid: 'Last year, the pilgrims who left at noon had to sleep in the forest.', ras: [1, 1, 1], verdict: 'STRONG', why: 'The reason is connected to the claim, it is true, and there is evidence from last year.' },
+  { k: 'prioress', who: 'The Prioress', claim: 'Nobody should eat meat on the journey,', reason: 'because my little dogs are sad when they see roast meat.', evid: '', ras: [0, 1, 0], verdict: 'WEAK', why: 'Her dogs\' feelings have nothing to do with what the pilgrims eat: <b>Off-Topic Bug</b>.' },
+  { k: 'monk', who: 'The Monk', claim: 'We should go hunting in the forest on the way to Canterbury,', reason: 'because hunting is fun.', evid: '', ras: [1, 1, 0], verdict: 'WEAK', why: 'It is connected, but one personal opinion is not enough: the pilgrims are going to pray, and hunting makes the journey longer. <b>Not sufficient.</b>' },
+  { k: 'merchant', who: 'The Merchant', claim: 'We should travel by ship, not on horses,', reason: 'because ships are faster.', evid: 'A friend told me that a ship once sailed from London to Canterbury in one hour.', ras: [1, 0, 0], verdict: 'WEAK', why: 'Canterbury is not on the sea and one hour is impossible: a friend\'s story is not reliable. <b>Not acceptable.</b>' },
+  { k: 'miller', who: 'The Miller', claim: 'We should stop at every inn on the road,', reason: 'because I am the strongest man here and I won the wrestling competition!', evid: '', ras: [0, 1, 0], verdict: 'WEAK', why: 'Being strong has nothing to do with stopping at inns: <b>Off-Topic Bug</b>.' },
+  { k: 'wife', who: 'The Wife of Bath', claim: 'We should travel in a big group,', reason: 'because the forest near Rochester is dangerous.', evid: 'I have travelled to Jerusalem, Rome and Spain, and on every journey the big groups were safer than people alone.', ras: [1, 1, 1], verdict: 'STRONG', why: 'The reason is connected and true, and her experience on many journeys is good evidence.' },
+  { k: 'pardoner', who: 'The Pardoner', claim: 'Every pilgrim should buy one of my relics,', reason: 'because they are holy.', evid: 'Look — I have a paper from Rome!', ras: [1, 0, 0], verdict: 'WEAK', why: 'We know the «relics» are pig bones, and he wrote the paper himself. <b>Not acceptable</b> — the Fake Relic again!' },
+];
+const RAS3 = ['R', 'A', 'S'];
+const argText = (a, mark) => mark ? `<span class="pc">${a.claim}</span> <span class="pr">${a.reason}</span>${a.evid ? ` <span class="pe">${a.evid}</span>` : ''}` : `${a.claim} ${a.reason}${a.evid ? ' ' + a.evid : ''}`;
 const pgGrid = (id) => `<div class="pgrid" id="${id}">${PILGRIMS.map((p, n) => `<button type="button" class="pg" data-p="${n}"><img src="${IMG.pil[p.k]}" alt=""><b>${p.name}</b><span><img src="${IMG.sq[p.sq.toLowerCase()]}" alt="">${p.sq}</span></button>`).join('')}</div>
   <div class="pview" id="pview" hidden><div class="pvin"><img id="pvImg" alt=""><div><div class="kicker" id="pvSq"></div><h2 id="pvName"></h2><p class="pvt" id="pvText"></p><div class="pvline"><b>Chaucer's line</b> <span id="pvLine"></span> <em id="pvModern"></em></div><p class="hint" style="margin:.6vh 0 0">Tap a word in bold to check its meaning · tap Chaucer's line to decode it · tap outside to close</p></div></div></div>`;
+const argGrid = (id) => `<div class="pgrid agrid" id="${id}">${ARGS.map((a, n) => { const p = PILGRIMS.find(x => x.k === a.k); return `<button type="button" class="pg" data-a="${n}"><img src="${IMG.pil[a.k]}" alt=""><b>${a.who}</b><span><img src="${IMG.sq[p.sq.toLowerCase()]}" alt="">${p.sq}</span></button>`; }).join('')}</div>
+  <div class="pview aview" id="aview" hidden><div class="pvin"><img id="avImg" alt=""><div><div class="kicker" id="avSq"></div><h2 id="avName"></h2><p class="pvt avt" id="avText"></p>
+    <div class="revealbar"><button type="button" class="tbtn go" id="avCheck">⚖ Check</button><span class="hint">tap outside to close</span></div>
+    <div class="avkey" id="avKey"><div class="rasrow" id="avRas"></div><p id="avWhy"></p></div></div></div></div>`;
 const LESSONS = {
   map: { stops: [], scene: { '-1': 'hq' }, arrive: {}, plaque: 'Harry Bailly · Chronos Agent', slides: [
     { stop: -1, host: ['present', () => course ? 'Choose your class, agents!' : 'Good morrow, agents! First, choose your course.'],
@@ -650,6 +686,61 @@ const LESSONS = {
       note: 'Cierre. Próxima clase: Reason Detectives (las seis discusiones de la Tabard Inn con la tarjeta R·A·S). Pida que guarden la Bugdex.',
       html: () => `<div class="kicker">Class 1 complete</div><h1>Seven pilgrims met. One logic bug caught.</h1>
       <div class="info">Next class: <b>Reason Detectives</b> — the pilgrims argue at the Tabard Inn. Which reasons are relevant, acceptable and sufficient?</div>
+      <button type="button" class="endbtn" data-tomap="1">☰ Back to the cycle map</button>` },
+  ] },
+  c2: { stops: ['Warm-up', 'R·A·S', 'Arguments', 'Stronger', 'Verdict'], scene: { '-1': 'inn', 0: 'inn', 1: 'mission', 2: 'inn', 3: 'roch', 4: 'inn' }, plaque: 'Harry Bailly · The Host · 1380',
+    arrive: { 0: ['Class 2 · Reason Detectives', 'Because…', 'Relevant or off topic?'], 1: ['Detective training', 'The R·A·S Card', 'Relevant · Acceptable · Sufficient'], 2: ['The Tabard Inn, at dinner', 'Seven Arguments', 'Which ones are strong?'], 3: ['The Chroniclers write', 'Make It Stronger', 'Fix the weakest argument'], 4: ['The Heralds speak', 'The Verdict', 'Strong or weak — and why?'] },
+    slides: [
+    { stop: -1, host: ['wave', 'Good evening, detectives! The pilgrims are <b>arguing</b>…'],
+      note: 'Objetivo (1 min). En español: juzgar si las razones de un argumento son relevantes, aceptables y suficientes (C1), entender lo que un argumento quiere decir de verdad (C2) y reescribir el argumento más débil con formas de futuro y, en 7A–7B, el segundo condicional (C3).',
+      html: () => `<div class="kicker">Cycle 2 · Landing in 1380 · Class 2 · Reason Detectives</div><h1>Today, agents, you will judge the arguments of the Tabard Inn — and make the weak ones stronger.</h1>
+      <div class="goals"><span><b>C1</b> relevant · acceptable · sufficient?</span><span><b>C2</b> what does the argument really say?</span><span><b>C3</b> will · might${isImm() ? ' · if…, would…' : ''}</span><span><b>+</b> because · since · so · that's why</span></div>` },
+    { stop: 0, host: ['stand', 'Add a reason: <b>«…because…»</b>!'],
+      note: 'Warm-up «Because…» chain (6 min). Lea el claim. Cinco o seis agentes, uno tras otro, añaden «…because…». Después de cada razón la clase grita RELEVANT u OFF TOPIC. Si hace falta un modelo, pulse «Show examples». Pase al siguiente claim con «Next claim ▶».',
+      html: () => `<div class="kicker">Warm-up · The «Because…» chain</div>
+      <div class="aon" id="chain"><div class="aon-n" id="chN"></div><div class="aon-s" id="chS"></div>
+        <div class="chex" id="chEx"><span class="ok">✔ RELEVANT · <i id="chOk"></i></span><span class="bad">✘ OFF TOPIC · <i id="chBad"></i></span></div></div>
+      <div class="revealbar"><button type="button" class="tbtn" id="chPrev">◀</button><button type="button" class="tbtn go" id="chShow">Show examples</button><button type="button" class="tbtn" id="chNext">Next claim ▶</button><span class="hint">Shout: RELEVANT or OFF TOPIC!</span></div>` },
+    { stop: 1, dense: true, host: ['scales', 'Weigh every reason with the <b>R·A·S card</b>.'],
+      note: 'Repaso de la tarjeta R·A·S (3 min) y banco de conectores. Recuérdeles la Clase 3 del Ciclo 1 y la Fake Relic de la clase pasada (la A). Hoy usamos las tres letras.',
+      html: () => `<div class="kicker">Detective training · the R·A·S card</div>
+      <div class="ras"><div class="r on"><b>R</b><span><strong>Relevant?</strong> Is the reason really connected to the claim?</span></div>
+        <div class="r on"><b>A</b><span><strong>Acceptable?</strong> Is it true? Does it come from a reliable source?</span></div>
+        <div class="r on"><b>S</b><span><strong>Sufficient?</strong> Is there enough evidence to believe the claim?</span></div></div>
+      <div class="uses"><span>because…</span><span>since…</span><span>so…</span><span>that's why…</span><span>for example,…</span><span>for this reason,…</span></div>` },
+    { stop: 1, dense: true, host: ['oops', 'Wrestling? What does that have to do with <b>inns</b>?!'],
+      note: 'Bugdex · Bug sighting #2 (3 min). Lea el ejemplo del Miller (es una de las discusiones de hoy). Cada agente lo copia en su Bugdex. Nombre técnico (solo para usted, se verá en el Ciclo 4): red herring / razón irrelevante.',
+      html: () => `<div class="kicker">The Bugdex · Bug sighting #2</div><h2>The Off-Topic Bug</h2>
+      <div class="bugdex"><img src="${IMG.bug.normal}" alt=""><table><tr><th>Who used it?</th><td>the Miller, at the Tabard Inn, 1380</td></tr><tr><th>What did he say?</th><td>«We should stop at every inn, because I won the wrestling competition!»</td></tr><tr><th>Why is it a bug?</th><td>The reason is not <b>relevant</b>: it has nothing to do with the claim.</td></tr><tr><th>How to catch it</th><td>Ask: «What does this reason have to do with the claim?»</td></tr></table></div>` },
+    { stop: 2, dense: true, host: ['present', 'Seven pilgrims, <b>seven arguments</b>. Investigate!'],
+      note: 'The Tabard Inn Arguments (Anexo E, 1 juego por escuadrón; hoja de trabajo Anexo F, 1 por estudiante). Toque un peregrino para proyectar su argumento; «⚖ Check» revela las partes (claim · reason · evidence) y la clave R·A·S. Úselo solo para revisar al final.',
+      html: () => `<div class="kicker">The Tabard Inn · at dinner · seven arguments</div>${argGrid('ag1')}` },
+    { stop: 2, dense: true, host: ['magnifier', 'Decoders, read. <b>Everybody</b>, judge!'],
+      note: 'Trabajo en escuadrón (15 min). El Decoder lee cada argumento en voz alta; el escuadrón encuentra el claim, la razón y la evidencia, y marca R, A y S con ✔ o ✘ en el Anexo F. Al final decide si es STRONG o WEAK y cuál es el más débil de todos. Pulse ▶.',
+      html: () => `<div class="kicker">Reason Detectives · in your squad · Annex F</div>
+      <ol class="ptasks"><li><b>Read</b> each argument. Underline the <span class="pc">claim</span>, the <span class="pr">reason</span> and the <span class="pe">evidence</span> (if there is one).</li>
+        <li><b>Judge</b> it with the R·A·S card: ✔ or ✘ for R, A and S.</li><li><b>Decide:</b> STRONG or WEAK? Write why in one line.</li><li><b>Choose</b> the weakest argument of the seven.</li></ol>
+      <div class="task"><span class="step">Decoder</span>reads aloud <span class="step">Timekeeper</span>controls the time <span class="step">Herald</span>prepares the verdict</div>${timer([['Investigate', 900]])}` },
+    { stop: 3, dense: true, host: ['write', 'Chroniclers, <b>make it stronger</b>!'],
+      note: () => `Make it stronger (8 min). El escuadrón reescribe el argumento más débil con una razón relevante y una evidencia. El Chronicler escribe; el Timekeeper revisa que haya ${isImm() ? 'una forma de futuro y un segundo condicional' : 'una forma de futuro (will / be going to / might)'}. Toque «Show an example» para dar el modelo. Pulse ▶.`,
+      html: () => `<div class="kicker">Make it stronger · the Chronicler writes · the Timekeeper checks</div>
+      <div class="scroll"><p class="frame" style="margin:0"><span class="pc">We should ______</span>, <span class="pr">because ______</span>.<br><span class="pe">For example, ______</span>. This way, we <u>will</u> / <u>might</u> ______.${isImm() ? '<br>If we didn\'t ______, we <u>would</u> ______.' : ''}</p></div>
+      <div class="revealbar"><button type="button" class="tbtn" id="exBtn">Show an example</button></div>
+      <div class="spotres" id="exRes"><b>The Miller, fixed:</b> «We should stop at two inns on the road, because the journey takes three days and the horses need rest. For example, the Host says the horses are tired after thirty miles. This way, we will arrive safely.»${isImm() ? ' «If we didn\'t stop, the horses would be too tired to walk.»' : ''}</div>
+      ${immBox('Your new argument must also include <b>a second conditional</b>.')}${timer([['Rewrite', 480]])}` },
+    { stop: 4, dense: true, host: ['listen', 'Heralds — <b>your verdict</b>!'],
+      note: 'The Verdict (7 min). El Herald de cada escuadrón da el veredicto sobre el argumento de SU peregrino (el de la Clase 1) con el marco de la pantalla. Toque el peregrino para proyectar su argumento y pulse «⚖ Check» para confirmar. Dos o tres escuadrones leen también su argumento mejorado. Pulse ▶: 45 s por Herald.',
+      html: () => `<div class="kicker">The Verdict · 45 seconds per Herald</div>
+      <div class="scroll"><p class="frame" style="margin:0">The <b>______</b>'s argument is <u>strong / weak</u>.<br>The reason is (not) <u>relevant / acceptable / sufficient</u>, because ______.</p></div>
+      ${argGrid('ag2')}${timer(SQUADS.map((s, n) => ['Herald ' + (n + 1), 45]))}` },
+    { stop: 4, host: ['write', 'One <b>relevant</b> reason, one <b>off-topic</b> reason.'],
+      note: 'Exit ticket (3 min, Anexo G). Monserrate es un lugar de peregrinación en Bogotá: así el argumento pasa de 1380 a hoy. Recoja algunas para el registro de C1.',
+      html: () => `<div class="kicker">Exit ticket</div><div class="big-q" style="font-size:5.2vh">«Our school should organise a pilgrimage to Monserrate.»</div>
+      <div class="exit2"><div><b>✔ A relevant reason</b>…because ______________________</div><div><b>✘ An off-topic reason</b>…because ______________________</div></div>${timer([['Write', 180]])}` },
+    { stop: 4, host: ['wave', 'Next time: <b>listen</b> to the pilgrims!'],
+      note: 'Cierre. Próxima clase: Pilgrims\' Voices (listening tipo B1 Preliminary Part 2 y debate en la Tabard Inn). Pida que guarden la Bugdex: ya tiene dos bugs.',
+      html: () => `<div class="kicker">Class 2 complete</div><h1>Two strong arguments. Five weak ones. Two bugs in the Bugdex.</h1>
+      <div class="info">Next class: <b>Pilgrims' Voices</b> — listen to the pilgrims at the Tabard Inn. What do they think, and are their reasons relevant?</div>
       <button type="button" class="endbtn" data-tomap="1">☰ Back to the cycle map</button>` },
   ] },
 };
@@ -759,7 +850,7 @@ function mountWidgets() {
   document.querySelectorAll('#fit .sc').forEach(s => s.onclick = () => s.classList.toggle('show'));
   if ($('vqAll')) $('vqAll').onclick = () => { const all = [...document.querySelectorAll('#fit .vq.key li')]; const on = all.every(li => li.classList.contains('show')); all.forEach(li => li.classList.toggle('show', !on)); $('vqAll').textContent = on ? 'Show all' : 'Hide all'; };
   // ---- Cycle 2 widgets
-  document.querySelectorAll('#fit .pgrid').forEach(g => {
+  document.querySelectorAll('#fit .pgrid:not(.agrid)').forEach(g => {
     const v = $('pview');
     g.querySelectorAll('.pg').forEach(b => b.onclick = () => { const p = PILGRIMS[+b.dataset.p];
       $('pvImg').src = IMG.pil[p.k]; $('pvSq').innerHTML = `Squad ${p.sq}`; $('pvName').textContent = p.name; $('pvText').innerHTML = pilText(p);
@@ -770,6 +861,20 @@ function mountWidgets() {
   });
   document.querySelectorAll('#fit .vq1 li, #fit .clines li').forEach(li => li.onclick = () => li.classList.toggle('show'));
   if ($('spotBtn')) $('spotBtn').onclick = () => { $('spotRes').classList.add('show'); chime(); fitStage(); };
+  // ---- Class 2 widgets
+  if ($('chain')) { let k = 0; const show = () => { $('chN').textContent = `Claim ${k + 1} / ${CHAIN.length}`; $('chS').textContent = '«' + CHAIN[k][0] + '»'; $('chOk').textContent = '…' + CHAIN[k][1]; $('chBad').textContent = '…' + CHAIN[k][2]; $('chEx').classList.remove('show'); };
+    $('chShow').onclick = () => $('chEx').classList.toggle('show'); $('chNext').onclick = () => { k = Math.min(CHAIN.length - 1, k + 1); show(); }; $('chPrev').onclick = () => { k = Math.max(0, k - 1); show(); }; show(); }
+  document.querySelectorAll('#fit .agrid').forEach(g => {
+    const v = $('aview'); let cur = 0;
+    g.querySelectorAll('.pg').forEach(b => b.onclick = () => { cur = +b.dataset.a; const a = ARGS[cur], p = PILGRIMS.find(x => x.k === a.k);
+      $('avImg').src = IMG.pil[a.k]; $('avSq').textContent = `Squad ${p.sq}`; $('avName').textContent = a.who; $('avText').innerHTML = '«' + argText(a, false) + '»';
+      $('avKey').classList.remove('show'); g.hidden = true; v.hidden = false; fitStage(); });
+    $('avCheck').onclick = e => { e.stopPropagation(); const a = ARGS[cur]; $('avText').innerHTML = '«' + argText(a, true) + '»';
+      $('avRas').innerHTML = RAS3.map((l, j) => `<span class="${a.ras[j] ? 'y' : 'n'}">${l} ${a.ras[j] ? '✔' : '✘'}</span>`).join('') + `<span class="vd ${a.verdict === 'STRONG' ? 'y' : 'n'}">${a.verdict}</span>`;
+      $('avWhy').innerHTML = a.why; $('avKey').classList.add('show'); chime(); fitStage(); };
+    v.onclick = () => { v.hidden = true; g.hidden = false; fitStage(); };
+  });
+  if ($('exBtn')) $('exBtn').onclick = () => { $('exRes').classList.toggle('show'); fitStage(); };
   document.querySelectorAll('#fit [data-tomap]').forEach(b => b.onclick = () => openLesson('map'));
   document.querySelectorAll('#fit [data-course]').forEach(b => b.onclick = () => { setCourse(b.dataset.course); startMusic(); render(); });
   document.querySelectorAll('#fit [data-lesson]').forEach(b => b.onclick = () => { if (!b.disabled) { startMusic(); openLesson(b.dataset.lesson); } });
