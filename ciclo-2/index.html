@@ -787,6 +787,19 @@ a.tbtn { text-decoration: none; display: inline-block; }
 @media (max-aspect-ratio: 3/2) { .fut { grid-template-columns: 1fr; } .conds { grid-template-columns: 1fr; } .vkey { grid-template-columns: repeat(5, 1fr); } }
 .fut em b { font-family: inherit; font-size: inherit; color: var(--red); line-height: inherit; }
 
+/* ---- print-saving policy: notebook cues and in-slide swaps ---- */
+.nb { display: flex; gap: .8vw; align-items: center; width: fit-content; max-width: 92%; margin: .8vh auto 0; padding: .5vh 1.2vw; border: 2px dashed #2b6f6a; border-radius: 1.2vh; background: rgba(255,253,245,.92); color: #1d3557; font-size: 2.2vh; line-height: 1.25; }
+.nb > span:first-child { font-size: 2.8vh; color: #2b6f6a; }
+.swap .sb { display: none; }
+.swap.two .sa { display: none; }
+.swap.two .sb { display: block; }
+.swap.two ol.sb, .swap.two .sb > ol { display: grid; }
+.qlist { grid-template-columns: 1fr 1fr; gap: 1vh 2vw; margin: 0; padding-left: 2.4vw; font-size: 2.2vh; line-height: 1.3; color: #1d3557; }
+.qlist li b { display: block; font-weight: 700; }
+.qlist li span { display: block; font-size: 1.95vh; color: #3b3b3b; }
+.qlist li i { font-style: normal; font-weight: 700; color: #8a5a00; }
+.pitch7 { gap: 1vh; margin: 0; padding-left: 2.6vw; font-size: 2.7vh; line-height: 1.3; font-family: var(--f-display, Georgia, serif); color: #1d3557; }
+
 </style>
 </head>
 <body>
@@ -849,6 +862,8 @@ const isImm = () => ['7A', '7B'].includes(course);
 const SQUADS = ['Hourglass', 'Sundial', 'Pendulum', 'Compass', 'Astrolabe', 'Chronometer', 'Lantern'];
 const POWERS = [['timekeeper', 'Timekeeper'], ['decoder', 'Decoder'], ['herald', 'Herald'], ['chronicler', 'Chronicler']];
 const timer = phases => `<div class="timer" data-phases='${JSON.stringify(phases)}'></div>`;
+const nb = t => `<div class="nb"><span>✎</span><span><b>In your notebook:</b> ${t}</span></div>`;
+const qlist = (qs, start) => `<ol class="qlist"${start ? ` start="${start}"` : ''}>${qs.map(d => `<li><b>${d.q}</b><span>${d.opts.map((o, j) => `<i>${'ABCD'[j]}</i> ${o}`).join(' · ')}</span></li>`).join('')}</ol>`;
 const immBox = html => `<div class="immbox${isImm() ? ' on' : ''}"><b>7A · 7B immersion</b>${html}</div>`;
 // ---------- Class 1 content
 const PILGRIMS = [
@@ -1098,10 +1113,10 @@ const LESSONS = {
       html: () => `<div class="kicker">★ Chaucer's lines · the General Prologue (c. 1387)</div>
       <ul class="clines">${PILGRIMS.map(p => `<li><img src="${IMG.pil[p.k]}" alt=""><span><i>«${p.line}»</i><em>${p.modern}</em></span></li>`).join('')}</ul>` },
     { stop: 3, host: ['listen', 'Heralds, <b>the stage is yours</b>!'],
-      note: () => `Pilgrim Gallery (11 min). Cada Herald presenta su peregrino en 60 segundos con el marco de la pantalla (toque el peregrino para proyectar su tarjeta). Después de cada presentación, la clase decide si la razón es RELEVANT. Todos completan la tabla «Pilgrim Gallery» (Anexo B). Pulse ▶: el reloj da 60 s por Herald.${isImm() ? ' En 7A y 7B, el Herald incluye además una palabra de Chaucer.' : ''}`,
+      note: () => `Pilgrim Gallery (11 min). Cada Herald presenta su peregrino en 60 segundos con el marco de la pantalla (toque el peregrino para proyectar su tarjeta). Después de cada presentación, la clase decide si la razón es RELEVANT. Todos copian en el cuaderno la tabla «Pilgrim Gallery» (se ve en la pantalla) y la completan con cada Herald. Pulse ▶: el reloj da 60 s por Herald.${isImm() ? ' En 7A y 7B, el Herald incluye además una palabra de Chaucer.' : ''}`,
       html: () => `<div class="kicker">The Pilgrim Gallery · 60 seconds per Herald</div>
       <div class="scroll"><p class="frame" style="margin:0">This is <b>the ______</b>, the pilgrim <u>who</u> ______.<br>In Canterbury, he / she <u>will probably</u> ______.<br>We think he / she is (not) honest <u>because</u> ______.</p></div>
-      ${pgGrid('pg2')}${timer(SQUADS.map((s, n) => ['Herald ' + (n + 1), 60]))}` },
+      ${pgGrid('pg2')}${nb('copy the table <b>Pilgrim · the pilgrim who… · he / she will… · honest? · R / NR</b> — one row for each Herald.')}${timer(SQUADS.map((s, n) => ['Herald ' + (n + 1), 60]))}` },
     { stop: 4, dense: true, host: ['think', 'Would you trust <b>this man</b>?'],
       note: 'Spotlight on the Pardoner (5 min). Lea los cuatro detalles. Pregunta: «Would you trust him? Give a reason from the card.». Escuche dos o tres razones y pregunte si son RELEVANT. Luego pulse «Check with the R·A·S card»: su prueba (los huesos) no es aceptable, porque es falsa. Es el primer bug de 1380.',
       html: () => `<div class="kicker">Spotlight on the Pardoner</div>
@@ -1112,11 +1127,11 @@ const LESSONS = {
         <div class="spotres" id="spotRes"><span class="rtag">A · Acceptable? <b>NO</b></span> His evidence is <b>fake</b>: the «relics» are pig bones. <span class="bugname">Bug sighting #1 · The Fake Relic</span></div>
       </div></div>` },
     { stop: 4, dense: true, host: ['write', 'Open your <b>Bugdex</b>, agents!'],
-      note: 'La Bugdex (3 min). Cada agente abre en el Pilgrim\'s Book (o en la hoja del Anexo C) su registro de logic bugs y copia el primer avistamiento. Cada vez que encontremos un truco lo anotaremos aquí; en el Ciclo 4 le pondremos a cada bug su nombre técnico (falacia).',
+      note: 'La Bugdex (3 min). Cada agente abre en el Pilgrim\'s Book (cuaderno) una doble página «My Bugdex» con diez casillas (#1 a #10) y copia el primer avistamiento. Cada vez que encontremos un truco lo anotaremos aquí; en el Ciclo 4 le pondremos a cada bug su nombre técnico (falacia).',
       html: () => `<div class="kicker">The Bugdex · our record of logic bugs</div><h2>Bug sighting #1 · The Fake Relic</h2>
-      <div class="bugdex"><img src="${IMG.bug.normal}" alt=""><table><tr><th>Who used it?</th><td>the Pardoner, 1380</td></tr><tr><th>What did he say?</th><td>«These bones are holy relics.»</td></tr><tr><th>Why is it a bug?</th><td>The evidence is not <b>acceptable</b>: it is false (pig bones).</td></tr><tr><th>How to catch it</th><td>Ask: «Is this evidence true? Can we check it?»</td></tr></table></div>` },
+      <div class="bugdex"><img src="${IMG.bug.normal}" alt=""><table><tr><th>Who used it?</th><td>the Pardoner, 1380</td></tr><tr><th>What did he say?</th><td>«These bones are holy relics.»</td></tr><tr><th>Why is it a bug?</th><td>The evidence is not <b>acceptable</b>: it is false (pig bones).</td></tr><tr><th>How to catch it</th><td>Ask: «Is this evidence true? Can we check it?»</td></tr></table></div>${nb('make a double page <b>My Bugdex</b> with ten boxes (#1–#10). Copy bug #1.')}` },
     { stop: 4, host: ['write', 'If you met the Pardoner, what <b>would</b> you do?'],
-      note: 'Exit ticket (3 min), en el Pilgrim\'s Book o en la tira del Anexo D. Revise el segundo condicional: If + pasado, would + verbo. Recoja algunas para el registro de C3.',
+      note: 'Exit ticket (3 min), en el Pilgrim\'s Book (cuaderno). Revise el segundo condicional: If + pasado, would + verbo. Revise algunos cuadernos para el registro de C3.',
       html: () => `<div class="kicker">Exit ticket</div><div class="big-q">If I <u>met</u> the Pardoner, I <u>would</u> ______<br>because ______.</div>
       <p class="hint center">Example: «If I met the Pardoner, I would ask him to show me a real document, because his relics are pig bones.»</p>${timer([['Write', 180]])}` },
     { stop: 4, host: ['wave', 'Next time: <b>Reason Detectives</b>!'],
@@ -1150,14 +1165,14 @@ const LESSONS = {
       html: () => `<div class="kicker">The Bugdex · Bug sighting #2</div><h2>The Off-Topic Bug</h2>
       <div class="bugdex"><img src="${IMG.bug.normal}" alt=""><table><tr><th>Who used it?</th><td>the Miller, at the Tabard Inn, 1380</td></tr><tr><th>What did he say?</th><td>«We should stop at every inn, because I won the wrestling competition!»</td></tr><tr><th>Why is it a bug?</th><td>The reason is not <b>relevant</b>: it has nothing to do with the claim.</td></tr><tr><th>How to catch it</th><td>Ask: «What does this reason have to do with the claim?»</td></tr></table></div>` },
     { stop: 2, dense: true, host: ['present', 'Seven pilgrims, <b>seven arguments</b>. Investigate!'],
-      note: 'The Tabard Inn Arguments (Anexo E, 1 juego por escuadrón; hoja de trabajo Anexo F, 1 por estudiante). Toque un peregrino para proyectar su argumento; «⚖ Check» revela las partes (claim · reason · evidence) y la clave R·A·S. Úselo solo para revisar al final.',
+      note: 'The Tabard Inn Arguments (Anexo E, 1 hoja por escuadrón; la tabla de trabajo se copia en el cuaderno). Toque un peregrino para proyectar su argumento; «⚖ Check» revela las partes (claim · reason · evidence) y la clave R·A·S. Úselo solo para revisar al final.',
       html: () => `<div class="kicker">The Tabard Inn · at dinner · seven arguments</div>${argGrid('ag1')}` },
     { stop: 2, dense: true, host: ['magnifier', 'Decoders, read. <b>Everybody</b>, judge!'],
-      note: 'Trabajo en escuadrón (15 min). El Decoder lee cada argumento en voz alta; el escuadrón encuentra el claim, la razón y la evidencia, y marca R, A y S con ✔ o ✘ en el Anexo F. Al final decide si es STRONG o WEAK y cuál es el más débil de todos. Pulse ▶.',
-      html: () => `<div class="kicker">Reason Detectives · in your squad · Annex F</div>
+      note: 'Trabajo en escuadrón (15 min). El Decoder lee cada argumento en voz alta; el escuadrón encuentra el claim, la razón y la evidencia, y marca R, A y S con ✔ o ✘ en la tabla del cuaderno. Al final decide si es STRONG o WEAK y cuál es el más débil de todos. Pulse ▶.',
+      html: () => `<div class="kicker">Reason Detectives · in your squad · in your notebook</div>
       <ol class="ptasks"><li><b>Read</b> each argument. Underline the <span class="pc">claim</span>, the <span class="pr">reason</span> and the <span class="pe">evidence</span> (if there is one).</li>
         <li><b>Judge</b> it with the R·A·S card: ✔ or ✘ for R, A and S.</li><li><b>Decide:</b> STRONG or WEAK? Write why in one line.</li><li><b>Choose</b> the weakest argument of the seven.</li></ol>
-      <div class="task"><span class="step">Decoder</span>reads aloud <span class="step">Timekeeper</span>controls the time <span class="step">Herald</span>prepares the verdict</div>${timer([['Investigate', 900]])}` },
+      <div class="task"><span class="step">Decoder</span>reads aloud <span class="step">Timekeeper</span>controls the time <span class="step">Herald</span>prepares the verdict</div>${nb('copy the table <b>Pilgrim · R · A · S · STRONG / WEAK · why?</b> — seven rows.')}${timer([['Investigate', 900]])}` },
     { stop: 3, dense: true, host: ['write', 'Chroniclers, <b>make it stronger</b>!'],
       note: () => `Make it stronger (8 min). El escuadrón reescribe el argumento más débil con una razón relevante y una evidencia. El Chronicler escribe; el Timekeeper revisa que haya ${isImm() ? 'una forma de futuro y un segundo condicional' : 'una forma de futuro (will / be going to / might)'}. Toque «Show an example» para dar el modelo. Pulse ▶.`,
       html: () => `<div class="kicker">Make it stronger · the Chronicler writes · the Timekeeper checks</div>
@@ -1171,7 +1186,7 @@ const LESSONS = {
       <div class="scroll"><p class="frame" style="margin:0">The <b>______</b>'s argument is <u>strong / weak</u>.<br>The reason is (not) <u>relevant / acceptable / sufficient</u>, because ______.</p></div>
       ${argGrid('ag2')}${timer(SQUADS.map((s, n) => ['Herald ' + (n + 1), 45]))}` },
     { stop: 4, host: ['write', 'One <b>relevant</b> reason, one <b>off-topic</b> reason.'],
-      note: 'Exit ticket (3 min, Anexo G). Monserrate es un lugar de peregrinación en Bogotá: así el argumento pasa de 1380 a hoy. Recoja algunas para el registro de C1.',
+      note: 'Exit ticket (3 min, en el cuaderno). Monserrate es un lugar de peregrinación en Bogotá: así el argumento pasa de 1380 a hoy. Revise algunos cuadernos para el registro de C1.',
       html: () => `<div class="kicker">Exit ticket</div><div class="big-q" style="font-size:5.2vh">«Our school should organise a pilgrimage to Monserrate.»</div>
       <div class="exit2"><div><b>✔ A relevant reason</b>…because ______________________</div><div><b>✘ An off-topic reason</b>…because ______________________</div></div>${timer([['Write', 180]])}` },
     { stop: 4, host: ['wave', 'Next time: <b>listen</b> to the pilgrims!'],
@@ -1200,21 +1215,22 @@ const LESSONS = {
       <div class="scroll"><p class="frame" style="margin:0"><b>What does</b> the Prioress <b>think</b> about…? → listen for her <u>opinion</u>.<br><b>Why</b> does the Miller…? → listen for his <u>reason</u> (because… · so…).</p></div>
       <div class="info">Then check the reason with the <b>R·A·S card</b>: is it <b>R</b>elevant, <b>A</b>cceptable and <b>S</b>ufficient?</div>` },
     { stop: 1, dense: true, host: ['book', 'Decoders, come with me. <b>You</b> are the voices!'],
-      note: () => `Before you listen (4 min). Los <b>Decoders</b> son hoy los actores de voz: se reúnen con usted, reciben su Voice Card (Anexo H) y ensayan en voz baja sus líneas. ${isImm() ? 'En 7A y 7B usted lee al narrador y al Host.' : 'El Decoder de Lantern es el narrador; usted lee al Host.'} Mientras tanto, el resto de la clase lee las seis preguntas de la hoja «Pilgrims' Voices» (Anexo I), subraya las palabras clave y predice la respuesta a lápiz. El Decoder no contesta las preguntas de los diálogos que lee. Pulse ▶.`,
-      html: () => `<div class="kicker">Before you listen · read · underline · predict</div>
-      <div class="cast">${LQ.map((d, n) => `<div><b>${n + 1}</b>${d.sp.map(k => `<span><img src="${k === 'host' ? IMG.pose.present : IMG.pil[k]}" alt=""><div class="cn">${SPK[k][1] || 'Teacher'}<em>${SPK[k][0]}</em></div></span>`).join('')}</div>`).join('')}</div>
-      <div class="task"><span class="step">Decoders</span>you are the voices: rehearse with the teacher <span class="step">Everybody</span>read the 6 questions · underline the key words · predict A, B or C</div>
+      note: () => `Before you listen (4 min). Los <b>Decoders</b> son hoy los actores de voz: se reúnen con usted, reciben su Voice Card (Anexo H) y ensayan en voz baja sus líneas. ${isImm() ? 'En 7A y 7B usted lee al narrador y al Host.' : 'El Decoder de Lantern es el narrador; usted lee al Host.'} Mientras tanto, el resto de la clase lee las seis preguntas en la pantalla (botón «The 6 questions ▶»; no detiene el reloj), copia en el cuaderno una palabra clave por pregunta y predice A, B o C. El Decoder no contesta las preguntas de los diálogos que lee. Pulse ▶.`,
+      html: () => `<div class="kicker">Before you listen · read · note · predict</div>
+      <div class="swap" id="qtg"><div class="sb">${qlist(LQ)}</div><div class="sa cast">${LQ.map((d, n) => `<div><b>${n + 1}</b>${d.sp.map(k => `<span><img src="${k === 'host' ? IMG.pose.present : IMG.pil[k]}" alt=""><div class="cn">${SPK[k][1] || 'Teacher'}<em>${SPK[k][0]}</em></div></span>`).join('')}</div>`).join('')}</div></div>
+      <div class="task"><span class="step">Decoders</span>you are the voices: rehearse with the teacher <span class="step">Everybody</span>read the 6 questions · copy one key word for each in your notebook · predict A, B or C <button type="button" class="tbtn" id="qtgBtn">The 6 questions ▶</button></div>
       <p class="hint center" style="margin:0">Narrator: ${isImm() ? 'the teacher' : 'the Lantern Decoder'} · the Host: the teacher</p>${timer([['Prepare', 240]])}` },
     { stop: 2, dense: true, host: ['listen', 'You will hear each conversation <b>twice</b>.'],
-      note: () => `Listening «Pilgrims' Voices» (16 min, tipo B1 Preliminary Part 2). Para cada pregunta: (1) ${isImm() ? 'usted' : 'el narrador'} lee la introducción y la pregunta; (2) los dos Decoders leen el diálogo (Anexo H) y, después de «Now listen again», lo leen otra vez; (3) cada agente marca A, B o C y completa la razón en el Anexo I; (4) «Show me!»: todos muestran con los dedos 1, 2 o 3 a la vez; (5) «Reveal» muestra la respuesta y la tarjeta R·A·S de la razón. «Transcript» proyecta el diálogo (úselo solo después del Reveal, o para PIAR).`,
+      note: () => `Listening «Pilgrims' Voices» (16 min, tipo B1 Preliminary Part 2). Para cada pregunta: (1) ${isImm() ? 'usted' : 'el narrador'} lee la introducción y la pregunta; (2) los dos Decoders leen el diálogo (Anexo H) y, después de «Now listen again», lo leen otra vez; (3) cada agente escribe en el cuaderno A, B o C y la razón; (4) «Show me!»: todos muestran con los dedos 1, 2 o 3 a la vez; (5) «Reveal» muestra la respuesta y la tarjeta R·A·S de la razón. «Transcript» proyecta el diálogo (úselo solo después del Reveal, o para PIAR).`,
       html: () => `<div class="kicker">Listening · Pilgrims' Voices at the Tabard Inn · B1 Preliminary Part 2</div>
       <div class="lq" id="lq"><div class="lqhead"><span class="lqn" id="lqN"></span><span class="lqcast" id="lqCast"></span><span class="lqst" id="lqSt"></span></div>
         <p class="lqi" id="lqI"></p><h2 class="lqq" id="lqQ"></h2><ol class="lqo" id="lqO" type="A"></ol>
         <div class="lqkey" id="lqK"><div class="rasrow" id="lqRas"></div><p><b id="lqRq"></b> <span id="lqR"></span></p><p id="lqW"></p></div>
         <div class="lqt" id="lqT"></div></div>
+      ${nb('write 1–6: A, B or C + the reason (because…).')}
       <div class="revealbar"><button type="button" class="tbtn" id="lqPrev">◀</button><button type="button" class="tbtn" id="lqL1">① 1st listening</button><button type="button" class="tbtn" id="lqL2">② Now listen again</button><button type="button" class="tbtn" id="lqShow">✋ Show me!</button><button type="button" class="tbtn go" id="lqRev">Reveal</button><button type="button" class="tbtn" id="lqTr">Transcript</button><button type="button" class="tbtn" id="lqNext">Next ▶</button></div>` },
     { stop: 3, dense: true, host: ['oops', 'One bad pie… and <b>all</b> the food is terrible?!'],
-      note: 'Bugdex · Bug sighting #3 (3 min). Viene de la pregunta 2. Cada agente lo copia en su Bugdex (Anexo C). Nombre técnico (solo para usted; se verá en el Ciclo 4 con el Genially de los Simpsons): Hasty Generalization.',
+      note: 'Bugdex · Bug sighting #3 (3 min). Viene de la pregunta 2. Cada agente lo copia en su Bugdex (cuaderno). Nombre técnico (solo para usted; se verá en el Ciclo 4 con el Genially de los Simpsons): Hasty Generalization.',
       html: () => `<div class="kicker">The Bugdex · Bug sighting #${BUGS3[0].n}</div><h2>${BUGS3[0].name}</h2>
       <div class="bugdex"><img src="${IMG.bug.normal}" alt=""><table><tr><th>Who used it?</th><td>${BUGS3[0].who}</td></tr><tr><th>What did he say?</th><td>${BUGS3[0].said}</td></tr><tr><th>Why is it a bug?</th><td>${BUGS3[0].why}</td></tr><tr><th>How to catch it</th><td>${BUGS3[0].catch}</td></tr></table></div>` },
     { stop: 3, dense: true, host: ['magnifier', 'After it… so <b>because</b> of it? Not so fast!'],
@@ -1222,20 +1238,20 @@ const LESSONS = {
       html: () => `<div class="kicker">The Bugdex · Bug sighting #${BUGS3[1].n}</div><h2>${BUGS3[1].name}</h2>
       <div class="bugdex"><img src="${IMG.bug.jar}" alt=""><table><tr><th>Who used it?</th><td>${BUGS3[1].who}</td></tr><tr><th>What did he say?</th><td>${BUGS3[1].said}</td></tr><tr><th>Why is it a bug?</th><td>${BUGS3[1].why}</td></tr><tr><th>How to catch it</th><td>${BUGS3[1].catch}</td></tr></table></div>` },
     { stop: 4, dense: true, host: ['write', 'Squads, <b>coach your Herald</b>!'],
-      note: () => `Preparación del debate (6 min, Anexo J: 1 Debate Card por escuadrón). Cada Herald recibe una moción y un lado (FOR / AGAINST). Su escuadrón lo entrena: el <b>Chronicler</b> escribe dos razones en la tarjeta, el <b>Decoder</b> las revisa con R·A·S (¡sin bugs!) y el <b>Timekeeper</b> revisa que haya una forma de futuro y un segundo condicional.${isImm() ? ' En 7A y 7B no hay marcos: el Herald prepara también una respuesta que nombre el bug del rival.' : ' Lantern debate contra usted (el Host), que defiende el juego de las historias.'} Pulse ▶.`,
+      note: () => `Preparación del debate (6 min; las mociones y los lados están en la pantalla). Cada Herald recibe una moción y un lado (FOR / AGAINST). Su escuadrón lo entrena: el <b>Chronicler</b> escribe dos razones en su cuaderno, el <b>Decoder</b> las revisa con R·A·S (¡sin bugs!) y el <b>Timekeeper</b> revisa que haya una forma de futuro y un segundo condicional.${isImm() ? ' En 7A y 7B no hay marcos: el Herald prepara también una respuesta que nombre el bug del rival.' : ' Lantern debate contra usted (el Host), que defiende el juego de las historias.'} Pulse ▶.`,
       html: () => `<div class="kicker">The Tabard Inn Debate · prepare · 6 minutes</div>
       <div class="motions">${MOTIONS.slice(0, isImm() ? 3 : 4).map((d, n) => `<div><b>${n + 1}</b><p>«${d.m}»</p><span class="fa">FOR · ${d.a === 'Host' ? 'the Host (teacher)' : d.a}</span><span class="ag">AGAINST · ${d.b}</span></div>`).join('')}</div>
       ${isImm() ? '' : `<div class="scroll"><p class="frame" style="margin:0">In my opinion, pilgrims <u>should / shouldn't</u> ______, because ______. For example, ______.<br>If we ______ (past), we <u>would</u> ______. · That reason is not relevant / acceptable / sufficient, because ______.</p></div>`}
       ${immBox('No frames today: your Herald must use <b>a future form</b>, <b>a second conditional</b> and <b>name the bug</b> in the rival\'s reason.')}${timer([['Coach', 360]])}` },
     { stop: 4, dense: true, host: ['hips', 'Bug hunters, listen! Shout <b>«BUG!»</b> if you hear one.'],
-      note: () => `The Tabard Inn Debate (${isImm() ? '8' : '10'} min). Elija la moción y pulse ▶ en cada turno: FOR 30 s · AGAINST 30 s · respuesta FOR 15 s · respuesta AGAINST 15 s. Los demás escuadrones son <b>coaches y bug hunters</b>: marcan R·A·S en su tarjeta y gritan «BUG!» si oyen un bug (si la clase acierta, +5 XP al escuadrón que lo atrapó). Después de cada debate, un coach da un consejo en 15 segundos y la clase vota la razón más fuerte (+10 XP). Toque el escudo para sumar 5 XP; el «−» resta.`,
+      note: () => `The Tabard Inn Debate (${isImm() ? '8' : '10'} min). Elija la moción y pulse ▶ en cada turno: FOR 30 s · AGAINST 30 s · respuesta FOR 15 s · respuesta AGAINST 15 s. Los demás escuadrones son <b>coaches y bug hunters</b>: marcan R·A·S en el cuaderno y gritan «BUG!» si oyen un bug (si la clase acierta, +5 XP al escuadrón que lo atrapó). Después de cada debate, un coach da un consejo en 15 segundos y la clase vota la razón más fuerte (+10 XP). Toque el escudo para sumar 5 XP; el «−» resta.`,
       html: () => `<div class="kicker">The Tabard Inn Debate · 90 seconds · two Heralds · one motion</div>
       <div class="deb" id="deb"><div class="debtabs">${MOTIONS.slice(0, isImm() ? 3 : 4).map((d, n) => `<button type="button" class="tbtn${n ? '' : ' go'}" data-m="${n}">Motion ${n + 1}</button>`).join('')}</div>
         <div class="debm" id="debM"></div><div class="debvs"><span class="fa" id="debA"></span><i>vs</i><span class="ag" id="debB"></span></div></div>
       ${timer(MOTIONS.slice(0, isImm() ? 3 : 4).flatMap((d, n) => DEBT.map(([t, s]) => [`M${n + 1} · ${t}`, s])))}
       <div class="xpboard mini" id="xpb" data-step="5">${sqs().map(s => `<button type="button" class="xpsq" data-sq="${s}"><img src="${IMG.sq[s.toLowerCase()]}" alt=""><b>${s}</b><span class="xp" data-xp="${s}">0 XP</span><i class="minus" data-minus="${s}" title="−5 XP">−</i></button>`).join('')}</div>` },
     { stop: 4, host: ['wave', 'Next time: open the <b>Mystery Box</b>…'],
-      note: 'Cierre (2 min). Repase los dos bugs nuevos (#3 y #4) y pregunte cuál apareció en el debate. Recoja la hoja del listening (Anexo I) para el registro de C1. Próxima clase: The Mystery Box (la caja de reliquias del Bulero). Pida que guarden la Bugdex: ya tiene cuatro bugs.',
+      note: 'Cierre (2 min). Repase los dos bugs nuevos (#3 y #4) y pregunte cuál apareció en el debate. Para el registro de C1, revise el listening en algunos cuadernos o pida a cada agente su puntaje. Próxima clase: The Mystery Box (la caja de reliquias del Bulero). Pida que guarden la Bugdex: ya tiene cuatro bugs.',
       html: () => `<div class="kicker">Class 3 complete</div><h1>Six conversations heard. Two new bugs in the Bugdex.</h1>
       <div class="info">Next class: <b>The Mystery Box</b> — the Pardoner opens his box of relics. Will you buy one… or catch his tricks?</div>
       <button type="button" class="endbtn" data-tomap="1">☰ Back to the cycle map</button>` },
@@ -1260,7 +1276,7 @@ const LESSONS = {
       <div class="w4">${W4.map(([w, m, i]) => `<button type="button" class="w4c">${i ? `<img src="${IMG.v[i === 'v-coin' ? 'coin' : 'preacher']}" alt="">` : ''}<b>${w}</b><em>${m}</em></button>`).join('')}</div>
       <div class="xpboard mini" id="xpb" data-step="5">${sqs().map(s => `<button type="button" class="xpsq" data-sq="${s}"><img src="${IMG.sq[s.toLowerCase()]}" alt=""><b>${s}</b><span class="xp" data-xp="${s}">0 XP</span><i class="minus" data-minus="${s}" title="−5 XP">−</i></button>`).join('')}</div>` },
     { stop: 2, dense: true, host: ['moneybag', 'Listen to my <b>secret</b>, pilgrims…'],
-      note: () => `Reading «The Pardoner's Secret» (12 min, Anexo K, individual). Lean el título y pregunte: «What is his secret?». Cada agente lee en silencio y responde las cinco preguntas (tipo B1 Preliminary Part 3). Pista de examen: primero lean las preguntas, después el texto. Toque las palabras resaltadas para mostrar su significado y la pista. ${isImm() ? 'En 7A y 7B, además, el verso de Chaucer y la pregunta 6 (obligatorios).' : 'Reto: el verso de Chaucer (+10 XP).'} Pulse ▶. El texto se proyecta en dos partes: «Paragraphs 5–7 ▶» cambia de parte sin detener el reloj.`,
+      note: () => `Reading «The Pardoner's Secret» (12 min, individual: el texto se proyecta y hay 1 copia del Anexo K por escuadrón; responden en el cuaderno 1–5). Lean el título y pregunte: «What is his secret?». Cada agente lee en silencio y responde las cinco preguntas (tipo B1 Preliminary Part 3). Pista de examen: primero lean las preguntas, después el texto. Toque las palabras resaltadas para mostrar su significado y la pista. ${isImm() ? 'En 7A y 7B, además, el verso de Chaucer y la pregunta 6 (obligatorios).' : 'Reto: el verso de Chaucer (+10 XP).'} Pulse ▶. El texto se proyecta en dos partes: «Paragraphs 5–7 ▶» cambia de parte sin detener el reloj.`,
       html: () => `<div class="kicker">Reading · The Pardoner's Secret · adapted from Chaucer's Pardoner's Prologue</div>
       <div class="ptext" id="ptx"><div class="pt1">${PTEXT.slice(0, 4).map((p, n) => `<p><b>${n + 1}</b>${ptext(p)}</p>`).join('')}</div><div class="pt2">${PTEXT.slice(4).map((p, n) => `<p><b>${n + 5}</b>${ptext(p)}</p>`).join('')}</div></div>
       <div class="revealbar"><button type="button" class="tbtn" id="ptxBtn">Paragraphs 5–7 ▶</button><span class="chal" style="padding:.5vh 1vw"><b>★</b> «${CHAUCER4[0]}» — what does it mean? ${isImm() ? '<span class="must">required</span>' : '<span>+10 XP</span>'}</span>${timer([['Read and answer', 720]])}</div>` },
@@ -1273,11 +1289,11 @@ const LESSONS = {
       <div class="revealbar"><button type="button" class="tbtn" id="rqPrev">◀</button><button type="button" class="tbtn" id="rqShow">✋ Show me!</button><button type="button" class="tbtn go" id="rqRev">Reveal</button><button type="button" class="tbtn" id="rqNext">Next ▶</button></div>
       <div class="chal" id="c4line"><b>★ Chaucer's line</b> «${CHAUCER4[0]}» <em class="mline">→ ${CHAUCER4[1]}</em></div>` },
     { stop: 3, dense: true, host: ['letter', 'Decoders, <b>lead your squad</b>!'],
-      note: () => `Decode the Pitch (8 min, Anexo L, 1 por estudiante). Cada escuadrón trabaja las siete frases del discurso del Bulero: escribe la afirmación oculta («What does he really want us to believe?»), decide BUY o BUG y marca la letra de R·A·S que falla. El <b>Decoder</b> dirige y prepara la presentación de la frase de su escuadrón: Hourglass la 1, Sundial la 2, Pendulum la 3, Compass la 4, Astrolabe la 5, Chronometer la 6${isImm() ? '; la 7 la hace toda la clase' : ' y Lantern la 7'}. Pulse ▶.`,
-      html: () => `<div class="kicker">Decode the Pitch · in your squad · Annex L</div>
-      <ol class="ptasks"><li><b>Read</b> each sentence of the Pardoner's pitch.</li><li><b>Decode:</b> what does he <u>really</u> want us to believe? Write the hidden claim.</li><li><b>Decide:</b> BUY or BUG? Which letter of R·A·S fails?</li><li><b>Decoder:</b> get ready to present your squad's sentence.</li></ol>
+      note: () => `Decode the Pitch (8 min, en el cuaderno: «The 7 sentences ▶» proyecta las siete frases sin detener el reloj). Cada escuadrón trabaja las siete frases del discurso del Bulero: escribe la afirmación oculta («What does he really want us to believe?»), decide BUY o BUG y marca la letra de R·A·S que falla. El <b>Decoder</b> dirige y prepara la presentación de la frase de su escuadrón: Hourglass la 1, Sundial la 2, Pendulum la 3, Compass la 4, Astrolabe la 5, Chronometer la 6${isImm() ? '; la 7 la hace toda la clase' : ' y Lantern la 7'}. Pulse ▶.`,
+      html: () => `<div class="kicker">Decode the Pitch · in your squad · in your notebook</div>
+      <div class="swap" id="pch"><ol class="sb pitch7">${PITCH.map(d => `<li>«${d.p}»</li>`).join('')}</ol><ol class="sa ptasks"><li><b>Read</b> each sentence of the Pardoner's pitch.</li><li><b>Decode:</b> what does he <u>really</u> want us to believe? Write the hidden claim.</li><li><b>Decide:</b> BUY or BUG? Which letter of R·A·S fails?</li><li><b>Decoder:</b> get ready to present your squad's sentence.</li></ol></div>
       <div class="scroll"><p class="frame" style="margin:0">He says «______». He <u>really</u> means that ______. It's a bug, because the reason is not <u>relevant / acceptable / sufficient</u>.</p></div>
-      <div class="task"><span class="step">Decoder</span>leads and presents <span class="step">Chronicler</span>writes <span class="step">Timekeeper</span>controls the time</div>${timer([['Decode', 480]])}` },
+      <div class="task"><span class="step">Decoder</span>leads and presents <span class="step">Chronicler</span>writes <span class="step">Timekeeper</span>controls the time <button type="button" class="tbtn" id="pchBtn">The 7 sentences ▶</button></div>${nb('1–7 · the hidden claim · BUY or BUG · the R·A·S letter that fails.')}${timer([['Decode', 480]])}` },
     { stop: 3, dense: true, host: ['alert', '<b>BUY</b> — or <b>BUG</b>?'],
       note: 'Buy or Bug! (6 min). Lea cada frase en voz alta como si fuera el Bulero (con la caja en la mano y mucho teatro). La clase decide: de pie = BUY, brazos cruzados en X = BUG. Luego el Decoder del escuadrón dice la afirmación oculta con el marco. Pulse «Decode» para revelar la afirmación oculta, la letra de R·A·S y el bug. La frase 5 es la trampa más importante del Bulero: «Only sinners will not give!».',
       html: () => `<div class="kicker">Buy or Bug! · the Pardoner's pitch · 7 sentences</div>
@@ -1285,7 +1301,7 @@ const LESSONS = {
         <div class="ptres" id="ptR"><p><b>He really means:</b> <span id="ptH"></span></p><div class="rasrow" id="ptRas"></div><p id="ptW"></p></div></div>
       <div class="revealbar"><button type="button" class="tbtn" id="ptPrev">◀</button><button type="button" class="tbtn go" id="ptShow">Decode</button><button type="button" class="tbtn" id="ptNext">Next ▶</button><span class="hint">🧍 BUY = stand up · ❌ BUG = cross your arms</span></div>` },
     { stop: 4, dense: true, host: ['oops', 'Everybody bought one… so it <b>must</b> be good?!'],
-      note: 'Bugdex · Bug sighting #5 (2 min). Viene de la frase 4 del discurso. Cada agente lo copia en su Bugdex (Anexo C). Pida un ejemplo de hoy («Everybody has this phone, so it is the best»). Nombre técnico (solo para usted; Ciclo 4 con el Genially): Bandwagon.',
+      note: 'Bugdex · Bug sighting #5 (2 min). Viene de la frase 4 del discurso. Cada agente lo copia en su Bugdex (cuaderno). Pida un ejemplo de hoy («Everybody has this phone, so it is the best»). Nombre técnico (solo para usted; Ciclo 4 con el Genially): Bandwagon.',
       html: () => `<div class="kicker">The Bugdex · Bug sighting #${BUGS4[0].n}</div><h2>${BUGS4[0].name}</h2>
       <div class="bugdex"><img src="${IMG.bug.normal}" alt=""><table><tr><th>Who used it?</th><td>${BUGS4[0].who}</td></tr><tr><th>What did he say?</th><td>${BUGS4[0].said}</td></tr><tr><th>Why is it a bug?</th><td>${BUGS4[0].why}</td></tr><tr><th>How to catch it</th><td>${BUGS4[0].catch}</td></tr></table></div>` },
     { stop: 4, dense: true, host: ['point', 'Three hits… and <b>twenty misses</b>!'],
@@ -1293,7 +1309,7 @@ const LESSONS = {
       html: () => `<div class="kicker">The Bugdex · Bug sighting #${BUGS4[1].n}</div><h2>${BUGS4[1].name}</h2>
       <div class="bugdex"><img src="${IMG.bug.jar}" alt=""><table><tr><th>Who used it?</th><td>${BUGS4[1].who}</td></tr><tr><th>What did he say?</th><td>${BUGS4[1].said}</td></tr><tr><th>Why is it a bug?</th><td>${BUGS4[1].why}</td></tr><tr><th>How to catch it</th><td>${BUGS4[1].catch}</td></tr></table></div>` },
     { stop: 4, host: ['hourglass', 'Timekeepers, <b>what will happen</b>?'],
-      note: () => `Cierre (4 min, Anexo M). Primero los <b>Timekeepers</b> responden en voz alta, uno por escuadrón, con will / might. Después cada agente escribe su exit ticket (primer condicional: If + presente, will / might + verbo).${isImm() ? ' En 7A y 7B añaden una oración con el segundo condicional.' : ''} Recoja algunas para el registro de C3.`,
+      note: () => `Cierre (4 min, en el cuaderno). Primero los <b>Timekeepers</b> responden en voz alta, uno por escuadrón, con will / might. Después cada agente escribe su exit ticket (primer condicional: If + presente, will / might + verbo).${isImm() ? ' En 7A y 7B añaden una oración con el segundo condicional.' : ''} Recoja algunas para el registro de C3.`,
       html: () => `<div class="kicker">Exit ticket · the Timekeepers answer first</div><div class="big-q" style="font-size:5.4vh">What will happen if the pilgrims believe the Pardoner?</div>
       <div class="scroll"><p class="frame" style="margin:0">If the pilgrims believe him, they <u>will</u> ______. They <u>might</u> ______.<br>But if they use the R·A·S card, they <u>will</u> ______.</p></div>
       ${immBox('Add one more sentence: <b>If I were a villager in 1380, I would…</b>')}${timer([['Write', 180]])}` },
@@ -1328,7 +1344,7 @@ const LESSONS = {
       <div class="cond"><div class="rule"><b>If</b> + past simple, <b>would</b> + verb <span>→ imaginary situations</span></div><div class="rule r2"><b>If</b> + present, <b>will</b> + verb <span>→ real possibilities</span></div></div>
       <div class="conds">${CONDS.map(([t, k, w]) => `<button type="button" class="cnd" data-k="${k}"><span>${t}</span><b>${k === 'R' ? 'REAL' : 'IMAGINARY'}</b><em>${w}</em></button>`).join('')}</div>` },
     { stop: 2, dense: true, host: ['listen', 'Ring, ring! The <b>Hypothetical Hotline</b> is calling…'],
-      note: () => `Hypothetical Hotline (16 min, Anexo O, 1 por escuadrón). Juego en cadena: cada oración empieza con el resultado de la anterior (If I had a time machine, I would go to 1380 → If I went to 1380, I would meet…). Ronda 1 (3 min): demostración con toda la clase; usted empieza. Ronda 2 (90 s por llamada, 2 llamadas): cada escuadrón hace su cadena; el <b>Chronicler</b> escribe los eslabones en el Anexo O y el <b>Timekeeper</b> controla el tiempo. Si alguien rompe la forma (If I will…, If I would…), el escuadrón grita «Time glitch!» y la cadena vuelve a empezar. Ronda 3: el Herald lee la cadena más larga; +5 XP por eslabón correcto.${isImm() ? ' En 7A y 7B, cada eslabón añade «because…» y debe ser lógico: un eslabón fuera de tema es el Off-Topic Bug y rompe la cadena.' : ''} Toque «Ring!» para una llamada nueva.`,
+      note: () => `Hypothetical Hotline (16 min, en el cuaderno del Chronicler). Juego en cadena: cada oración empieza con el resultado de la anterior (If I had a time machine, I would go to 1380 → If I went to 1380, I would meet…). Ronda 1 (3 min): demostración con toda la clase; usted empieza. Ronda 2 (90 s por llamada, 2 llamadas): cada escuadrón hace su cadena; el <b>Chronicler</b> escribe los eslabones en su cuaderno y el <b>Timekeeper</b> controla el tiempo. Si alguien rompe la forma (If I will…, If I would…), el escuadrón grita «Time glitch!» y la cadena vuelve a empezar. Ronda 3: el Herald lee la cadena más larga; +5 XP por eslabón correcto.${isImm() ? ' En 7A y 7B, cada eslabón añade «because…» y debe ser lógico: un eslabón fuera de tema es el Off-Topic Bug y rompe la cadena.' : ''} Toque «Ring!» para una llamada nueva.`,
       html: () => `<div class="kicker">The Hypothetical Hotline · one link · one sentence</div>
       <div class="hot"><div class="phone" id="phone">☎</div><div><div class="call" id="call">${CALLS[0]}</div>
         <ol class="chainex">${CHAINEX.map(c => `<li>${c}</li>`).join('')}</ol></div></div>
@@ -1336,10 +1352,10 @@ const LESSONS = {
       <div class="revealbar"><button type="button" class="tbtn go" id="ring">☎ Ring!</button>${timer([['Demo', 180], ['Call 1', 90], ['Call 2', 90]])}</div>
       <div class="xpboard mini" id="xpb" data-step="5">${sqs().map(s => `<button type="button" class="xpsq" data-sq="${s}"><img src="${IMG.sq[s.toLowerCase()]}" alt=""><b>${s}</b><span class="xp" data-xp="${s}">0 XP</span><i class="minus" data-minus="${s}" title="−5 XP">−</i></button>`).join('')}</div>` },
     { stop: 3, dense: true, host: ['wordcard', 'Alone now, agents. <b>Ten words</b>!'],
-      note: 'Vocabulary Quiz 2 (8 min, Anexo P, individual). Diez palabras del Ciclo 2: cinco definiciones y cinco oraciones para completar. El banco tiene 12 palabras (sobran dos). 5 XP por respuesta correcta. PIAR: el banco queda visible en la pantalla y se puede responder solo la parte A.',
+      note: 'Vocabulary Quiz 2 (8 min, proyectado, individual: responden en el cuaderno 1–10). Diez palabras del Ciclo 2: cinco definiciones y cinco oraciones para completar. El banco tiene 12 palabras (sobran dos). 5 XP por respuesta correcta. PIAR: el banco queda visible en la pantalla y se puede responder solo la parte A.',
       html: () => `<div class="kicker">Vocabulary Quiz 2 · alone · 5 XP for each correct answer</div>
       <div class="bank">${VQ2BANK.map(w => `<span>${w}</span>`).join('')}</div>
-      <div class="cols"><div><h3>A · What is the word?</h3><ol class="vq one">${VQ2.slice(0, 5).map(q => `<li>${q[0]}</li>`).join('')}</ol></div><div><h3>B · Complete the sentence</h3><ol class="vq one" start="6">${VQ2.slice(5).map(q => `<li>${q[0]}</li>`).join('')}</ol></div></div>${timer([['Quiz', 480]])}` },
+      <div class="cols"><div><h3>A · What is the word?</h3><ol class="vq one">${VQ2.slice(0, 5).map(q => `<li>${q[0]}</li>`).join('')}</ol></div><div><h3>B · Complete the sentence</h3><ol class="vq one" start="6">${VQ2.slice(5).map(q => `<li>${q[0]}</li>`).join('')}</ol></div></div>${nb('Vocabulary Quiz 2 · write 1–10 and the word.')}${timer([['Quiz', 480]])}` },
     { stop: 3, dense: true, host: ['thumbs', 'Check your answers, agents!'],
       note: 'Clave (3 min). Toque cada número para revelar la palabra. Cada agente corrige con lápiz de otro color y suma su XP (5 por respuesta). Pida que levanten la mano quienes tengan 8 o más.',
       html: () => `<div class="kicker">Vocabulary Quiz 2 · the key</div>
@@ -1524,6 +1540,8 @@ function mountWidgets() {
       $('ptR').classList.remove('show'); };
     $('ptShow').onclick = () => { $('ptR').classList.toggle('show'); if ($('ptR').classList.contains('show')) chime(); fitStage(); };
     $('ptNext').onclick = () => { k = Math.min(PITCH.length - 1, k + 1); show(); }; $('ptPrev').onclick = () => { k = Math.max(0, k - 1); show(); }; show(); }
+  if ($('qtg')) $('qtgBtn').onclick = () => { const on = $('qtg').classList.toggle('two'); $('qtgBtn').textContent = on ? '◀ The voices' : 'The 6 questions ▶'; fitStage(); };
+  if ($('pch')) $('pchBtn').onclick = () => { const on = $('pch').classList.toggle('two'); $('pchBtn').textContent = on ? '◀ The tasks' : 'The 7 sentences ▶'; fitStage(); };
   if ($('ptx')) $('ptxBtn').onclick = () => { const on = $('ptx').classList.toggle('two'); $('ptxBtn').textContent = on ? '◀ Paragraphs 1–4' : 'Paragraphs 5–7 ▶'; fitStage(); };
   // ---- Class 5 widgets
   if ($('wcard')) { const show = n => { const t = TOWNS[n];

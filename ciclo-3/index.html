@@ -831,6 +831,19 @@ a.tbtn { text-decoration: none; display: inline-block; }
 .ready b { font-family: var(--f-display); font-size: 3vh; color: var(--navy); display: block; } .ready span { font-family: var(--f-caps); font-weight: 700; font-size: 1.7vh; letter-spacing: .06em; color: var(--red); } .ready p { margin: .3vh 0 0; font-size: 2.2vh; }
 @media (max-aspect-ratio: 3/2) { .pcards, .ready { grid-template-columns: 1fr; } }
 
+/* ---- print-saving policy: notebook cues and in-slide swaps ---- */
+.nb { display: flex; gap: .8vw; align-items: center; width: fit-content; max-width: 92%; margin: .8vh auto 0; padding: .5vh 1.2vw; border: 2px dashed #2b6f6a; border-radius: 1.2vh; background: rgba(255,253,245,.92); color: #1d3557; font-size: 2.2vh; line-height: 1.25; }
+.nb > span:first-child { font-size: 2.8vh; color: #2b6f6a; }
+.swap .sb { display: none; }
+.swap.two .sa { display: none; }
+.swap.two .sb { display: block; }
+.swap.two ol.sb, .swap.two .sb > ol { display: grid; }
+.qlist { grid-template-columns: 1fr 1fr; gap: 1vh 2vw; margin: 0; padding-left: 2.4vw; font-size: 2.2vh; line-height: 1.3; color: #1d3557; }
+.qlist li b { display: block; font-weight: 700; }
+.qlist li span { display: block; font-size: 1.95vh; color: #3b3b3b; }
+.qlist li i { font-style: normal; font-weight: 700; color: #8a5a00; }
+.pitch7 { gap: 1vh; margin: 0; padding-left: 2.6vw; font-size: 2.7vh; line-height: 1.3; font-family: var(--f-display, Georgia, serif); color: #1d3557; }
+
 </style>
 </head>
 <body>
@@ -894,6 +907,8 @@ const SQUADS = ['Hourglass', 'Sundial', 'Pendulum', 'Compass', 'Astrolabe', 'Chr
 const sqs = () => isImm() ? SQUADS.slice(0, 6) : SQUADS;
 const POWERS = [['timekeeper', 'Timekeeper'], ['decoder', 'Decoder'], ['herald', 'Herald'], ['chronicler', 'Chronicler']];
 const timer = phases => `<div class="timer" data-phases='${JSON.stringify(phases)}'></div>`;
+const nb = t => `<div class="nb"><span>✎</span><span><b>In your notebook:</b> ${t}</span></div>`;
+const qlist = (qs, start) => `<ol class="qlist"${start ? ` start="${start}"` : ''}>${qs.map(d => `<li><b>${d.q}</b><span>${d.opts.map((o, j) => `<i>${'ABCD'[j]}</i> ${o}`).join(' · ')}</span></li>`).join('')}</ol>`;
 const immBox = html => `<div class="immbox${isImm() ? ' on' : ''}"><b>7A · 7B immersion</b>${html}</div>`;
 const RAS3 = ['R', 'A', 'S'];
 const xpBoard = () => `<div class="xpboard mini" id="xpb" data-step="5">${sqs().map(s => `<button type="button" class="xpsq" data-sq="${s}"><img src="${IMG.sq[s.toLowerCase()]}" alt=""><b>${s}</b><span class="xp" data-xp="${s}">0 XP</span><i class="minus" data-minus="${s}" title="−5 XP">−</i></button>`).join('')}</div>`;
@@ -1018,30 +1033,32 @@ const LESSONS = {
         <div class="fores" id="spR"><b id="spT"></b></div><div class="spbar"><i id="spBar"></i></div></div>
       <div class="revealbar"><button type="button" class="tbtn go" id="sp1">▶ Round 1</button><button type="button" class="tbtn go" id="sp2">▶ Round 2</button><button type="button" class="tbtn" id="spStop">■ Stop</button><span class="hint">🧍 RELEVANT = stand up · 🪑 NOT RELEVANT = stay seated</span></div>` },
     { stop: 1, dense: true, host: ['book', 'Herald, you are the <b>radio presenter</b> today!'],
-      note: () => `Before you listen (4 min). Un Herald voluntario es el presentador de Chronos Radio: recibe la Presenter Card (Anexo A) y ensaya sus preguntas con usted. Usted lee a la Dra. Mira Tempus. Mientras tanto, la clase lee las seis preguntas de la hoja del listening (Anexo B), subraya las palabras clave y predice. Pista de examen para la Part 4: las preguntas van en el orden de la entrevista, y la respuesta es lo que la hablante <b>piensa</b>, no lo que «la gente cree». ${isImm() ? 'En 7A y 7B, además, cada agente escribe en la hoja el «tool» de la Dra. Tempus que se usa hoy en un anuncio.' : ''}`,
+      note: () => `Before you listen (4 min). Un Herald voluntario es el presentador de Chronos Radio: recibe la Presenter Card (Anexo A) y ensaya sus preguntas con usted. Usted lee a la Dra. Mira Tempus. Mientras tanto, la clase lee las seis preguntas en la pantalla (botón «The 6 questions ▶»; no detiene el reloj), copia en el cuaderno una palabra clave por pregunta y predice. Pista de examen para la Part 4: las preguntas van en el orden de la entrevista, y la respuesta es lo que la hablante <b>piensa</b>, no lo que «la gente cree». ${isImm() ? 'En 7A y 7B, además, cada agente escribe en el cuaderno el «tool» de la Dra. Tempus que se usa hoy en un anuncio.' : ''}`,
       html: () => `<div class="kicker">Before you listen · Chronos Radio · an interview with a time historian</div>
-      <div class="cols"><div><h3>Dr Mira Tempus</h3><p class="lead" style="font-size:2.6vh">A time historian at the Museum of the Future (2126). She has travelled to 1380 many times to study <b>persuasion</b>: how people make other people believe things.</p></div>
-        <div><h3>Words you will hear</h3><div class="bank"><span>persuasion</span><span>persuader</span><span>preacher</span><span>relic</span><span>saint</span><span>fake</span><span>advert</span><span>fool</span><span>thief</span></div></div></div>
+      <div class="swap" id="qtg"><div class="sb">${qlist(TQ)}</div><div class="sa cols"><div><h3>Dr Mira Tempus</h3><p class="lead" style="font-size:2.6vh">A time historian at the Museum of the Future (2126). She has travelled to 1380 many times to study <b>persuasion</b>: how people make other people believe things.</p></div>
+        <div><h3>Words you will hear</h3><div class="bank"><span>persuasion</span><span>persuader</span><span>preacher</span><span>relic</span><span>saint</span><span>fake</span><span>advert</span><span>fool</span><span>thief</span></div></div></div></div>
       <div class="info">Exam tip (Part 4): the questions are <b>in order</b>. Listen for <b>her</b> opinion: «In my opinion…», «I don't think…», «I think…» — not what «people often think».</div>
-      <div class="task"><span class="step">Herald</span>rehearse your questions <span class="step">Everybody</span>read the 6 questions · underline · predict A, B or C</div>${timer([['Prepare', 240]])}` },
+      <div class="task"><span class="step">Herald</span>rehearse your questions <span class="step">Everybody</span>read the 6 questions · copy one key word for each · predict A, B or C <button type="button" class="tbtn" id="qtgBtn">The 6 questions ▶</button></div>${timer([['Prepare', 240]])}` },
     { stop: 2, dense: true, host: ['listen', 'Listen to <b>her</b> opinion, agents. Twice!'],
       note: 'Listening (16 min). Usted lee a la Dra. Tempus y el Herald al presentador (Anexo A; la transcripción completa está en las claves de la guía). Lean la entrevista completa una vez, den 1 minuto para marcar, y léanla otra vez. Luego, pregunta por pregunta: «Show me!» (1, 2 o 3 dedos) y «Reveal», que muestra la respuesta y la frase que la prueba. «Transcript» proyecta el fragmento de la entrevista (úselo después del Reveal o para PIAR).',
       html: () => `<div class="kicker">Listening · Chronos Radio: Dr Mira Tempus on medieval persuasion · B1 Preliminary Part 4</div>
       <div class="lq" id="tq"><div class="lqhead"><span class="lqn" id="tqN"></span><span class="lqst" id="tqSt"></span></div>
         <h2 class="lqq" id="tqQ"></h2><ol class="lqo" id="tqO" type="A"></ol>
         <div class="lqkey" id="tqK"><p id="tqW"></p></div><div class="lqt" id="tqT"></div></div>
+      ${nb('write 1–6 and A, B or C.')}
       <div class="revealbar"><button type="button" class="tbtn" id="tqPrev">◀</button><button type="button" class="tbtn" id="tqL1">① 1st listening</button><button type="button" class="tbtn" id="tqL2">② Listen again</button><button type="button" class="tbtn" id="tqShow">✋ Show me!</button><button type="button" class="tbtn go" id="tqRev">Reveal</button><button type="button" class="tbtn" id="tqTr">Transcript</button><button type="button" class="tbtn" id="tqNext">Next ▶</button></div>` },
     { stop: 3, dense: true, host: ['scales', 'Relevant… or <b>not relevant</b>?'],
-      note: () => `Rate the Arguments (10 min, Anexo C, 1 por estudiante). Cuatro argumentos de la entrevista: tres de la Dra. Tempus y uno del Reeve. En escuadrón, cada agente marca R o NR y escribe la justificación con el marco. El <b>Chronicler</b> escribe la versión del escuadrón y el <b>Herald</b> la lee. Toque cada tarjeta para revelar. +5 XP por justificación correcta.${isImm() ? ' En 7A y 7B, sin marco, y deben proponer una razón relevante para el argumento del Reeve.' : ''}`,
+      note: () => `Rate the Arguments (10 min, en el cuaderno). Cuatro argumentos de la entrevista: tres de la Dra. Tempus y uno del Reeve. En escuadrón, cada agente marca R o NR y escribe la justificación con el marco. El <b>Chronicler</b> escribe la versión del escuadrón y el <b>Herald</b> la lee. Toque cada tarjeta para revelar. +5 XP por justificación correcta.${isImm() ? ' En 7A y 7B, sin marco, y deben proponer una razón relevante para el argumento del Reeve.' : ''}`,
       html: () => `<div class="kicker">Rate the Arguments · squads · It is (not) relevant because…</div>
       <div class="rate">${RATE.map((a, n) => `<button type="button" class="rt"><b>${n + 1}</b><span class="rw">${a.who}</span><span><span class="pc">${a.claim}</span> <span class="pr">${a.reason}</span></span><em class="${a.r === 'R' ? 'y' : 'n'}">${a.r === 'R' ? 'RELEVANT' : 'NOT RELEVANT'}</em><i>${a.why}</i></button>`).join('')}</div>
+      ${nb('1–4 · R or NR · It is (not) relevant because…')}
       ${isImm() ? '' : '<div class="scroll"><p class="frame" style="margin:0">It <u>is</u> relevant because the reason is connected to ______. · It <u>isn\'t</u> relevant because ______ has nothing to do with ______.</p></div>'}
       ${xpBoard()}` },
     { stop: 4, dense: true, host: ['oops', 'He didn\'t answer the story… he attacked the <b>man</b>!'],
       note: 'Bugdex · Bug sighting #7 (4 min). Viene del argumento 3 (el Reeve). Cada agente lo copia en su Bugdex. Pida un ejemplo de hoy («Don\'t listen to her idea — she always loses at football»). Nombre técnico (solo para usted; Ciclo 4 con el Genially de los Simpsons): Ad Hominem.',
       html: () => bugCard(BUG7, IMG.bug.normal) },
     { stop: 4, host: ['write', 'Do you agree with <b>Dr Tempus</b>?'],
-      note: () => `Exit ticket (4 min, Anexo D). Cada agente responde con una razón RELEVANTE.${isImm() ? ' En 7A y 7B añaden una pregunta para la Dra. Tempus con el segundo condicional.' : ''} Recoja algunas para el registro de C1.`,
+      note: () => `Exit ticket (4 min, en el cuaderno). Cada agente responde con una razón RELEVANTE.${isImm() ? ' En 7A y 7B añaden una pregunta para la Dra. Tempus con el segundo condicional.' : ''} Revise algunos cuadernos para el registro de C1.`,
       html: () => `<div class="kicker">Exit ticket</div><div class="big-q" style="font-size:5vh">Dr Tempus says: «Ask questions before you believe something.»<br>Do you agree?</div>
       <div class="scroll"><p class="frame" style="margin:0">I <u>agree / don't agree</u> with Dr Tempus, because ______. (Your reason must be RELEVANT!)</p></div>
       ${immBox('Add: <b>If I met Dr Tempus, I would ask her…</b>')}${timer([['Write', 240]])}` },
@@ -1064,12 +1081,12 @@ const LESSONS = {
       <div class="tale" id="tale">${TALE.map(([i, t], n) => `<div class="tp"><i>${i}</i><b>${n + 1}</b><span>${t}</span></div>`).join('')}</div>
       <div class="revealbar"><button type="button" class="tbtn go" id="taleNext">Next ▶</button><span class="hint">What will happen? Use <b>will</b> or <b>might</b>.</span></div>` },
     { stop: 1, dense: true, host: ['hourglass', 'Pass the envelope! <b>Next station!</b>'],
-      note: () => `Decoder Workshop (${isImm() ? '5 × 6' : '5 × 7'} min, Anexos E–I). Cada escuadrón se queda en su puesto y recibe un sobre (hay dos sobres de cada estación). Al sonar el reloj, el sobre pasa al escuadrón indicado en el tablero. El <b>Decoder</b> dirige la lectura; el <b>Chronicler</b> escribe las respuestas y la letra clave en el Code Log (Anexo J); el <b>Timekeeper</b> controla el tiempo; el <b>Herald</b> pide ayuda y presenta. Toque una ronda para ver qué estación tiene cada escuadrón. +10 XP por letra correcta (revíselas en el Code Log al final).`,
+      note: () => `Decoder Workshop (${isImm() ? '5 × 6' : '5 × 7'} min, Anexos E–I). Cada escuadrón se queda en su puesto y recibe un sobre (hay dos sobres de cada estación). Al sonar el reloj, el sobre pasa al escuadrón indicado en el tablero. El <b>Decoder</b> dirige la lectura; el <b>Chronicler</b> escribe en su cuaderno el Code Log (estación · respuestas · letra clave); el <b>Timekeeper</b> controla el tiempo; el <b>Herald</b> pide ayuda y presenta. Toque una ronda para ver qué estación tiene cada escuadrón. +10 XP por letra correcta (revíselas en el cuaderno del Chronicler al final).`,
       html: () => `<div class="kicker">The Decoder Workshop · five envelopes · one letter in each</div>
       <div class="stns">${STATIONS.map(s => `<div><b>${s.n}</b><span>${s.title}</span><em>${s.type}</em></div>`).join('')}</div>
       <div class="rot3" id="rot3"><div class="rh"><span></span>${[1, 2, 3, 4, 5].map(r => `<button type="button" class="tbtn${r === 1 ? ' go' : ''}" data-r="${r - 1}">Round ${r}</button>`).join('')}</div>
         ${sqs().map((s, i) => `<div class="rr"><span><img src="${IMG.sq[s.toLowerCase()]}" alt="">${s}</span>${[0, 1, 2, 3, 4].map(r => `<i data-r="${r}">${rotation(i, r).n}</i>`).join('')}</div>`).join('')}</div>
-      ${timer([1, 2, 3, 4, 5].map(r => ['Round ' + r, isImm() ? 360 : 420]))}` },
+      ${nb('Chronicler · <b>Code Log</b>: station · answers · the secret letter. Nobody writes on the station sheets.')}${timer([1, 2, 3, 4, 5].map(r => ['Round ' + r, isImm() ? 360 : 420]))}` },
     { stop: 2, dense: true, host: ['key', 'G… R… E… What is the <b>secret word</b>?'],
       note: 'La palabra secreta (3 min). Pida a cada Herald la letra de cada estación y toque las casillas para revelarlas. La palabra es GREED: la avaricia que mató a los tres rufianes, y el lema del Bulero, «Radix malorum est cupiditas». +20 XP al primer escuadrón que la descifre. Revise rápido las respuestas con las claves de la guía.',
       html: () => `<div class="kicker">The secret word · one letter from each station</div>
@@ -1102,30 +1119,30 @@ const LESSONS = {
       <div class="aon" id="fl"><div class="aon-n" id="flN"></div><div class="aon-s" id="flS"></div><div class="fores o" id="flR"><b id="flT"></b></div></div>
       <div class="revealbar"><button type="button" class="tbtn" id="flPrev">◀</button><button type="button" class="tbtn go" id="flShow">Reveal</button><button type="button" class="tbtn" id="flNext">Next ▶</button></div>` },
     { stop: 1, dense: true, host: ['point', 'Write it, hide it… then <b>3 · 2 · 1 · Show!</b>'],
-      note: 'Cómo se juega (2 min). Cada escuadrón tiene su Answer Card (Anexo K): escribe A, B o C en grande y la tapa. Al decir «3·2·1 Show!», todos la muestran a la vez. Nadie cambia la respuesta después. Cada escuadrón se autocalifica con honestidad (el Timekeeper lleva la cuenta). El ganador de cada ronda se queda con la letra.',
+      note: 'Cómo se juega (2 min). Cada escuadrón usa una página del cuaderno del Chronicler como Answer Card: escribe A, B o C en grande y la tapa. Al decir «3·2·1 Show!», todos la muestran a la vez. Nadie cambia la respuesta después. Cada escuadrón se autocalifica con honestidad (el Timekeeper lleva la cuenta). El ganador de cada ronda se queda con la letra.',
       html: () => `<div class="kicker">Time Rift Rounds · the rules</div>
-      <ol class="ptasks"><li><b>Listen or read</b> the item.</li><li><b>Agree</b> in your squad in 20 seconds. The Chronicler writes A, B or C.</li><li><b>3 · 2 · 1 · Show!</b> All squads show at the same time.</li><li><b>Score yourselves</b> honestly: +5 XP for each correct answer. The best squad wins the letter.</li></ol>
+      <ol class="ptasks"><li><b>Listen or read</b> the item.</li><li><b>Agree</b> in your squad in 20 seconds. The Chronicler writes A, B or C <b>big</b> on a notebook page.</li><li><b>3 · 2 · 1 · Show!</b> All squads show at the same time.</li><li><b>Score yourselves</b> honestly: +5 XP for each correct answer. The best squad wins the letter.</li></ol>
       <div class="lens">${ROUNDS.map(r => `<span><b>${r.letter}</b><em>${r.crit} · ${r.name}</em></span>`).join('')}</div>` },
     { stop: 1, dense: true, host: ['listen', 'Round 1 · <b>Voices</b>. Listen twice!'],
-      note: () => 'Round 1 · ' + ROUNDS[0].name + ' (' + ROUNDS[0].crit + ', 8 min). Para cada ítem: lea o reproduzca (▶ Play, dos veces en la ronda 1), dé 20 segundos, y luego «3·2·1 Show!»: todos los escuadrones levantan a la vez su respuesta (A, B o C) escrita en el Answer Card (Anexo K). «Reveal» muestra la clave y la prueba. Cada escuadrón se autocalifica (+5 XP por acierto). El escuadrón con más aciertos en la ronda gana la letra «' + ROUNDS[0].letter + '».',
+      note: () => 'Round 1 · ' + ROUNDS[0].name + ' (' + ROUNDS[0].crit + ', 8 min). Para cada ítem: lea o reproduzca (▶ Play, dos veces en la ronda 1), dé 20 segundos, y luego «3·2·1 Show!»: todos los escuadrones levantan a la vez su respuesta (A, B o C) escrita en grande en el cuaderno del Chronicler. «Reveal» muestra la clave y la prueba. Cada escuadrón se autocalifica (+5 XP por acierto). El escuadrón con más aciertos en la ronda gana la letra «' + ROUNDS[0].letter + '».',
       html: () => `<div class="kicker">Time Rift · Round ${ROUNDS[0].n} · ${ROUNDS[0].name} · ${ROUNDS[0].crit} · the letter «${ROUNDS[0].letter}»</div>
       <div class="lq" id="rd" data-r="0"><div class="lqhead"><span class="lqn" id="rdN"></span><span class="lqcast" id="rdW"></span><span class="lqst" id="rdSt"></span></div>
         <h2 class="lqq" id="rdQ"></h2><ol class="lqo" id="rdO" type="A"></ol><div class="lqkey" id="rdK"><p id="rdY"></p></div></div>
       <div class="revealbar"><button type="button" class="tbtn" id="rdPrev">◀</button>${ROUNDS[0].items[0].audio ? '<button type="button" class="tbtn" id="rdPlay">▶ Play</button>' : ''}<button type="button" class="tbtn" id="rdShow">3·2·1 Show!</button><button type="button" class="tbtn go" id="rdRev">Reveal</button><button type="button" class="tbtn" id="rdNext">Next ▶</button><span class="hint">${ROUNDS[0].task}</span></div>` },
     { stop: 1, dense: true, host: ['book', 'Round 2 · <b>Decode</b> the detail.'],
-      note: () => 'Round 2 · ' + ROUNDS[1].name + ' (' + ROUNDS[1].crit + ', 8 min). Para cada ítem: lea o reproduzca (▶ Play, dos veces en la ronda 1), dé 20 segundos, y luego «3·2·1 Show!»: todos los escuadrones levantan a la vez su respuesta (A, B o C) escrita en el Answer Card (Anexo K). «Reveal» muestra la clave y la prueba. Cada escuadrón se autocalifica (+5 XP por acierto). El escuadrón con más aciertos en la ronda gana la letra «' + ROUNDS[1].letter + '».',
+      note: () => 'Round 2 · ' + ROUNDS[1].name + ' (' + ROUNDS[1].crit + ', 8 min). Para cada ítem: lea o reproduzca (▶ Play, dos veces en la ronda 1), dé 20 segundos, y luego «3·2·1 Show!»: todos los escuadrones levantan a la vez su respuesta (A, B o C) escrita en grande en el cuaderno del Chronicler. «Reveal» muestra la clave y la prueba. Cada escuadrón se autocalifica (+5 XP por acierto). El escuadrón con más aciertos en la ronda gana la letra «' + ROUNDS[1].letter + '».',
       html: () => `<div class="kicker">Time Rift · Round ${ROUNDS[1].n} · ${ROUNDS[1].name} · ${ROUNDS[1].crit} · the letter «${ROUNDS[1].letter}»</div>
       <div class="lq" id="rd" data-r="1"><div class="lqhead"><span class="lqn" id="rdN"></span><span class="lqcast" id="rdW"></span><span class="lqst" id="rdSt"></span></div>
         <h2 class="lqq" id="rdQ"></h2><ol class="lqo" id="rdO" type="A"></ol><div class="lqkey" id="rdK"><p id="rdY"></p></div></div>
       <div class="revealbar"><button type="button" class="tbtn" id="rdPrev">◀</button>${ROUNDS[1].items[0].audio ? '<button type="button" class="tbtn" id="rdPlay">▶ Play</button>' : ''}<button type="button" class="tbtn" id="rdShow">3·2·1 Show!</button><button type="button" class="tbtn go" id="rdRev">Reveal</button><button type="button" class="tbtn" id="rdNext">Next ▶</button><span class="hint">${ROUNDS[1].task}</span></div>` },
     { stop: 2, dense: true, host: ['hourglass', 'Round 3 · <b>Time</b> forms.'],
-      note: () => 'Round 3 · ' + ROUNDS[2].name + ' (' + ROUNDS[2].crit + ', 8 min). Para cada ítem: lea o reproduzca (▶ Play, dos veces en la ronda 1), dé 20 segundos, y luego «3·2·1 Show!»: todos los escuadrones levantan a la vez su respuesta (A, B o C) escrita en el Answer Card (Anexo K). «Reveal» muestra la clave y la prueba. Cada escuadrón se autocalifica (+5 XP por acierto). El escuadrón con más aciertos en la ronda gana la letra «' + ROUNDS[2].letter + '».',
+      note: () => 'Round 3 · ' + ROUNDS[2].name + ' (' + ROUNDS[2].crit + ', 8 min). Para cada ítem: lea o reproduzca (▶ Play, dos veces en la ronda 1), dé 20 segundos, y luego «3·2·1 Show!»: todos los escuadrones levantan a la vez su respuesta (A, B o C) escrita en grande en el cuaderno del Chronicler. «Reveal» muestra la clave y la prueba. Cada escuadrón se autocalifica (+5 XP por acierto). El escuadrón con más aciertos en la ronda gana la letra «' + ROUNDS[2].letter + '».',
       html: () => `<div class="kicker">Time Rift · Round ${ROUNDS[2].n} · ${ROUNDS[2].name} · ${ROUNDS[2].crit} · the letter «${ROUNDS[2].letter}»</div>
       <div class="lq" id="rd" data-r="2"><div class="lqhead"><span class="lqn" id="rdN"></span><span class="lqcast" id="rdW"></span><span class="lqst" id="rdSt"></span></div>
         <h2 class="lqq" id="rdQ"></h2><ol class="lqo" id="rdO" type="A"></ol><div class="lqkey" id="rdK"><p id="rdY"></p></div></div>
       <div class="revealbar"><button type="button" class="tbtn" id="rdPrev">◀</button>${ROUNDS[2].items[0].audio ? '<button type="button" class="tbtn" id="rdPlay">▶ Play</button>' : ''}<button type="button" class="tbtn" id="rdShow">3·2·1 Show!</button><button type="button" class="tbtn go" id="rdRev">Reveal</button><button type="button" class="tbtn" id="rdNext">Next ▶</button><span class="hint">${ROUNDS[2].task}</span></div>` },
     { stop: 2, dense: true, host: ['scales', 'Round 4 · the <b>Verdict</b>.'],
-      note: () => 'Round 4 · ' + ROUNDS[3].name + ' (' + ROUNDS[3].crit + ', 8 min). Para cada ítem: lea o reproduzca (▶ Play, dos veces en la ronda 1), dé 20 segundos, y luego «3·2·1 Show!»: todos los escuadrones levantan a la vez su respuesta (A, B o C) escrita en el Answer Card (Anexo K). «Reveal» muestra la clave y la prueba. Cada escuadrón se autocalifica (+5 XP por acierto). El escuadrón con más aciertos en la ronda gana la letra «' + ROUNDS[3].letter + '».',
+      note: () => 'Round 4 · ' + ROUNDS[3].name + ' (' + ROUNDS[3].crit + ', 8 min). Para cada ítem: lea o reproduzca (▶ Play, dos veces en la ronda 1), dé 20 segundos, y luego «3·2·1 Show!»: todos los escuadrones levantan a la vez su respuesta (A, B o C) escrita en grande en el cuaderno del Chronicler. «Reveal» muestra la clave y la prueba. Cada escuadrón se autocalifica (+5 XP por acierto). El escuadrón con más aciertos en la ronda gana la letra «' + ROUNDS[3].letter + '».',
       html: () => `<div class="kicker">Time Rift · Round ${ROUNDS[3].n} · ${ROUNDS[3].name} · ${ROUNDS[3].crit} · the letter «${ROUNDS[3].letter}»</div>
       <div class="lq" id="rd" data-r="3"><div class="lqhead"><span class="lqn" id="rdN"></span><span class="lqcast" id="rdW"></span><span class="lqst" id="rdSt"></span></div>
         <h2 class="lqq" id="rdQ"></h2><ol class="lqo" id="rdO" type="A"></ol><div class="lqkey" id="rdK"><p id="rdY"></p></div></div>
@@ -1136,14 +1153,14 @@ const LESSONS = {
       <div class="code" id="code">${ROUNDS.map(r => `<button type="button" class="cl"><em>Round ${r.n}</em><b>${r.letter}</b></button>`).join('')}</div>
       <div class="info" id="codeMsg" style="visibility:hidden"><b>LENS</b> — after Mission Log 1, your squads will forge <b>the Decoder Lens</b>: R · A · S.</div>${xpBoard()}` },
     { stop: 3, dense: true, host: ['present', 'One task for each <b>power</b>!'],
-      note: 'Power Round (7 min, Anexo L: un juego de 4 tarjetas por escuadrón). Es la Parte D de la Evidencia 1 en pequeño. Cada poder hace su tarea en 4 minutos; luego, en 3 minutos, un Timekeeper, un Decoder, un Herald y un Chronicler (de escuadrones distintos) presentan. Toque cada tarjeta para mostrar un modelo. +10 XP por tarea bien hecha.',
+      note: 'Power Round (7 min; las cuatro tareas están en la pantalla y cada poder escribe en su cuaderno). Es la Parte D de la Evidencia 1 en pequeño. Cada poder hace su tarea en 4 minutos; luego, en 3 minutos, un Timekeeper, un Decoder, un Herald y un Chronicler (de escuadrones distintos) presentan. Toque cada tarjeta para mostrar un modelo. +10 XP por tarea bien hecha.',
       html: () => `<div class="kicker">The Power Round · like Part D of Mission Log 1</div>
-      <div class="pcards">${POWERCARDS.map(([k, t, task, m]) => `<button type="button" class="pcd"><img src="${IMG.emb[k]}" alt=""><b>${t}</b><span>${task}</span><em>${m}</em></button>`).join('')}</div>${timer([['Powers', 240], ['Present', 180]])}` },
+      <div class="pcards">${POWERCARDS.map(([k, t, task, m]) => `<button type="button" class="pcd"><img src="${IMG.emb[k]}" alt=""><b>${t}</b><span>${task}</span><em>${m}</em></button>`).join('')}</div>${nb('do the task of <b>your</b> power.')}${timer([['Powers', 240], ['Present', 180]])}` },
     { stop: 4, dense: true, host: ['letter', 'Mission Log 1 is <b>coming</b>…'],
-      note: () => `Ready check (4 min, Anexo M: media hoja para pegar en el cuaderno). Explique las cuatro partes, el tiempo de cada una y qué evalúa. Insista: lápiz, borrador, hojas en perfecto estado, el audio se escucha dos veces. Cada agente marca en la hoja lo que todavía debe practicar. La Evidencia 1 de ${course || 'su curso'} es el ${course ? { '7C': 'jueves 3 de diciembre', '7D': 'jueves 3 de diciembre', '7E': 'miércoles 2 de diciembre' }[course] || '—' : '—'}.`,
+      note: () => `Ready check (4 min; se copia en el cuaderno). Explique las cuatro partes, el tiempo de cada una y qué evalúa. Insista: lápiz, borrador, hojas en perfecto estado, el audio se escucha dos veces. Cada agente escribe en el cuaderno su fecha y lo que todavía debe practicar. La Evidencia 1 de ${course || 'su curso'} es el ${course ? { '7C': 'jueves 3 de diciembre', '7D': 'jueves 3 de diciembre', '7E': 'miércoles 2 de diciembre' }[course] || '—' : '—'}.`,
       html: () => `<div class="kicker">Mission Log 1 · The Decoder Lens Test · ${course ? { '7C': 'Thursday, December 3', '7D': 'Thursday, December 3', '7E': 'Wednesday, December 2' }[course] || '' : ''}</div>
       <div class="ready">${READY.map(([p, c, t, tip]) => `<div><b>${p}</b><span>${c} · ${t}</span><p>${tip}</p></div>`).join('')}</div>
-      <div class="info">Bring: two pencils · an eraser · your Bugdex in your head! The audio plays <b>twice</b>. 50 minutes · alone · in silence.</div>` },
+      ${nb('<b>Ready Check</b> · your Evidence 1 date + two things you must practise.')}<div class="info">Bring: two pencils · an eraser · your Bugdex in your head! The audio plays <b>twice</b>. 50 minutes · alone · in silence.</div>` },
     { stop: 4, host: ['wave', 'Good luck, agents. <b>R · A · S!</b>'],
       note: 'Cierre (1 min). Recuerde la fecha de la Evidencia 1.',
       html: () => `<div class="kicker">Class 3 complete</div><h1>Four rounds. Four letters. You are ready for Mission Log 1.</h1>
@@ -1266,6 +1283,7 @@ function mountWidgets() {
       draw(); tm = setInterval(() => { if (!$('sp')) { stop(); return; } t++; if (t === SEC - 3) chime(); if (t >= SEC) { t = 0; k++; if (k >= list.length) { stop(); $('spN').textContent = `Round ${r + 1} · finished!`; $('spS').innerHTML = 'Which reason was <b>not relevant</b>? Why?'; $('spR').className = 'fores'; $('spBar').style.width = '0'; return; } } draw(); }, 1000); };
     $('sp1').onclick = () => run(0); $('sp2').onclick = () => run(1); $('spStop').onclick = stop; }
   // Class 1 · Listening (Part 4)
+  if ($('qtg')) $('qtgBtn').onclick = () => { const on = $('qtg').classList.toggle('two'); $('qtgBtn').textContent = on ? '◀ Dr Tempus' : 'The 6 questions ▶'; fitStage(); };
   if ($('tq')) { let k = 0; const TL = [[0, 1], [2, 3], [4, 5], [6, 7], [8, 11], [12, 13]];
     const show = () => { const d = TQ[k]; $('tqN').textContent = `Question ${k + 1} / ${TQ.length}`; $('tqSt').textContent = ''; $('tqQ').textContent = d.q;
       $('tqO').innerHTML = d.opts.map(o => `<li>${o}</li>`).join(''); $('tqW').innerHTML = d.why;
