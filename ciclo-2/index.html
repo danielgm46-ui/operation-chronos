@@ -752,6 +752,40 @@ a.tbtn { text-decoration: none; display: inline-block; }
 .ptres p { margin: .4vh 0; } .ptres .rasrow { justify-content: center; }
 @media (max-aspect-ratio: 3/2) { .w4 { grid-template-columns: repeat(2, 1fr); } .mbox { grid-template-columns: 16vh 1fr; } }
 .ptext .pt2 { display: none; } .ptext.two .pt1 { display: none; } .ptext.two .pt2 { display: block; }
+/* Cycle 2 · Class 5 */
+.fut { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2vw; }
+.fut > div { background: var(--note); border: .35vh solid var(--gold); border-radius: 1.4vh; padding: 1.4vh 1.2vw; display: flex; flex-direction: column; gap: .5vh; }
+.fut b { font-family: var(--f-display); font-size: 5vh; color: var(--navy); line-height: 1; }
+.fut span { font-family: var(--f-caps); font-weight: 700; font-size: 1.9vh; letter-spacing: .08em; color: var(--red); text-transform: uppercase; }
+.fut p { margin: 0; font-size: 2.4vh; } .fut em { font-style: normal; font-size: 2.6vh; color: var(--teal); }
+.wmap { position: relative; height: 26vh; background: linear-gradient(#f4ead3, #e9dab8); border: .35vh solid var(--gold); border-radius: 1.4vh; }
+.wmap svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.town { position: absolute; transform: translate(-50%, -50%); font: inherit; cursor: pointer; background: #fffcf5; border: .3vh solid var(--navy); border-radius: 1.2vh; padding: .3vh .6vw; display: flex; flex-direction: column; align-items: center; line-height: 1.05; }
+.town i { font-style: normal; font-size: 3.6vh; } .town b { font-family: var(--f-display); font-size: 2.3vh; color: var(--navy); } .town span { font-family: var(--f-caps); font-size: 1.3vh; letter-spacing: .06em; color: var(--muted); }
+.town.on { background: var(--navy); } .town.on b, .town.on span { color: #f2d48a; } .town.off { opacity: .35; }
+.wcard { background: var(--note); border: .35vh solid var(--gold); border-radius: 1.4vh; padding: 1vh 1.4vw; }
+.wch { display: flex; align-items: center; gap: 1vw; margin-bottom: .4vh; } .wch i { font-style: normal; font-size: 4.6vh; } .wch b { font-family: var(--f-display); font-size: 3.6vh; color: var(--navy); display: block; line-height: 1; } .wch span { font-size: 1.8vh; color: var(--muted); }
+.wcard p { margin: .3vh 0; font-size: 2.5vh; } .wcard u { text-decoration: none; font-family: var(--f-caps); font-size: 1.7vh; letter-spacing: .06em; color: var(--red); text-transform: uppercase; }
+.wcard .wfr { font-family: var(--f-display); font-size: 2.5vh; color: var(--teal); }
+.cond { display: grid; gap: .8vh; }
+.rule { background: var(--navy); color: #f6efdd; border-radius: 1.2vh; padding: 1vh 1.4vw; font-size: 3.2vh; font-family: var(--f-display); } .rule b { color: #f2d48a; } .rule span { font-size: 2.3vh; color: #cfd8e3; margin-left: .6vw; }
+.rule.r2 { background: #3e5d4f; font-size: 2.6vh; }
+.conds { display: grid; grid-template-columns: 1fr 1fr; gap: 1vh 1vw; }
+.cnd { font: inherit; text-align: left; cursor: pointer; background: var(--note); border: .3vh solid var(--gold); border-radius: 1.2vh; padding: 1vh 1vw; display: flex; flex-direction: column; gap: .4vh; }
+.cnd span { font-size: 2.6vh; } .cnd b, .cnd em { display: none; } .cnd.show b, .cnd.show em { display: block; }
+.cnd b { font-family: var(--f-caps); letter-spacing: .1em; font-size: 2vh; color: #fff; border-radius: 99px; padding: .2vh .8vw; align-self: flex-start; }
+.cnd[data-k="R"] b { background: #3e7d4f; } .cnd[data-k="I"] b { background: #6a3d8f; } .cnd em { font-style: normal; font-size: 2vh; color: var(--muted); }
+.hot { display: grid; grid-template-columns: 16vh 1fr; gap: 1.6vw; align-items: center; background: var(--note); border: .35vh solid var(--gold); border-radius: 1.4vh; padding: 1.2vh 1.4vw; }
+.phone { font-size: 12vh; line-height: 1; text-align: center; color: var(--red); } .phone.rr { animation: ring .12s 8 alternate; }
+@keyframes ring { from { transform: rotate(-14deg); } to { transform: rotate(14deg); } }
+.call { font-family: var(--f-display); font-size: 4.6vh; color: var(--navy); line-height: 1.1; }
+.chainex { margin: .8vh 0 0; padding-left: 3.4vh; font-size: 2.2vh; color: var(--muted); display: grid; gap: .2vh; }
+.vq.one { grid-template-columns: 1fr; font-size: 2.5vh; }
+.vkey { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1vh 1vw; }
+.vk { font: inherit; cursor: pointer; background: var(--note); border: .3vh solid var(--gold); border-radius: 1.2vh; padding: 1.2vh .6vw; display: flex; flex-direction: column; align-items: center; gap: .4vh; min-height: 12vh; justify-content: center; }
+.vk b { font-family: var(--f-display); font-size: 4vh; color: var(--red); line-height: 1; } .vk span { font-family: var(--f-display); font-size: 3.2vh; color: var(--navy); visibility: hidden; } .vk.show span { visibility: visible; }
+@media (max-aspect-ratio: 3/2) { .fut { grid-template-columns: 1fr; } .conds { grid-template-columns: 1fr; } .vkey { grid-template-columns: repeat(5, 1fr); } }
+.fut em b { font-family: inherit; font-size: inherit; color: var(--red); line-height: inherit; }
 
 </style>
 </head>
@@ -991,6 +1025,28 @@ const BUGS4 = [
   { n: 6, name: 'Draw the target after shooting', who: 'the Pardoner, about the farmers of Rochester, 1380', said: '«Three farmers tried my bone, and their animals got better!» (He never talks about the twenty farmers whose animals stayed ill.)',
     why: 'The evidence is not <b>sufficient</b>: he chooses only the examples that help him and hides the others.', catch: 'Ask: «What about the other cases? How many did NOT work?»' }];
 const CHAUCER4 = ['For myn entente is nat but for to wynne.', 'My only intention is to win money.'];
+// ---------- Class 5 content
+const FUT = [['will', 'I think / I\'m sure', 'a prediction or opinion about the future', 'Tomorrow it <b>will</b> be cold.'],
+  ['be going to', 'I can see it now', 'a prediction with evidence in front of you', 'Look at those clouds! It<b>\'s going to</b> rain.'],
+  ['might', 'maybe · 50%', 'something that is possible, but not sure', 'It <b>might</b> snow tonight.']];
+const TOWNS = [
+  { t: 'Southwark', sq: 'Hourglass', x: 6, y: 34, ic: '☀️', see: 'a clear blue sky at dawn', seeV: 'be a beautiful morning', sure: 'be sunny and warm', maybe: 'be a little windy in the afternoon' },
+  { t: 'Greenwich', sq: 'Sundial', x: 20, y: 62, ic: '🌧️', see: 'dark grey clouds over the river', seeV: 'rain', sure: 'be cold all day', maybe: 'thunder in the evening' },
+  { t: 'Rochester', sq: 'Pendulum', x: 36, y: 30, ic: '🌊', see: 'the river — it is very, very high', seeV: 'flood the road', sure: 'rain in the morning', maybe: 'rain so much that they close the bridge' },
+  { t: 'Sittingbourne', sq: 'Compass', x: 51, y: 64, ic: '🌫️', see: 'thick fog in the fields', seeV: 'be hard to see the road', sure: 'stay foggy until noon', maybe: 'be dangerous, because robbers love the fog' },
+  { t: 'Ospringe', sq: 'Astrolabe', x: 64, y: 30, ic: '🟤', see: 'mud and puddles everywhere', seeV: 'be a very muddy day', sure: 'rain all afternoon', maybe: 'be too muddy for the horses' },
+  { t: 'Harbledown', sq: 'Chronometer', x: 78, y: 62, ic: '💨', see: 'the trees bending in a strong wind', seeV: 'be very windy', sure: 'be freezing at night', maybe: 'hail' },
+  { t: 'Canterbury', sq: 'Lantern', x: 92, y: 34, ic: '⛪', see: 'a red sky this evening', seeV: 'be a lovely day tomorrow', sure: 'be sunny, and the cathedral bells will ring', maybe: 'have a storm late at night' }];
+const CONDS = [['If it rains tomorrow, the pilgrims will get wet.', 'R', 'It is possible: maybe it will rain.'],
+  ['If I had a time machine, I would visit 1380.', 'I', 'Nobody has a time machine — it is imaginary.'],
+  ['If I were the Pardoner, I would tell the truth.', 'I', 'You are not the Pardoner: imaginary.'],
+  ['If we leave at dawn, we will cross the forest in daylight.', 'R', 'It is a real plan for tomorrow.']];
+const CALLS = ['If I had a time machine, I would…', 'If the Pardoner sold me a relic, I would…', 'If I were the Host of the Tabard Inn, I would…', 'If I met Chaucer, I would…', 'If there were no phones in 2026, we would…', 'If I found a dragon in Canterbury, I would…'];
+const CHAINEX = ['If I had a time machine, I would go to 1380.', 'If I went to 1380, I would meet the Pardoner.', 'If I met the Pardoner, I would ask for evidence.', 'If I asked for evidence, he would run away!'];
+const VQ2 = [['not proud; he does not think he is better than others', 'humble'], ['money that you owe to other people', 'debt'], ['not real', 'fake'], ['the money you win in business', 'profits'], ['a person who does bad things against God\'s rules', 'sinner'],
+  ['The Pardoner showed papers with the Pope\'s red ______.', 'seal'], ['The farmer put the bone in his ______ to get water.', 'well'], ['One bad pie is not ______ evidence to say «all the food is terrible».', 'sufficient'],
+  ['Is this evidence ______? Is it true? Can we check it?', 'acceptable'], ['The Wife of Bath is an expert ______: she makes cloth.', 'weaver']];
+const VQ2BANK = ['acceptable', 'brooch', 'debt', 'fake', 'humble', 'profits', 'seal', 'sinner', 'sufficient', 'weaver', 'well', 'wheat'];
 const pgGrid = (id) => `<div class="pgrid" id="${id}">${PILGRIMS.map((p, n) => `<button type="button" class="pg" data-p="${n}"><img src="${IMG.pil[p.k]}" alt=""><b>${p.name}</b><span><img src="${IMG.sq[p.sq.toLowerCase()]}" alt="">${p.sq}</span></button>`).join('')}</div>
   <div class="pview" id="pview" hidden><div class="pvin"><img id="pvImg" alt=""><div><div class="kicker" id="pvSq"></div><h2 id="pvName"></h2><p class="pvt" id="pvText"></p><div class="pvline"><b>Chaucer's line</b> <span id="pvLine"></span> <em id="pvModern"></em></div><p class="hint" style="margin:.6vh 0 0">Tap a word in bold to check its meaning · tap Chaucer's line to decode it · tap outside to close</p></div></div></div>`;
 const argGrid = (id) => `<div class="pgrid agrid" id="${id}">${ARGS.map((a, n) => { const p = PILGRIMS.find(x => x.k === a.k); return `<button type="button" class="pg" data-a="${n}"><img src="${IMG.pil[a.k]}" alt=""><b>${a.who}</b><span><img src="${IMG.sq[p.sq.toLowerCase()]}" alt="">${p.sq}</span></button>`; }).join('')}</div>
@@ -1247,6 +1303,53 @@ const LESSONS = {
       <div class="info">${['7D', '7E'].includes(course) ? 'Next class: <b>Cycle 3</b> begins — new pilgrims, new tales, new bugs.' : 'Next class: <b>Future Shock</b> — predict the weather of 1380 and call the Hypothetical Hotline!'}</div>
       <button type="button" class="endbtn" data-tomap="1">☰ Back to the cycle map</button>` },
   ] },
+  c5: { stops: ['Forecast', 'If I…', 'Hotline', 'Quiz', 'Landing'], scene: { '-1': 'inn', 0: 'roch', 1: 'mission', 2: 'mission', 3: 'inn', 4: 'cant' }, plaque: 'Harry Bailly · The Host · 1380',
+    arrive: { 0: ['Class 5 · Future Shock', 'The Chronos Weather Forecast', 'The road to Canterbury · tomorrow'], 1: ['Time Machine Language', 'If I had…, I would…', 'real or imaginary?'], 2: ['Ring, ring!', 'The Hypothetical Hotline', 'one link · one sentence'], 3: ['Alone now', 'Vocabulary Quiz 2', '10 words · 5 XP each'], 4: ['The end of Cycle 2', 'Canterbury', 'Landing complete'] },
+    slides: [
+    { stop: -1, host: ['spyglass', 'I can see the <b>future</b>, agents…'],
+      note: 'Objetivo (1 min). En español: hacer predicciones con will / be going to / might, imaginar situaciones irreales con el segundo condicional (If + pasado, would + verbo) y repasar el vocabulario del ciclo (C3). Es la última clase del Ciclo 2 en 7A, 7B y 7C.',
+      html: () => `<div class="kicker">Cycle 2 · Landing in 1380 · Class 5 · Future Shock</div><h1>Today, agents, you will predict the future of 1380 — and imagine the impossible.</h1>
+      <div class="goals"><span><b>C3</b> will · be going to · might</span><span><b>C3</b> If I had…, I would…</span><span><b>+</b> Vocabulary Quiz 2</span></div>` },
+    { stop: 0, dense: true, host: ['idea', 'Three ways to talk about <b>tomorrow</b>.'],
+      note: 'Lengua (3 min). Explique la diferencia con los ejemplos: will = lo que creo o estoy seguro que pasará; be going to = lo que veo ahora (evidencia); might = es posible (50 %). Pregunte: «Look out of the window: what is the weather going to be like this afternoon?».',
+      html: () => `<div class="kicker">Time Machine Language · talking about the future</div>
+      <div class="fut">${FUT.map(([f, k, d, e]) => `<div><b>${f}</b><span>${k}</span><p>${d}</p><em>${e}</em></div>`).join('')}</div>
+      <div class="info">Be careful: <b>will / might + verb</b> (it will rain · it might rain) — never «it will raining» or «it might to rain».</div>` },
+    { stop: 0, dense: true, host: ['map', 'Heralds, you are the <b>weather presenters</b>!'],
+      note: () => `Chronos Weather Forecast for 1380 (10 min, Anexo N). Cada escuadrón recibe la tarjeta de un pueblo del camino (toque el pueblo en el mapa para proyectarla). En 3 minutos el escuadrón prepara el pronóstico; luego el <b>Herald</b> lo presenta en 30 segundos frente al mapa, como en televisión. Debe usar be going to (lo que se ve), will (lo que dice el Chronos), might (lo posible) y un consejo con el segundo condicional. +5 XP por cada forma bien usada (anótelos y súmelos en el tablero del Hotline).${isImm() ? ' En 7A y 7B, sin marco y con una opinión propia (In my opinion…, because…).' : ''}`,
+      html: () => `<div class="kicker">The Chronos Weather Forecast for 1380 · the road to Canterbury · tomorrow</div>
+      <div class="wmap"><svg viewBox="0 0 100 100" preserveAspectRatio="none"><path d="${TOWNS.map((t, n) => (n ? 'L' : 'M') + t.x + ' ' + t.y).join(' ')}" fill="none" stroke="#8a6a3a" stroke-width=".8" stroke-dasharray="2 1.4" vector-effect="non-scaling-stroke"/></svg>
+        ${sqs().length < 7 ? '' : ''}${TOWNS.map((t, n) => `<button type="button" class="town${n >= sqs().length ? ' off' : ''}" data-town="${n}" style="left:${t.x}%;top:${t.y}%"><i>${t.ic}</i><b>${t.t}</b><span>${t.sq}</span></button>`).join('')}</div>
+      <div class="wcard" id="wcard"></div>
+      ${timer([['Prepare', 180], ...sqs().map(s => [s, 30])])}` },
+    { stop: 1, dense: true, host: ['think', 'Real… or <b>imaginary</b>?'],
+      note: 'Segundo condicional (4 min). Muestre la regla y lea cada oración: la clase decide si es REAL (posible: primer condicional, will) o IMAGINARY (irreal: segundo condicional, would). Pulgar arriba = real, mano en la cabeza = imaginary. Toque la oración para revelar. Insista en «If I were…» (no «If I was…» en examen) y en «would + verbo».',
+      html: () => `<div class="kicker">Time Machine Language · the second conditional</div>
+      <div class="cond"><div class="rule"><b>If</b> + past simple, <b>would</b> + verb <span>→ imaginary situations</span></div><div class="rule r2"><b>If</b> + present, <b>will</b> + verb <span>→ real possibilities</span></div></div>
+      <div class="conds">${CONDS.map(([t, k, w]) => `<button type="button" class="cnd" data-k="${k}"><span>${t}</span><b>${k === 'R' ? 'REAL' : 'IMAGINARY'}</b><em>${w}</em></button>`).join('')}</div>` },
+    { stop: 2, dense: true, host: ['listen', 'Ring, ring! The <b>Hypothetical Hotline</b> is calling…'],
+      note: () => `Hypothetical Hotline (16 min, Anexo O, 1 por escuadrón). Juego en cadena: cada oración empieza con el resultado de la anterior (If I had a time machine, I would go to 1380 → If I went to 1380, I would meet…). Ronda 1 (3 min): demostración con toda la clase; usted empieza. Ronda 2 (90 s por llamada, 2 llamadas): cada escuadrón hace su cadena; el <b>Chronicler</b> escribe los eslabones en el Anexo O y el <b>Timekeeper</b> controla el tiempo. Si alguien rompe la forma (If I will…, If I would…), el escuadrón grita «Time glitch!» y la cadena vuelve a empezar. Ronda 3: el Herald lee la cadena más larga; +5 XP por eslabón correcto.${isImm() ? ' En 7A y 7B, cada eslabón añade «because…» y debe ser lógico: un eslabón fuera de tema es el Off-Topic Bug y rompe la cadena.' : ''} Toque «Ring!» para una llamada nueva.`,
+      html: () => `<div class="kicker">The Hypothetical Hotline · one link · one sentence</div>
+      <div class="hot"><div class="phone" id="phone">☎</div><div><div class="call" id="call">${CALLS[0]}</div>
+        <ol class="chainex">${CHAINEX.map(c => `<li>${c}</li>`).join('')}</ol></div></div>
+      <div class="task"><span class="step">1</span>Start with <b>If I + past</b> <span class="step">2</span>Use <b>would + verb</b> <span class="step">3</span>Your «if» = the last result <span class="step">!</span>Wrong form? <b>«Time glitch!»</b></div>
+      <div class="revealbar"><button type="button" class="tbtn go" id="ring">☎ Ring!</button>${timer([['Demo', 180], ['Call 1', 90], ['Call 2', 90]])}</div>
+      <div class="xpboard mini" id="xpb" data-step="5">${sqs().map(s => `<button type="button" class="xpsq" data-sq="${s}"><img src="${IMG.sq[s.toLowerCase()]}" alt=""><b>${s}</b><span class="xp" data-xp="${s}">0 XP</span><i class="minus" data-minus="${s}" title="−5 XP">−</i></button>`).join('')}</div>` },
+    { stop: 3, dense: true, host: ['wordcard', 'Alone now, agents. <b>Ten words</b>!'],
+      note: 'Vocabulary Quiz 2 (8 min, Anexo P, individual). Diez palabras del Ciclo 2: cinco definiciones y cinco oraciones para completar. El banco tiene 12 palabras (sobran dos). 5 XP por respuesta correcta. PIAR: el banco queda visible en la pantalla y se puede responder solo la parte A.',
+      html: () => `<div class="kicker">Vocabulary Quiz 2 · alone · 5 XP for each correct answer</div>
+      <div class="bank">${VQ2BANK.map(w => `<span>${w}</span>`).join('')}</div>
+      <div class="cols"><div><h3>A · What is the word?</h3><ol class="vq one">${VQ2.slice(0, 5).map(q => `<li>${q[0]}</li>`).join('')}</ol></div><div><h3>B · Complete the sentence</h3><ol class="vq one" start="6">${VQ2.slice(5).map(q => `<li>${q[0]}</li>`).join('')}</ol></div></div>${timer([['Quiz', 480]])}` },
+    { stop: 3, dense: true, host: ['thumbs', 'Check your answers, agents!'],
+      note: 'Clave (3 min). Toque cada número para revelar la palabra. Cada agente corrige con lápiz de otro color y suma su XP (5 por respuesta). Pida que levanten la mano quienes tengan 8 o más.',
+      html: () => `<div class="kicker">Vocabulary Quiz 2 · the key</div>
+      <div class="vkey">${VQ2.map((q, n) => `<button type="button" class="vk"><b>${n + 1}</b><span>${q[1]}</span></button>`).join('')}</div>` },
+    { stop: 4, host: ['cheer', 'Landing <b>complete</b>! Canterbury, here we are!'],
+      note: 'Cierre del Ciclo 2 (2 min). Repase la Bugdex: seis bugs (Fake Relic, Off-Topic, Too fast too few, After it so because of it, Everybody\'s doing it, Draw the target after shooting). Anuncie el Ciclo 3, «Forging the Decoder Lens», con la Evidencia 1. Sume el XP final de la clase.',
+      html: () => `<div class="kicker">Cycle 2 complete · Landing in 1380</div><h1>Five classes. Seven pilgrims. Six bugs in the Bugdex.</h1>
+      <div class="info">Next: <b>Cycle 3 · Forging the Decoder Lens</b> — a time historian, new tales… and Evidence 1. Keep your Bugdex and your Pilgrim's Book safe!</div>
+      <button type="button" class="endbtn" data-tomap="1">☰ Back to the cycle map</button>` },
+  ] },
 };
 // ---------- engine
 let L = 'map', i = 0, tick = null, AC = null, ANIM = true, lastStop = -2;
@@ -1422,6 +1525,16 @@ function mountWidgets() {
     $('ptShow').onclick = () => { $('ptR').classList.toggle('show'); if ($('ptR').classList.contains('show')) chime(); fitStage(); };
     $('ptNext').onclick = () => { k = Math.min(PITCH.length - 1, k + 1); show(); }; $('ptPrev').onclick = () => { k = Math.max(0, k - 1); show(); }; show(); }
   if ($('ptx')) $('ptxBtn').onclick = () => { const on = $('ptx').classList.toggle('two'); $('ptxBtn').textContent = on ? '◀ Paragraphs 1–4' : 'Paragraphs 5–7 ▶'; fitStage(); };
+  // ---- Class 5 widgets
+  if ($('wcard')) { const show = n => { const t = TOWNS[n];
+      $('wcard').innerHTML = `<div class="wch"><i>${t.ic}</i><div><b>${t.t}</b><span>Squad ${t.sq} · tomorrow</span></div></div>
+        <p><u>You can see</u> ${t.see} → It<b>'s going to</b> ${t.seeV}.</p><p><u>The Chronos computer is sure</u> → It <b>will</b> ${t.sure}.</p><p><u>Maybe</u> → It <b>might</b> ${t.maybe}.</p>
+        ${isImm() ? '' : `<p class="wfr">«Good morning, pilgrims! This is the Chronos Weather Forecast for ${t.t}… So, pilgrims, if I were you, I <b>would</b> ______.»</p>`}`;
+      document.querySelectorAll('#fit .town').forEach(b => b.classList.toggle('on', +b.dataset.town === n)); fitStage(); };
+    document.querySelectorAll('#fit .town').forEach(b => b.onclick = () => show(+b.dataset.town)); show(0); }
+  document.querySelectorAll('#fit .cnd').forEach(b => b.onclick = () => { b.classList.toggle('show'); if (b.classList.contains('show')) chime(); fitStage(); });
+  if ($('ring')) { let k = 0; $('ring').onclick = () => { k = (k + 1) % CALLS.length; $('call').textContent = CALLS[k]; $('phone').classList.remove('rr'); void $('phone').offsetWidth; $('phone').classList.add('rr'); chime(); }; }
+  document.querySelectorAll('#fit .vk').forEach(b => b.onclick = () => b.classList.toggle('show'));
   document.querySelectorAll('#fit [data-tomap]').forEach(b => b.onclick = () => openLesson('map'));
   document.querySelectorAll('#fit [data-course]').forEach(b => b.onclick = () => { setCourse(b.dataset.course); startMusic(); render(); });
   document.querySelectorAll('#fit [data-lesson]').forEach(b => b.onclick = () => { if (!b.disabled) { startMusic(); openLesson(b.dataset.lesson); } });
