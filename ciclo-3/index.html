@@ -1166,6 +1166,36 @@ const LESSONS = {
       html: () => `<div class="kicker">Class 3 complete</div><h1>Four rounds. Four letters. You are ready for Mission Log 1.</h1>
       <button type="button" class="endbtn" data-tomap="1">☰ Back to the cycle map</button>` },
   ] },
+  c4: { stops: ['Part A', 'Part B', 'Part C', 'Part D', 'Finish'], scene: { '-1': 'hq', 0: 'inn', 1: 'osp', 2: 'mission', 3: 'hq', 4: 'museum' }, plaque: 'Harry Bailly · Chronos Agent',
+    arrive: { 0: ['Mission Log 1', 'Part A · Listening', 'Voices of the Tabard Inn'], 1: ['Mission Log 1', 'Part B · Reading', 'The Man with the Glass Box'], 2: ['Mission Log 1', 'Part C · Use of English', 'Mission Briefing: Life in 1380'], 3: ['Mission Log 1', 'Part D · Role Power', 'One task for your power'], 4: ['Mission Log 1', 'Pencils Down', 'Well done, agents'] },
+    slides: [
+    { stop: -1, dense: true, host: ['letter', 'Today you work <b>alone</b>, agents.'],
+      note: () => `Evidencia 1 · Mission Log 1${course ? ' · ' + course + ' · ' + WHEN.c4[course] : ''}. Antes de empezar: apague la música (S). Entregue los cuadernillos boca abajo (1 por estudiante). El audio de la Parte A se reproduce desde el PC (TERM 29\\CYCLE 3\\EVIDENCIA 1 AUDIO), nunca desde este sitio. Lea las reglas en voz alta (2 min) y pida que escriban nombre, curso, escuadrón y poder en la página 1. Celulares guardados en el morral.`,
+      html: () => `<div class="kicker">Evidence 1 · Mission Log 1 · Chaucer's England, 1380</div><h1>Show what your Decoder Lens can do.</h1>
+      <div class="ready">${READY.map(([p, c, t, tip]) => `<div><b>${p}</b><span>${c} · ${t}</span><p>${tip}</p></div>`).join('')}</div>
+      <div class="info">Pencil only · phones in your bag · no talking · keep the sheets in <b>perfect condition</b>. Write your <b>name, course, squad and power</b> on page 1.</div>` },
+    { stop: 0, host: ['book', 'Listen <b>twice</b>. Opinion — and reason!'],
+      note: 'Parte A · Listening (C1, 13 min: 2 de reglas + 11 en este reloj). Pulse ▶ en el reloj y reproduzca desde el PC el mp3 completo (7:11): cada conversación suena dos veces, con pausas. Si una conversación no se oye bien, use el mp3 de esa pregunta. Al terminar el audio quedan unos minutos para revisar. No responda preguntas sobre el contenido.',
+      html: () => `<div class="kicker">Part A · Listening · C1 · 13 minutes</div><h1>Six conversations at the Tabard Inn. You will hear each one twice.</h1>
+      <div class="task"><span class="step">1</span>Circle A, B or C. <span class="step">2</span>In conversations 2, 4 and 6: is the reason RELEVANT? Circle <b>R</b> or <b>NR</b>.</div>${timer([['Part A', 660]])}` },
+    { stop: 1, host: ['spyglass', 'Find the <b>detail</b> that proves it.'],
+      note: 'Parte B · Reading (C2, 12 min). Recuerde: primero las preguntas 1–7, luego el texto. Las palabras en cursiva son de 1380: no hacen falta para las preguntas 1–7 (son la tarea del Decoder en la Parte D).',
+      html: () => `<div class="kicker">Part B · Reading · C2 · 12 minutes</div><h1>A young Squire's diary from the road to Canterbury.</h1>
+      <div class="task"><span class="step">1</span>Read questions 1–7 first. <span class="step">2</span>Read the text. <span class="step">3</span>Find the detail that proves each answer. Questions 6–7: write it.</div>${timer([['Part B', 720]])}` },
+    { stop: 2, host: ['key', 'Will · going to · might · <b>If I were…</b>'],
+      note: 'Parte C · Use of English (C3, 15 min). Ítems 1–5: una palabra; 6–8: 2, 3 o 4 palabras con la palabra en mayúsculas; luego la Agent\'s Prediction (60–80 palabras; en 7A y 7B, 80–100). El reloj tiene dos tramos: 8 min para los ítems y 7 para la predicción. Al cambiar de tramo, avise: «Seven minutes for your prediction».',
+      html: () => `<div class="kicker">Part C · Use of English · C3 · 15 minutes</div><h1>Mission Briefing: Life in 1380.</h1>
+      <div class="task"><span class="step">1–5</span>one word in each gap <span class="step">6–8</span>2, 3 or 4 words with the word in CAPITALS <span class="step">✎</span>your prediction: <b>two future forms</b> + <b>one second conditional</b></div>${timer([['Items 1–8', 480], ['Prediction', 420]])}` },
+    { stop: 3, dense: true, host: ['hips', 'One task. <b>Your</b> power.'],
+      note: 'Parte D · Role Power (10 min). Cada agente hace SOLO la tarea de su poder. Los Heralds esperan su nombre: en el escritorio, uno por uno, dan su informe de 1 minuto (use la lista de chequeo del Anexo N); mientras tanto, los demás escriben en silencio. Si un escuadrón tiene dos Heralds, pasan los dos.',
+      html: () => `<div class="kicker">Part D · Role Power · 10 minutes · do only the task of your power</div>
+      <div class="pcards">${[['timekeeper', 'Timekeeper', 'Fix the four time errors in the mission plan.'], ['decoder', 'Decoder', 'Deduce four words of 1380 from Part B and copy the clue.'], ['herald', 'Herald', 'Write key words. Wait for your name: a one-minute report at the teacher\'s desk.'], ['chronicler', 'Chronicler', 'Write the chronicle of the day: about 50 words.']].map(([k, t, d]) => `<div class="pcd"><img src="${IMG.emb[k]}" alt=""><b>${t}</b><span>${d}</span></div>`).join('')}</div>${timer([['Part D', 600]])}` },
+    { stop: 4, host: ['wave', 'Pencils down. <b>Well done, agents!</b>'],
+      note: 'Cierre (1 min). Revisan que el nombre esté en la página 1 y entregan el cuadernillo. Recójalos en orden por escuadrón. En la próxima clase: Artefacto 1 · The Decoder Lens.',
+      html: () => `<div class="kicker">Mission Log 1 complete</div><h1>Check your name on page 1. Then give your booklet to the teacher.</h1>
+      <div class="info">Next class: <b>Artifact 1 · The Decoder Lens</b>${course ? ' · ' + WHEN.c5[course] : ''}.</div>
+      <button type="button" class="endbtn" data-tomap="1">☰ Back to the cycle map</button>` },
+  ] },
 };
 // ---------- engine
 let L = 'map', i = 0, tick = null, AC = null, ANIM = true, lastStop = -2;
