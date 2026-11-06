@@ -798,6 +798,26 @@ a.tbtn { text-decoration: none; display: inline-block; }
 .rt em { font-style: normal; font-family: var(--f-caps); font-weight: 700; letter-spacing: .1em; font-size: 1.8vh; color: #fff; border-radius: 99px; padding: .2vh .8vw; justify-self: start; }
 .rt em.y { background: #3e7d4f; } .rt em.n { background: var(--red); } .rt i { font-style: normal; font-size: 2vh; color: var(--teal); }
 @media (max-aspect-ratio: 3/2) { .rate { grid-template-columns: 1fr; } }
+.revealbar .tbtn { white-space: nowrap; }
+/* Cycle 3 · Class 2 */
+.tale { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1vh 1vw; }
+.tp { background: var(--note); border: .3vh solid var(--gold); border-radius: 1.2vh; padding: 1vh 1vw; display: grid; grid-template-columns: auto 1fr; gap: .2vh .8vw; align-items: center; opacity: .15; transition: .5s; }
+.tp.show { opacity: 1; } .tp i { font-style: normal; font-size: 5vh; grid-row: span 2; } .tp b { font-family: var(--f-display); font-size: 3vh; color: var(--red); line-height: 1; } .tp span { font-size: 2.4vh; line-height: 1.25; }
+.stns { display: grid; grid-template-columns: repeat(5, 1fr); gap: .8vw; }
+.stns > div { background: var(--note); border: .3vh solid var(--gold); border-radius: 1.2vh; padding: .6vh .6vw; text-align: center; display: flex; flex-direction: column; gap: .2vh; }
+.stns b { font-family: var(--f-display); font-size: 4vh; color: var(--red); line-height: 1; } .stns span { font-family: var(--f-display); font-size: 2.3vh; color: var(--navy); line-height: 1.1; } .stns em { font-style: normal; font-size: 1.5vh; color: var(--muted); }
+.rot3 { background: var(--note); border: .3vh solid var(--gold); border-radius: 1.2vh; padding: .6vh .8vw; display: grid; gap: .3vh; }
+.rot3 .rh, .rot3 .rr { display: grid; grid-template-columns: 12vw repeat(5, 1fr); gap: .5vw; align-items: center; }
+.rot3 .rh .tbtn { padding: .3vh .4vw; font-size: 1.7vh; }
+.rot3 .rr span { display: flex; align-items: center; gap: .4vw; font-family: var(--f-caps); font-weight: 700; font-size: 1.6vh; color: var(--navy); } .rot3 .rr span img { height: 3vh; }
+.rot3 .rr i { font-style: normal; text-align: center; font-family: var(--f-display); font-size: 2.4vh; color: var(--muted); border-radius: .6vh; } .rot3 .rr i.on { background: var(--navy); color: #f2d48a; font-size: 2.8vh; }
+.code { display: flex; justify-content: center; gap: 1.4vw; }
+.cl { font: inherit; cursor: pointer; width: 11vh; height: 14vh; background: var(--note); border: .4vh solid var(--gold); border-radius: 1.4vh; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .4vh; }
+.cl em { font-style: normal; font-family: var(--f-caps); font-size: 1.4vh; color: var(--muted); } .cl b { font-family: var(--f-display); font-size: 7vh; color: var(--red); line-height: 1; visibility: hidden; } .cl.show b { visibility: visible; } .cl.show { border-color: var(--red); }
+.light { display: grid; gap: 1vh; }
+.lt { font: inherit; text-align: left; cursor: pointer; background: var(--note); border: .3vh solid var(--gold); border-radius: 1.2vh; padding: 1vh 1vw; display: grid; grid-template-columns: auto 1fr; gap: .3vh 1vw; }
+.lt b { grid-row: span 2; font-family: var(--f-caps); font-size: 2.2vh; color: #fff; background: var(--navy); border-radius: .8vh; padding: .6vh .6vw; align-self: start; } .lt span { font-size: 2.6vh; } .lt em { font-style: normal; color: var(--teal); font-size: 2.4vh; display: none; } .lt.show em { display: block; }
+@media (max-aspect-ratio: 3/2) { .tale { grid-template-columns: repeat(2, 1fr); } .stns { grid-template-columns: repeat(3, 1fr); } }
 
 </style>
 </head>
@@ -910,6 +930,23 @@ const RATE = [
   { who: 'Dr Tempus', claim: 'The Reeve lost the argument,', reason: 'because he attacked the Miller instead of answering the story.', r: 'R', why: 'Relevant: she judges how he argued, which is exactly the claim.' }];
 const BUG7 = { n: 7, name: 'Attack the person', who: 'the Reeve, on the road to Canterbury, 1380', said: '«Don\'t listen to the Miller — he\'s a fool and a thief!»',
   why: 'The reason is not <b>relevant</b>: what the Miller is like tells us nothing about his story. The Reeve attacks the person, not the idea.', catch: 'Ask: «Is he answering the idea — or attacking the person?»' };
+// ---------- Class 2 content · Decoder Workshop
+const TALE = [['🍺', 'Three young rioters are drinking in a tavern.'], ['🔔', 'A bell rings: their friend is dead. «A thief called Death killed him.»'], ['⚔️', 'They swear to be brothers — and to kill Death tonight.'], ['👴', 'A very old man says: «Death is waiting under that oak tree.»'],
+  ['🪙', 'Under the tree they find… a pile of gold!'], ['🍷', 'The youngest goes to town for bread and wine. The other two make a plan…']];
+const STATIONS = [
+  { n: 1, k: 'inn', title: 'The Inn Notice', type: 'a notice in a tavern · Flanders, 1380', letter: 'G' },
+  { n: 2, k: 'pardon', title: 'The Pardon Letter', type: 'a letter from the Pardoner · 1380', letter: 'R' },
+  { n: 3, k: 'diary', title: 'A Pilgrim\'s Diary', type: 'the Knight\'s diary · the three rioters', letter: 'E' },
+  { n: 4, k: 'guide', title: 'The Guidebook', type: 'a visitor guide · Canterbury, 2026', letter: 'E' },
+  { n: 5, k: 'rift', title: 'Time Rift Cards', type: 'future forms and the second conditional', letter: 'D' }];
+const rotation = (sq, r) => STATIONS[(sq + r) % 5];
+const CODE = 'GREED';
+const BUG8 = { n: 8, name: 'The dangerous chain', who: 'one of the three rioters, in a tavern', said: '«If we let Death live, he will kill our friends, then our families, then everybody in England!»',
+  why: 'The evidence is not <b>sufficient</b>: every step is a big jump, and there is no evidence for any of them. A small step does not always end in a disaster.', catch: 'Ask: «Does every step really follow? Where is the evidence for each link?»' };
+const LIGHT = [
+  { c: 'C1', q: 'Listen: «You should buy my pardon, because I have a beautiful voice.» Is the reason relevant?', a: 'NOT RELEVANT — a beautiful voice has nothing to do with the pardon.' },
+  { c: 'C2', q: '«The rioters were so greedy that they forgot their promise.» What does «greedy» mean?', a: 'wanting too much money or too many things' },
+  { c: 'C3', q: 'Complete: «If I ______ (find) a pile of gold, I ______ (share) it with my friends.»', a: 'If I found a pile of gold, I would share it with my friends.' }];
 const LESSONS = {
   map: { stops: [], scene: { '-1': 'hq' }, arrive: {}, plaque: 'Harry Bailly · Chronos Agent', slides: [
     { stop: -1, host: ['map', () => course ? 'Choose your class, agents!' : 'Good morrow, agents! First, choose your course.'],
@@ -967,6 +1004,43 @@ const LESSONS = {
       note: 'Cierre (1 min). La Bugdex tiene siete bugs. Próxima clase: Decoder Workshop (estaciones con los tres rufianes del Cuento del Bulero).',
       html: () => `<div class="kicker">Class 1 complete</div><h1>One interview. Six opinions. Seven bugs in the Bugdex.</h1>
       <div class="info">Next class: <b>The Decoder Workshop</b> — five stations, five code letters… and three dangerous young men in a tavern.</div>
+      <button type="button" class="endbtn" data-tomap="1">☰ Back to the cycle map</button>` },
+  ] },
+  c2: { stops: ['Briefing', 'Stations', 'Code', 'Bugdex', 'Finish'], scene: { '-1': 'osp', 0: 'inn', 1: 'mission', 2: 'hq', 3: 'buglab', 4: 'museum' }, plaque: 'Harry Bailly · Chronos Agent',
+    arrive: { 0: ['Class 2 · Decoder Workshop', 'The Pardoner\'s Tale', 'Three young men and a pile of gold'], 1: ['Five envelopes', 'The Decoder Workshop', 'Read · deduce · win a letter'], 2: ['Five letters', 'The Secret Word', 'What killed the three rioters?'], 3: ['The Bug Lab', 'A New Bug', 'Bug sighting #8'], 4: ['Almost there', 'Evidence 1 is coming', 'Mission Log 1'] },
+    slides: [
+    { stop: -1, host: ['letter', 'Five envelopes. Five letters. <b>One secret word.</b>'],
+      note: 'Objetivo (1 min). En español: deducir lo que quiere decir realmente un texto (aviso, carta, diario y guía turística) a partir de detalles (C2) y transformar oraciones con formas de futuro y el segundo condicional (C3). Cada estación entrega una letra; las cinco forman la palabra secreta.',
+      html: () => `<div class="kicker">Cycle 3 · Forging the Decoder Lens · Class 2 · Decoder Workshop</div><h1>Today, agents, you will decode five texts — and find the secret word.</h1>
+      <div class="goals"><span><b>C2</b> what does it really mean?</span><span><b>C3</b> will · going to · might · if I were…</span><span><b>+</b> Bugdex #8</span></div>` },
+    { stop: 0, dense: true, host: ['scroll', 'Listen to the Pardoner\'s <b>darkest</b> story…'],
+      note: () => `The Pardoner\'s Tale en 60 segundos (${isImm() ? '3' : '5'} min). Cuente la historia con teatro, viñeta por viñeta (toque «Next»). No cuente el final: está en el diario de la estación 3. Pregunte al final: «What do you think will happen? Use will or might.»`,
+      html: () => `<div class="kicker">The Pardoner's Tale · the three rioters · told on the road to Canterbury</div>
+      <div class="tale" id="tale">${TALE.map(([i, t], n) => `<div class="tp"><i>${i}</i><b>${n + 1}</b><span>${t}</span></div>`).join('')}</div>
+      <div class="revealbar"><button type="button" class="tbtn go" id="taleNext">Next ▶</button><span class="hint">What will happen? Use <b>will</b> or <b>might</b>.</span></div>` },
+    { stop: 1, dense: true, host: ['hourglass', 'Pass the envelope! <b>Next station!</b>'],
+      note: () => `Decoder Workshop (${isImm() ? '5 × 6' : '5 × 7'} min, Anexos E–I). Cada escuadrón se queda en su puesto y recibe un sobre (hay dos sobres de cada estación). Al sonar el reloj, el sobre pasa al escuadrón indicado en el tablero. El <b>Decoder</b> dirige la lectura; el <b>Chronicler</b> escribe las respuestas y la letra clave en el Code Log (Anexo J); el <b>Timekeeper</b> controla el tiempo; el <b>Herald</b> pide ayuda y presenta. Toque una ronda para ver qué estación tiene cada escuadrón. +10 XP por letra correcta (revíselas en el Code Log al final).`,
+      html: () => `<div class="kicker">The Decoder Workshop · five envelopes · one letter in each</div>
+      <div class="stns">${STATIONS.map(s => `<div><b>${s.n}</b><span>${s.title}</span><em>${s.type}</em></div>`).join('')}</div>
+      <div class="rot3" id="rot3"><div class="rh"><span></span>${[1, 2, 3, 4, 5].map(r => `<button type="button" class="tbtn${r === 1 ? ' go' : ''}" data-r="${r - 1}">Round ${r}</button>`).join('')}</div>
+        ${sqs().map((s, i) => `<div class="rr"><span><img src="${IMG.sq[s.toLowerCase()]}" alt="">${s}</span>${[0, 1, 2, 3, 4].map(r => `<i data-r="${r}">${rotation(i, r).n}</i>`).join('')}</div>`).join('')}</div>
+      ${timer([1, 2, 3, 4, 5].map(r => ['Round ' + r, isImm() ? 360 : 420]))}` },
+    { stop: 2, dense: true, host: ['key', 'G… R… E… What is the <b>secret word</b>?'],
+      note: 'La palabra secreta (3 min). Pida a cada Herald la letra de cada estación y toque las casillas para revelarlas. La palabra es GREED: la avaricia que mató a los tres rufianes, y el lema del Bulero, «Radix malorum est cupiditas». +20 XP al primer escuadrón que la descifre. Revise rápido las respuestas con las claves de la guía.',
+      html: () => `<div class="kicker">The secret word · one letter from each station</div>
+      <div class="code" id="code">${STATIONS.map(s => `<button type="button" class="cl"><em>Station ${s.n}</em><b>${s.letter}</b></button>`).join('')}</div>
+      <div class="info" id="codeMsg" style="visibility:hidden"><b>GREED</b> — «Radix malorum est cupiditas»: <i>greed is the root of all evil</i>. The rioters were looking for Death… and they found it in their own greed.</div>
+      ${xpBoard()}` },
+    { stop: 3, dense: true, host: ['alert', 'One step… two steps… <b>disaster</b>?!'],
+      note: 'Bugdex · Bug sighting #8 (3 min). Viene del diario de la estación 3. Relacione con la cadena del Hypothetical Hotline del Ciclo 2: allá cada eslabón era un juego; aquí la cadena se usa para asustar y convencer. Ejemplo de hoy: «If you don\'t do your homework, you will fail the year, then you won\'t find a job, then you will live in the street!». Nombre técnico (solo para usted, Ciclo 4): Slippery Slope.',
+      html: () => bugCard(BUG8, IMG.bug.jar) },
+    { stop: 4, dense: true, host: ['hourglass', () => isImm() ? 'Lightning round! <b>One item</b> for each criterion.' : 'Next class: <b>Time Rift Rounds</b>!'],
+      note: () => isImm() ? 'Time Rift · ronda relámpago (9 min, solo 7A y 7B): simulacro de la Evidencia 1, un ítem por criterio. Cada agente escribe en el cuaderno; luego «Reveal». Recuerde la fecha de la Evidencia 1 y qué traer (lápiz, borrador).' : 'Cierre (2 min). Próxima clase: Time Rift Rounds, el ensayo general de la Evidencia 1.',
+      html: () => isImm() ? `<div class="kicker">Time Rift · lightning round · Evidence 1 rehearsal</div>
+      <div class="light">${LIGHT.map(l => `<button type="button" class="lt"><b>${l.c}</b><span>${l.q}</span><em>${l.a}</em></button>`).join('')}</div>
+      <div class="info">Evidence 1 · Mission Log 1: <b>${course === '7A' ? 'Wednesday, December 2' : 'Tuesday, December 1'}</b>. Bring two pencils and an eraser.</div>${timer([['Lightning', 300]])}`
+        : `<div class="kicker">Class 2 complete</div><h1>Five texts decoded. One secret word: GREED.</h1>
+      <div class="info">Next class: <b>Time Rift Rounds</b> — four rounds, four letters, the full rehearsal for Evidence 1.</div>
       <button type="button" class="endbtn" data-tomap="1">☰ Back to the cycle map</button>` },
   ] },
 };
@@ -1098,6 +1172,14 @@ function mountWidgets() {
     $('tqTr').onclick = () => { $('tq').classList.toggle('tr'); fitStage(); };
     $('tqNext').onclick = () => { k = Math.min(TQ.length - 1, k + 1); show(); }; $('tqPrev').onclick = () => { k = Math.max(0, k - 1); show(); }; show(); }
   document.querySelectorAll('#fit .rt').forEach(b => b.onclick = () => { b.classList.toggle('show'); if (b.classList.contains('show')) chime(); fitStage(); });
+  // Class 2 · Decoder Workshop
+  if ($('tale')) { const ps = [...document.querySelectorAll('#tale .tp')]; let k = 0; ps[0].classList.add('show');
+    $('taleNext').onclick = () => { if (k < ps.length - 1) { ps[++k].classList.add('show'); chime(); fitStage(); } }; }
+  if ($('rot3')) { const pick = r => { document.querySelectorAll('#rot3 [data-r]').forEach(e => e.classList.toggle(e.tagName === 'BUTTON' ? 'go' : 'on', +e.dataset.r === r)); };
+    document.querySelectorAll('#rot3 button[data-r]').forEach(b => b.onclick = () => pick(+b.dataset.r)); pick(0); }
+  if ($('code')) { const cs = [...document.querySelectorAll('#code .cl')];
+    cs.forEach(b => b.onclick = () => { b.classList.add('show'); chime(); if (cs.every(x => x.classList.contains('show'))) $('codeMsg').style.visibility = 'visible'; fitStage(); }); }
+  document.querySelectorAll('#fit .lt').forEach(b => b.onclick = () => { b.classList.toggle('show'); fitStage(); });
   document.querySelectorAll('#fit [data-tomap]').forEach(b => b.onclick = () => openLesson('map'));
   document.querySelectorAll('#fit [data-course]').forEach(b => b.onclick = () => { setCourse(b.dataset.course); startMusic(); render(); });
   document.querySelectorAll('#fit [data-lesson]').forEach(b => b.onclick = () => { if (!b.disabled) { startMusic(); openLesson(b.dataset.lesson); } });
