@@ -591,13 +591,13 @@ const LESSONS = {
       note: 'Lea en voz alta el título. Elija un voluntario: será el lector del posadero, como se hacía en 1380.',
       html: () => `<div class="kicker">Class 1 · The Pilgrims' Way · The Host's Game</div><h1>${is7A() ? 'The Host of the Tabard Inn welcomes you.<br>He has a scroll for you.' : 'Today the Host of the Tabard Inn rides on another road.<br>He left you a scroll.'}</h1>
       <p class="lead">In 1380 most people could not read, so one person read aloud for everyone. Who will be the Host's reader today?</p>` },
-    { stop: 0, host: ['letter', 'Read it aloud, good reader — slowly!'], note: 'El voluntario lee el mensaje en voz alta, despacio. Después cada estudiante abre su cuaderno de inglés, titula una página nueva «My Pilgrim\'s Book» (ahí copiará los votos de cada parada), escribe su nombre y elige como <b>fellow pilgrim</b> (pareja) al compañero de al lado.',
+    { stop: 0, host: ['letter', 'Read it aloud, good reader — slowly!'], note: 'El voluntario lee el mensaje en voz alta, despacio. Después cada estudiante pega su media hoja del Pilgrim\'s Book (ya impresa) en el cuaderno de inglés, escribe su nombre y elige como <b>fellow pilgrim</b> (pareja) al compañero de al lado.',
       html: () => `<div class="kicker">Stop 1 · The Tabard Inn, Southwark · 1380</div>
       <div class="scroll" data-seal="H"><p class="lead" style="margin:0;font-family:var(--f-display);font-size:3.4vh;color:var(--navy)"><i>«Welcome, welcome, good pilgrims, to the Tabard Inn in Southwark! The year is 1380, and tomorrow we ride to Canterbury. The road is long, so I propose a game. On our way you will learn ten vows — the rules of this journey. The pilgrim who keeps them best will win the greatest prize of all: the rank of Chrono-Master. Remember three rules of the road: you write only with a pencil, you speak only English on the road, and at every stop you earn a pilgrim's badge. Take your pencils, pilgrims. Let us begin!»</i><br><span class="hint">— Harry Bailly, the Host</span></p></div>
-      <div class="task"><span class="step">1</span>Open your English notebook. Title a new page <b>My Pilgrim's Book</b> and write your name. <span class="step">2</span>Your fellow pilgrim is the classmate next to you.</div>` },
-    { stop: 0, host: ['think', '<b>Truth or trick?</b> Think well, then write.'], note: 'Lea la pregunta. Pulse ▶ (3 min): cada estudiante escribe a lápiz su primera respuesta en su Pilgrim\'s Book (cuaderno). No se comenta: se guarda para el final del periodo.',
+      <div class="task"><span class="step">1</span>Glue your <b>Pilgrim's Book</b> in your English notebook and write your name. <span class="step">2</span>Your fellow pilgrim is the classmate next to you.</div>` },
+    { stop: 0, host: ['think', '<b>Truth or trick?</b> Think well, then write.'], note: 'Lea la pregunta. Pulse ▶ (3 min): cada estudiante escribe a lápiz su primera respuesta en el Pilgrim\'s Book (casilla «My first answer»). No se comenta: se guarda para el final del periodo.',
       html: () => `<div class="kicker">Stop 1 · The question of our journey</div><div class="big-q">Truth or trick?<br>How do we know — and how do we speak honestly?</div>
-      <div class="task" style="justify-content:center">In your Pilgrim's Book (your notebook), in pencil: <b>my first answer</b> (2–3 lines). You will answer again at the end of the term.</div>${timer([['Write', 180]])}` },
+      <div class="task" style="justify-content:center">In your Pilgrim's Book («My first answer»), in pencil: <b>my first answer</b> (2–3 lines). You will answer again at the end of the term.</div>${timer([['Write', 180]])}` },
     { stop: 1, dense: true, host: ['point', 'Stand up, pilgrims! Listen to the vows of <b>Rochester</b>.'], note: 'Todos de pie; un voluntario lee los tres votos. Pulse ▶ Copy (4 min): copian a lápiz. Al sonar, ▶ Decode (4 min): en parejas escriben «I can…» con el glosario.',
       html: () => `<div class="kicker">Stop 2 · Rochester · Action 1 · 1380</div><div class="cols"><div>${vowList(['C1', 'C2', 'C3'])}</div>${gloss('r')}</div>
       <div class="task"><span class="step">1</span>Stand up: listen to the reader. <span class="step">2</span>Copy the three vows in pencil. <span class="step">3</span>With your fellow pilgrim, write «I can…» under each vow.</div>${timer([['Copy', 240], ['Decode', 240]])}` },
@@ -623,7 +623,7 @@ const LESSONS = {
       html: () => `<div class="kicker">Back at the inn · My hardest vow</div><h2>Put a ★ next to the vow that looks hardest for you.</h2>
       <div class="scroll"><p class="lead" style="margin:0;font-family:var(--f-display);color:var(--navy)">I will ______________________________ to achieve this vow.</p></div>
       <p class="hint">Example: «I will listen to short English podcasts at home to achieve C1.»</p>${timer([['Write', 180]])}` },
-    { stop: 4, host: ['wave', 'God speed, pilgrims! Next class I bring your <b>badges</b>.'], note: 'Pregunte y escuche a tres voluntarios. El Pilgrim\'s Book queda en el cuaderno de cada estudiante: no se recoge. Fin de la clase.',
+    { stop: 4, host: ['wave', 'God speed, pilgrims! Next class I bring your <b>badges</b>.'], note: 'Pregunte y escuche a tres voluntarios. El Pilgrim\'s Book queda pegado en el cuaderno de cada estudiante: no se recoge. Fin de la clase.',
       html: () => `<div class="kicker">Closing</div><div class="big-q">Which stop was the hardest to decode? Why?</div>
       <div class="info" style="text-align:center">Keep your Pilgrim's Book safe: it lives in your English notebook. <b>Next class the Host returns</b> with your three pilgrim's badges — and a message from the Chronos Agency.</div>
       <p class="hint center">God speed, pilgrims!</p>` },
@@ -774,10 +774,10 @@ const LESSONS = {
       ${lq(false)}${timer([['Read', 180]])}` },
     { stop: 2, dense: true, host: ['listen', () => LPLAYS < 1 ? 'First listening… <b>choose the answers</b>.' : 'Second listening… <b>check your answers</b>.'],
       note: 'Primera escucha: pulse ▶ Listen 1 y responden las cinco preguntas. Segunda escucha: pulse ▶ Listen 2; revisan y marcan quién dijo cada razón (siguiente pantalla). El contador muestra cuántas veces se ha escuchado.',
-      html: () => `<div class="kicker">Listening · Part 1 · choose A, B or C</div>${player('lp')}${lq(false)}${nb('write the numbers 1–5 and your answer (A, B or C).')}` },
+      html: () => `<div class="kicker">Listening · Part 1 · choose A, B or C</div>${player('lp')}${lq(false)}` },
     { stop: 2, dense: true, host: ['scales', 'Who said it? Is it <b>relevant</b> or <b>not relevant</b>?'],
       note: 'En parejas (5 min): etiquetan cada razón como RELEVANT (R) o NOT RELEVANT (NR) y escriben por qué en una línea. Si aún no han hecho la segunda escucha, use el reproductor de esta pantalla.',
-      html: () => `<div class="kicker">Listening · Part 2 · relevant or not relevant?</div>${player('lp2')}${lr(false)}${nb('number the reasons and write R or NR + one line: why?')}${timer([['Pairs', 300]])}` },
+      html: () => `<div class="kicker">Listening · Part 2 · relevant or not relevant?</div>${player('lp2')}${lr(false)}${timer([['Pairs', 300]])}` },
     { stop: 2, dense: true, host: ['thumbs', 'Let\'s check, agents!'],
       note: 'Revisión (6 min, parte 1). Toque cada pregunta para mostrar la respuesta correcta.',
       html: () => `<div class="kicker">Listening · Part 1 · the key</div>${lq(true)}` },
