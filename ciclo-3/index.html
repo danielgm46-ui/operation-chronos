@@ -857,6 +857,47 @@ a.tbtn { text-decoration: none; display: inline-block; }
 .vkin table { border-collapse: collapse; width: 100%; margin-bottom: 1vh; } .vkin td { border: 1px solid #ddd; padding: 4px 6px; vertical-align: top; }
 .vkbar { display: flex; justify-content: space-between; align-items: center; position: sticky; top: -2vh; background: #fff; padding: 1vh 0; color: #b4261e; }
 
+/* ---- Class 5 · The Decoder Lens ---- */
+.lenshero { display: flex; gap: 3vw; align-items: center; justify-content: center; margin-top: 1vh; }
+.lenshero .lead { font-size: 3vh; max-width: 52vw; }
+.lenssvg { display: block; filter: drop-shadow(0 .8vh 1.2vh rgba(0,0,0,.35)); }
+.lensmini { display: flex; gap: 1vw; margin-top: 1.4vh; } .lensmini span { display: flex; align-items: center; gap: .6vw; padding: .6vh 1.2vw .6vh .6vw; border-radius: 99px; background: var(--note); border: .3vh solid var(--c); font-family: var(--f-caps); font-weight: 700; font-size: 2.2vh; }
+.lensmini b { display: grid; place-items: center; width: 4.4vh; height: 4.4vh; border-radius: 50%; background: var(--c); color: #fff; font-family: var(--f-display); font-size: 2.8vh; }
+.debrief { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2vw; margin: 1.4vh 0; }
+.debrief div { background: var(--note); border: .3vh solid var(--line); border-radius: 1.4vh; padding: 1.6vh 1vw; text-align: center; }
+.debrief b { display: block; font-family: var(--f-display); font-size: 3.4vh; color: var(--red); } .debrief span { display: block; font-size: 2.3vh; margin: .4vh 0; } .debrief em { font-family: var(--f-caps); font-style: normal; font-weight: 700; font-size: 1.9vh; letter-spacing: .1em; color: var(--muted, #6b6152); }
+.lensrules { display: grid; gap: 1.1vh; margin-top: .8vh; }
+.lensrules > div { display: grid; grid-template-columns: 8vh 1fr; gap: 1.4vw; align-items: center; background: var(--note); border: .3vh solid var(--c); border-left-width: 1.4vh; border-radius: 1.2vh; padding: 1vh 1.4vw; }
+.lensrules > div > b { display: grid; place-items: center; width: 8vh; height: 8vh; border-radius: 50%; background: var(--c); color: #fff; font-family: var(--f-display); font-size: 5vh; }
+.lensrules strong { font-family: var(--f-display); font-size: 3vh; } .lensrules small { font-family: var(--f-caps); font-size: 1.7vh; letter-spacing: .1em; text-transform: uppercase; color: var(--c); margin-left: .6vw; }
+.lensrules p { margin: .2vh 0; font-size: 2.8vh; font-weight: 700; } .lensrules span { font-size: 2vh; color: #5a5040; }
+.lbugs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1vh 1vw; margin: 1vh 0; }
+.lb { position: relative; display: flex; align-items: center; gap: .8vw; text-align: left; background: var(--note); border: .3vh solid var(--line); border-radius: 1.2vh; padding: .8vh .8vw; font: inherit; font-size: 2.1vh; cursor: pointer; }
+.lb img { width: 6vh; height: 6vh; object-fit: contain; } .lb small { display: block; font-family: var(--f-caps); font-weight: 700; color: var(--red); font-size: 1.7vh; }
+.lb > b { position: absolute; right: .6vw; top: 50%; transform: translateY(-50%) scale(0); display: grid; place-items: center; width: 5.4vh; height: 5.4vh; border-radius: 50%; background: var(--c); color: #fff; font-family: var(--f-display); font-size: 3.2vh; transition: transform .3s; }
+.lb.show { border-color: var(--c); } .lb.show > b { transform: translateY(-50%) scale(1); }
+.craft { display: grid; grid-template-columns: 1fr auto; gap: 2vw; align-items: center; }
+.craft ol { margin: 0; padding-left: 3vw; font-size: 2.5vh; line-height: 1.35; } .craft li { margin-bottom: .8vh; } .craft li b { font-family: var(--f-caps); color: var(--red); margin-right: .6vw; letter-spacing: .05em; }
+.pcards.jobs { margin-top: 1vh; } .pcards.jobs .pcd span { font-size: 1.9vh; }
+.ltest { background: var(--note); border: .4vh solid var(--line); border-radius: 1.6vh; padding: 2vh 2.4vw; min-height: 34vh; display: flex; flex-direction: column; gap: 1.6vh; }
+.ltn { font-family: var(--f-caps); font-weight: 700; letter-spacing: .12em; color: var(--red); font-size: 2vh; }
+.lts { font-family: var(--f-body, inherit); font-size: 3.6vh; line-height: 1.3; font-weight: 600; }
+.ltr { display: flex; gap: 1.4vw; align-items: center; opacity: 0; transform: translateY(1vh); transition: .35s; } .ltest.rev .ltr { opacity: 1; transform: none; }
+.ltr b { color: #fff; font-family: var(--f-caps); font-size: 2.6vh; padding: .8vh 1.6vw; border-radius: 99px; white-space: nowrap; } .ltr span { font-size: 2.5vh; }
+.marks4 { position: relative; height: 7.5vh; margin: .4vh 0 1vh; }
+.marks4 .mark { position: absolute; transform: translateX(-50%); text-align: center; font-size: 1.8vh; line-height: 1.15; white-space: nowrap; }
+.marks4 .mark:last-child { transform: translateX(-100%); text-align: right; }
+.marks4 .mark b { display: block; font-family: var(--f-caps); color: var(--red); font-size: 2vh; } .marks4 .mark small { display: block; color: #6b6152; font-size: 1.6vh; }
+.passport { display: grid; grid-template-columns: repeat(3, 15vh) 1fr; gap: 1vw; align-items: stretch; }
+.pst { border: .35vh dashed var(--line); border-radius: 1.2vh; padding: .8vh .5vw; text-align: center; font-size: 1.7vh; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .4vh; opacity: .55; background: rgba(255,253,245,.6); }
+.pst.on { opacity: 1; border-style: solid; border-color: var(--red); background: var(--note); } .pst b { font-family: var(--f-caps); font-size: 1.6vh; } .pst small { color: #6b6152; }
+.psf { background: var(--note); border: .3vh solid var(--line); border-radius: 1.2vh; padding: 1vh 1.4vw; font-size: 2.4vh; display: flex; flex-direction: column; justify-content: center; } .psf p { margin: .5vh 0; }
+.recon { display: grid; gap: 1.1vh; margin-top: 1vh; font-size: 2.7vh; } .recon > div { background: var(--note); border: .3vh solid var(--line); border-radius: 1.2vh; padding: 1.1vh 1.4vw; }
+.meter .mend { position: absolute; right: 1.6vw; top: 0; bottom: 0; display: grid; place-items: center; font-family: var(--f-caps); font-weight: 700; font-size: 1.8vh; color: rgba(255,255,255,.75); letter-spacing: .06em; }
+.marks4 .mark:last-child { transform: translateX(-50%); text-align: center; }
+.recon .step { margin-right: 1vw; }
+.marks4 .mark { border: 0 !important; padding-top: .9vh; } .marks4 .mark::before { content: ''; position: absolute; left: 50%; top: 0; width: .35vh; height: .8vh; background: #6b4217; }
+
 </style>
 </head>
 <body>
@@ -1062,6 +1103,33 @@ function vaultUI() {
   document.querySelectorAll('#vlt [data-vq]').forEach(b => b.onclick = () => { VAUD.currentTime = st[+b.dataset.vq]; VAUD.play(); });
   $('vKey').onclick = vaultKey;
 }
+// ---------- Class 5 content · Artifact Unlocked: The Decoder Lens
+const LENS = [
+  ['R', 'Relevant', 'blue', 'Is the reason really connected to the claim?', 'Off-topic reasons, attacks on the person, «everybody does it».'],
+  ['A', 'Acceptable', 'yellow', 'Is the reason true? Can we check it?', 'Fake relics, fake evidence, invented chains of events.'],
+  ['S', 'Sufficient', 'red', 'Are there enough reasons and enough evidence?', 'One example only, a coincidence, choosing only the data you like.']];
+const LENSBUGS = [[1, 'The Fake Relic', 'A'], [2, 'The Off-Topic Bug', 'R'], [3, 'Too fast, too few', 'S'], [4, 'After it, so because of it', 'S'],
+  [5, 'Everybody\'s doing it', 'R'], [6, 'Draw the target after shooting', 'S'], [7, 'Attack the person', 'R'], [8, 'The dangerous chain', 'A']];
+const LENSTEST = [
+  ['Buy the Star Robot this Christmas! It is the toy of the year — everybody in your class already has one!', 'R', 'Popularity is not connected to quality: <b>Everybody\'s doing it</b> (#5).'],
+  ['This holy water cures every illness. A famous doctor from the year 3000 says so, and his letter is in my bag.', 'A', 'The evidence is impossible to check — it is not true: <b>The Fake Relic</b> (#1).'],
+  ['Canterbury is the best city in England, because yesterday I ate a very good pie there.', 'S', 'One pie is not enough to prove it: <b>Too fast, too few</b> (#3).'],
+  ['We should travel in a group, because robbers attack people who are alone. The Knight and the Host saw it on this road last spring.', '✓', 'Connected, true and with evidence: it passes the three filters. <b>A strong argument!</b>']];
+const LENSCOLOR = { R: '#2f6fb3', A: '#e2b13c', S: '#b23a2c', '✓': '#3e8e5a' };
+const lensSVG = (sz = 26) => `<svg class="lenssvg" viewBox="0 0 200 260" style="height:${sz}vh" aria-hidden="true">
+  <rect x="88" y="168" width="24" height="86" rx="8" fill="#8a5a2b" stroke="#4a2f14" stroke-width="3"/>
+  <circle cx="100" cy="92" r="86" fill="#c99a5b" stroke="#4a2f14" stroke-width="4"/><circle cx="100" cy="92" r="74" fill="none" stroke="#e8c98f" stroke-width="2" stroke-dasharray="4 5"/>
+  <circle cx="100" cy="52" r="30" fill="${LENSCOLOR.R}" fill-opacity=".75" stroke="#4a2f14" stroke-width="3"/><circle cx="64" cy="114" r="30" fill="${LENSCOLOR.A}" fill-opacity=".8" stroke="#4a2f14" stroke-width="3"/>
+  <circle cx="136" cy="114" r="30" fill="${LENSCOLOR.S}" fill-opacity=".75" stroke="#4a2f14" stroke-width="3"/>
+  <text x="100" y="62" text-anchor="middle" font-family="Cinzel, serif" font-weight="700" font-size="28" fill="#fff">R</text><text x="64" y="124" text-anchor="middle" font-family="Cinzel, serif" font-weight="700" font-size="28" fill="#3a2a10">A</text>
+  <text x="136" y="124" text-anchor="middle" font-family="Cinzel, serif" font-weight="700" font-size="28" fill="#fff">S</text></svg>`;
+const CRAFT = [
+  ['Trace', 'Put the template on your cardboard and trace the big circle (15 cm), the three windows (6 cm each) and the handle.'],
+  ['Cut', 'Cut the big circle and the handle. Then cut out the three windows — ask for help with the scissors if you need it.'],
+  ['Filter', 'Glue blue cellophane on window R, yellow on window A and red on window S.'],
+  ['Rules', 'On the back, write your three lens rules as questions — one next to each window.'],
+  ['Sign', 'Write your squad name on the handle and draw your squad emblem.']];
+const CRAFTJOBS = [['timekeeper', 'Timekeeper', 'materials and time: 18 minutes!'], ['decoder', 'Decoder', 'traces and cuts the windows'], ['herald', 'Herald', 'checks the rules: real questions?'], ['chronicler', 'Chronicler', 'writes the rules and the squad name']];
 const LESSONS = {
   map: { stops: [], scene: { '-1': 'hq' }, arrive: {}, plaque: 'Harry Bailly · Chronos Agent', slides: [
     { stop: -1, host: ['map', () => course ? 'Choose your class, agents!' : 'Good morrow, agents! First, choose your course.'],
@@ -1251,6 +1319,58 @@ const LESSONS = {
       <div class="info">Next class: <b>Artifact 1 · The Decoder Lens</b>${course ? ' · ' + WHEN.c5[course] : ''}.</div>
       <button type="button" class="endbtn" data-tomap="1">☰ Back to the cycle map</button>` },
   ] },
+  c5: { stops: ['Debrief', 'Rules', 'Craft', 'Test', 'Passport'], scene: { '-1': 'buglab', 0: 'hq', 1: 'buglab', 2: 'mission', 3: 'inn', 4: 'museum' }, plaque: 'Harry Bailly · Chronos Agent',
+    arrive: { 0: ['Artifact 1', 'Mission Log Debrief', 'How did it go, agents?'], 1: ['Artifact 1', 'The Lens Rules', 'Three questions, three filters'], 2: ['Artifact 1', 'The Lens Workshop', 'Build it with your squad'], 3: ['Artifact 1', 'The Lens Test', 'Look through the filters'], 4: ['Artifact 1', 'The Chronos Passport', 'The timeline at 33 %'] },
+    slides: [
+    { stop: -1, host: ['magnifier', 'Agents… the <b>Decoder Lens</b> is ready to be forged!'],
+      note: () => `Artefacto 1 · The Decoder Lens${course ? ' · ' + course + ' · ' + WHEN.c5[course] : ''}. Es la última clase antes de vacaciones y cierra la Acción 1. Los escuadrones ya están sentados juntos con sus materiales (cartón, celofán azul, amarillo y rojo, tijeras, pegante). Lea el objetivo: hoy convierten las tres preguntas R·A·S en un objeto que van a usar todo el año.${course === '7D' ? ' 7°D: si los estudiantes PIAR necesitan terminar la Evidencia, lo hacen en los primeros 15 minutos, mientras el grupo hace el Debrief y las reglas.' : ''}`,
+      html: () => `<div class="kicker">Cycle 3 · Artifact 1 · Chaucer's England, 1380</div><h1>Artifact Unlocked: The Decoder Lens</h1>
+      <div class="lenshero">${lensSVG(34)}<div><p class="lead">Today your squad builds the <b>Decoder Lens</b>: three filters to check every argument you hear — in 1380, in Rome and in 2026.</p>
+      <div class="lensmini">${LENS.map(([k, n, c]) => `<span style="--c:${LENSCOLOR[k]}"><b>${k}</b>${n}</span>`).join('')}</div></div></div>` },
+    { stop: 0, host: ['think', 'Be honest, agents. <b>How did it feel?</b>'],
+      note: 'Debrief del Mission Log 1 (3 min). Todavía no hay resultados: es metacognición. Lea cada parte y pida que muestren con los dedos (1 = muy difícil, 5 = muy fácil). Pregunte a dos o tres agentes: «What helped you?». Luego cada agente escribe en el cuaderno la parte que más debe practicar y una estrategia.',
+      html: () => `<div class="kicker">Mission Log 1 · debrief</div><h2>Show me 1 to 5 fingers: how did each part feel?</h2>
+      <div class="debrief">${READY.map(([p, c]) => `<div><b>${p.split(' · ')[0]}</b><span>${p.split(' · ')[1]}</span><em>${c}</em></div>`).join('')}</div>
+      ${nb('<b>My Mission Log</b> · the part I must practise is… · one strategy that helped me was…')}${timer([['Debrief', 180]])}` },
+    { stop: 1, dense: true, host: ['scales', 'Three filters. <b>Three questions.</b>'],
+      note: () => `Las reglas del lente (5 min). Lea cada filtro y su pregunta. Cada escuadrón reescribe las tres reglas como preguntas con sus palabras; el Chronicler las escribe en su cuaderno (luego van al reverso del lente). Modelo: «R: Is this reason about the claim?».${isImm() ? ' Inmersión: cada regla lleva un ejemplo con «because» y el Herald explica una al grupo.' : ''}`,
+      html: () => `<div class="kicker">The lens rules · R · A · S</div><h2>Every argument must pass three filters.</h2>
+      <div class="lensrules">${LENS.map(([k, n, c, q, bugs]) => `<div style="--c:${LENSCOLOR[k]}"><b>${k}</b><div><strong>${n}</strong> <small>${c} filter</small><p>${q}</p><span>It catches: ${bugs}</span></div></div>`).join('')}</div>
+      ${nb(`Chronicler · write the three rules as <b>questions</b>, in your own words.${isImm() ? ' Add an example with <b>because</b>.' : ''}`)}${timer([['Rules', 300]])}` },
+    { stop: 1, dense: true, host: ['magnifier', 'Which filter catches <b>each bug</b>?'],
+      note: 'La Bugdex a través del lente (6 min; si la clase es corta, sáltela). Por escuadrones deciden qué filtro atrapa cada uno de los ocho bugs. Toque cada bug para revelar el filtro. Se aceptan otras respuestas si las justifican: por ejemplo, #4 también puede ser A. +5 XP por acierto.',
+      html: () => `<div class="kicker">The Bugdex through the lens</div><h2>Eight bugs. Which filter catches each one?</h2>
+      <div class="lbugs" id="lbugs">${LENSBUGS.map(([n, name, f]) => `<button type="button" class="lb" style="--c:${LENSCOLOR[f]}"><img src="${IMG.bug.jar}" alt=""><span><small>#${n}</small>${name}</span><b>${f}</b></button>`).join('')}</div>
+      <p class="hint center">Decide with your squad · then tap a bug to reveal the filter · +5 XP for each one you got right</p>${timer([['Bugdex', 360]])}` },
+    { stop: 2, dense: true, host: ['hips', 'Eighteen minutes. <b>Every power works!</b>'],
+      note: 'Taller del lente (18 min). Cada escuadrón recibe una plantilla para calcar (Anexo O; hay 2 por curso y se comparten). Proyecte esta pantalla y recorra los cinco pasos. Insista: las reglas del reverso son preguntas. Si falta celofán, sirve papel seda o una funda plástica coloreada con marcador. Recoja los recortes y guarde los lentes terminados en el salón: los usaremos en el Ciclo 4.',
+      html: () => `<div class="kicker">The Lens Workshop · 18 minutes</div>
+      <div class="craft"><ol>${CRAFT.map(([t, d]) => `<li><b>${t}</b>${d}</li>`).join('')}</ol>${lensSVG(30)}</div>
+      <div class="pcards jobs">${CRAFTJOBS.map(([k, t, d]) => `<div class="pcd"><img src="${IMG.emb[k]}" alt=""><b>${t}</b><span>${d}</span></div>`).join('')}</div>${timer([['Workshop', 1080]])}` },
+    { stop: 3, host: ['spyglass', 'Raise the filter that <b>FAILS</b>!'],
+      note: 'La prueba del lente (8 min). Lea el argumento. Cada escuadrón levanta su lente tapando con el dedo los filtros que sí pasan: el filtro visible es el que falla (o levanta el lente completo si el argumento pasa los tres). «3 · 2 · 1 · Lens!» y pulse «Reveal». El último argumento es fuerte: pasa los tres filtros. +10 XP por acierto.',
+      html: () => `<div class="kicker">The Lens Test · 4 arguments</div>
+      <div class="ltest" id="lt"><div class="ltn" id="ltN"></div><div class="lts" id="ltS"></div><div class="ltr" id="ltR"><b id="ltF"></b><span id="ltW"></span></div></div>
+      <div class="revealbar"><button type="button" class="tbtn" id="ltPrev">◀</button><button type="button" class="tbtn go" id="ltRev">Reveal</button><button type="button" class="tbtn" id="ltNext">Next argument ▶</button><span class="hint">Show the filter that fails · the whole lens if it passes</span></div>` },
+    { stop: 4, dense: true, host: ['cheer', 'The timeline is <b>33 %</b> safer!'],
+      note: () => `Timeline Integrity Meter (2 min). La barra se llena sola hasta 33 %. Recuerde la ruta: Pardoner\'s Relic 66 % (Ciclo 5), Antony\'s Scroll 90 % (Ciclo ${isImm() ? 6 : 7}), prueba del periodo 100 %. Luego, Chronos Passport en el cuaderno (4 min): cada agente dibuja la estampilla del lente en la casilla de la Acción 1 y completa las dos frases.`,
+      html: () => `<div class="kicker">The Timeline Integrity Meter</div><h2>Artifact 1 is forged. The timeline is getting stronger.</h2>
+      <div class="meter" id="meter3"><div class="fill" id="mfill3"></div><div class="pct" id="mpct3">0 %</div><div class="mend">100 % · ${course ? (DATES[course][3] === 'archive' ? 'The Chronos Archive' : 'Museum of the Future') : 'Term test'}</div></div>
+      <div class="marks4">${[[33, 'Decoder Lens', 'Artifact 1 · 1380'], [66, 'Pardoner\'s Relic', 'Artifact 2 · 1380'], [90, 'Antony\'s Scroll', 'Artifact 3 · Rome']].map(([p, t, s]) => `<div class="mark" style="left:${p}%"><b>${p} %</b>${t}<small>${s}</small></div>`).join('')}</div>
+      <div class="passport"><div class="pst on"><b>Action 1 · 1380</b>${lensSVG(9)}<small>Decoder Lens</small></div><div class="pst"><b>Action 2 · 44 BC</b><small>coming in January</small></div><div class="pst"><b>Action 3 · the future</b><small>coming in February</small></div>
+        <div class="psf"><p>With my Decoder Lens, I can <span class="bl">________________</span>.</p><p>In Rome, I want to improve <span class="bl">________________</span>.</p></div></div>
+      ${nb('<b>Chronos Passport</b> · draw three stamp boxes · draw the lens in box 1 · complete the two sentences.')}` },
+    { stop: 4, dense: true, host: ['letter', 'A secret mission for your <b>holidays</b>…'],
+      note: 'Misión de vacaciones, opcional (3 min). Lea la misión. Es voluntaria y da XP extra al regreso (primera clase de enero). Pueden buscar el anuncio con la familia: televisión, la calle, un catálogo o una valla. No hace falta celular. Copian la misión en el cuaderno.',
+      html: () => `<div class="kicker">Holiday recon mission · optional · bonus XP</div><h2>Find one logic bug in a Christmas advert.</h2>
+      <div class="recon"><div><span class="step">1</span>Find a Christmas advert: TV, street, a shop window, a catalogue.</div><div><span class="step">2</span>Write the claim: what does it want you to believe or buy?</div><div><span class="step">3</span>Look through your lens: which filter fails — <b style="color:${LENSCOLOR.R}">R</b>, <b style="color:#a77c12">A</b> or <b style="color:${LENSCOLOR.S}">S</b>? Which bug is it?</div><div><span class="step">4</span>Bring it in January: <b>+20 XP</b> for your squad.</div></div>
+      ${nb('<b>Holiday recon</b> · the advert · the claim · the filter that fails · the bug.')}` },
+    { stop: 4, host: ['wave', 'Happy holidays, agents! <b>Rome is waiting…</b>'],
+      note: 'Despedida (1 min). Guarde los lentes en una caja por curso. En enero, la máquina vuelve a 1380 (la confesión del Bulero) y luego salta a la Roma de Julio César. Felices vacaciones.',
+      html: () => `<div class="kicker">End of Action 1 · Chaucer's England, 1380</div><h1>Keep your lens. Keep your questions.</h1>
+      <p class="lead center">In January, the time machine returns to 1380 for the Pardoner's last secret — and then it jumps to <b>Rome, 44 BC</b>.</p>
+      <button type="button" class="endbtn" data-tomap="1">☰ Back to the cycle map</button>` },
+  ] },
 };
 // ---------- engine
 let L = 'map', i = 0, tick = null, AC = null, ANIM = true, lastStop = -2;
@@ -1401,6 +1521,13 @@ function mountWidgets() {
     $('rdRev').onclick = () => { $('rd').classList.add('rev'); [...$('rdO').children].forEach((li, j) => li.classList.toggle('ok', j === R.items[k].key)); chime(); fitStage(); };
     $('rdNext').onclick = () => { k = Math.min(R.items.length - 1, k + 1); show(); }; $('rdPrev').onclick = () => { k = Math.max(0, k - 1); show(); }; show(); }
   document.querySelectorAll('#fit .pcd').forEach(b => b.onclick = () => { b.classList.toggle('show'); fitStage(); });
+  // Class 5 · The Decoder Lens
+  document.querySelectorAll('#lbugs .lb').forEach(b => b.onclick = () => { b.classList.toggle('show'); if (b.classList.contains('show')) chime(); });
+  if ($('lt')) { let k = 0; const show = () => { const d = LENSTEST[k]; $('ltN').textContent = `Argument ${k + 1} / ${LENSTEST.length}`; $('ltS').textContent = d[0];
+      $('ltF').textContent = d[1] === '✓' ? 'R ✓ A ✓ S ✓' : `${d[1]} fails`; $('ltF').style.background = LENSCOLOR[d[1]]; $('ltW').innerHTML = d[2]; $('lt').classList.remove('rev'); fitStage(); };
+    $('ltRev').onclick = () => { $('lt').classList.add('rev'); chime(); fitStage(); };
+    $('ltNext').onclick = () => { k = Math.min(LENSTEST.length - 1, k + 1); show(); }; $('ltPrev').onclick = () => { k = Math.max(0, k - 1); show(); }; show(); }
+  if ($('meter3')) { let p = 0; const go = () => { if (!$('meter3')) return; p = Math.min(33, p + 1); $('mfill3').style.width = p + '%'; $('mpct3').textContent = p + ' %'; if (p < 33) setTimeout(go, 45); else chime(); }; setTimeout(go, 900); }
   document.querySelectorAll('#fit [data-tomap]').forEach(b => b.onclick = () => openLesson('map'));
   document.querySelectorAll('#fit [data-course]').forEach(b => b.onclick = () => { setCourse(b.dataset.course); startMusic(); render(); });
   document.querySelectorAll('#fit [data-lesson]').forEach(b => b.onclick = () => { if (!b.disabled) { startMusic(); openLesson(b.dataset.lesson); } });

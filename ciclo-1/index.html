@@ -655,10 +655,10 @@ const LESSONS = {
         <div class="player"><button type="button" class="play" id="txplay">▶ Play</button><div class="bar"><i id="txbar"></i></div><span class="time" id="txtime">0:00</span></div>
         <button type="button" class="linkbtn" id="txshow">Show the transcript</button><div class="tx-text" id="txtext" hidden>${TX.map(p => `<p>${p}</p>`).join('')}</div></div>` },
     { stop: 0, host: ['point', 'Fill the meter and <b>save the timeline!</b>'],
-      note: 'Explique el Timeline Integrity Meter: está en 0 %. Tres artefactos lo llenan (Decoder Lens, Pardoner\'s Relic, Antony\'s Scroll) y la prueba del periodo lo completa al 100 %. Dibújelo también en una esquina del tablero.',
+      note: 'Explique el Timeline Integrity Meter: está en 0 %. Tres artefactos lo llenan (Decoder Lens 33 %, Pardoner\'s Relic 66 %, Antony\'s Scroll 90 %) y la prueba del periodo lo completa al 100 %. Dibújelo también en una esquina del tablero.',
       html: () => `<div class="kicker">The Timeline Integrity Meter</div><h2>Today the timeline is at 0 %. You will fill it.</h2>
       <div class="meter" id="meter"><div class="fill" id="mfill"></div><div class="pct" id="mpct">0 %</div></div>
-      <div class="marks">${[[25, 'Decoder Lens', 'Artifact 1 · 1380'], [50, "Pardoner's Relic", 'Artifact 2 · 1380'], [75, "Antony's Scroll", 'Artifact 3 · Rome'], [100, 'Term test', course ? (DATES[course][3] === 'archive' ? 'The Chronos Archive' : 'Museum of the Future · 2126') : 'The future']].map(([p, t, s]) => `<div class="mark"><b>${t}</b>${s}</div>`).join('')}</div>` },
+      <div class="marks">${[[33, 'Decoder Lens', 'Artifact 1 · 1380'], [66, "Pardoner's Relic", 'Artifact 2 · 1380'], [90, "Antony's Scroll", 'Artifact 3 · Rome'], [100, 'Term test', course ? (DATES[course][3] === 'archive' ? 'The Chronos Archive' : 'Museum of the Future · 2126') : 'The future']].map(([p, t, s]) => `<div class="mark"><b>${t}</b>${s}</div>`).join('')}</div>` },
     { stop: 0, host: ['present', 'Four powers. Today you <b>test them all</b> — then you choose yours!'],
       note: 'Lea cada poder en voz alta mientras aparece. Anuncie: «Today you will test the four powers. Then you will choose yours.»',
       html: () => `<div class="kicker">Every squad has four powers</div>
