@@ -1065,10 +1065,10 @@ const RQS = ['Who says it?', 'How do they know?', 'Why do they say it?'];
 const LESSONS = {
   map: { stops: [], scene: { '-1': 'hq' }, arrive: {}, plaque: 'Harry Bailly · Chronos Agent', slides: [
     { stop: -1, host: ['map', () => course ? 'Choose your class, agents!' : 'Good morrow, agents! First, choose your course.'],
-      note: 'Mapa del ciclo. Toque primero el curso (queda guardado en este computador) y luego la clase. Avance con «Siguiente ▶» o la flecha →; «☰ Map» o Esc vuelve aquí. S = música · M = sin animaciones · F o «⛶ Full screen» = pantalla completa. El Ciclo 4 transcurre todo en 1380 y termina con el Artefacto 2 (Pardoner\'s Relic) y el Vocabulary Quiz 3.',
+      note: 'Mapa del ciclo. Toque primero el curso (queda guardado en este computador) y luego la clase. Avance con «Siguiente ▶» o la flecha →; «☰ Map» o Esc vuelve aquí. S = música · M = sin animaciones · F o «⛶ Full screen» = pantalla completa. El Ciclo 4 despide 1380 (Clases 1–3, con el Artefacto 2 en la subasta) y salta a la Roma de Julio César en la Clase 4.',
       html: () => `<div class="maphead"><div class="kicker">Operation Chronos · Term 29 · Cycle 4</div><h1>The Pardoner's Relic</h1>
         <div class="courserow"><span class="kicker">Course</span><div class="courses small">${COURSES.map(c => `<button type="button" data-course="${c}" aria-pressed="${c === course}">${c}</button>`).join('')}</div></div></div>
-        <div class="lessons five">${[['c1', 'Class 1', 'The Confession'], ['c2', 'Class 2', 'Logic Bug Lab'], ['c3', 'Class 3', 'The Pilgrims\' Auction'], ['c4', 'Class 4', 'The Relic Seller\'s Pitch'], ['c5', 'Class 5', 'The Chronicler\'s Whisper']].map(([k, n, t]) => {
+        <div class="lessons five">${[['c1', 'Class 1', 'The Confession'], ['c2', 'Class 2', 'Logic Bug Lab'], ['c3', 'Class 3', 'The Pilgrims\' Auction & Artifact 2'], ['c4', 'Class 4', 'Jump to 44 BC: Rome\'s Logic Bugs'], ['c5', 'Class 5', 'The Soothsayer\'s Warning']].map(([k, n, t]) => {
           const ready = !!LESSONS[k], w = course ? WHEN[k][course] : '';
           return `<button type="button" class="lesson${ready ? '' : ' soon'}" data-lesson="${k}" ${ready && course && w[0] !== '!' ? '' : 'disabled'} style="background-image:url('${IMG.card[k]}')">${!course && ready ? '<span class="lock">choose a course</span>' : ''}<span class="num">${n}</span><span class="ttl">${t}</span><span class="when">${course ? (w[0] === '!' ? course + ': ' + w.slice(1) : course + ' · ' + w) : ''}</span></button>`; }).join('')}</div>
         <p class="credits">Music: «Pippin the Hunchback», Kevin MacLeod (incompetech.com), CC BY 3.0 · Voices: Kokoro TTS · Illustrations: Operation Chronos</p>` },
@@ -1082,7 +1082,7 @@ const LESSONS = {
       <div class="goals"><span><b>C4</b> listen: what doesn't fit?</span><span><b>C5</b> read: is the source reliable?</span><span><b>+</b> He says…, but he…</span></div>
       <div class="info">Artifact 2 · <b>The Pardoner's Relic</b> is waiting for you. To win it, you need two new skills: hearing what <b>doesn't fit</b> and asking <b>who</b> is talking.</div>` },
     { stop: -1, dense: true, host: ['point', 'Remember? The timeline is at <b>33 %</b>.'],
-      note: () => `Back in the timeline (2 min). La barra sube sola hasta 33 % (el Decoder Lens de diciembre). Pregunte: «What were the three filters of the lens?» (R · A · S) y «Who has his lens?». El próximo 66 % llega con el Pardoner\'s Relic (Ciclo 5); las habilidades de este ciclo lo abren; Antony\'s Scroll da el 90 % (Ciclo ${isImm() ? 6 : 7}).`,
+      note: () => `Back in the timeline (2 min). La barra sube sola hasta 33 % (el Decoder Lens de diciembre). Pregunte: «What were the three filters of the lens?» (R · A · S) y «Who has his lens?». El próximo 66 % llega con el Pardoner\'s Relic en la Clase 3 de este ciclo (la subasta); Antony\'s Scroll da el 90 % (Ciclo ${isImm() ? 6 : 7}).`,
       html: () => `<div class="kicker">The Timeline Integrity Meter · January</div><h2>Before the holidays, you forged the Decoder Lens.</h2>
       <div class="meter" id="meter4"><div class="fill" id="mfill4"></div><div class="pct" id="mpct4">0 %</div><div class="mend">100 % · ${course ? (DATES[course][3] === 'archive' ? 'The Chronos Archive' : 'Museum of the Future') : 'Term test'}</div></div>
       ${meterMarks()}
