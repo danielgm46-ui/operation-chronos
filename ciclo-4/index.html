@@ -975,6 +975,8 @@ a.tbtn { text-decoration: none; display: inline-block; }
 .bgc .ans b { font-family: var(--f-caps); font-weight: 700; letter-spacing: .08em; font-size: 3.4vh; color: #fff; background: var(--red); border-radius: 1vh; padding: .3vh 1.4vw; } .bgc .ans span { font-size: 2.6vh; color: var(--teal); }
 .bank.small span { font-size: 1.9vh; padding: .2vh .8vw; }
 
+.vdframe { display: none; width: min(100%, 104vh); aspect-ratio: 16 / 9; margin: 0 auto 1vh; border: .4vh solid var(--gold); border-radius: 1.2vh; overflow: hidden; background: #000; } .vdframe.on { display: block; } .vdframe iframe { width: 100%; height: 100%; border: 0; display: block; }
+
 </style>
 </head>
 <body>
@@ -1090,7 +1092,7 @@ const RELI = [
   { who: 'The young Squire', img: null, ico: '🛡️', claim: '«The bones are pig bones.»', q: ['a young pilgrim', 'He <b>saw</b> the cook give the Pardoner pig bones.', 'He wants to know the <b>truth</b> — he sells nothing.'], v: ['y', 'RELIABLE'] }];
 const RQS = ['Who says it?', 'How do they know?', 'Why do they say it?'];
 // ---------- Class 2 content · Logic Bug Lab
-const C2VIDEO = 'https://edu.gcfglobal.org/en/problem-solving-and-decision-making/logical-fallacies/1/';
+const C2VIDEO = 'https://www.youtube.com/watch?v=4CtofTCXcYI', C2VID = '4CtofTCXcYI';
 const C2GENIALLY = 'https://view.genially.com/6518e451e0c3d80011c54279';
 const VIDBUGS = [['False cause', 'We know it! It is Bugdex <b>#4</b>.', 'y'], ['Straw man', '<b>New today:</b> Bugdex #9.', 'n'], ['Begging the question', 'Extra: the reason only repeats the claim.', 'x'], ['False dilemma', 'Extra: «only two options». It is waiting in Rome…', 'x']];
 // the six bugs we already caught: scientific name · meaning · Bugdex number · who · quote · detector question · lens filter
@@ -1210,10 +1212,11 @@ const LESSONS = {
       <div class="goals"><span><b>C5</b> which fallacy hides here?</span><span><b>+</b> detector questions</span><span><b>+</b> Bugdex #9 · #10</span></div>
       <div class="info">On your desk: your <b>Bugdex</b> (notebook) and your <b>Decoder Lens</b>. In the lab, a logic bug is called a <b>fallacy</b>.</div>` },
     { stop: 0, dense: true, host: ['listen', 'Watch the video. One question: <b>what is a fallacy?</b>'],
-      note: 'Warm-up (6 min). «▶ Open the video» abre en otra pestaña la lección «Logical Fallacies» de GCFGlobal (LearnFree); el video dura unos 3 minutos. Si el enlace no abre, búsquelo en YouTube como «GCFLearnFree Logical Fallacies». Una sola pregunta: «What is a fallacy?». Al volver, toque «Reveal» para mostrar la definición y pregunte cuáles de los cuatro bugs del video ya conocían: False cause es nuestro #4 y Straw man es el #9 de hoy; los otros dos son extra (el falso dilema vuelve en Roma). La definición va al cuaderno, como título de la página.',
+      note: 'Warm-up (6 min). «▶ Play the video here» reproduce dentro del sitio el video «Logical Fallacies» de GCFGlobal (LearnFree), de unos 3 minutos; la música de fondo se apaga sola. Si usa la copia local del sitio o el video no carga, «Open in YouTube» lo abre en otra pestaña. Una sola pregunta: «What is a fallacy?». Al volver, toque «Reveal» para mostrar la definición y pregunte cuáles de los cuatro bugs del video ya conocían: False cause es nuestro #4 y Straw man es el #9 de hoy; los otros dos son extra (el falso dilema vuelve en Roma). La definición va al cuaderno, como título de la página.',
       html: () => `<div class="kicker">Warm-up · the video · GCFGlobal «Logical Fallacies»</div><div class="big-q" style="font-size:6vh">What is a fallacy?</div>
-      <div class="revealbar"><a class="tbtn go" href="${C2VIDEO}" target="_blank" rel="noopener">▶ Open the video</a><button type="button" class="tbtn" id="vdRev">Reveal</button></div>
-      <div id="vdBox" style="visibility:hidden"><div class="defn">A <b>fallacy</b> is an error in reasoning: the argument <b>sounds</b> good, but it doesn't work.</div>
+      <div class="vdframe" id="vdFrame"></div>
+      <div class="revealbar"><button type="button" class="tbtn go" id="vdPlay">▶ Play the video here</button><a class="tbtn" href="${C2VIDEO}" target="_blank" rel="noopener">Open in YouTube ↗</a><button type="button" class="tbtn" id="vdRev">Reveal</button></div>
+      <div id="vdBox" hidden><div class="defn">A <b>fallacy</b> is an error in reasoning: the argument <b>sounds</b> good, but it doesn't work.</div>
         <div class="vbugs">${VIDBUGS.map(([n, t, k]) => `<div class="${k}"><b>${n}</b><span>${t}</span></div>`).join('')}</div></div>
       ${nb('title: <b>Logic Bug Lab</b> · copy the definition of a fallacy.')}` },
     { stop: 1, dense: true, host: ['book', 'You caught these bugs. Now learn their <b>real names</b>.'],
@@ -1385,7 +1388,10 @@ function mountWidgets() {
   document.querySelectorAll('#fit .inc.extra').forEach(d => d.onclick = e => { if (d.classList.contains('extra')) { d.classList.remove('extra'); e.stopPropagation(); fitStage(); } });
   document.querySelectorAll('#reli .rc').forEach(c => c.onclick = () => { c.classList.toggle('show'); if (c.classList.contains('show') && c.classList.contains('rv')) chime(); });
   // Class 2 · Logic Bug Lab
-  if ($('vdRev')) $('vdRev').onclick = () => { $('vdBox').style.visibility = 'visible'; chime(); };
+  if (window.VDUCK && !$('vdFrame')) { duck(false); window.VDUCK = 0; }
+  if ($('vdRev')) { $('vdRev').onclick = () => { $('vdFrame').innerHTML = ''; $('vdFrame').classList.remove('on'); duck(false); window.VDUCK = 0; $('vdBox').hidden = false; chime(); fitStage(); };
+    if (!/^https?:/.test(location.protocol)) $('vdPlay').remove();   // YouTube does not play inside a local file
+    else $('vdPlay').onclick = () => { duck(true); window.VDUCK = 1; $('vdFrame').classList.add('on'); $('vdFrame').innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${C2VID}?autoplay=1&rel=0&cc_load_policy=1&cc_lang_pref=en" title="Logical Fallacies" allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe>`; $('vdPlay').remove(); fitStage(); }; }
   const stepper = (box, prev, rev, next, lab) => { const cs = [...document.querySelectorAll(`#${box} > div`)]; let i = 0;
     const show = () => { cs.forEach((c, k) => c.classList.toggle('on', k === i)); if (lab) lab(i, cs.length); $(rev).style.visibility = cs[i].classList.contains('show') ? 'hidden' : 'visible'; fitStage(); };
     $(rev).onclick = () => { cs[i].classList.add('show'); chime(); show(); }; $(next).onclick = () => { if (i < cs.length - 1) { i++; show(); } }; $(prev).onclick = () => { if (i > 0) { i--; show(); } }; show(); };
