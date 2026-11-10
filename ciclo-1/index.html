@@ -506,7 +506,7 @@ const POWERS = [
 const TRIALS = [
   ['timekeeper', 'Tense Control', 'Timekeeper · grammar', 'XP Quiz 1: five questions about future forms and the second conditional. Alone.'],
   ['decoder', 'Word Decoding', 'Decoder · vocabulary', 'Four words of 1380 in context. What do they mean? Which clue helped you?'],
-  ['herald', 'The Voice', 'Herald · oratory', 'Read aloud a 30-second announcement. Then check your own voice.'],
+  ['herald', 'The Voice', 'Herald · oratory', 'Read aloud a 30-second announcement to the classmate next to you. Your partner checks your voice.'],
   ['chronicler', 'The Pen', 'Chronicler · writing', 'Write a 40-word Mission Log in your Pilgrim\'s Book.'],
 ];
 const TML = [
@@ -704,10 +704,10 @@ const LESSONS = {
         <li>He said that a <b>pardon</b> from the Pope could forgive all your sins.</li>
         <li>At night the travellers ate and slept at the Tabard <b>Inn</b>.</li></ol><p class="hint">Alone · in your notebook · then score yourself on your Role Card.</p></div></div>${timer([['Trial 2', 300]])}` },
     { stop: 2, dense: true, host: ['listen', 'The <b>Herald</b> speaks to the people of every era. Let me hear you!'],
-      note: 'Prueba 3 · The Voice (5 min): todos leen el anuncio en voz alta al mismo tiempo, en voz baja y desde su puesto, dos o tres veces (practicar). Luego pida a tres o cuatro voluntarios que lo lean para el curso (30 segundos). Cada agente marca en el cuaderno cómo le fue con su propia voz y se autovalora en la Role Card. Pulse ▶.',
+      note: 'Prueba 3 · The Voice (5 min): con el compañero del lado, sin moverse del puesto. Cada agente lee el anuncio en voz alta a su compañero (30 segundos); el compañero le dice qué logró: voz clara, pausas y contacto visual. Luego cambian. Cada agente anota en el cuaderno lo que le dijo su compañero y se autovalora en la Role Card. Pulse ▶.',
       html: () => `<div class="kicker">Trial 3 · The Voice · the Herald</div>
       <div class="trial"><img src="${IMG.emb.herald}" alt=""><div><div class="scroll"><p class="frame" style="margin:0">«Pilgrims of Southwark, listen! Tomorrow morning we are going to leave for Canterbury. The road will be long, so bring bread and water. If you meet a man with a glass box, do not give him your money!»</p></div>
-        <p class="hint" style="margin:.4em 0">Practise it aloud at your desk. Then some volunteers read it for the class. Check your own voice:</p>
+        <p class="hint" style="margin:.4em 0">Read it aloud to the classmate next to you (30 seconds), then swap. Your partner checks:</p>
         <div class="checks"><span>☐ clear voice</span><span>☐ pauses</span><span>☐ eye contact</span></div></div></div>${timer([['Trial 3', 300]])}` },
     { stop: 2, dense: true, host: ['write', 'The <b>Chronicler</b> writes everything down — so history is not lost.'],
       note: 'Prueba 4 · The Pen (5 min): cada agente escribe una nota de misión de 40 palabras en el Pilgrim\'s Book con las frases de inicio. Al terminar, se autovalora en la Role Card. Pulse ▶.',
