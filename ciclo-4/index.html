@@ -976,6 +976,35 @@ a.tbtn { text-decoration: none; display: inline-block; }
 .bank.small span { font-size: 1.9vh; padding: .2vh .8vw; }
 
 .vdframe { display: none; width: min(100%, 104vh); aspect-ratio: 16 / 9; margin: 0 auto 1vh; border: .4vh solid var(--gold); border-radius: 1.2vh; overflow: hidden; background: #000; } .vdframe.on { display: block; } .vdframe iframe { width: 100%; height: 100%; border: 0; display: block; }
+/* Cycle 4 · Class 3 · The Pilgrims' Auction */
+.rsl, .rstry { display: grid; gap: .8vh; margin-bottom: .8vh; }
+.rsc { font: inherit; cursor: pointer; text-align: left; background: var(--note); border: .3vh solid var(--gold); border-radius: 1.2vh; padding: .7vh 1.2vw; display: grid; grid-template-columns: 13vw 1fr auto 1.25fr; gap: 1vw; align-items: center; }
+.rsc small { font-family: var(--f-caps); font-weight: 700; letter-spacing: .06em; color: var(--red); font-size: 1.9vh; } .rsc .d, .rsc .r { font-family: var(--f-display); font-size: 2.8vh; color: var(--navy); line-height: 1.2; }
+.rsc i { font-style: normal; color: var(--gold); font-size: 3.4vh; } .rsc .r { visibility: hidden; color: #2c5f3a; } .rsc.show .r { visibility: visible; } .rsc u { text-decoration-color: var(--red); text-decoration-thickness: .3vh; }
+.rsc.try { border-style: dashed; background: #fff8e6; }
+.rules5 { display: grid; gap: .7vh; } .rules5 > div { background: var(--note); border: .3vh solid var(--gold); border-radius: 1.2vh; padding: .7vh 1.2vw; font-size: 2.7vh; display: flex; align-items: center; gap: 1vw; }
+.pay { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1vw; margin: 1vh 0; } .pay span { background: var(--navy); color: #fdf6e3; border-radius: 1.2vh; padding: .8vh 1vw; font-size: 2.2vh; text-align: center; line-height: 1.25; } .pay b { display: block; font-family: var(--f-caps); color: #f2d48a; font-size: 3vh; }
+.p4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1vw; } .p4 > div { background: var(--note); border: .3vh solid var(--gold); border-radius: 1.4vh; padding: 1vh .8vw; display: flex; flex-direction: column; align-items: center; text-align: center; gap: .3vh; }
+.p4 img { height: 11vh; } .p4 b { font-family: var(--f-caps); font-weight: 700; color: var(--navy); font-size: 2.4vh; letter-spacing: .06em; } .p4 span { font-size: 2.3vh; line-height: 1.25; }
+.label { margin: 1.2vh auto 0; max-width: 70%; background: #fff; border: .3vh dashed var(--red); border-radius: 1vh; padding: .8vh 1.4vw; transform: rotate(-.6deg); box-shadow: 0 .6vh 1.2vh rgba(0,0,0,.18); }
+.label small { font-family: var(--f-caps); font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); font-size: 1.6vh; } .label p { margin: .2vh 0; font-family: var(--f-display); font-size: 2.6vh; color: var(--navy); } .label p b { color: var(--red); }
+.lots { display: grid; grid-template-columns: repeat(8, 1fr); gap: 1vw; margin: 0 4vw 1vh; }
+.lot { font: inherit; cursor: pointer; aspect-ratio: 1; border-radius: 50%; border: .5vh solid #7a1c14; background: radial-gradient(circle at 35% 30%, #d2493a, #9c2a1e 60%, #6e160f); color: #fde9c9; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 .6vh 1vh rgba(0,0,0,.3), inset 0 -.6vh 1vh rgba(0,0,0,.25); transition: .25s; }
+.lot b { font-family: var(--f-display); font-size: 4.6vh; line-height: 1; } .lot small { font-family: var(--f-caps); letter-spacing: .14em; text-transform: uppercase; font-size: 1.4vh; }
+.lot.bonus { background: radial-gradient(circle at 35% 30%, #e6c46a, #b9851f 60%, #7a5510); border-color: #7a5510; color: #3a2a10; }
+.lot.cur { outline: .5vh solid #f2d48a; outline-offset: .4vh; transform: scale(1.06); } .lot.sold { filter: grayscale(1) brightness(.85); opacity: .6; }
+.lotp { background: var(--note); border: .35vh solid var(--gold); border-radius: 1.4vh; padding: 1vh 1.4vw; min-height: 22vh; }
+.lothead { display: flex; align-items: baseline; gap: 1.2vw; } .lothead b { font-family: var(--f-caps); font-weight: 700; color: var(--red); font-size: 3vh; letter-spacing: .08em; } .lothead span { font-family: var(--f-caps); font-weight: 700; color: var(--navy); font-size: 2.6vh; }
+.lothead em { font-family: var(--f-display); font-style: normal; font-size: 3.6vh; color: var(--navy); flex: 1; } .lothead .clock { font-style: normal; font-family: var(--f-caps); font-weight: 700; font-size: 4.4vh; color: var(--navy); min-width: 9vw; text-align: right; } .lothead .clock.end { color: var(--red); }
+.lottxt { font-family: var(--f-display); font-size: 2.9vh; line-height: 1.3; color: var(--navy); background: #fff; border: 2px solid var(--line); border-radius: 1vh; padding: .8vh 1.2vw; margin: .6vh 0; }
+.lotans { display: flex; flex-direction: column; gap: .2vh; margin: .6vh 0; font-size: 2.5vh; } .lotans b { align-self: flex-start; font-family: var(--f-caps); font-weight: 700; letter-spacing: .08em; font-size: 2.8vh; color: #fff; border-radius: 1vh; padding: .2vh 1.2vw; } .lotans b.bug { background: var(--red); } .lotans b.ok { background: #3e7d4f; }
+.lotans span:first-of-type { font-family: var(--f-display); font-size: 2.8vh; color: var(--navy); } .lotans u { text-decoration: none; font-weight: 700; color: var(--teal); }
+.relic { display: grid; grid-template-columns: auto 1fr; gap: 2vw; align-items: center; margin-bottom: 1.4vh; } .relic img { height: 24vh; border-radius: 1.4vh; border: .4vh solid var(--gold); background: #fff; } .relic h2 { margin: 0 0 .6vh; } .relic p { font-size: 2.7vh; margin: 0 0 1vh; }
+.passp { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4vw; margin-bottom: 1vh; } .pstamp { background: var(--note); border: .35vh dashed var(--gold); border-radius: 1.4vh; padding: .8vh; display: flex; flex-direction: column; align-items: center; gap: .3vh; min-height: 15vh; justify-content: center; }
+.pstamp img { height: 11vh; border-radius: 1vh; } .pstamp small { font-family: var(--f-caps); font-weight: 700; letter-spacing: .06em; color: var(--navy); font-size: 1.9vh; } .pstamp.on { border: .45vh solid var(--red); background: #fff; transform: rotate(-1.5deg); } .pstamp.off { opacity: .55; } .pstamp.off span { font-family: var(--f-display); font-size: 8vh; color: var(--gold); line-height: 1.2; }
+
+.purse { display: flex; align-items: center; gap: 1.4vw; flex-wrap: wrap; background: var(--note); border: .3vh solid var(--gold); border-radius: 1.2vh; padding: .6vh 1.2vw; } .purse > b { font-family: var(--f-caps); font-weight: 700; color: var(--navy); font-size: 2.3vh; letter-spacing: .06em; }
+.purse span { display: inline-flex; align-items: center; gap: .4vw; } .purse span i { font-style: normal; font-family: var(--f-display); font-size: 3vh; color: var(--navy); } .purse em { font-style: normal; font-size: 2vh; color: var(--teal); flex-basis: 100%; }
 
 </style>
 </head>
@@ -1121,6 +1150,39 @@ const BINGO = [
   ['«We should use less plastic at school.» — «So you want to close the cafeteria and leave us hungry!»', 'Straw Man', 'Nobody said that!'],
   ['«Our game isn\'t "pay to win". It only has "optional time-saving purchases".»', 'Doublespeak', 'Plain words: you pay to win.']];
 const BNAMES = ['Ad Hominem', 'Bandwagon', 'Texas Sharpshooter', 'Post Hoc', 'Hasty Generalization', 'Slippery Slope', 'Straw Man', 'Doublespeak'];
+// ---------- Class 3 content · The Pilgrims' Auction & Artifact 2
+const coinSVG = (v, sz = 12) => { const c = v === 5 ? ['#e9c24f', '#8a6410', '#fff3c4'] : v === 2 ? ['#cfd3d8', '#5a6068', '#ffffff'] : ['#d79a5b', '#6e3f12', '#ffe0bd'];
+  return `<svg class="coin" viewBox="0 0 120 120" style="height:${sz}vh" aria-hidden="true"><circle cx="60" cy="60" r="57" fill="${c[0]}" stroke="${c[1]}" stroke-width="4"/><circle cx="60" cy="60" r="47" fill="none" stroke="${c[1]}" stroke-width="2" stroke-dasharray="2 5"/>
+  <path d="M60 17 l4 8 9 1 -7 6 2 9 -8 -5 -8 5 2 -9 -7 -6 9 -1z" fill="${c[1]}" opacity=".85"/><text x="60" y="80" text-anchor="middle" font-family="Cinzel, Georgia, serif" font-weight="700" font-size="46" fill="${c[1]}">${v}</text>
+  <text x="60" y="99" text-anchor="middle" font-family="Cinzel, Georgia, serif" font-weight="700" font-size="11" letter-spacing="1.5" fill="${c[1]}">${v === 1 ? 'POUND' : 'POUNDS'}</text><circle cx="38" cy="38" r="9" fill="${c[2]}" opacity=".35"/></svg>`; };
+const PURSE = [[5, 2], [2, 3], [1, 4]]; // value, how many → 20 pounds
+const REPORT = [['is · are', 'was · were'], ['sells', 'sold'], ['will', 'would'], ['can', 'could'], ['my · I', 'his · he / her · she']];
+const REPEX = [['The Pardoner: «My relics <u>are</u> real.»', 'The Pardoner claimed that <b>his</b> relics <b>were</b> real.'], ['The Host: «I <u>will</u> not pay.»', 'The Host said that <b>he would</b> not pay.'], ['The Miller: «The glove <u>brings</u> money.»', 'The Miller claimed that the glove <b>brought</b> money.']];
+const BIDTALK = ['One pound!', 'I bid three pounds!', 'Five pounds for Sundial!', 'Going once… going twice… SOLD!'];
+// who · topic on the seal · the scroll (read aloud) · bug or null · why · detector · reported speech model · truth label
+const LOTS = [
+  { who: 'The Pardoner', topic: 'about the Host', text: 'Pilgrims, the Host says that my relics are false. But who is the Host? A loud innkeeper who sells sour ale and laughs at holy things! Do not listen to a man like that.',
+    bug: 'Ad Hominem', why: 'He attacks the Host, not the Host\'s argument.', ask: 'Is he answering the idea — or attacking the person?', rep: 'The Pardoner claimed that the Host was only a loud innkeeper who sold sour ale.', label: 'Attacking the Host does not make the relics real.' },
+  { who: 'The Merchant', topic: 'about the Pardoner\'s bone', text: 'I will not buy the Pardoner\'s bone. I asked him for evidence and he had none. And last night the cook told me that he gave the Pardoner a bag of pig bones.',
+    bug: null, why: 'A relevant reason with evidence: it passes R, A and S.', ask: 'Relevant? True? Enough? Yes, yes and yes.', rep: 'The Merchant said that he would not buy the bone because the Pardoner had no evidence.', label: 'No evidence, no sale: a strong argument.' },
+  { who: 'The Pardoner', topic: 'about his pardons', text: 'Every village from London to Rochester has bought my pardons. Thousands of good people cannot be wrong! Will you be the only pilgrims in England without one?',
+    bug: 'Bandwagon', why: 'Many buyers do not make the pardons true.', ask: 'Is it true only because many people do it?', rep: 'The Pardoner claimed that every village had bought his pardons.', label: 'Popular does not mean true.' },
+  { who: 'The Miller', topic: 'about a magic glove', text: 'On Monday I touched the Pardoner\'s glove. On Tuesday I found a silver coin on the road. Friends, the glove brings money! Touch it and you will be rich.',
+    bug: 'Post Hoc', why: 'The coin came after the glove, not because of the glove.', ask: 'Did the first thing really cause the second?', rep: 'The Miller claimed that the glove brought money.', label: 'After it is not because of it.' },
+  { who: 'The Pardoner', topic: 'answering the Prioress', text: 'The Prioress says: «Perhaps we should ask a bishop about these relics.» So the Prioress wants to close every church in England! She says that pilgrims must never touch a holy thing again!',
+    bug: 'Straw Man', why: 'The Prioress never said that. He changed her argument and attacked the new one.', ask: 'Did she really say that?', rep: 'The Pardoner claimed that the Prioress wanted to close every church in England.', label: 'She only asked for a second opinion.' },
+  { who: 'The Wife of Bath', topic: 'about the horses', text: 'We should rest the horses at Ospringe tonight. They have walked twenty miles today, and a tired horse can fall and hurt its rider. I have seen it happen on the road to Rome.',
+    bug: null, why: 'A relevant reason with evidence from her own experience: it passes R, A and S.', ask: 'Relevant? True? Enough? Yes, yes and yes.', rep: 'The Wife of Bath said that they should rest the horses because the horses were tired.', label: 'Tired horses are dangerous: a strong argument.' },
+  { who: 'The Pardoner', topic: 'about money', text: 'I never take money from the poor. I only help them to make a small «investment in heaven». And these are not «pig bones», my friends: they are «relics of country origin».',
+    bug: 'Doublespeak', why: 'Pretty words hide the plain truth: he takes their money and sells pig bones.', ask: 'What does it mean in plain words?', rep: 'The Pardoner claimed that he never took money from the poor.', label: 'In plain words: he sells pig bones to poor people.' },
+  { who: 'The Reeve', topic: 'about the Miller\'s stories', text: 'If we let the Miller tell one more story, he will tell ten. Then nobody will sleep, the horses will be tired, we will lose the road — and we will never reach Canterbury!',
+    bug: 'Slippery Slope', why: 'One story does not lead to that chain of disasters.', ask: 'Will the first step really lead to the last one?', rep: 'The Reeve claimed that they would never reach Canterbury.', label: 'One story will not stop the journey.' }];
+// reported-speech cards for the «claimed that» slide
+const RS = [ // direct → reported
+  ['The Pardoner', 'My relics <u>are</u> real.', 'The Pardoner claimed that his relics <u>were</u> real.'],
+  ['The Miller', 'The food in Kent <u>is</u> terrible.', 'The Miller claimed that the food in Kent <u>was</u> terrible.'],
+  ['The Merchant', 'I <u>have</u> the best hats in London.', 'The Merchant claimed that he <u>had</u> the best hats in London.']];
+const RSTRY = ['The Reeve', 'The Miller <u>is</u> a thief.', 'The Reeve claimed that the Miller <u>was</u> a thief.'];
 const LESSONS = {
   map: { stops: [], scene: { '-1': 'hq' }, arrive: {}, plaque: 'Harry Bailly · Chronos Agent', slides: [
     { stop: -1, host: ['map', () => course ? 'Choose your class, agents!' : 'Good morrow, agents! First, choose your course.'],
@@ -1261,6 +1323,60 @@ const LESSONS = {
       <div class="info">Next class: <b>The Pilgrims' Auction</b>. You will bid with the pounds of 1380 for sealed scrolls… and some of them hide a bug. Bring your <b>Bugdex</b>!</div>
       <button type="button" class="endbtn" data-tomap="1">☰ Back to the cycle map</button>` },
   ] },
+  c3: { stops: ['Claimed that', 'Rules', 'Auction', 'Artifact 2', 'Farewell'], scene: { '-1': 'cant', 0: 'osp', 1: 'cant', 2: 'cant', 3: 'hq', 4: 'inn' }, plaque: 'Harry Bailly · Chronos Agent',
+    arrive: { 0: ['Class 3 · The Pilgrims\' Auction', 'He Claimed That…', 'Report what they said'], 1: ['Canterbury market · 1380', 'The Rules of the Auction', 'Twenty pounds · sealed scrolls'], 2: ['Going once… going twice…', 'The Auction', 'Bid · read aloud · decode in 60 seconds'], 3: ['Artifact unlocked', 'The Pardoner\'s Relic', 'Timeline Integrity: 66 %'], 4: ['The last night in 1380', 'Farewell to 1380', 'Next stop: Rome, 44 BC'] },
+    slides: [
+    { stop: -1, host: ['moneybag', 'Welcome to Canterbury, agents! Today we hold an <b>auction</b>.'],
+      note: 'Objetivo (2 min). En español: los peregrinos llegaron a Canterbury. Los escuadrones pujan con libras de 1380 por pergaminos sellados; algunos esconden un bug y dos son argumentos buenos. Con los pergaminos decodificados se gana el Artefacto 2, el Pardoner\'s Relic (meter al 66 %), y nos despedimos de 1380. Criterios: C5 (¿confiable o falacia?) y C6 (estilo indirecto: «claimed that…»). Antes de empezar: una bolsa de 20 libras por escuadrón (9 monedas), los 8 pergaminos enrollados sobre su escritorio, papelitos para las etiquetas y la caja del Bulero (la Mystery Box del Ciclo 2).',
+      html: () => `<div class="kicker">Cycle 4 · The Pardoner's Relic · Class 3 · The Pilgrims' Auction & Artifact 2</div><h1>Today, agents, you will buy sealed scrolls — and decode them in 60 seconds.</h1>
+      <div class="goals"><span><b>C5</b> bug or good argument?</span><span><b>C6</b> He claimed that…</span><span><b>★</b> Artifact 2</span></div>
+      <div class="info">On your desk: your <b>Bugdex</b>, your <b>Decoder Lens</b> and your squad's <b>purse</b>. Count it: you have <b>20 pounds</b>.</div>` },
+    { stop: 0, dense: true, host: ['idea', 'When you report, the verb takes <b>one step back</b>.'],
+      note: () => `He claimed that… (4 min, C6). Es solo el marco que necesitan para la subasta; el estilo indirecto completo llega en la Clase 5. Lea los tres ejemplos: toque cada tarjeta para pasar de las palabras exactas al reporte. Señale el cambio: is → was · are → were · have → had · my → his / her. Luego «Your turn»: los Timekeepers reportan la frase del Reeve; revele.${isImm() ? ' En 7A y 7B, pida otros verbos de reporte: said, promised, warned, argued.' : ''}`,
+      html: () => `<div class="kicker">Timekeepers' tool · reported speech · one step back</div>
+      <div class="rsl">${RS.map(([w, d, r]) => `<button type="button" class="rsc"><small>${w}</small><span class="d">«${d}»</span><i>→</i><span class="r">${r}</span></button>`).join('')}</div>
+      <div class="rstry"><button type="button" class="rsc try"><small>Your turn · ${RSTRY[0]}</small><span class="d">«${RSTRY[1]}»</span><i>→</i><span class="r">${RSTRY[2]}</span></button></div>
+      <div class="scroll"><p class="frame" style="margin:0">______ <u>claimed that</u> ______ + <b>past</b>. · is → was · are → were · have → had · my → his / her</p></div>
+      ${immBox('More reporting verbs: <b>said · promised · warned · argued</b> that…')}` },
+    { stop: 1, dense: true, host: ['coin', 'Twenty pounds. Spend them <b>wisely</b>!'],
+      note: 'Reglas (3 min). Léalas con la clase. Puntos clave: 1) se puja de libra en libra, en inglés y solo por boca del Herald; el escuadrón que gana paga en la mesa del subastador (usted). 2) El pergamino se abre solo cuando está pagado. 3) Máximo dos pergaminos por escuadrón, para que todos alcancen. 4) Dos pergaminos NO tienen bug: son argumentos buenos y valen más. 5) Al final, cada libra que sobre vale 1 XP. Dato para los Decoders: en 1380 no existía la moneda de una libra; una libra eran 240 peniques de plata.',
+      html: () => `<div class="kicker">The rules of the auction · Canterbury market, 1380</div>
+      <div class="rules5"><div><span class="step">1</span><span>Bids go up <b>pound by pound</b>. Bid in English: ${BIDTALK.slice(0, 3).map(t => `«${t}»`).join(' ')}</span></div><div><span class="step">2</span><span>The winner <b>pays</b> and takes the sealed scroll.</span></div>
+        <div><span class="step">3</span><span>A squad can buy <b>two scrolls</b>, no more.</span></div><div><span class="step">4</span><span>Careful: <b>two scrolls hide no bug</b>. They are good arguments!</span></div><div><span class="step">5</span><span>At the end, every pound in your purse = <b>1 XP</b>.</span></div></div>
+      <div class="pay"><span><b>+20 XP</b> you name the bug and report it</span><span><b>+30 XP</b> you prove it is a good argument</span><span><b>+10 XP</b> another squad steals the answer</span></div>
+      <div class="purse"><b>Your purse</b>${PURSE.map(([v, k]) => `<span>${coinSVG(v, 7)}<i>× ${k}</i></span>`).join('')}<b>= 20 pounds</b><em>🔎 Decoders: in 1380 there was no «one pound» coin. A pound was 240 silver pennies!</em></div>` },
+    { stop: 1, dense: true, host: ['hourglass', 'You win a scroll? You have <b>60 seconds</b>!'],
+      note: () => `Los 60 segundos (2 min). Cada poder tiene una tarea cuando su escuadrón gana un pergamino: el Herald lo lee EN VOZ ALTA a la «multitud que no sabe leer» (el resto del curso escucha: nadie más ve el texto); el Decoder nombra el bug, o dice «No bug!»; el Timekeeper lo reporta con «claimed that…»; el Chronicler escribe la etiqueta de verdad en un papelito. Muestre el modelo de etiqueta. Las etiquetas se guardan: al final van dentro de la caja del Bulero.${isImm() ? ' En 7A y 7B la etiqueta lleva también el filtro del lente (R, A o S).' : ''}`,
+      html: () => `<div class="kicker">Your squad wins a scroll · 60 seconds · four powers</div>
+      <div class="p4"><div><img src="${IMG.emb.herald}" alt=""><b>Herald</b><span>reads the scroll <u>aloud</u> to the crowd</span></div><div><img src="${IMG.emb.decoder}" alt=""><b>Decoder</b><span>names the bug — or says «No bug!»</span></div>
+        <div><img src="${IMG.emb.timekeeper}" alt=""><b>Timekeeper</b><span>reports it: «… claimed that…»</span></div><div><img src="${IMG.emb.chronicler}" alt=""><b>Chronicler</b><span>writes the truth label</span></div></div>
+      <div class="label"><small>Truth label · model</small><p><b>Scroll 0 · BUG:</b> The Fake Relic</p><p>The Pardoner claimed that his bones were holy.</p><p><b>TRUTH:</b> They were pig bones from the cook.</p></div>
+      ${immBox('Add the lens filter to your label: <b>R</b>, <b>A</b> or <b>S</b>.')}` },
+    { stop: 2, dense: true, host: ['scroll', 'Who gives me <b>one pound</b> for this scroll?'],
+      note: () => `La subasta (28 min, unos 3 min por pergamino). Para cada lote: 1) toque el sello; aparecen el orador y el título. Subaste: «Who gives me one pound?… Going once, going twice… SOLD!». 2) El escuadrón paga y recibe el pergamino. 3) El Herald lo lee en voz alta; pulse «▶ 60 s». 4) El escuadrón responde: bug (o «No bug») + frase con «claimed that». 5) «Reveal» muestra la respuesta; «Show the scroll» proyecta el texto para comprobar. XP: +20 bug correcto y reportado · +30 argumento bueno demostrado con R·A·S · si fallan, otro escuadrón puede robar por +10. Los lotes 2 y 6 son los argumentos buenos. Si el tiempo aprieta, cierre en el lote 6.${isImm() ? ' En 7A y 7B la respuesta solo vale si nombran también el filtro del lente.' : ''} Al final sume 1 XP por cada libra que le quede a cada escuadrón.`,
+      html: () => `<div class="kicker">The Auction · tap a seal to open the lot</div>
+      <div class="lots" id="lots">${LOTS.map((l, n) => `<button type="button" class="lot" data-lot="${n}"><b>${n + 1}</b><small>lot</small></button>`).join('')}</div>
+      <div class="lotp" id="lotp"><p class="hint center">Sealed scrolls from the road to Canterbury. Some hide a bug… two are good arguments.</p></div>
+      ${xpBoard(10)}` },
+    { stop: 3, dense: true, host: ['key', 'Your truth labels open the box. <b>Artifact 2</b> is yours!'],
+      note: 'Artefacto 2 (5 min). Cada Chronicler lee una etiqueta de verdad y la mete en la caja del Bulero: las etiquetas son la verdad escondida dentro de la reliquia falsa. Cuando entren todas, pulse «Unlock»: el meter sube de 33 % a 66 %. Guarde las etiquetas de cada curso en un sobre marcado dentro de la caja (se usan en el museo y en el archivo).',
+      html: () => `<div class="kicker">Artifact 2 unlocked · The Pardoner's Relic</div>
+      <div class="relic"><img src="${IMG.v.relic}" alt=""><div><h2>A false relic. Inside it: the truth.</h2><p>Every squad puts its <b>truth labels</b> in the Pardoner's box. He sold lies; you are leaving the truth.</p>
+        <div class="revealbar" style="justify-content:flex-start"><button type="button" class="tbtn go" id="relicGo">🔓 Unlock the Artifact</button></div></div></div>
+      <div class="meter" id="meterR"><div class="fill" id="mfillR" style="width:33%"></div><div class="pct" id="mpctR">33 %</div><div class="mend">100 % · ${course ? (DATES[course][3] === 'archive' ? 'The Chronos Archive' : 'Museum of the Future') : 'Term test'}</div></div>
+      ${meterMarks()}` },
+    { stop: 3, dense: true, host: ['write', 'Stamp your <b>Chronos Passport</b>, agents!'],
+      note: () => `Chronos Passport (4 min, en el cuaderno). En la página del pasaporte (la del Decoder Lens, de diciembre) dibujan el segundo sello y escriben dos frases: lo que aprendieron en 1380 y una afirmación del Bulero en estilo indirecto con la verdad.${isImm() ? ' En 7A y 7B añaden una tercera con segundo condicional.' : ''} Revise algunos cuadernos para el seguimiento de C6.`,
+      html: () => `<div class="kicker">Chronos Passport · stamp 2 of 3</div>
+      <div class="passp"><div class="pstamp">${lensSVG(11)}<small>Decoder Lens ✓</small></div><div class="pstamp on"><img src="${IMG.v.relic}" alt=""><small>Pardoner's Relic ✓</small></div><div class="pstamp off"><span>?</span><small>Rome · 44 BC</small></div></div>
+      <div class="exit2"><p><b>1</b> In 1380 I learned that ______.</p><p><b>2</b> The Pardoner claimed that ______, but the truth was that ______.</p></div>
+      ${immBox('<b>3</b> If I met the Pardoner again, I would…')}${timer([['Write', 210]])}` },
+    { stop: 4, host: ['wave', 'Farewell, 1380! The time machine is <b>ready</b>…'],
+      note: 'Cierre (2 min). Despedida de 1380: pregunte a dos o tres agentes «What will you remember from 1380?». Recoja las bolsas de libras (9 monedas por bolsa) y los 8 pergaminos: se usan en los otros cursos. Próxima clase: la máquina salta al año 44 a. C., a la Roma de Julio César. Que traigan la Bugdex: los bugs viajan con nosotros.',
+      html: () => `<div class="kicker">Class 3 complete · farewell to 1380</div><h1>Two artifacts. Ten bugs. One more jump.</h1>
+      <div class="info">Next class the time machine jumps <b>more than 1,400 years back</b>: Rome, the Ides of March, <b>44 BC</b>. Bring your <b>Bugdex</b> — the bugs travel with us.</div>
+      <button type="button" class="endbtn" data-tomap="1">☰ Back to the cycle map</button>` },
+  ] },
 };
 // ---------- engine
 let L = 'map', i = 0, tick = null, AC = null, ANIM = true, lastStop = -2;
@@ -1399,6 +1515,25 @@ function mountWidgets() {
   if ($('bgs')) stepper('bgs', 'bgPrev', 'bgRev', 'bgNext', i => { $('bgN').textContent = i + 1; });
   document.querySelectorAll('#fit [data-now]').forEach(b => b.onclick = () => { $(b.dataset.now).classList.add('show'); b.remove(); chime(); fitStage(); });
   document.querySelectorAll('#fit .dsc').forEach(b => b.onclick = () => { b.classList.toggle('show'); if (b.classList.contains('show')) chime(); });
+  // Class 3 · The Pilgrims' Auction
+  document.querySelectorAll('#fit .rsc').forEach(b => b.onclick = () => { b.classList.toggle('show'); if (b.classList.contains('show')) chime(); });
+  if (window.AUCT && !$('lots')) { clearInterval(window.AUCT); window.AUCT = null; }
+  if ($('lots')) { window.AUC = window.AUC || { sold: {}, rev: {}, course: course }; if (AUC.course !== course) window.AUC = { sold: {}, rev: {}, course: course };
+    const paint = () => document.querySelectorAll('#lots .lot').forEach(b => { b.classList.toggle('sold', !!AUC.sold[b.dataset.lot]); b.classList.toggle('cur', AUC.cur == b.dataset.lot); });
+    const open = n => { const l = LOTS[n]; AUC.cur = n; clearInterval(window.AUCT); paint();
+      $('lotp').innerHTML = `<div class="lothead"><b>Lot ${+n + 1}</b><span>${l.who}</span><em>${l.topic}</em><i class="clock" id="lotC"></i></div>
+        <div class="lottxt" id="lotTxt" hidden>«${l.text}»</div>
+        <div class="lotans" id="lotAns" ${AUC.rev[n] ? '' : 'hidden'}><b class="${l.bug ? 'bug' : 'ok'}">${l.bug || 'NO BUG · a good argument'}</b><span>${l.rep}</span><span><u>Why:</u> ${l.why} · <u>Truth label:</u> ${l.label}</span></div>
+        <div class="revealbar"><button type="button" class="tbtn go" id="lotT">▶ 60 s</button><button type="button" class="tbtn" id="lotS">Show the scroll</button><button type="button" class="tbtn" id="lotR">Reveal</button><button type="button" class="tbtn" id="lotSold">${AUC.sold[n] ? '↺ Not sold' : '✓ Sold'}</button><span class="hint">Bid → pay → read aloud → 60 s</span></div>`;
+      $('lotT').onclick = () => { clearInterval(window.AUCT); const end = Date.now() + 60000; const step = () => { if (!$('lotC')) return clearInterval(window.AUCT); const left = Math.max(0, Math.round((end - Date.now()) / 1000)); $('lotC').textContent = fmt(left); $('lotC').classList.toggle('end', left <= 10); if (left <= 0) { clearInterval(window.AUCT); chime(); } }; step(); window.AUCT = setInterval(step, 250); };
+      $('lotS').onclick = () => { $('lotTxt').hidden = !$('lotTxt').hidden; fitStage(); };
+      $('lotR').onclick = () => { AUC.rev[n] = 1; $('lotAns').hidden = false; clearInterval(window.AUCT); chime(); fitStage(); };
+      $('lotSold').onclick = () => { AUC.sold[n] = !AUC.sold[n]; $('lotSold').textContent = AUC.sold[n] ? '↺ Not sold' : '✓ Sold'; if (AUC.sold[n]) chime(); paint(); };
+      fitStage(); };
+    document.querySelectorAll('#lots .lot').forEach(b => b.onclick = () => open(b.dataset.lot)); paint(); if (AUC.cur != null) open(AUC.cur); }
+  // Class 3 · Artifact 2: meter 33 → 66 %
+  if ($('relicGo')) { const set = p => { $('mfillR').style.width = p + '%'; $('mpctR').textContent = p + ' %'; }; if (window.RELIC66) { set(66); $('relicGo').remove(); }
+    else $('relicGo').onclick = () => { window.RELIC66 = 1; $('relicGo').remove(); let p = 33; const go = () => { if (!$('meterR')) return; p = Math.min(66, p + 1); set(p); if (p < 66) setTimeout(go, ANIM ? 45 : 0); else chime(); }; go(); }; }
   document.querySelectorAll('#fit [data-tomap]').forEach(b => b.onclick = () => openLesson('map'));
   document.querySelectorAll('#fit [data-course]').forEach(b => b.onclick = () => { setCourse(b.dataset.course); startMusic(); render(); });
   document.querySelectorAll('#fit [data-lesson]').forEach(b => b.onclick = () => { if (!b.disabled) { startMusic(); openLesson(b.dataset.lesson); } });
