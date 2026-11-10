@@ -983,7 +983,7 @@ a.tbtn { text-decoration: none; display: inline-block; }
 .rsc i { font-style: normal; color: var(--gold); font-size: 3.4vh; } .rsc .r { visibility: hidden; color: #2c5f3a; } .rsc.show .r { visibility: visible; } .rsc u { text-decoration-color: var(--red); text-decoration-thickness: .3vh; }
 .rsc.try { border-style: dashed; background: #fff8e6; }
 .rules5 { display: grid; gap: .7vh; } .rules5 > div { background: var(--note); border: .3vh solid var(--gold); border-radius: 1.2vh; padding: .7vh 1.2vw; font-size: 2.7vh; display: flex; align-items: center; gap: 1vw; }
-.pay { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1vw; margin: 1vh 0; } .pay span { background: var(--navy); color: #fdf6e3; border-radius: 1.2vh; padding: .8vh 1vw; font-size: 2.2vh; text-align: center; line-height: 1.25; } .pay b { display: block; font-family: var(--f-caps); color: #f2d48a; font-size: 3vh; }
+.pay { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1vw; margin: 1vh 0; } .pay span { background: var(--navy); color: #fdf6e3; border-radius: 1.2vh; padding: .8vh 1vw; font-size: 2.2vh; text-align: center; line-height: 1.25; } .pay b { display: block; font-family: var(--f-caps); color: #f2d48a; font-size: 3vh; }
 .p4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1vw; } .p4 > div { background: var(--note); border: .3vh solid var(--gold); border-radius: 1.4vh; padding: 1vh .8vw; display: flex; flex-direction: column; align-items: center; text-align: center; gap: .3vh; }
 .p4 img { height: 11vh; } .p4 b { font-family: var(--f-caps); font-weight: 700; color: var(--navy); font-size: 2.4vh; letter-spacing: .06em; } .p4 span { font-size: 2.3vh; line-height: 1.25; }
 .label { margin: 1.2vh auto 0; max-width: 70%; background: #fff; border: .3vh dashed var(--red); border-radius: 1vh; padding: .8vh 1.4vw; transform: rotate(-.6deg); box-shadow: 0 .6vh 1.2vh rgba(0,0,0,.18); }
@@ -1005,6 +1005,22 @@ a.tbtn { text-decoration: none; display: inline-block; }
 
 .purse { display: flex; align-items: center; gap: 1.4vw; flex-wrap: wrap; background: var(--note); border: .3vh solid var(--gold); border-radius: 1.2vh; padding: .6vh 1.2vw; } .purse > b { font-family: var(--f-caps); font-weight: 700; color: var(--navy); font-size: 2.3vh; letter-spacing: .06em; }
 .purse span { display: inline-flex; align-items: center; gap: .4vw; } .purse span i { font-style: normal; font-family: var(--f-display); font-size: 3vh; color: var(--navy); } .purse em { font-style: normal; font-size: 2vh; color: var(--teal); flex-basis: 100%; }
+/* Power teams (10 nov 2026): XP by power, mixed groups numbered */
+.xpboard.pw { grid-template-columns: repeat(4, 1fr); max-width: 120vh; margin: 0 auto; }
+.xpboard.pw .xpsq img { width: 70%; margin: 0 auto; display: block; }
+.xpboard.pw.mini .xpsq img { width: 52%; }
+.gnum { display: inline-grid; place-items: center; width: 5vh; height: 5vh; flex: none; border-radius: 50%; background: var(--navy); color: #f2d48a; font-family: var(--f-display); font-style: normal; font-weight: 700; font-size: 2.8vh; border: .3vh solid var(--gold); box-shadow: 0 .3vh .6vh rgba(0, 0, 0, .3); }
+.claimc .gnum { width: 6vh; height: 6vh; font-size: 3.2vh; }
+.rot .sqg .gnum { width: 4.6vh; height: 4.6vh; font-size: 2.4vh; }
+.ptrules { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1vw; margin: 1.2vh 0; }
+.ptrules > div { background: var(--note); border: 2px solid var(--line); border-radius: 1vh; padding: 1vh 1vw; font-size: 2.2vh; line-height: 1.25; display: flex; gap: .6vw; align-items: flex-start; }
+@media (max-aspect-ratio: 3/2) { .rot .sqg .gnum { width: 3.4vh; height: 3.4vh; font-size: 1.8vh; } .ptrules > div { font-size: 1.8vh; } }
+.ptrules + .scroll { margin-top: 0; } #fit .powers .power b { font-size: 3vh; }
+.mixg { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2vw; margin: 1.4vh 0; }
+.mixg > div { display: flex; flex-direction: column; align-items: center; gap: .4vh; background: var(--note); border: 2px solid var(--line); border-radius: 1.2vh; padding: 1.2vh .6vw; }
+.mixg img { width: 11vh; height: 11vh; object-fit: contain; }
+.mixg b { font-family: var(--f-display); font-size: 2.8vh; color: var(--navy); }
+.mixg span { font-size: 2.6vh; letter-spacing: .1em; color: var(--red); font-weight: 700; }
 
 </style>
 </head>
@@ -1065,13 +1081,26 @@ const WHEN = {
 };
 // ---------- Cycle 4 · common
 const isImm = () => ['7A', '7B'].includes(course);
-const SQUADS = ['Hourglass', 'Sundial', 'Pendulum', 'Compass', 'Astrolabe', 'Chronometer', 'Lantern'];
+// Power teams (since 10 nov 2026): no fixed squads. XP goes to the power team; work groups are mixed (one agent of each power), numbered, and change every class.
+const SQUADS = ['Group 1', 'Group 2', 'Group 3', 'Group 4', 'Group 5', 'Group 6', 'Group 7'];
 const sqs = () => isImm() ? SQUADS.slice(0, 6) : SQUADS;
 const POWERS = [['timekeeper', 'Timekeeper'], ['decoder', 'Decoder'], ['herald', 'Herald'], ['chronicler', 'Chronicler']];
 const timer = phases => `<div class="timer" data-phases='${JSON.stringify(phases)}'></div>`;
 const nb = t => `<div class="nb"><span>✎</span><span><b>In your notebook:</b> ${t}</span></div>`;
 const immBox = html => `<div class="immbox${isImm() ? ' on' : ''}"><b>7A · 7B immersion</b>${html}</div>`;
-const xpBoard = (step = 5) => `<div class="xpboard mini" id="xpb" data-step="${step}">${sqs().map(s => `<button type="button" class="xpsq" data-sq="${s}"><img src="${IMG.sq[s.toLowerCase()]}" alt=""><b>${s}</b><span class="xp" data-xp="${s}">0 XP</span><i class="minus" data-minus="${s}" title="−${step} XP">−</i></button>`).join('')}</div>`;
+const gb = n => `<i class="gnum">${n}</i>`;
+const ngroups = () => isImm() ? 6 : 7;
+const pxBoard = (step, mini) => `<div class="xpboard pw${mini ? ' mini' : ''}" id="xpb" data-step="${step}">${POWERS.map(([k, n]) => `<button type="button" class="xpsq" data-sq="${k}"><img src="${IMG.emb[k]}" alt=""><b>${n}s</b><span class="xp" data-xp="${k}">0 XP</span><i class="minus" data-minus="${k}" title="−${step} XP">−</i></button>`).join('')}</div>`;
+const xpBoard = (step = 5) => pxBoard(step, true);
+// Mixed groups of the day: every power team counts off with a different rule, so the groups change every class.
+const MIXR = ['from the window to the door', 'in alphabetical order of first names (A → Z)', 'from the back of the room to the front', 'by birthday month (January → December)', 'from the door to the window', 'in alphabetical order of surnames (Z → A)', 'from the front of the room to the back', 'by birthday day (1 → 31)', 'by the length of your first name (shortest first)', 'by birthday month (December → January)'];
+const mixRule = n => MIXR[n % MIXR.length];
+const MIXNOTE = 'Grupos mixtos del día (2 min). Cada equipo de poder se pone de pie y se numera 1, 2, 3… según la regla de la pantalla. El grupo 1 son los cuatro «1» (un Timekeeper, un Decoder, un Herald y un Chronicler), el grupo 2 los cuatro «2», y así. Si un equipo tiene un agente menos, ese grupo queda de tres y otro agente asume ese poder; si tiene uno más, el agente extra se une al grupo 1 (luego al 2…). La regla cambia en cada clase para que los grupos no se repitan.';
+const mixSlide = (stop, n, host) => ({ stop, host: [host || 'point', 'Count off in your <b>power team</b>!'], note: MIXNOTE,
+  html: () => `<div class="kicker">Today's mixed groups · ${course || ''}</div><h2>Count off in your power team <u>${mixRule(n)}</u>.</h2>
+  <div class="mixg">${POWERS.map(([k, nm]) => `<div><img src="${IMG.emb[k]}" alt=""><b>${nm}s</b><span>1 · 2 · 3 · 4 …</span></div>`).join('')}</div>
+  <div class="task" style="justify-content:center">All the <b>&nbsp;1s&nbsp;</b> = ${gb(1)} · all the <b>&nbsp;2s&nbsp;</b> = ${gb(2)} · all the <b>&nbsp;3s&nbsp;</b> = ${gb(3)} …</div>
+  <p class="hint center" style="margin:0">One Timekeeper · one Decoder · one Herald · one Chronicler in every group.</p>` });
 const bugCard = (b, img) => `<div class="kicker">The Bugdex · Bug sighting #${b.n}</div><h2>${b.name}</h2>
   <div class="bugdex"><img src="${img}" alt=""><table><tr><th>Who used it?</th><td>${b.who}</td></tr><tr><th>What did he say?</th><td>${b.said}</td></tr><tr><th>Why is it a bug?</th><td>${b.why}</td></tr><tr><th>How to catch it</th><td>${b.catch}</td></tr></table></div>`;
 const LENSCOLOR = { R: '#2f6fb3', A: '#e2b13c', S: '#b23a2c', '✓': '#3e8e5a' };
@@ -1158,7 +1187,7 @@ const coinSVG = (v, sz = 12) => { const c = v === 5 ? ['#e9c24f', '#8a6410', '#f
 const PURSE = [[5, 2], [2, 3], [1, 4]]; // value, how many → 20 pounds
 const REPORT = [['is · are', 'was · were'], ['sells', 'sold'], ['will', 'would'], ['can', 'could'], ['my · I', 'his · he / her · she']];
 const REPEX = [['The Pardoner: «My relics <u>are</u> real.»', 'The Pardoner claimed that <b>his</b> relics <b>were</b> real.'], ['The Host: «I <u>will</u> not pay.»', 'The Host said that <b>he would</b> not pay.'], ['The Miller: «The glove <u>brings</u> money.»', 'The Miller claimed that the glove <b>brought</b> money.']];
-const BIDTALK = ['One pound!', 'I bid three pounds!', 'Five pounds for Sundial!', 'Going once… going twice… SOLD!'];
+const BIDTALK = ['One pound!', 'I bid three pounds!', 'Five pounds for Group 3!', 'Going once… going twice… SOLD!'];
 // who · topic on the seal · the scroll (read aloud) · bug or null · why · detector · reported speech model · truth label
 const LOTS = [
   { who: 'The Pardoner', topic: 'about the Host', text: 'Pilgrims, the Host says that my relics are false. But who is the Host? A loud innkeeper who sells sour ale and laughs at holy things! Do not listen to a man like that.',
@@ -1209,7 +1238,7 @@ const LESSONS = {
       ${meterMarks()}
       <div class="lensrecap">${lensSVG(16)}<div><p><b style="color:${LENSCOLOR.R}">R</b> · Is the reason <b>connected</b>?</p><p><b style="color:#a77c12">A</b> · Is it <b>true</b>? Can we check it?</p><p><b style="color:${LENSCOLOR.S}">S</b> · Is it <b>enough</b>?</p></div></div>` },
     { stop: -1, dense: true, host: ['magnifier', 'Did you find a bug in a <b>Christmas advert</b>?'],
-      note: 'Holiday recon reports (4 min). La misión de vacaciones era opcional. Cada Herald que la trae la cuenta en 30 segundos con el marco: el anuncio, lo que quiere que creamos, el filtro que falla y el bug. +20 XP por reporte completo (toque el escuadrón). Si nadie la trajo, haga una ronda rápida: «Think of an advert you saw. What did it want you to buy?» y pase al warm-up.',
+      note: 'Holiday recon reports (4 min). La misión de vacaciones era opcional. Cada agente que la trae la cuenta en 30 segundos con el marco: el anuncio, lo que quiere que creamos, el filtro que falla y el bug. +20 XP por reporte completo para el poder del agente (toque su emblema). Si nadie la trajo, haga una ronda rápida: «Think of an advert you saw. What did it want you to buy?» y pase al warm-up.',
       html: () => `<div class="kicker">Holiday recon reports · 30 seconds per Herald</div>
       <div class="recon"><div><span class="step">1</span>The advert: «I saw an advert for…»</div><div><span class="step">2</span>The claim: «It wants us to believe that…»</div><div><span class="step">3</span>The filter: «The <b style="color:${LENSCOLOR.R}">R</b> / <b style="color:#a77c12">A</b> / <b style="color:${LENSCOLOR.S}">S</b> filter fails, because…»</div><div><span class="step">4</span>The bug: «It is bug number… ».</div></div>
       ${xpBoard(20)}` },
@@ -1234,8 +1263,9 @@ const LESSONS = {
       <div class="lqt cft" id="cfT">${CONF.map(([w, t]) => `<p><b>${CONFWHO[w]}:</b> ${t}</p>`).join('')}</div>
       ${nb('1–4 · A, B or C.')}
       <div class="revealbar"><button type="button" class="tbtn" id="cfShow">✋ Show me!</button><button type="button" class="tbtn" id="cfTr">Transcript</button><span class="hint">Tap a question to reveal the answer.</span></div>` },
+    mixSlide(2, 41),
     { stop: 2, dense: true, host: ['oops', 'Wait a minute… that doesn\'t <b>fit</b>!'],
-      note: () => `Spot the inconsistency (8 min, C4). Lea la definición y modele el primer par con la frase «He says…, but he…». Toque «Reveal» en cada par: aparece la frase con «but» y la explicación. En escuadrón, el Chronicler escribe el par 2 en su cuaderno con el marco y el Herald lo lee; +5 XP por frase correcta.${isImm() ? ' En 7A y 7B se abre también el par 3 (conecta con el diario del Squire de la Evidencia 1) y escriben, además, una frase con el segundo condicional: «If he really believed that…, he wouldn\'t…».' : ' El par 3 queda como reto para el escuadrón que termine primero.'}`,
+      note: () => `Spot the inconsistency (8 min, C4). Lea la definición y modele el primer par con la frase «He says…, but he…». Toque «Reveal» en cada par: aparece la frase con «but» y la explicación. En grupo, el Chronicler escribe el par 2 en su cuaderno con el marco y el Herald lo lee; +5 XP para los Chroniclers por frase correcta.${isImm() ? ' En 7A y 7B se abre también el par 3 (conecta con el diario del Squire de la Evidencia 1) y escriben, además, una frase con el segundo condicional: «If he really believed that…, he wouldn\'t…».' : ' El par 3 queda como reto para el grupo que termine primero.'}`,
       html: () => `<div class="kicker">Spot the Inconsistency · C4 · listening for what doesn't fit</div>
       <div class="defn">An argument is <b>inconsistent</b> when two of its parts <b>cannot both be true</b>.</div>
       <div class="incs">${INCONS.map((p, n) => `<div class="inc${p.imm && !isImm() ? ' extra' : ''}"><b class="n">${n + 1}</b><div class="ia"><small>${p.a[0]}</small>${p.a[1]}</div><b class="vs">✗</b><div class="ib"><small>${p.b[0]}</small>${p.b[1]}</div>
@@ -1243,7 +1273,7 @@ const LESSONS = {
       <div class="scroll"><p class="frame" style="margin:0">He says that ______, <u>but</u> he ______. · That is inconsistent because both things cannot be true.</p></div>
       ${immBox('Add: <b>If he really believed that…, he wouldn\'t…</b>')}${xpBoard()}` },
     { stop: 3, dense: true, host: ['scales', 'Three voices. Who should we <b>believe</b>?'],
-      note: () => `Reliable or not? (9 min, C5). Tres fuentes hablan de las reliquias: el Bulero, el Host y el joven Squire (el diario de la Evidencia 1). Cada agente copia la rejilla en el cuaderno (3 columnas × 3 preguntas + veredicto) y la completa en escuadrón: el Decoder lee las afirmaciones, el Chronicler escribe. Revele celda por celda tocándolas. Punto fino: el Host también tiene un interés (no quiere pagar y está enojado), así que es «bastante confiable», pero conviene verificar; el Squire lo vio con sus ojos y no vende nada.${isImm() ? ' En 7A y 7B justifican el veredicto con «He is (not) reliable because…, although…».' : ''}`,
+      note: () => `Reliable or not? (9 min, C5). Tres fuentes hablan de las reliquias: el Bulero, el Host y el joven Squire (el diario de la Evidencia 1). Cada agente copia la rejilla en el cuaderno (3 columnas × 3 preguntas + veredicto) y la completa en grupo: el Decoder lee las afirmaciones, el Chronicler escribe. Revele celda por celda tocándolas. Punto fino: el Host también tiene un interés (no quiere pagar y está enojado), así que es «bastante confiable», pero conviene verificar; el Squire lo vio con sus ojos y no vende nada.${isImm() ? ' En 7A y 7B justifican el veredicto con «He is (not) reliable because…, although…».' : ''}`,
       html: () => `<div class="kicker">Reliable or Not? · C5 · three questions for every source</div>
       <div class="reli" id="reli"><div class="rh"></div>${RELI.map(r => `<div class="rh">${r.img ? `<img src="${IMG.pil[r.img]}" alt="">` : `<span class="ico">${r.ico}</span>`}<b>${r.who}</b><span>${r.claim}</span></div>`).join('')}
         ${RQS.map((q, i) => `<div class="rq">${q}</div>${RELI.map(r => `<button type="button" class="rc">${r.q[i]}</button>`).join('')}`).join('')}
@@ -1281,21 +1311,22 @@ const LESSONS = {
       <div id="vdBox" hidden><div class="defn">A <b>fallacy</b> is an error in reasoning: the argument <b>sounds</b> good, but it doesn't work.</div>
         <div class="vbugs">${VIDBUGS.map(([n, t, k]) => `<div class="${k}"><b>${n}</b><span>${t}</span></div>`).join('')}</div></div>
       ${nb('title: <b>Logic Bug Lab</b> · copy the definition of a fallacy.')}` },
+    mixSlide(1, 42, 'present'),
     { stop: 1, dense: true, host: ['book', 'You caught these bugs. Now learn their <b>real names</b>.'],
-      note: () => `Scientific names (14 min, unos 2 min por bug). Rutina para cada uno: 1) muestre la diapositiva del Genially (botón «Open the Genially»; diapositivas 3 a 8, en este orden); 2) el Decoder del escuadrón lee el nombre y su significado en esta pantalla; 3) pregunte «Which bug of our Bugdex is it?» y todos muestran el número con los dedos; 4) toque «Reveal»: aparecen el apodo, la frase de 1380 y la pregunta detectora; 5) cada agente escribe el nombre científico junto a ese bug en su Bugdex, a lápiz. +5 XP al escuadrón que acierte primero. Ojo con el Genially: algunos ejemplos están en la diapositiva equivocada (la camiseta de la suerte y «lavar el carro» son Post Hoc, no Texas Sharpshooter; «gun control… hate freedom» es Straw Man). Use los ejemplos de 1380 de esta pantalla como referencia.${isImm() ? ' En 7A y 7B, además, dicen qué filtro del lente falla (R, A o S) antes de revelar.' : ''}`,
+      note: () => `Scientific names (14 min, unos 2 min por bug). Rutina para cada uno: 1) muestre la diapositiva del Genially (botón «Open the Genially»; diapositivas 3 a 8, en este orden); 2) el Decoder del grupo lee el nombre y su significado en esta pantalla; 3) pregunte «Which bug of our Bugdex is it?» y todos muestran el número con los dedos; 4) toque «Reveal»: aparecen el apodo, la frase de 1380 y la pregunta detectora; 5) cada agente escribe el nombre científico junto a ese bug en su Bugdex, a lápiz. +5 XP para el poder del primer agente que acierte. Ojo con el Genially: algunos ejemplos están en la diapositiva equivocada (la camiseta de la suerte y «lavar el carro» son Post Hoc, no Texas Sharpshooter; «gun control… hate freedom» es Straw Man). Use los ejemplos de 1380 de esta pantalla como referencia.${isImm() ? ' En 7A y 7B, además, dicen qué filtro del lente falla (R, A o S) antes de revelar.' : ''}`,
       html: () => `<div class="kicker">Scientific names · six bugs you already caught <span id="sciN" class="hint"></span></div>
       <div class="sci" id="sci">${SCI.map((b, n) => `<div class="scic${n ? '' : ' on'}"><div class="sl"><small>The lab calls it…</small><h2>${b.sci}</h2><p>🔎 <b>Decoder:</b> ${b.mean}</p><div class="big-q" style="font-size:3.6vh;margin:1vh 0 0">Which bug of our Bugdex is it?</div></div>
         <div class="sr"><span class="num">#${b.n}</span><b>${BUGLIST[b.n - 1]}</b><p><small>${b.who}, 1380</small>${b.said}</p><p class="ask">Detector: «${b.ask}»</p><span class="filt" style="background:${LENSCOLOR[b.f]};color:${b.f === 'A' ? '#3a2a10' : '#fff'}">Lens filter · ${b.f}</span></div></div>`).join('')}</div>
       <div class="revealbar"><a class="tbtn" href="${C2GENIALLY}" target="_blank" rel="noopener">Open the Genially ↗</a><button type="button" class="tbtn" id="sciPrev">◀</button><button type="button" class="tbtn go" id="sciRev">Reveal</button><button type="button" class="tbtn" id="sciNext">Next bug ▶</button></div>
       ${nb('in your Bugdex, write the scientific name next to each bug.')}${xpBoard()}` },
     { stop: 2, dense: true, host: ['alert', 'Bug alert! He <b>changed</b> the Host\'s words!'],
-      note: () => `Bugdex #9 · Straw Man (5 min). Muestre primero la diapositiva 9 del Genially. Luego lea el diálogo de 1380 a dos voces (usted es el Bulero; un Herald es el Host). Pregunte: «Did the Host say that?». «2026 example» muestra un ejemplo de colegio. Cada agente escribe la tarjeta #9 en su Bugdex: nombre, definición sencilla, ejemplo de 1380, ejemplo de 2026 y pregunta detectora. Filtro del lente: R (la respuesta no es relevante para el argumento real).${isImm() ? ' En 7A y 7B el ejemplo de 2026 lo inventa cada escuadrón; no copian el del sitio.' : ''}`,
+      note: () => `Bugdex #9 · Straw Man (5 min). Muestre primero la diapositiva 9 del Genially. Luego lea el diálogo de 1380 a dos voces (usted es el Bulero; un Herald es el Host). Pregunte: «Did the Host say that?». «2026 example» muestra un ejemplo de colegio. Cada agente escribe la tarjeta #9 en su Bugdex: nombre, definición sencilla, ejemplo de 1380, ejemplo de 2026 y pregunta detectora. Filtro del lente: R (la respuesta no es relevante para el argumento real).${isImm() ? ' En 7A y 7B el ejemplo de 2026 lo inventa cada grupo; no copian el del sitio.' : ''}`,
       html: () => `${bugCard(BUG9, IMG.bug.normal)}
       <div class="now" id="now9"><b>2026</b><span>${BUG9.now[0]}</span><i>→</i><span>${BUG9.now[1]}</span></div>
       <div class="revealbar"><button type="button" class="tbtn" data-now="now9">2026 example</button><span class="hint">Lens filter · <b style="color:${LENSCOLOR.R}">R</b></span></div>
       ${nb('Bugdex #9 · name · simple definition · 1380 example · 2026 example · detector question.')}` },
     { stop: 2, dense: true, host: ['oops', 'Pretty words… but what do they <b>really</b> mean?'],
-      note: () => `Bugdex #10 · Doublespeak (5 min). En el Genially es la diapositiva 10: muéstrela solo de paso, porque varios pares son de temas adultos (violencia, sexualidad) y no son para 7.°. Use los cuatro pares de esta pantalla: los escuadrones adivinan «the plain words» y usted toca cada tarjeta para revelar. Luego escriben la tarjeta #10 en la Bugdex. Filtro del lente: A (no podemos aceptar una razón cuando las palabras esconden los hechos). La diapositiva 11 del Genially (tarea en un foro) no se usa.${isImm() ? ' En 7A y 7B inventan un par propio («pretty words → plain words») sobre la vida del colegio.' : ''}`,
+      note: () => `Bugdex #10 · Doublespeak (5 min). En el Genially es la diapositiva 10: muéstrela solo de paso, porque varios pares son de temas adultos (violencia, sexualidad) y no son para 7.°. Use los cuatro pares de esta pantalla: los grupos adivinan «the plain words» y usted toca cada tarjeta para revelar. Luego escriben la tarjeta #10 en la Bugdex. Filtro del lente: A (no podemos aceptar una razón cuando las palabras esconden los hechos). La diapositiva 11 del Genially (tarea en un foro) no se usa.${isImm() ? ' En 7A y 7B inventan un par propio («pretty words → plain words») sobre la vida del colegio.' : ''}`,
       html: () => `${bugCard(BUG10, IMG.bug.normal)}
       <div class="dsp">${BUG10.pairs.map(([a, b]) => `<button type="button" class="dsc"><span>«${a}»</span><b>${b}</b></button>`).join('')}</div>
       ${nb('Bugdex #10 · name · simple definition · 1380 example · 2026 example · detector question.')}` },
@@ -1307,7 +1338,7 @@ const LESSONS = {
         <div class="bank">${BNAMES.map(n => `<span>${n}</span>`).join('')}</div></div></div>
       ${timer([['Make your card', 120]])}` },
     { stop: 3, dense: true, host: ['hourglass', 'Listen, find the bug, cross it out. Three in a line? <b>BINGO!</b>'],
-      note: () => `Bug Bingo · jugar (11 min). Lea cada frase en voz alta (o pida a un Herald que la lea). Los escuadrones deciden en 20 segundos qué bug es; toque «Reveal» y cada agente tacha ese nombre en su cartón. Quien complete una línea de tres grita «BINGO!» y su Herald debe justificar una de las frases con la pregunta detectora; si lo hace bien, +10 XP para su escuadrón. Siga hasta la frase 8: al final todos tienen el cartón lleno. Las ocho frases son de 2026 para que vean que los bugs de 1380 siguen vivos.${isImm() ? ' En 7A y 7B, para validar el bingo, el Herald dice además qué filtro del lente falla.' : ''}`,
+      note: () => `Bug Bingo · jugar (11 min). Lea cada frase en voz alta (o pida a un Herald que la lea). Los grupos deciden en 20 segundos qué bug es; toque «Reveal» y cada agente tacha ese nombre en su cartón. Quien complete una línea de tres grita «BINGO!» y debe justificar una de las frases con la pregunta detectora; si lo hace bien, +10 XP para su poder. Siga hasta la frase 8: al final todos tienen el cartón lleno. Las ocho frases son de 2026 para que vean que los bugs de 1380 siguen vivos.${isImm() ? ' En 7A y 7B, para validar el bingo, el Herald dice además qué filtro del lente falla.' : ''}`,
       html: () => `<div class="kicker">Bug Bingo · sentence <b id="bgN">1</b> of 8</div>
       <div class="bgs" id="bgs">${BINGO.map(([s, b, w], n) => `<div class="bgc${n ? '' : ' on'}"><p>${s}</p><div class="ans"><b>${b}</b><span>${w}</span></div></div>`).join('')}</div>
       <div class="revealbar"><button type="button" class="tbtn" id="bgPrev">◀</button><button type="button" class="tbtn go" id="bgRev">Reveal</button><button type="button" class="tbtn" id="bgNext">Next sentence ▶</button><span class="hint">Three in a line = BINGO! · your Herald explains one bug.</span></div>
@@ -1318,7 +1349,7 @@ const LESSONS = {
       <div class="exit2"><p><b>1</b> In 2026, the most dangerous bug is ______, because ______.</p><p><b>2</b> My example: «______». Detector question: «______?»</p></div>
       ${immBox('<b>3</b> If people knew this bug, they wouldn\'t…')}${timer([['Write', 240]])}` },
     { stop: 4, host: ['moneybag', 'Next class: the <b>Pilgrims\' Auction</b>. Bring your Bugdex!'],
-      note: 'Cierre (1 min). Próxima clase: The Pilgrims\' Auction. Los escuadrones pujarán con libras de 1380 por pergaminos sellados y tendrán que descubrir qué bug esconde cada uno; allí se gana el Artefacto 2. Que traigan la Bugdex completa (#1 a #10).',
+      note: 'Cierre (1 min). Próxima clase: The Pilgrims\' Auction. Los grupos pujarán con libras de 1380 por pergaminos sellados y tendrán que descubrir qué bug esconde cada uno; allí se gana el Artefacto 2. Que traigan la Bugdex completa (#1 a #10).',
       html: () => `<div class="kicker">Class 2 complete</div><h1>Ten bugs in your Bugdex. You are ready for the auction.</h1>
       <div class="info">Next class: <b>The Pilgrims' Auction</b>. You will bid with the pounds of 1380 for sealed scrolls… and some of them hide a bug. Bring your <b>Bugdex</b>!</div>
       <button type="button" class="endbtn" data-tomap="1">☰ Back to the cycle map</button>` },
@@ -1327,10 +1358,10 @@ const LESSONS = {
     arrive: { 0: ['Class 3 · The Pilgrims\' Auction', 'He Claimed That…', 'Report what they said'], 1: ['Canterbury market · 1380', 'The Rules of the Auction', 'Twenty pounds · sealed scrolls'], 2: ['Going once… going twice…', 'The Auction', 'Bid · read aloud · decode in 60 seconds'], 3: ['Artifact unlocked', 'The Pardoner\'s Relic', 'Timeline Integrity: 66 %'], 4: ['The last night in 1380', 'Farewell to 1380', 'Next stop: Rome, 44 BC'] },
     slides: [
     { stop: -1, host: ['moneybag', 'Welcome to Canterbury, agents! Today we hold an <b>auction</b>.'],
-      note: 'Objetivo (2 min). En español: los peregrinos llegaron a Canterbury. Los escuadrones pujan con libras de 1380 por pergaminos sellados; algunos esconden un bug y dos son argumentos buenos. Con los pergaminos decodificados se gana el Artefacto 2, el Pardoner\'s Relic (meter al 66 %), y nos despedimos de 1380. Criterios: C5 (¿confiable o falacia?) y C6 (estilo indirecto: «claimed that…»). Antes de empezar: una bolsa de 20 libras por escuadrón (9 monedas), los 8 pergaminos enrollados sobre su escritorio, papelitos para las etiquetas y la caja del Bulero (la Mystery Box del Ciclo 2).',
+      note: 'Objetivo (2 min). En español: los peregrinos llegaron a Canterbury. Los grupos pujan con libras de 1380 por pergaminos sellados; algunos esconden un bug y dos son argumentos buenos. Con los pergaminos decodificados se gana el Artefacto 2, el Pardoner\'s Relic (meter al 66 %), y nos despedimos de 1380. Criterios: C5 (¿confiable o falacia?) y C6 (estilo indirecto: «claimed that…»). Antes de empezar: una bolsa de 20 libras por grupo (9 monedas), los 8 pergaminos enrollados sobre su escritorio, papelitos para las etiquetas y la caja del Bulero (la Mystery Box del Ciclo 2).',
       html: () => `<div class="kicker">Cycle 4 · The Pardoner's Relic · Class 3 · The Pilgrims' Auction & Artifact 2</div><h1>Today, agents, you will buy sealed scrolls — and decode them in 60 seconds.</h1>
       <div class="goals"><span><b>C5</b> bug or good argument?</span><span><b>C6</b> He claimed that…</span><span><b>★</b> Artifact 2</span></div>
-      <div class="info">On your desk: your <b>Bugdex</b>, your <b>Decoder Lens</b> and your squad's <b>purse</b>. Count it: you have <b>20 pounds</b>.</div>` },
+      <div class="info">On your desk: your <b>Bugdex</b>, your <b>Decoder Lens</b> and your group's <b>purse</b>. Count it: you have <b>20 pounds</b>.</div>` },
     { stop: 0, dense: true, host: ['idea', 'When you report, the verb takes <b>one step back</b>.'],
       note: () => `He claimed that… (4 min, C6). Es solo el marco que necesitan para la subasta; el estilo indirecto completo llega en la Clase 5. Lea los tres ejemplos: toque cada tarjeta para pasar de las palabras exactas al reporte. Señale el cambio: is → was · are → were · have → had · my → his / her. Luego «Your turn»: los Timekeepers reportan la frase del Reeve; revele.${isImm() ? ' En 7A y 7B, pida otros verbos de reporte: said, promised, warned, argued.' : ''}`,
       html: () => `<div class="kicker">Timekeepers' tool · reported speech · one step back</div>
@@ -1338,22 +1369,23 @@ const LESSONS = {
       <div class="rstry"><button type="button" class="rsc try"><small>Your turn · ${RSTRY[0]}</small><span class="d">«${RSTRY[1]}»</span><i>→</i><span class="r">${RSTRY[2]}</span></button></div>
       <div class="scroll"><p class="frame" style="margin:0">______ <u>claimed that</u> ______ + <b>past</b>. · is → was · are → were · have → had · my → his / her</p></div>
       ${immBox('More reporting verbs: <b>said · promised · warned · argued</b> that…')}` },
+    mixSlide(1, 43),
     { stop: 1, dense: true, host: ['coin', 'Twenty pounds. Spend them <b>wisely</b>!'],
-      note: 'Reglas (3 min). Léalas con la clase. Puntos clave: 1) se puja de libra en libra, en inglés y solo por boca del Herald; el escuadrón que gana paga en la mesa del subastador (usted). 2) El pergamino se abre solo cuando está pagado. 3) Máximo dos pergaminos por escuadrón, para que todos alcancen. 4) Dos pergaminos NO tienen bug: son argumentos buenos y valen más. 5) Al final, cada libra que sobre vale 1 XP. Dato para los Decoders: en 1380 no existía la moneda de una libra; una libra eran 240 peniques de plata.',
+      note: 'Reglas (3 min). Léalas con la clase. Puntos clave: 1) se puja de libra en libra, en inglés y solo por boca del Herald; el grupo que gana paga en la mesa del subastador (usted). 2) El pergamino se abre solo cuando está pagado. 3) Máximo dos pergaminos por grupo, para que todos alcancen. 4) Dos pergaminos NO tienen bug: son argumentos buenos y valen más. 5) Al final, cada libra que sobre vale 1 XP para los Timekeepers, que cuidan la bolsa. Dato para los Decoders: en 1380 no existía la moneda de una libra; una libra eran 240 peniques de plata.',
       html: () => `<div class="kicker">The rules of the auction · Canterbury market, 1380</div>
       <div class="rules5"><div><span class="step">1</span><span>Bids go up <b>pound by pound</b>. Bid in English: ${BIDTALK.slice(0, 3).map(t => `«${t}»`).join(' ')}</span></div><div><span class="step">2</span><span>The winner <b>pays</b> and takes the sealed scroll.</span></div>
-        <div><span class="step">3</span><span>A squad can buy <b>two scrolls</b>, no more.</span></div><div><span class="step">4</span><span>Careful: <b>two scrolls hide no bug</b>. They are good arguments!</span></div><div><span class="step">5</span><span>At the end, every pound in your purse = <b>1 XP</b>.</span></div></div>
-      <div class="pay"><span><b>+20 XP</b> you name the bug and report it</span><span><b>+30 XP</b> you prove it is a good argument</span><span><b>+10 XP</b> another squad steals the answer</span></div>
+        <div><span class="step">3</span><span>A group can buy <b>two scrolls</b>, no more.</span></div><div><span class="step">4</span><span>Careful: <b>two scrolls hide no bug</b>. They are good arguments!</span></div><div><span class="step">5</span><span>At the end, every pound in your purse = <b>1 XP</b> for the <b>Timekeepers</b>.</span></div></div>
+      <div class="pay"><span><b>+10 XP</b> Decoders · name the bug</span><span><b>+10 XP</b> Timekeepers · report it</span><span><b>+30 XP</b> Decoders · prove a good argument</span><span><b>+10 XP</b> steal it · for your power</span></div>
       <div class="purse"><b>Your purse</b>${PURSE.map(([v, k]) => `<span>${coinSVG(v, 7)}<i>× ${k}</i></span>`).join('')}<b>= 20 pounds</b><em>🔎 Decoders: in 1380 there was no «one pound» coin. A pound was 240 silver pennies!</em></div>` },
     { stop: 1, dense: true, host: ['hourglass', 'You win a scroll? You have <b>60 seconds</b>!'],
-      note: () => `Los 60 segundos (2 min). Cada poder tiene una tarea cuando su escuadrón gana un pergamino: el Herald lo lee EN VOZ ALTA a la «multitud que no sabe leer» (el resto del curso escucha: nadie más ve el texto); el Decoder nombra el bug, o dice «No bug!»; el Timekeeper lo reporta con «claimed that…»; el Chronicler escribe la etiqueta de verdad en un papelito. Muestre el modelo de etiqueta. Las etiquetas se guardan: al final van dentro de la caja del Bulero.${isImm() ? ' En 7A y 7B la etiqueta lleva también el filtro del lente (R, A o S).' : ''}`,
-      html: () => `<div class="kicker">Your squad wins a scroll · 60 seconds · four powers</div>
+      note: () => `Los 60 segundos (2 min). Cada poder tiene una tarea cuando su grupo gana un pergamino: el Herald lo lee EN VOZ ALTA a la «multitud que no sabe leer» (el resto del curso escucha: nadie más ve el texto); el Decoder nombra el bug, o dice «No bug!»; el Timekeeper lo reporta con «claimed that…»; el Chronicler escribe la etiqueta de verdad en un papelito. Muestre el modelo de etiqueta. Las etiquetas se guardan: al final van dentro de la caja del Bulero.${isImm() ? ' En 7A y 7B la etiqueta lleva también el filtro del lente (R, A o S).' : ''}`,
+      html: () => `<div class="kicker">Your group wins a scroll · 60 seconds · four powers</div>
       <div class="p4"><div><img src="${IMG.emb.herald}" alt=""><b>Herald</b><span>reads the scroll <u>aloud</u> to the crowd</span></div><div><img src="${IMG.emb.decoder}" alt=""><b>Decoder</b><span>names the bug — or says «No bug!»</span></div>
         <div><img src="${IMG.emb.timekeeper}" alt=""><b>Timekeeper</b><span>reports it: «… claimed that…»</span></div><div><img src="${IMG.emb.chronicler}" alt=""><b>Chronicler</b><span>writes the truth label</span></div></div>
       <div class="label"><small>Truth label · model</small><p><b>Scroll 0 · BUG:</b> The Fake Relic</p><p>The Pardoner claimed that his bones were holy.</p><p><b>TRUTH:</b> They were pig bones from the cook.</p></div>
       ${immBox('Add the lens filter to your label: <b>R</b>, <b>A</b> or <b>S</b>.')}` },
     { stop: 2, dense: true, host: ['scroll', 'Who gives me <b>one pound</b> for this scroll?'],
-      note: () => `La subasta (28 min, unos 3 min por pergamino). Para cada lote: 1) toque el sello; aparecen el orador y el título. Subaste: «Who gives me one pound?… Going once, going twice… SOLD!». 2) El escuadrón paga y recibe el pergamino. 3) El Herald lo lee en voz alta; pulse «▶ 60 s». 4) El escuadrón responde: bug (o «No bug») + frase con «claimed that». 5) «Reveal» muestra la respuesta; «Show the scroll» proyecta el texto para comprobar. XP: +20 bug correcto y reportado · +30 argumento bueno demostrado con R·A·S · si fallan, otro escuadrón puede robar por +10. Los lotes 2 y 6 son los argumentos buenos. Si el tiempo aprieta, cierre en el lote 6.${isImm() ? ' En 7A y 7B la respuesta solo vale si nombran también el filtro del lente.' : ''} Al final sume 1 XP por cada libra que le quede a cada escuadrón.`,
+      note: () => `La subasta (28 min, unos 3 min por pergamino). Para cada lote: 1) toque el sello; aparecen el orador y el título. Subaste: «Who gives me one pound?… Going once, going twice… SOLD!». 2) El grupo paga y recibe el pergamino. 3) El Herald lo lee en voz alta; pulse «▶ 60 s». 4) El grupo responde: bug (o «No bug») + frase con «claimed that». 5) «Reveal» muestra la respuesta; «Show the scroll» proyecta el texto para comprobar. XP para el poder de quien hace cada tarea: +10 Decoders si nombran bien el bug · +10 Timekeepers si lo reportan bien con «claimed that…» · +30 Decoders si demuestran con R·A·S un argumento bueno · si fallan, un agente de otro grupo puede robar por +10 para su poder. Los lotes 2 y 6 son los argumentos buenos. Si el tiempo aprieta, cierre en el lote 6.${isImm() ? ' En 7A y 7B la respuesta solo vale si nombran también el filtro del lente.' : ''} Al final sume a los Timekeepers 1 XP por cada libra que le quede a cada grupo.`,
       html: () => `<div class="kicker">The Auction · tap a seal to open the lot</div>
       <div class="lots" id="lots">${LOTS.map((l, n) => `<button type="button" class="lot" data-lot="${n}"><b>${n + 1}</b><small>lot</small></button>`).join('')}</div>
       <div class="lotp" id="lotp"><p class="hint center">Sealed scrolls from the road to Canterbury. Some hide a bug… two are good arguments.</p></div>
@@ -1361,7 +1393,7 @@ const LESSONS = {
     { stop: 3, dense: true, host: ['key', 'Your truth labels open the box. <b>Artifact 2</b> is yours!'],
       note: 'Artefacto 2 (5 min). Cada Chronicler lee una etiqueta de verdad y la mete en la caja del Bulero: las etiquetas son la verdad escondida dentro de la reliquia falsa. Cuando entren todas, pulse «Unlock»: el meter sube de 33 % a 66 %. Guarde las etiquetas de cada curso en un sobre marcado dentro de la caja (se usan en el museo y en el archivo).',
       html: () => `<div class="kicker">Artifact 2 unlocked · The Pardoner's Relic</div>
-      <div class="relic"><img src="${IMG.v.relic}" alt=""><div><h2>A false relic. Inside it: the truth.</h2><p>Every squad puts its <b>truth labels</b> in the Pardoner's box. He sold lies; you are leaving the truth.</p>
+      <div class="relic"><img src="${IMG.v.relic}" alt=""><div><h2>A false relic. Inside it: the truth.</h2><p>Every group puts its <b>truth labels</b> in the Pardoner's box. He sold lies; you are leaving the truth.</p>
         <div class="revealbar" style="justify-content:flex-start"><button type="button" class="tbtn go" id="relicGo">🔓 Unlock the Artifact</button></div></div></div>
       <div class="meter" id="meterR"><div class="fill" id="mfillR" style="width:33%"></div><div class="pct" id="mpctR">33 %</div><div class="mend">100 % · ${course ? (DATES[course][3] === 'archive' ? 'The Chronos Archive' : 'Museum of the Future') : 'Term test'}</div></div>
       ${meterMarks()}` },
@@ -1464,7 +1496,7 @@ function mountWidgets() {
   document.querySelectorAll('#fit .lq li.keyq').forEach(li => li.onclick = () => li.classList.toggle('show'));
   document.querySelectorAll('#fit .lrtab tr.keyr').forEach(tr => tr.onclick = () => tr.classList.toggle('hid'));
   if ($('xpb')) {
-    const STEP = +($('xpb').dataset.step || 10), key = 'chronos-xp-' + (course || 'x'); let xp = {}; try { xp = JSON.parse(localStorage.getItem(key) || '{}'); } catch (e) {}
+    const STEP = +($('xpb').dataset.step || 10), key = 'chronos-pxp-' + (course || 'x'); let xp = {}; try { xp = JSON.parse(localStorage.getItem(key) || '{}'); } catch (e) {}
     const save = () => { try { localStorage.setItem(key, JSON.stringify(xp)); } catch (e) {} };
     const paint = () => document.querySelectorAll('#xpb .xp').forEach(el => el.textContent = (xp[el.dataset.xp] || 0) + ' XP');
     document.querySelectorAll('#xpb .xpsq').forEach(b => { b.onclick = e => { const m = e.target.closest('[data-minus]'); const s = b.dataset.sq; xp[s] = Math.max(0, (xp[s] || 0) + (m ? -STEP : STEP)); save(); paint(); if (!m) { chime(); b.classList.remove('bump'); void b.offsetWidth; b.classList.add('bump'); } };

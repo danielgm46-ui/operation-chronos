@@ -799,6 +799,22 @@ a.tbtn { text-decoration: none; display: inline-block; }
 .qlist li span { display: block; font-size: 1.95vh; color: #3b3b3b; }
 .qlist li i { font-style: normal; font-weight: 700; color: #8a5a00; }
 .pitch7 { gap: 1vh; margin: 0; padding-left: 2.6vw; font-size: 2.7vh; line-height: 1.3; font-family: var(--f-display, Georgia, serif); color: #1d3557; }
+/* Power teams (10 nov 2026): XP by power, mixed groups numbered */
+.xpboard.pw { grid-template-columns: repeat(4, 1fr); max-width: 120vh; margin: 0 auto; }
+.xpboard.pw .xpsq img { width: 70%; margin: 0 auto; display: block; }
+.xpboard.pw.mini .xpsq img { width: 52%; }
+.gnum { display: inline-grid; place-items: center; width: 5vh; height: 5vh; flex: none; border-radius: 50%; background: var(--navy); color: #f2d48a; font-family: var(--f-display); font-style: normal; font-weight: 700; font-size: 2.8vh; border: .3vh solid var(--gold); box-shadow: 0 .3vh .6vh rgba(0, 0, 0, .3); }
+.claimc .gnum { width: 6vh; height: 6vh; font-size: 3.2vh; }
+.rot .sqg .gnum { width: 4.6vh; height: 4.6vh; font-size: 2.4vh; }
+.ptrules { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1vw; margin: 1.2vh 0; }
+.ptrules > div { background: var(--note); border: 2px solid var(--line); border-radius: 1vh; padding: 1vh 1vw; font-size: 2.2vh; line-height: 1.25; display: flex; gap: .6vw; align-items: flex-start; }
+@media (max-aspect-ratio: 3/2) { .rot .sqg .gnum { width: 3.4vh; height: 3.4vh; font-size: 1.8vh; } .ptrules > div { font-size: 1.8vh; } }
+.ptrules + .scroll { margin-top: 0; } #fit .powers .power b { font-size: 3vh; }
+.mixg { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2vw; margin: 1.4vh 0; }
+.mixg > div { display: flex; flex-direction: column; align-items: center; gap: .4vh; background: var(--note); border: 2px solid var(--line); border-radius: 1.2vh; padding: 1.2vh .6vw; }
+.mixg img { width: 11vh; height: 11vh; object-fit: contain; }
+.mixg b { font-family: var(--f-display); font-size: 2.8vh; color: var(--navy); }
+.mixg span { font-size: 2.6vh; letter-spacing: .1em; color: var(--red); font-weight: 700; }
 
 </style>
 </head>
@@ -859,7 +875,20 @@ const WHEN = {
 };
 // ---------- Cycle 2 · common
 const isImm = () => ['7A', '7B'].includes(course);
-const SQUADS = ['Hourglass', 'Sundial', 'Pendulum', 'Compass', 'Astrolabe', 'Chronometer', 'Lantern'];
+// Power teams (since 10 nov 2026): no fixed squads. XP goes to the power team; work groups are mixed (one agent of each power), numbered, and change every activity.
+const SQUADS = ['Group 1', 'Group 2', 'Group 3', 'Group 4', 'Group 5', 'Group 6', 'Group 7'];
+const gb = n => `<i class="gnum">${String(n).replace('Group ', '')}</i>`;
+const ngroups = () => isImm() ? 6 : 7;
+// Mixed groups of the day: every power team counts off with a different rule, so the groups change every class.
+const MIXR = ['from the window to the door', 'in alphabetical order of first names (A → Z)', 'from the back of the room to the front', 'by birthday month (January → December)', 'from the door to the window', 'in alphabetical order of surnames (Z → A)', 'from the front of the room to the back', 'by birthday day (1 → 31)', 'by the length of your first name (shortest first)', 'by birthday month (December → January)'];
+const mixRule = n => MIXR[n % MIXR.length];
+const MIXNOTE = 'Grupos mixtos del día (2 min). Cada equipo de poder se pone de pie y se numera 1, 2, 3… según la regla de la pantalla. El grupo 1 son los cuatro «1» (un Timekeeper, un Decoder, un Herald y un Chronicler), el grupo 2 los cuatro «2», y así. Si un equipo tiene un agente menos, ese grupo queda de tres y otro agente asume ese poder; si tiene uno más, el agente extra se une al grupo 1 (luego al 2…). La regla cambia en cada clase para que los grupos no se repitan.';
+const mixSlide = (stop, n, host) => ({ stop, host: [host || 'point', 'Count off in your <b>power team</b>!'], note: MIXNOTE,
+  html: () => `<div class="kicker">Today's mixed groups · ${course || ''}</div><h2>Count off in your power team <u>${mixRule(n)}</u>.</h2>
+  <div class="mixg">${POWERS.map(([k, nm]) => `<div><img src="${IMG.emb[k]}" alt=""><b>${nm}s</b><span>1 · 2 · 3 · 4 …</span></div>`).join('')}</div>
+  <div class="task" style="justify-content:center">All the <b>&nbsp;1s&nbsp;</b> = ${gb(1)} · all the <b>&nbsp;2s&nbsp;</b> = ${gb(2)} · all the <b>&nbsp;3s&nbsp;</b> = ${gb(3)} …</div>
+  <p class="hint center" style="margin:0">One Timekeeper · one Decoder · one Herald · one Chronicler in every group.</p>` });
+const pxBoard = (step, mini) => `<div class="xpboard pw${mini ? ' mini' : ''}" id="xpb" data-step="${step}">${POWERS.map(([k, n]) => `<button type="button" class="xpsq" data-sq="${k}"><img src="${IMG.emb[k]}" alt=""><b>${n}s</b><span class="xp" data-xp="${k}">0 XP</span><i class="minus" data-minus="${k}" title="−${step} XP">−</i></button>`).join('')}</div>`;
 const POWERS = [['timekeeper', 'Timekeeper'], ['decoder', 'Decoder'], ['herald', 'Herald'], ['chronicler', 'Chronicler']];
 const timer = phases => `<div class="timer" data-phases='${JSON.stringify(phases)}'></div>`;
 const nb = t => `<div class="nb"><span>✎</span><span><b>In your notebook:</b> ${t}</span></div>`;
@@ -867,31 +896,31 @@ const qlist = (qs, start) => `<ol class="qlist"${start ? ` start="${start}"` : '
 const immBox = html => `<div class="immbox${isImm() ? ' on' : ''}"><b>7A · 7B immersion</b>${html}</div>`;
 // ---------- Class 1 content
 const PILGRIMS = [
-  { k: 'knight', name: 'The Knight', sq: 'Hourglass',
+  { k: 'knight', name: 'The Knight', sq: 1,
     text: 'The Knight is a brave soldier. He has fought in fifteen **battles** in many countries, and he has always been loyal and honest. He is famous, but he is never proud: he speaks politely to everyone, rich or poor, and he never says bad things about other people. He is **humble**. His horses are good, but his clothes are simple: his **tunic** is dirty with marks from his armour, because he has just come back from a war and he wants to go to Canterbury to say thank you.',
     key: { battles: 'fights between armies in a war (clue: soldier, war)', humble: 'not proud; he does not think he is better than others (clue: never proud, polite to everyone)', tunic: 'a simple long shirt (clue: clothes, dirty with marks from his armour)' },
     line: 'He was a verray, parfit gentil knyght.', modern: 'He was a true, perfect, noble knight.' },
-  { k: 'prioress', name: 'The Prioress', sq: 'Sundial',
+  { k: 'prioress', name: 'The Prioress', sq: 2,
     text: 'The Prioress is the head of a group of nuns. She is very elegant and she wants everybody to admire her manners. At dinner she never drops food, and she wipes her lips so carefully that there is no **grease** in her cup. She is so **tender-hearted** that she cries if she sees a mouse in a trap. She feeds her little dogs with roast meat and white bread. On her arm she wears a gold **brooch** with three words: «Love conquers all».',
     key: { grease: 'fat from food (clue: dinner, she wipes her lips, cup)', 'tender-hearted': 'very kind and sensitive; she feels sorry easily (clue: she cries for a mouse)', brooch: 'jewellery that you pin on your clothes (clue: gold, on her arm, with words)' },
     line: 'She wolde wepe, if that she saugh a mous.', modern: 'She would cry if she saw a mouse.' },
-  { k: 'monk', name: 'The Monk', sq: 'Pendulum',
+  { k: 'monk', name: 'The Monk', sq: 3,
     text: 'The Monk should spend his days praying and studying in the monastery, but he prefers **hunting** in the forest with his fast horses and his dogs. He thinks the old rules for monks are boring. His sleeves are decorated with expensive grey **fur**, and he closes his hood with a gold pin. He is fat, and his bald head **shines** like glass. His favourite dinner is a big roast swan. Is he a good monk? You decide!',
     key: { hunting: 'chasing and killing animals (clue: forest, fast horses, dogs)', fur: 'the soft hair of an animal, used on clothes (clue: sleeves, expensive, grey)', shines: 'looks bright, gives light (clue: like glass, bald head)' },
     line: 'His heed was balled, that shoon as any glas.', modern: 'His head was bald, and it shone like glass.' },
-  { k: 'merchant', name: 'The Merchant', sq: 'Compass',
+  { k: 'merchant', name: 'The Merchant', sq: 4,
     text: 'The Merchant has a **forked** beard: it divides into two points at the end. He wears a hat from Flanders and expensive boots, and he sits high on his horse. He always talks seriously about his **profits**, because he wants to buy cheap and sell expensive. He looks rich and important, but nobody knows that he is in **debt**: he owes money to many people. He is very clever at hiding his problems.',
     key: { forked: 'divided into two points, like a Y (clue: it divides into two points)', profits: 'the money you win in business (clue: buy cheap and sell expensive)', debt: 'money that you owe to other people (clue: he owes money)' },
     line: 'A Marchant was ther with a forked berd.', modern: 'There was a Merchant with a forked beard.' },
-  { k: 'miller', name: 'The Miller', sq: 'Astrolabe',
+  { k: 'miller', name: 'The Miller', sq: 5,
     text: 'The Miller is a big, strong man with red hair and a red beard, like a fox. He wins every **wrestling** competition, and he can break a door by running into it with his head! On the end of his nose he has a **wart** with red hairs on it, like the hairs in a pig\'s ears. He is loud and he loves telling jokes. He also steals flour from his customers. When the pilgrims leave the town, he plays the **bagpipes**.',
     key: { wrestling: 'a sport where two people fight and try to throw each other to the ground (clue: strong, competition)', wart: 'a small hard lump on the skin (clue: on his nose, with hairs)', bagpipes: 'a musical instrument that you blow (clue: he plays it when they leave)' },
     line: 'A baggepipe wel koude he blowe and sowne.', modern: 'He could play the bagpipes very well.' },
-  { k: 'wife', name: 'The Wife of Bath', sq: 'Chronometer',
+  { k: 'wife', name: 'The Wife of Bath', sq: 6,
     text: 'The Wife of Bath is a cheerful woman from the city of Bath. She is an expert **weaver**: she makes cloth that is better than the cloth from Flanders. She has travelled to Jerusalem three times, and also to Rome and Spain. She has been married five times, and she loves laughing and talking with everybody. She wears a hat as big as a **shield**, red **stockings** and new shoes. She always wants to be the first person in the church!',
     key: { weaver: 'a person who makes cloth (clue: she makes cloth)', shield: 'a big piece of metal or wood that a soldier carries (clue: as big as… — look at the Knight!)', stockings: 'thin clothes that cover your legs and feet (clue: red, with new shoes)' },
     line: 'A good Wif was ther of biside Bathe.', modern: 'There was a good wife from near Bath.' },
-  { k: 'pardoner', name: 'The Pardoner', sq: 'Lantern',
+  { k: 'pardoner', name: 'The Pardoner', sq: 7,
     text: 'The Pardoner has just come from Rome with a bag full of **pardons**: papers that promise to forgive your sins. His hair is as yellow as **wax**, and it falls on his shoulders. His voice is high and thin, like a goat. In a glass box he carries some old bones and says they are holy relics, but they are **fake**: they are only pig bones! With these tricks he gets more money in one day than a poor priest gets in two months.',
     key: { pardons: 'papers that promise to forgive your sins (clue: it is explained after the colon)', wax: 'the soft yellow material of candles (clue: yellow)', fake: 'not real (clue: they are only pig bones)' },
     line: 'This Pardoner hadde heer as yelow as wex.', modern: 'This Pardoner had hair as yellow as wax.' },
@@ -934,8 +963,8 @@ const FACTOP = [
   ['The Host\'s storytelling game is boring.', 'O', '«boring»'],
 ];
 const OPSIG = ['I think…', 'In my opinion,…', 'I\'m sure…', 'I don\'t think…', 'best · worst · terrible · beautiful · boring', 'should · shouldn\'t'];
-const SPK = { knight: ['the Knight', 'Hourglass'], prioress: ['the Prioress', 'Sundial'], monk: ['the Monk', 'Pendulum'], merchant: ['the Merchant', 'Compass'],
-  miller: ['the Miller', 'Astrolabe'], wife: ['the Wife of Bath', 'Chronometer'], host: ['the Host', null] };
+const SPK = { knight: ['the Knight', 'Group 1'], prioress: ['the Prioress', 'Group 2'], monk: ['the Monk', 'Group 3'], merchant: ['the Merchant', 'Group 4'],
+  miller: ['the Miller', 'Group 5'], wife: ['the Wife of Bath', 'Group 6'], host: ['the Host', null] };
 const LQ = [
   { sp: ['wife', 'knight'], intro: 'You will hear the Knight and the Wife of Bath talking about the journey.',
     q: 'What does the Wife of Bath think about leaving at dawn?',
@@ -997,10 +1026,10 @@ const BUGS3 = [
     why: 'The reason is not <b>relevant</b>: B happened <u>after</u> A, but A did not cause B.', catch: 'Ask: «Did A really cause B — or did B just happen after A?»' },
 ];
 const MOTIONS = [
-  { m: 'Pilgrims should leave the Tabard Inn at dawn.', a: 'Hourglass', b: 'Sundial' },
-  { m: 'Every pilgrim should buy a relic from the Pardoner.', a: 'Pendulum', b: 'Compass' },
-  { m: 'All the pilgrims should walk the last miles to Canterbury.', a: 'Astrolabe', b: 'Chronometer' },
-  { m: 'The Host\'s storytelling game is a good idea.', a: 'Host', b: 'Lantern' },
+  { m: 'Pilgrims should leave the Tabard Inn at dawn.', a: 'Group 1', b: 'Group 2' },
+  { m: 'Every pilgrim should buy a relic from the Pardoner.', a: 'Group 3', b: 'Group 4' },
+  { m: 'All the pilgrims should walk the last miles to Canterbury.', a: 'Group 5', b: 'Group 6' },
+  { m: 'The Host\'s storytelling game is a good idea.', a: 'Host', b: 'Group 7' },
 ];
 const DEBT = [['For', 30], ['Against', 30], ['Reply · For', 15], ['Reply · Against', 15]];
 // ---------- Class 4 content
@@ -1045,13 +1074,13 @@ const FUT = [['will', 'I think / I\'m sure', 'a prediction or opinion about the 
   ['be going to', 'I can see it now', 'a prediction with evidence in front of you', 'Look at those clouds! It<b>\'s going to</b> rain.'],
   ['might', 'maybe · 50%', 'something that is possible, but not sure', 'It <b>might</b> snow tonight.']];
 const TOWNS = [
-  { t: 'Southwark', sq: 'Hourglass', x: 6, y: 34, ic: '☀️', see: 'a clear blue sky at dawn', seeV: 'be a beautiful morning', sure: 'be sunny and warm', maybe: 'be a little windy in the afternoon' },
-  { t: 'Greenwich', sq: 'Sundial', x: 20, y: 62, ic: '🌧️', see: 'dark grey clouds over the river', seeV: 'rain', sure: 'be cold all day', maybe: 'thunder in the evening' },
-  { t: 'Rochester', sq: 'Pendulum', x: 36, y: 30, ic: '🌊', see: 'the river — it is very, very high', seeV: 'flood the road', sure: 'rain in the morning', maybe: 'rain so much that they close the bridge' },
-  { t: 'Sittingbourne', sq: 'Compass', x: 51, y: 64, ic: '🌫️', see: 'thick fog in the fields', seeV: 'be hard to see the road', sure: 'stay foggy until noon', maybe: 'be dangerous, because robbers love the fog' },
-  { t: 'Ospringe', sq: 'Astrolabe', x: 64, y: 30, ic: '🟤', see: 'mud and puddles everywhere', seeV: 'be a very muddy day', sure: 'rain all afternoon', maybe: 'be too muddy for the horses' },
-  { t: 'Harbledown', sq: 'Chronometer', x: 78, y: 62, ic: '💨', see: 'the trees bending in a strong wind', seeV: 'be very windy', sure: 'be freezing at night', maybe: 'hail' },
-  { t: 'Canterbury', sq: 'Lantern', x: 92, y: 34, ic: '⛪', see: 'a red sky this evening', seeV: 'be a lovely day tomorrow', sure: 'be sunny, and the cathedral bells will ring', maybe: 'have a storm late at night' }];
+  { t: 'Southwark', sq: 1, x: 6, y: 34, ic: '☀️', see: 'a clear blue sky at dawn', seeV: 'be a beautiful morning', sure: 'be sunny and warm', maybe: 'be a little windy in the afternoon' },
+  { t: 'Greenwich', sq: 2, x: 20, y: 62, ic: '🌧️', see: 'dark grey clouds over the river', seeV: 'rain', sure: 'be cold all day', maybe: 'thunder in the evening' },
+  { t: 'Rochester', sq: 3, x: 36, y: 30, ic: '🌊', see: 'the river — it is very, very high', seeV: 'flood the road', sure: 'rain in the morning', maybe: 'rain so much that they close the bridge' },
+  { t: 'Sittingbourne', sq: 4, x: 51, y: 64, ic: '🌫️', see: 'thick fog in the fields', seeV: 'be hard to see the road', sure: 'stay foggy until noon', maybe: 'be dangerous, because robbers love the fog' },
+  { t: 'Ospringe', sq: 5, x: 64, y: 30, ic: '🟤', see: 'mud and puddles everywhere', seeV: 'be a very muddy day', sure: 'rain all afternoon', maybe: 'be too muddy for the horses' },
+  { t: 'Harbledown', sq: 6, x: 78, y: 62, ic: '💨', see: 'the trees bending in a strong wind', seeV: 'be very windy', sure: 'be freezing at night', maybe: 'hail' },
+  { t: 'Canterbury', sq: 7, x: 92, y: 34, ic: '⛪', see: 'a red sky this evening', seeV: 'be a lovely day tomorrow', sure: 'be sunny, and the cathedral bells will ring', maybe: 'have a storm late at night' }];
 const CONDS = [['If it rains tomorrow, the pilgrims will get wet.', 'R', 'It is possible: maybe it will rain.'],
   ['If I had a time machine, I would visit 1380.', 'I', 'Nobody has a time machine — it is imaginary.'],
   ['If I were the Pardoner, I would tell the truth.', 'I', 'You are not the Pardoner: imaginary.'],
@@ -1062,9 +1091,9 @@ const VQ2 = [['not proud; he does not think he is better than others', 'humble']
   ['The Pardoner showed papers with the Pope\'s red ______.', 'seal'], ['The farmer put the bone in his ______ to get water.', 'well'], ['One bad pie is not ______ evidence to say «all the food is terrible».', 'sufficient'],
   ['Is this evidence ______? Is it true? Can we check it?', 'acceptable'], ['The Wife of Bath is an expert ______: she makes cloth.', 'weaver']];
 const VQ2BANK = ['acceptable', 'brooch', 'debt', 'fake', 'humble', 'profits', 'seal', 'sinner', 'sufficient', 'weaver', 'well', 'wheat'];
-const pgGrid = (id) => `<div class="pgrid" id="${id}">${PILGRIMS.map((p, n) => `<button type="button" class="pg" data-p="${n}"><img src="${IMG.pil[p.k]}" alt=""><b>${p.name}</b><span><img src="${IMG.sq[p.sq.toLowerCase()]}" alt="">${p.sq}</span></button>`).join('')}</div>
+const pgGrid = (id) => `<div class="pgrid" id="${id}">${PILGRIMS.map((p, n) => `<button type="button" class="pg" data-p="${n}"><img src="${IMG.pil[p.k]}" alt=""><b>${p.name}</b><span>${gb(p.sq)}</span></button>`).join('')}</div>
   <div class="pview" id="pview" hidden><div class="pvin"><img id="pvImg" alt=""><div><div class="kicker" id="pvSq"></div><h2 id="pvName"></h2><p class="pvt" id="pvText"></p><div class="pvline"><b>Chaucer's line</b> <span id="pvLine"></span> <em id="pvModern"></em></div><p class="hint" style="margin:.6vh 0 0">Tap a word in bold to check its meaning · tap Chaucer's line to decode it · tap outside to close</p></div></div></div>`;
-const argGrid = (id) => `<div class="pgrid agrid" id="${id}">${ARGS.map((a, n) => { const p = PILGRIMS.find(x => x.k === a.k); return `<button type="button" class="pg" data-a="${n}"><img src="${IMG.pil[a.k]}" alt=""><b>${a.who}</b><span><img src="${IMG.sq[p.sq.toLowerCase()]}" alt="">${p.sq}</span></button>`; }).join('')}</div>
+const argGrid = (id) => `<div class="pgrid agrid" id="${id}">${ARGS.map((a, n) => { const p = PILGRIMS.find(x => x.k === a.k); return `<button type="button" class="pg" data-a="${n}"><img src="${IMG.pil[a.k]}" alt=""><b>${a.who}</b><span>${gb(p.sq)}</span></button>`; }).join('')}</div>
   <div class="pview aview" id="aview" hidden><div class="pvin"><img id="avImg" alt=""><div><div class="kicker" id="avSq"></div><h2 id="avName"></h2><p class="pvt avt" id="avText"></p>
     <div class="revealbar"><button type="button" class="tbtn go" id="avCheck">⚖ Check</button><span class="hint">tap outside to close</span></div>
     <div class="avkey" id="avKey"><div class="rasrow" id="avRas"></div><p id="avWhy"></p></div></div></div></div>`;
@@ -1080,17 +1109,18 @@ const LESSONS = {
         <p class="credits">Music: «Pippin the Hunchback», Kevin MacLeod (incompetech.com), CC BY 3.0 · Video: TED-Ed, «Everything you need to know to read The Canterbury Tales» (Iseult Gillespie) · Illustrations: Operation Chronos</p>` },
   ] },
   c1: { stops: ['Field Log', 'Video', 'Pilgrims', 'Gallery', 'Pardoner'], scene: { '-1': 'inn', 0: 'bogota', 1: 'inn', 2: 'roch', 3: 'inn', 4: 'osp' }, plaque: 'Harry Bailly · The Host · 1380',
-    arrive: { 0: ['Back from 1604', 'The Field Log Gallery', 'What did we find on Tuesday?'], 1: ['Landing in 1380', "Chaucer's England", 'Watch · listen · answer'], 2: ['The Tabard Inn', 'Seven Pilgrims', 'One pilgrim for each squad'], 3: ['The Heralds speak', 'The Pilgrim Gallery', 'Who is honest?'], 4: ['Beware!', 'The Pardoner', 'Our first logic bug of 1380'] },
+    arrive: { 0: ['Back from 1604', 'The Field Log Gallery', 'What did we find on Tuesday?'], 1: ['Landing in 1380', "Chaucer's England", 'Watch · listen · answer'], 2: ['The Tabard Inn', 'Seven Pilgrims', 'One pilgrim for each group'], 3: ['The Heralds speak', 'The Pilgrim Gallery', 'Who is honest?'], 4: ['Beware!', 'The Pardoner', 'Our first logic bug of 1380'] },
     slides: [
     { stop: -1, host: ['spyglass', 'Welcome to <b>1380</b>, agents! The time machine has landed.'],
       note: 'Objetivo (1 min). Léalo en voz alta. En español: deducir el significado de palabras a partir de detalles de un retrato (C2) y usar formas de futuro, el segundo condicional y oraciones de relativo (who) para describir y juzgar a los peregrinos (C3). Apague la música (S) antes del video.',
       html: () => `<div class="kicker">Cycle 2 · Landing in 1380 · Class 1 · Welcome to Chaucer's England</div><h1>Today, agents, you will read the faces of 1380 — and decide who is honest.</h1>
       <div class="goals"><span><b>C2</b> deduce meaning from details</span><span><b>C3</b> will · be going to · might · if I were…, I would…</span><span><b>+</b> the pilgrim <u>who</u>…</span></div>
       <div class="minipow">${POWERS.map(([k]) => `<img src="${IMG.emb[k]}" alt="">`).join('')}</div>` },
+    mixSlide(0, 21),
     { stop: 0, host: ['point', 'What did you find in <b>1604</b>?'],
-      note: 'Field Log Gallery (5 min). Cada escuadrón elige UNA fecha u objeto de su Chronos Field Log (visita del martes 17) y lo pega en la línea de tiempo del muro. El Chronicler pega; el Herald lo dice con el marco de la pantalla (pasado + pasiva). Pulse ▶.',
+      note: 'Field Log Gallery (5 min). Con los grupos mixtos del día (pantalla anterior), cada grupo elige UNA fecha u objeto de su Chronos Field Log (visita del martes 17) y lo pega en la línea de tiempo del muro. El Chronicler pega; el Herald lo dice con el marco de la pantalla (pasado + pasiva). Pulse ▶.',
       html: () => `<div class="kicker">Warm-up · The Field Log Gallery</div><h2>Put one discovery of Tuesday on our timeline.</h2>
-      <div class="tl3"><div><img src="${IMG.th['1380']}" alt=""><b>1380</b><span>Chaucer's pilgrims</span></div><i></i><div><img src="${IMG.th['1604']}" alt=""><b>1604</b><span>San Bartolomé is founded</span></div><i></i><div class="now"><b>2026</b><span>our squads</span></div></div>
+      <div class="tl3"><div><img src="${IMG.th['1380']}" alt=""><b>1380</b><span>Chaucer's pilgrims</span></div><i></i><div><img src="${IMG.th['1604']}" alt=""><b>1604</b><span>San Bartolomé is founded</span></div><i></i><div class="now"><b>2026</b><span>our power teams</span></div></div>
       <div class="scroll"><p class="frame" style="margin:0">In the Manzana Jesuítica we found <u>a door / a painting / a plaque</u>.<br>It <b>was built / painted / written</b> in ______.</p></div>
       <div class="task"><span class="step">Chronicler</span>sticks it on the timeline <span class="step">Herald</span>says the sentence</div>${timer([['Gallery', 300]])}` },
     { stop: 1, dense: true, host: ['listen', 'Listen carefully — <b>three questions</b>!'],
@@ -1099,11 +1129,11 @@ const LESSONS = {
       <div class="vidwrap"><div class="vid"><iframe src="https://www.youtube.com/embed/${VIDEO.id}?start=${VIDEO.start}&end=${VIDEO.end}&cc_load_policy=1&cc_lang_pref=en&rel=0&modestbranding=1" title="TED-Ed · The Canterbury Tales" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe></div>
         <ol class="vq1">${VQ1.map(([q, a]) => `<li><span>${q}</span><em>${a}</em></li>`).join('')}</ol></div>
       <div class="revealbar"><a class="tbtn" href="https://www.youtube.com/watch?v=${VIDEO.id}&t=${VIDEO.start}s" target="_blank" rel="noopener">Open on YouTube ↗</a><span class="hint">Tap a question to show the answer</span></div>` },
-    { stop: 2, dense: true, host: ['present', 'Seven pilgrims. <b>One for each squad</b>.'],
-      note: 'Pilgrim Identity Cards (Anexo A del Ciclo 2). Entregue a cada escuadrón la tarjeta de su peregrino: Hourglass · Knight, Sundial · Prioress, Pendulum · Monk, Compass · Merchant, Astrolabe · Miller, Chronometer · Wife of Bath, Lantern · Pardoner. Toque un peregrino para proyectar su tarjeta completa (con las palabras clave y el verso de Chaucer); toque fuera para cerrarla.',
+    { stop: 2, dense: true, host: ['present', 'Seven pilgrims. <b>One for each group</b>.'],
+      note: 'Pilgrim Identity Cards (Anexo A del Ciclo 2). Entregue a cada grupo mixto del día la tarjeta del peregrino con su número: 1 · Knight, 2 · Prioress, 3 · Monk, 4 · Merchant, 5 · Miller, 6 · Wife of Bath, 7 · Pardoner. Toque un peregrino para proyectar su tarjeta completa (con las palabras clave y el verso de Chaucer); toque fuera para cerrarla.',
       html: () => `<div class="kicker">The Tabard Inn · April 1380 · your pilgrim</div>${pgGrid('pg1')}` },
-    { stop: 2, dense: true, host: ['magnifier', 'Decoders, <b>lead your squad</b>!'],
-      note: () => `Trabajo en escuadrón (12 min). El Decoder dirige la lectura y la deducción (tarea 1). Todos escriben en el Pilgrim\'s Book. El Timekeeper revisa will / going to / might y el segundo condicional (tareas 3 y 4). Reto del verso de Chaucer: ${isImm() ? '<b>obligatorio en 7A y 7B</b>' : 'bonus de +10 XP en 7C–7E'}. Pulse ▶.`,
+    { stop: 2, dense: true, host: ['magnifier', 'Decoders, <b>lead your group</b>!'],
+      note: () => `Trabajo en grupo (12 min). El Decoder dirige la lectura y la deducción (tarea 1). Todos escriben en el Pilgrim\'s Book. El Timekeeper revisa will / going to / might y el segundo condicional (tareas 3 y 4). Reto del verso de Chaucer: ${isImm() ? '<b>obligatorio en 7A y 7B</b>' : 'bonus de +10 XP en 7C–7E'}. Pulse ▶.`,
       html: () => `<div class="kicker">Pilgrim Identity Cards · four tasks · in your Pilgrim's Book</div>
       <ol class="ptasks">${PTASKS.map(t => `<li>${t}</li>`).join('')}</ol>
       <div class="chal"><b>★ Chaucer's line</b> Decode the line in Middle English at the bottom of your card. ${isImm() ? '<span class="must">required</span>' : '<span>+10 XP bonus</span>'}</div>
@@ -1164,24 +1194,25 @@ const LESSONS = {
       note: 'Bugdex · Bug sighting #2 (3 min). Lea el ejemplo del Miller (es una de las discusiones de hoy). Cada agente lo copia en su Bugdex. Nombre técnico (solo para usted, se verá en el Ciclo 4): red herring / razón irrelevante.',
       html: () => `<div class="kicker">The Bugdex · Bug sighting #2</div><h2>The Off-Topic Bug</h2>
       <div class="bugdex"><img src="${IMG.bug.normal}" alt=""><table><tr><th>Who used it?</th><td>the Miller, at the Tabard Inn, 1380</td></tr><tr><th>What did he say?</th><td>«We should stop at every inn, because I won the wrestling competition!»</td></tr><tr><th>Why is it a bug?</th><td>The reason is not <b>relevant</b>: it has nothing to do with the claim.</td></tr><tr><th>How to catch it</th><td>Ask: «What does this reason have to do with the claim?»</td></tr></table></div>` },
+    mixSlide(2, 22, 'present'),
     { stop: 2, dense: true, host: ['present', 'Seven pilgrims, <b>seven arguments</b>. Investigate!'],
-      note: 'The Tabard Inn Arguments (Anexo E, 1 hoja por escuadrón; la tabla de trabajo se copia en el cuaderno). Toque un peregrino para proyectar su argumento; «⚖ Check» revela las partes (claim · reason · evidence) y la clave R·A·S. Úselo solo para revisar al final.',
+      note: 'The Tabard Inn Arguments (Anexo E, 1 hoja por grupo; la tabla de trabajo se copia en el cuaderno). Toque un peregrino para proyectar su argumento; «⚖ Check» revela las partes (claim · reason · evidence) y la clave R·A·S. Úselo solo para revisar al final.',
       html: () => `<div class="kicker">The Tabard Inn · at dinner · seven arguments</div>${argGrid('ag1')}` },
     { stop: 2, dense: true, host: ['magnifier', 'Decoders, read. <b>Everybody</b>, judge!'],
-      note: 'Trabajo en escuadrón (15 min). El Decoder lee cada argumento en voz alta; el escuadrón encuentra el claim, la razón y la evidencia, y marca R, A y S con ✔ o ✘ en la tabla del cuaderno. Al final decide si es STRONG o WEAK y cuál es el más débil de todos. Pulse ▶.',
-      html: () => `<div class="kicker">Reason Detectives · in your squad · in your notebook</div>
+      note: 'Trabajo en grupo (15 min). El Decoder lee cada argumento en voz alta; el grupo encuentra el claim, la razón y la evidencia, y marca R, A y S con ✔ o ✘ en la tabla del cuaderno. Al final decide si es STRONG o WEAK y cuál es el más débil de todos. Pulse ▶.',
+      html: () => `<div class="kicker">Reason Detectives · in your group · in your notebook</div>
       <ol class="ptasks"><li><b>Read</b> each argument. Underline the <span class="pc">claim</span>, the <span class="pr">reason</span> and the <span class="pe">evidence</span> (if there is one).</li>
         <li><b>Judge</b> it with the R·A·S card: ✔ or ✘ for R, A and S.</li><li><b>Decide:</b> STRONG or WEAK? Write why in one line.</li><li><b>Choose</b> the weakest argument of the seven.</li></ol>
       <div class="task"><span class="step">Decoder</span>reads aloud <span class="step">Timekeeper</span>controls the time <span class="step">Herald</span>prepares the verdict</div>${nb('copy the table <b>Pilgrim · R · A · S · STRONG / WEAK · why?</b> — seven rows.')}${timer([['Investigate', 900]])}` },
     { stop: 3, dense: true, host: ['write', 'Chroniclers, <b>make it stronger</b>!'],
-      note: () => `Make it stronger (8 min). El escuadrón reescribe el argumento más débil con una razón relevante y una evidencia. El Chronicler escribe; el Timekeeper revisa que haya ${isImm() ? 'una forma de futuro y un segundo condicional' : 'una forma de futuro (will / be going to / might)'}. Toque «Show an example» para dar el modelo. Pulse ▶.`,
+      note: () => `Make it stronger (8 min). El grupo reescribe el argumento más débil con una razón relevante y una evidencia. El Chronicler escribe; el Timekeeper revisa que haya ${isImm() ? 'una forma de futuro y un segundo condicional' : 'una forma de futuro (will / be going to / might)'}. Toque «Show an example» para dar el modelo. Pulse ▶.`,
       html: () => `<div class="kicker">Make it stronger · the Chronicler writes · the Timekeeper checks</div>
       <div class="scroll"><p class="frame" style="margin:0"><span class="pc">We should ______</span>, <span class="pr">because ______</span>.<br><span class="pe">For example, ______</span>. This way, we <u>will</u> / <u>might</u> ______.${isImm() ? '<br>If we didn\'t ______, we <u>would</u> ______.' : ''}</p></div>
       <div class="revealbar"><button type="button" class="tbtn" id="exBtn">Show an example</button></div>
       <div class="spotres" id="exRes"><b>The Miller, fixed:</b> «We should stop at two inns on the road, because the journey takes three days and the horses need rest. For example, the Host says the horses are tired after thirty miles. This way, we will arrive safely.»${isImm() ? ' «If we didn\'t stop, the horses would be too tired to walk.»' : ''}</div>
       ${immBox('Your new argument must also include <b>a second conditional</b>.')}${timer([['Rewrite', 480]])}` },
     { stop: 4, dense: true, host: ['listen', 'Heralds — <b>your verdict</b>!'],
-      note: 'The Verdict (7 min). El Herald de cada escuadrón da el veredicto sobre el argumento de SU peregrino (el de la Clase 1) con el marco de la pantalla. Toque el peregrino para proyectar su argumento y pulse «⚖ Check» para confirmar. Dos o tres escuadrones leen también su argumento mejorado. Pulse ▶: 45 s por Herald.',
+      note: 'The Verdict (7 min). El Herald de cada grupo da el veredicto sobre el argumento del peregrino con el número de su grupo (los peregrinos de la Clase 1) con el marco de la pantalla. Toque el peregrino para proyectar su argumento y pulse «⚖ Check» para confirmar. Dos o tres grupos leen también su argumento mejorado. Si el veredicto es correcto, +10 XP para los Heralds. Pulse ▶: 45 s por Herald.',
       html: () => `<div class="kicker">The Verdict · 45 seconds per Herald</div>
       <div class="scroll"><p class="frame" style="margin:0">The <b>______</b>'s argument is <u>strong / weak</u>.<br>The reason is (not) <u>relevant / acceptable / sufficient</u>, because ______.</p></div>
       ${argGrid('ag2')}${timer(SQUADS.map((s, n) => ['Herald ' + (n + 1), 45]))}` },
@@ -1214,12 +1245,13 @@ const LESSONS = {
       <div class="uses">${OPSIG.map(x => `<span>${x}</span>`).join('')}</div>
       <div class="scroll"><p class="frame" style="margin:0"><b>What does</b> the Prioress <b>think</b> about…? → listen for her <u>opinion</u>.<br><b>Why</b> does the Miller…? → listen for his <u>reason</u> (because… · so…).</p></div>
       <div class="info">Then check the reason with the <b>R·A·S card</b>: is it <b>R</b>elevant, <b>A</b>cceptable and <b>S</b>ufficient?</div>` },
+    mixSlide(1, 23),
     { stop: 1, dense: true, host: ['book', 'Decoders, come with me. <b>You</b> are the voices!'],
-      note: () => `Before you listen (4 min). Los <b>Decoders</b> son hoy los actores de voz: se reúnen con usted, reciben su Voice Card (Anexo H) y ensayan en voz baja sus líneas. ${isImm() ? 'En 7A y 7B usted lee al narrador y al Host.' : 'El Decoder de Lantern es el narrador; usted lee al Host.'} Mientras tanto, el resto de la clase lee las seis preguntas en la pantalla (botón «The 6 questions ▶»; no detiene el reloj), copia en el cuaderno una palabra clave por pregunta y predice A, B o C. El Decoder no contesta las preguntas de los diálogos que lee. Pulse ▶.`,
+      note: () => `Before you listen (4 min). Los <b>Decoders</b> son hoy los actores de voz: se reúnen con usted, reciben su Voice Card (Anexo H) y ensayan en voz baja sus líneas. ${isImm() ? 'En 7A y 7B usted lee al narrador y al Host.' : 'El Decoder del grupo 7 es el narrador; usted lee al Host.'} Mientras tanto, el resto de la clase lee las seis preguntas en la pantalla (botón «The 6 questions ▶»; no detiene el reloj), copia en el cuaderno una palabra clave por pregunta y predice A, B o C. El Decoder no contesta las preguntas de los diálogos que lee. Pulse ▶.`,
       html: () => `<div class="kicker">Before you listen · read · note · predict</div>
       <div class="swap" id="qtg"><div class="sb">${qlist(LQ)}</div><div class="sa cast">${LQ.map((d, n) => `<div><b>${n + 1}</b>${d.sp.map(k => `<span><img src="${k === 'host' ? IMG.pose.present : IMG.pil[k]}" alt=""><div class="cn">${SPK[k][1] || 'Teacher'}<em>${SPK[k][0]}</em></div></span>`).join('')}</div>`).join('')}</div></div>
       <div class="task"><span class="step">Decoders</span>you are the voices: rehearse with the teacher <span class="step">Everybody</span>read the 6 questions · copy one key word for each in your notebook · predict A, B or C <button type="button" class="tbtn" id="qtgBtn">The 6 questions ▶</button></div>
-      <p class="hint center" style="margin:0">Narrator: ${isImm() ? 'the teacher' : 'the Lantern Decoder'} · the Host: the teacher</p>${timer([['Prepare', 240]])}` },
+      <p class="hint center" style="margin:0">Narrator: ${isImm() ? 'the teacher' : 'the Group 7 Decoder'} · the Host: the teacher</p>${timer([['Prepare', 240]])}` },
     { stop: 2, dense: true, host: ['listen', 'You will hear each conversation <b>twice</b>.'],
       note: () => `Listening «Pilgrims' Voices» (16 min, tipo B1 Preliminary Part 2). Para cada pregunta: (1) ${isImm() ? 'usted' : 'el narrador'} lee la introducción y la pregunta; (2) los dos Decoders leen el diálogo (Anexo H) y, después de «Now listen again», lo leen otra vez; (3) cada agente escribe en el cuaderno A, B o C y la razón; (4) «Show me!»: todos muestran con los dedos 1, 2 o 3 a la vez; (5) «Reveal» muestra la respuesta y la tarjeta R·A·S de la razón. «Transcript» proyecta el diálogo (úselo solo después del Reveal, o para PIAR).`,
       html: () => `<div class="kicker">Listening · Pilgrims' Voices at the Tabard Inn · B1 Preliminary Part 2</div>
@@ -1237,19 +1269,19 @@ const LESSONS = {
       note: 'Bugdex · Bug sighting #4 (3 min). Viene de la pregunta 3. Pida un ejemplo de la vida real («I wore my lucky socks and we won the match»). Nombre técnico (solo para usted, Ciclo 4): Post Hoc (post hoc ergo propter hoc). Recuerde que la pregunta 6 trajo otra vez el Off-Topic Bug (#2).',
       html: () => `<div class="kicker">The Bugdex · Bug sighting #${BUGS3[1].n}</div><h2>${BUGS3[1].name}</h2>
       <div class="bugdex"><img src="${IMG.bug.jar}" alt=""><table><tr><th>Who used it?</th><td>${BUGS3[1].who}</td></tr><tr><th>What did he say?</th><td>${BUGS3[1].said}</td></tr><tr><th>Why is it a bug?</th><td>${BUGS3[1].why}</td></tr><tr><th>How to catch it</th><td>${BUGS3[1].catch}</td></tr></table></div>` },
-    { stop: 4, dense: true, host: ['write', 'Squads, <b>coach your Herald</b>!'],
-      note: () => `Preparación del debate (6 min; las mociones y los lados están en la pantalla). Cada Herald recibe una moción y un lado (FOR / AGAINST). Su escuadrón lo entrena: el <b>Chronicler</b> escribe dos razones en su cuaderno, el <b>Decoder</b> las revisa con R·A·S (¡sin bugs!) y el <b>Timekeeper</b> revisa que haya una forma de futuro y un segundo condicional.${isImm() ? ' En 7A y 7B no hay marcos: el Herald prepara también una respuesta que nombre el bug del rival.' : ' Lantern debate contra usted (el Host), que defiende el juego de las historias.'} Pulse ▶.`,
+    { stop: 4, dense: true, host: ['write', 'Groups, <b>coach your Herald</b>!'],
+      note: () => `Preparación del debate (6 min; las mociones y los lados están en la pantalla). Cada Herald recibe una moción y un lado (FOR / AGAINST). Su grupo lo entrena: el <b>Chronicler</b> escribe dos razones en su cuaderno, el <b>Decoder</b> las revisa con R·A·S (¡sin bugs!) y el <b>Timekeeper</b> revisa que haya una forma de futuro y un segundo condicional.${isImm() ? ' En 7A y 7B no hay marcos: el Herald prepara también una respuesta que nombre el bug del rival.' : ' El grupo 7 debate contra usted (el Host), que defiende el juego de las historias.'} Pulse ▶.`,
       html: () => `<div class="kicker">The Tabard Inn Debate · prepare · 6 minutes</div>
       <div class="motions">${MOTIONS.slice(0, isImm() ? 3 : 4).map((d, n) => `<div><b>${n + 1}</b><p>«${d.m}»</p><span class="fa">FOR · ${d.a === 'Host' ? 'the Host (teacher)' : d.a}</span><span class="ag">AGAINST · ${d.b}</span></div>`).join('')}</div>
       ${isImm() ? '' : `<div class="scroll"><p class="frame" style="margin:0">In my opinion, pilgrims <u>should / shouldn't</u> ______, because ______. For example, ______.<br>If we ______ (past), we <u>would</u> ______. · That reason is not relevant / acceptable / sufficient, because ______.</p></div>`}
       ${immBox('No frames today: your Herald must use <b>a future form</b>, <b>a second conditional</b> and <b>name the bug</b> in the rival\'s reason.')}${timer([['Coach', 360]])}` },
     { stop: 4, dense: true, host: ['hips', 'Bug hunters, listen! Shout <b>«BUG!»</b> if you hear one.'],
-      note: () => `The Tabard Inn Debate (${isImm() ? '8' : '10'} min). Elija la moción y pulse ▶ en cada turno: FOR 30 s · AGAINST 30 s · respuesta FOR 15 s · respuesta AGAINST 15 s. Los demás escuadrones son <b>coaches y bug hunters</b>: marcan R·A·S en el cuaderno y gritan «BUG!» si oyen un bug (si la clase acierta, +5 XP al escuadrón que lo atrapó). Después de cada debate, un coach da un consejo en 15 segundos y la clase vota la razón más fuerte (+10 XP). Toque el escudo para sumar 5 XP; el «−» resta.`,
+      note: () => `The Tabard Inn Debate (${isImm() ? '8' : '10'} min). Elija la moción y pulse ▶ en cada turno: FOR 30 s · AGAINST 30 s · respuesta FOR 15 s · respuesta AGAINST 15 s. Los demás grupos son <b>coaches y bug hunters</b>: marcan R·A·S en el cuaderno y gritan «BUG!» si oyen un bug (si la clase acierta, +5 XP para el poder del agente que lo atrapó). Después de cada debate, un coach da un consejo en 15 segundos y la clase vota la razón más fuerte (+10 XP para los Heralds). Toque el emblema del poder para sumar 5 XP; el «−» resta.`,
       html: () => `<div class="kicker">The Tabard Inn Debate · 90 seconds · two Heralds · one motion</div>
       <div class="deb" id="deb"><div class="debtabs">${MOTIONS.slice(0, isImm() ? 3 : 4).map((d, n) => `<button type="button" class="tbtn${n ? '' : ' go'}" data-m="${n}">Motion ${n + 1}</button>`).join('')}</div>
         <div class="debm" id="debM"></div><div class="debvs"><span class="fa" id="debA"></span><i>vs</i><span class="ag" id="debB"></span></div></div>
       ${timer(MOTIONS.slice(0, isImm() ? 3 : 4).flatMap((d, n) => DEBT.map(([t, s]) => [`M${n + 1} · ${t}`, s])))}
-      <div class="xpboard mini" id="xpb" data-step="5">${sqs().map(s => `<button type="button" class="xpsq" data-sq="${s}"><img src="${IMG.sq[s.toLowerCase()]}" alt=""><b>${s}</b><span class="xp" data-xp="${s}">0 XP</span><i class="minus" data-minus="${s}" title="−5 XP">−</i></button>`).join('')}</div>` },
+      ${pxBoard(5, true)}` },
     { stop: 4, host: ['wave', 'Next time: open the <b>Mystery Box</b>…'],
       note: 'Cierre (2 min). Repase los dos bugs nuevos (#3 y #4) y pregunte cuál apareció en el debate. Para el registro de C1, revise el listening en algunos cuadernos o pida a cada agente su puntaje. Próxima clase: The Mystery Box (la caja de reliquias del Bulero). Pida que guarden la Bugdex: ya tiene cuatro bugs.',
       html: () => `<div class="kicker">Class 3 complete</div><h1>Six conversations heard. Two new bugs in the Bugdex.</h1>
@@ -1263,20 +1295,21 @@ const LESSONS = {
       note: 'Objetivo (1 min). En español: deducir el significado de palabras y las intenciones del Bulero en un texto tipo B1 Preliminary Part 3 (C2), descubrir la afirmación oculta detrás de cada frase de su discurso y predecir consecuencias con will / might (C3). Tenga lista la caja sellada (ver «Antes de la clase» en la guía).',
       html: () => `<div class="kicker">Cycle 2 · Landing in 1380 · Class 4 · The Mystery Box</div><h1>Today, agents, you will read the Pardoner's secret — and decode the tricks in his words.</h1>
       <div class="goals"><span><b>C2</b> deduce meaning · what does he really mean?</span><span><b>C3</b> will · might · if…, will…</span><span><b>+</b> it must be · it might be · it can't be</span></div>` },
+    mixSlide(0, 24, 'present'),
     { stop: 0, dense: true, host: ['key', 'What is inside? <b>It must be…</b>'],
-      note: 'Warm-up The Mystery Box (7 min). Ponga la caja sellada sobre el escritorio, sin abrirla. Toque «Next clue» para revelar las pistas una a una. Después de cada pista, cada escuadrón escribe su apuesta en un papel con el marco de deducción (It must be… / It might be… / It can\'t be… because…). El Herald la lee. Luego pulse «Open the box» y saque los objetos uno por uno. Pregunta final: «Would you pay for it? Why / why not?».',
+      note: 'Warm-up The Mystery Box (7 min). Ponga la caja sellada sobre el escritorio, sin abrirla. Toque «Next clue» para revelar las pistas una a una. Después de cada pista, cada grupo escribe su apuesta en un papel con el marco de deducción (It must be… / It might be… / It can\'t be… because…). El Herald la lee. Luego pulse «Open the box» y saque los objetos uno por uno. Pregunta final: «Would you pay for it? Why / why not?».',
       html: () => `<div class="kicker">Warm-up · The Mystery Box · sealed in Rome</div>
       <div class="mbox"><img src="${IMG.v.relic}" alt=""><div><ol class="clues" id="clues">${BOX.map((c, n) => `<li><b>Clue ${n + 1}</b> ${c}</li>`).join('')}</ol>
         <div class="boxin" id="boxin"><b>Inside the box:</b><ul>${BOXIN.map(x => `<li>${x}</li>`).join('')}</ul><span>Would you pay for it? Why / why not?</span></div></div></div>
       <div class="scroll"><p class="frame" style="margin:0">It <u>must</u> be ______, because ______. · It <u>might</u> be ______. · It <u>can't</u> be ______, because ______.</p></div>
-      <div class="revealbar"><button type="button" class="tbtn go" id="clueNext">Next clue</button><button type="button" class="tbtn" id="boxOpen">Open the box</button><span class="hint">Squads: write your guess after every clue</span></div>` },
+      <div class="revealbar"><button type="button" class="tbtn go" id="clueNext">Next clue</button><button type="button" class="tbtn" id="boxOpen">Open the box</button><span class="hint">Groups: write your guess after every clue</span></div>` },
     { stop: 1, dense: true, host: ['charades', 'Watch me… <b>which word</b> is it?'],
-      note: 'Palabras antes de leer (4 min). Usted actúa cada palabra con mímica (charades) sin decirla; el primer escuadrón que la dice en inglés gana +5 XP (toque su escudo). Toque la palabra para mostrar el significado. No enseñe «greed»: es la pregunta 4 de la lectura.',
+      note: 'Palabras antes de leer (4 min). Usted actúa cada palabra con mímica (charades) sin decirla; el primer agente que la dice en inglés gana +5 XP para su poder (toque el emblema de su poder). Toque la palabra para mostrar el significado. No enseñe «greed»: es la pregunta 4 de la lectura.',
       html: () => `<div class="kicker">Before you read · six words from the Pardoner's sermon</div>
       <div class="w4">${W4.map(([w, m, i]) => `<button type="button" class="w4c">${i ? `<img src="${IMG.v[i === 'v-coin' ? 'coin' : 'preacher']}" alt="">` : ''}<b>${w}</b><em>${m}</em></button>`).join('')}</div>
-      <div class="xpboard mini" id="xpb" data-step="5">${sqs().map(s => `<button type="button" class="xpsq" data-sq="${s}"><img src="${IMG.sq[s.toLowerCase()]}" alt=""><b>${s}</b><span class="xp" data-xp="${s}">0 XP</span><i class="minus" data-minus="${s}" title="−5 XP">−</i></button>`).join('')}</div>` },
+      ${pxBoard(5, true)}` },
     { stop: 2, dense: true, host: ['moneybag', 'Listen to my <b>secret</b>, pilgrims…'],
-      note: () => `Reading «The Pardoner's Secret» (12 min, individual: el texto se proyecta y hay 1 copia del Anexo K por escuadrón; responden en el cuaderno 1–5). Lean el título y pregunte: «What is his secret?». Cada agente lee en silencio y responde las cinco preguntas (tipo B1 Preliminary Part 3). Pista de examen: primero lean las preguntas, después el texto. Toque las palabras resaltadas para mostrar su significado y la pista. ${isImm() ? 'En 7A y 7B, además, el verso de Chaucer y la pregunta 6 (obligatorios).' : 'Reto: el verso de Chaucer (+10 XP).'} Pulse ▶. El texto se proyecta en dos partes: «Paragraphs 5–7 ▶» cambia de parte sin detener el reloj.`,
+      note: () => `Reading «The Pardoner's Secret» (12 min, individual: el texto se proyecta y hay 1 copia del Anexo K por grupo; responden en el cuaderno 1–5). Lean el título y pregunte: «What is his secret?». Cada agente lee en silencio y responde las cinco preguntas (tipo B1 Preliminary Part 3). Pista de examen: primero lean las preguntas, después el texto. Toque las palabras resaltadas para mostrar su significado y la pista. ${isImm() ? 'En 7A y 7B, además, el verso de Chaucer y la pregunta 6 (obligatorios).' : 'Reto: el verso de Chaucer (+10 XP).'} Pulse ▶. El texto se proyecta en dos partes: «Paragraphs 5–7 ▶» cambia de parte sin detener el reloj.`,
       html: () => `<div class="kicker">Reading · The Pardoner's Secret · adapted from Chaucer's Pardoner's Prologue</div>
       <div class="ptext" id="ptx"><div class="pt1">${PTEXT.slice(0, 4).map((p, n) => `<p><b>${n + 1}</b>${ptext(p)}</p>`).join('')}</div><div class="pt2">${PTEXT.slice(4).map((p, n) => `<p><b>${n + 5}</b>${ptext(p)}</p>`).join('')}</div></div>
       <div class="revealbar"><button type="button" class="tbtn" id="ptxBtn">Paragraphs 5–7 ▶</button><span class="chal" style="padding:.5vh 1vw"><b>★</b> «${CHAUCER4[0]}» — what does it mean? ${isImm() ? '<span class="must">required</span>' : '<span>+10 XP</span>'}</span>${timer([['Read and answer', 720]])}</div>` },
@@ -1288,14 +1321,14 @@ const LESSONS = {
         <div class="lqkey" id="rqK"><p><b id="rqP"></b> <span id="rqW"></span></p></div></div>
       <div class="revealbar"><button type="button" class="tbtn" id="rqPrev">◀</button><button type="button" class="tbtn" id="rqShow">✋ Show me!</button><button type="button" class="tbtn go" id="rqRev">Reveal</button><button type="button" class="tbtn" id="rqNext">Next ▶</button></div>
       <div class="chal" id="c4line"><b>★ Chaucer's line</b> «${CHAUCER4[0]}» <em class="mline">→ ${CHAUCER4[1]}</em></div>` },
-    { stop: 3, dense: true, host: ['letter', 'Decoders, <b>lead your squad</b>!'],
-      note: () => `Decode the Pitch (8 min, en el cuaderno: «The 7 sentences ▶» proyecta las siete frases sin detener el reloj). Cada escuadrón trabaja las siete frases del discurso del Bulero: escribe la afirmación oculta («What does he really want us to believe?»), decide BUY o BUG y marca la letra de R·A·S que falla. El <b>Decoder</b> dirige y prepara la presentación de la frase de su escuadrón: Hourglass la 1, Sundial la 2, Pendulum la 3, Compass la 4, Astrolabe la 5, Chronometer la 6${isImm() ? '; la 7 la hace toda la clase' : ' y Lantern la 7'}. Pulse ▶.`,
-      html: () => `<div class="kicker">Decode the Pitch · in your squad · in your notebook</div>
-      <div class="swap" id="pch"><ol class="sb pitch7">${PITCH.map(d => `<li>«${d.p}»</li>`).join('')}</ol><ol class="sa ptasks"><li><b>Read</b> each sentence of the Pardoner's pitch.</li><li><b>Decode:</b> what does he <u>really</u> want us to believe? Write the hidden claim.</li><li><b>Decide:</b> BUY or BUG? Which letter of R·A·S fails?</li><li><b>Decoder:</b> get ready to present your squad's sentence.</li></ol></div>
+    { stop: 3, dense: true, host: ['letter', 'Decoders, <b>lead your group</b>!'],
+      note: () => `Decode the Pitch (8 min, en el cuaderno: «The 7 sentences ▶» proyecta las siete frases sin detener el reloj). Cada grupo trabaja las siete frases del discurso del Bulero: escribe la afirmación oculta («What does he really want us to believe?»), decide BUY o BUG y marca la letra de R·A·S que falla. El <b>Decoder</b> dirige y prepara la presentación de la frase con el número de su grupo: el grupo 1 la 1, el 2 la 2… hasta el 6${isImm() ? '; la 7 la hace toda la clase' : ' y el 7 la 7'}. Pulse ▶.`,
+      html: () => `<div class="kicker">Decode the Pitch · in your group · in your notebook</div>
+      <div class="swap" id="pch"><ol class="sb pitch7">${PITCH.map(d => `<li>«${d.p}»</li>`).join('')}</ol><ol class="sa ptasks"><li><b>Read</b> each sentence of the Pardoner's pitch.</li><li><b>Decode:</b> what does he <u>really</u> want us to believe? Write the hidden claim.</li><li><b>Decide:</b> BUY or BUG? Which letter of R·A·S fails?</li><li><b>Decoder:</b> get ready to present your group's sentence.</li></ol></div>
       <div class="scroll"><p class="frame" style="margin:0">He says «______». He <u>really</u> means that ______. It's a bug, because the reason is not <u>relevant / acceptable / sufficient</u>.</p></div>
       <div class="task"><span class="step">Decoder</span>leads and presents <span class="step">Chronicler</span>writes <span class="step">Timekeeper</span>controls the time <button type="button" class="tbtn" id="pchBtn">The 7 sentences ▶</button></div>${nb('1–7 · the hidden claim · BUY or BUG · the R·A·S letter that fails.')}${timer([['Decode', 480]])}` },
     { stop: 3, dense: true, host: ['alert', '<b>BUY</b> — or <b>BUG</b>?'],
-      note: 'Buy or Bug! (6 min). Lea cada frase en voz alta como si fuera el Bulero (con la caja en la mano y mucho teatro). La clase decide: de pie = BUY, brazos cruzados en X = BUG. Luego el Decoder del escuadrón dice la afirmación oculta con el marco. Pulse «Decode» para revelar la afirmación oculta, la letra de R·A·S y el bug. La frase 5 es la trampa más importante del Bulero: «Only sinners will not give!».',
+      note: 'Buy or Bug! (6 min). Lea cada frase en voz alta como si fuera el Bulero (con la caja en la mano y mucho teatro). La clase decide: de pie = BUY, brazos cruzados en X = BUG. Luego el Decoder del grupo con ese número dice la afirmación oculta con el marco (+5 XP para los Decoders si la dice bien). Pulse «Decode» para revelar la afirmación oculta, la letra de R·A·S y el bug. La frase 5 es la trampa más importante del Bulero: «Only sinners will not give!».',
       html: () => `<div class="kicker">Buy or Bug! · the Pardoner's pitch · 7 sentences</div>
       <div class="aon" id="pit"><div class="aon-n" id="ptN"></div><div class="aon-s" id="ptS"></div>
         <div class="ptres" id="ptR"><p><b>He really means:</b> <span id="ptH"></span></p><div class="rasrow" id="ptRas"></div><p id="ptW"></p></div></div>
@@ -1309,7 +1342,7 @@ const LESSONS = {
       html: () => `<div class="kicker">The Bugdex · Bug sighting #${BUGS4[1].n}</div><h2>${BUGS4[1].name}</h2>
       <div class="bugdex"><img src="${IMG.bug.jar}" alt=""><table><tr><th>Who used it?</th><td>${BUGS4[1].who}</td></tr><tr><th>What did he say?</th><td>${BUGS4[1].said}</td></tr><tr><th>Why is it a bug?</th><td>${BUGS4[1].why}</td></tr><tr><th>How to catch it</th><td>${BUGS4[1].catch}</td></tr></table></div>` },
     { stop: 4, host: ['hourglass', 'Timekeepers, <b>what will happen</b>?'],
-      note: () => `Cierre (4 min, en el cuaderno). Primero los <b>Timekeepers</b> responden en voz alta, uno por escuadrón, con will / might. Después cada agente escribe su exit ticket (primer condicional: If + presente, will / might + verbo).${isImm() ? ' En 7A y 7B añaden una oración con el segundo condicional.' : ''} Recoja algunas para el registro de C3.`,
+      note: () => `Cierre (4 min, en el cuaderno). Primero los <b>Timekeepers</b> responden en voz alta, uno por grupo, con will / might. Después cada agente escribe su exit ticket (primer condicional: If + presente, will / might + verbo).${isImm() ? ' En 7A y 7B añaden una oración con el segundo condicional.' : ''} Recoja algunas para el registro de C3.`,
       html: () => `<div class="kicker">Exit ticket · the Timekeepers answer first</div><div class="big-q" style="font-size:5.4vh">What will happen if the pilgrims believe the Pardoner?</div>
       <div class="scroll"><p class="frame" style="margin:0">If the pilgrims believe him, they <u>will</u> ______. They <u>might</u> ______.<br>But if they use the R·A·S card, they <u>will</u> ______.</p></div>
       ${immBox('Add one more sentence: <b>If I were a villager in 1380, I would…</b>')}${timer([['Write', 180]])}` },
@@ -1331,11 +1364,12 @@ const LESSONS = {
       html: () => `<div class="kicker">Time Machine Language · talking about the future</div>
       <div class="fut">${FUT.map(([f, k, d, e]) => `<div><b>${f}</b><span>${k}</span><p>${d}</p><em>${e}</em></div>`).join('')}</div>
       <div class="info">Be careful: <b>will / might + verb</b> (it will rain · it might rain) — never «it will raining» or «it might to rain».</div>` },
+    mixSlide(0, 25),
     { stop: 0, dense: true, host: ['map', 'Heralds, you are the <b>weather presenters</b>!'],
-      note: () => `Chronos Weather Forecast for 1380 (10 min, Anexo N). Cada escuadrón recibe la tarjeta de un pueblo del camino (toque el pueblo en el mapa para proyectarla). En 3 minutos el escuadrón prepara el pronóstico; luego el <b>Herald</b> lo presenta en 30 segundos frente al mapa, como en televisión. Debe usar be going to (lo que se ve), will (lo que dice el Chronos), might (lo posible) y un consejo con el segundo condicional. +5 XP por cada forma bien usada (anótelos y súmelos en el tablero del Hotline).${isImm() ? ' En 7A y 7B, sin marco y con una opinión propia (In my opinion…, because…).' : ''}`,
+      note: () => `Chronos Weather Forecast for 1380 (10 min, Anexo N). Cada grupo recibe la tarjeta de un pueblo (el de su número) del camino (toque el pueblo en el mapa para proyectarla). En 3 minutos el grupo prepara el pronóstico; luego el <b>Herald</b> lo presenta en 30 segundos frente al mapa, como en televisión. Debe usar be going to (lo que se ve), will (lo que dice el Chronos), might (lo posible) y un consejo con el segundo condicional. +5 XP para los Heralds por cada forma bien usada (anótelos y súmelos en el tablero del Hotline).${isImm() ? ' En 7A y 7B, sin marco y con una opinión propia (In my opinion…, because…).' : ''}`,
       html: () => `<div class="kicker">The Chronos Weather Forecast for 1380 · the road to Canterbury · tomorrow</div>
       <div class="wmap"><svg viewBox="0 0 100 100" preserveAspectRatio="none"><path d="${TOWNS.map((t, n) => (n ? 'L' : 'M') + t.x + ' ' + t.y).join(' ')}" fill="none" stroke="#8a6a3a" stroke-width=".8" stroke-dasharray="2 1.4" vector-effect="non-scaling-stroke"/></svg>
-        ${sqs().length < 7 ? '' : ''}${TOWNS.map((t, n) => `<button type="button" class="town${n >= sqs().length ? ' off' : ''}" data-town="${n}" style="left:${t.x}%;top:${t.y}%"><i>${t.ic}</i><b>${t.t}</b><span>${t.sq}</span></button>`).join('')}</div>
+        ${sqs().length < 7 ? '' : ''}${TOWNS.map((t, n) => `<button type="button" class="town${n >= sqs().length ? ' off' : ''}" data-town="${n}" style="left:${t.x}%;top:${t.y}%"><i>${t.ic}</i><b>${t.t}</b><span>${gb(t.sq)}</span></button>`).join('')}</div>
       <div class="wcard" id="wcard"></div>
       ${timer([['Prepare', 180], ...sqs().map(s => [s, 30])])}` },
     { stop: 1, dense: true, host: ['think', 'Real… or <b>imaginary</b>?'],
@@ -1344,13 +1378,13 @@ const LESSONS = {
       <div class="cond"><div class="rule"><b>If</b> + past simple, <b>would</b> + verb <span>→ imaginary situations</span></div><div class="rule r2"><b>If</b> + present, <b>will</b> + verb <span>→ real possibilities</span></div></div>
       <div class="conds">${CONDS.map(([t, k, w]) => `<button type="button" class="cnd" data-k="${k}"><span>${t}</span><b>${k === 'R' ? 'REAL' : 'IMAGINARY'}</b><em>${w}</em></button>`).join('')}</div>` },
     { stop: 2, dense: true, host: ['listen', 'Ring, ring! The <b>Hypothetical Hotline</b> is calling…'],
-      note: () => `Hypothetical Hotline (16 min, en el cuaderno del Chronicler). Juego en cadena: cada oración empieza con el resultado de la anterior (If I had a time machine, I would go to 1380 → If I went to 1380, I would meet…). Ronda 1 (3 min): demostración con toda la clase; usted empieza. Ronda 2 (90 s por llamada, 2 llamadas): cada escuadrón hace su cadena; el <b>Chronicler</b> escribe los eslabones en su cuaderno y el <b>Timekeeper</b> controla el tiempo. Si alguien rompe la forma (If I will…, If I would…), el escuadrón grita «Time glitch!» y la cadena vuelve a empezar. Ronda 3: el Herald lee la cadena más larga; +5 XP por eslabón correcto.${isImm() ? ' En 7A y 7B, cada eslabón añade «because…» y debe ser lógico: un eslabón fuera de tema es el Off-Topic Bug y rompe la cadena.' : ''} Toque «Ring!» para una llamada nueva.`,
+      note: () => `Hypothetical Hotline (16 min, en el cuaderno del Chronicler). Juego en cadena: cada oración empieza con el resultado de la anterior (If I had a time machine, I would go to 1380 → If I went to 1380, I would meet…). Ronda 1 (3 min): demostración con toda la clase; usted empieza. Ronda 2 (90 s por llamada, 2 llamadas): cada grupo hace su cadena; el <b>Chronicler</b> escribe los eslabones en su cuaderno y el <b>Timekeeper</b> controla el tiempo. Si alguien rompe la forma (If I will…, If I would…), el grupo grita «Time glitch!» y la cadena vuelve a empezar. Ronda 3: el Herald lee la cadena más larga; +5 XP por eslabón correcto para el poder del agente que lo dijo.${isImm() ? ' En 7A y 7B, cada eslabón añade «because…» y debe ser lógico: un eslabón fuera de tema es el Off-Topic Bug y rompe la cadena.' : ''} Toque «Ring!» para una llamada nueva.`,
       html: () => `<div class="kicker">The Hypothetical Hotline · one link · one sentence</div>
       <div class="hot"><div class="phone" id="phone">☎</div><div><div class="call" id="call">${CALLS[0]}</div>
         <ol class="chainex">${CHAINEX.map(c => `<li>${c}</li>`).join('')}</ol></div></div>
       <div class="task"><span class="step">1</span>Start with <b>If I + past</b> <span class="step">2</span>Use <b>would + verb</b> <span class="step">3</span>Your «if» = the last result <span class="step">!</span>Wrong form? <b>«Time glitch!»</b></div>
       <div class="revealbar"><button type="button" class="tbtn go" id="ring">☎ Ring!</button>${timer([['Demo', 180], ['Call 1', 90], ['Call 2', 90]])}</div>
-      <div class="xpboard mini" id="xpb" data-step="5">${sqs().map(s => `<button type="button" class="xpsq" data-sq="${s}"><img src="${IMG.sq[s.toLowerCase()]}" alt=""><b>${s}</b><span class="xp" data-xp="${s}">0 XP</span><i class="minus" data-minus="${s}" title="−5 XP">−</i></button>`).join('')}</div>` },
+      ${pxBoard(5, true)}` },
     { stop: 3, dense: true, host: ['wordcard', 'Alone now, agents. <b>Ten words</b>!'],
       note: 'Vocabulary Quiz 2 (8 min, proyectado, individual: responden en el cuaderno 1–10). Diez palabras del Ciclo 2: cinco definiciones y cinco oraciones para completar. El banco tiene 12 palabras (sobran dos). 5 XP por respuesta correcta. PIAR: el banco queda visible en la pantalla y se puede responder solo la parte A.',
       html: () => `<div class="kicker">Vocabulary Quiz 2 · alone · 5 XP for each correct answer</div>
@@ -1453,7 +1487,7 @@ function mountWidgets() {
   document.querySelectorAll('#fit .lq li.keyq').forEach(li => li.onclick = () => li.classList.toggle('show'));
   document.querySelectorAll('#fit .lrtab tr.keyr').forEach(tr => tr.onclick = () => tr.classList.toggle('hid'));
   if ($('xpb')) {
-    const STEP = +($('xpb').dataset.step || 10), key = 'chronos-xp-' + (course || 'x'); let xp = {}; try { xp = JSON.parse(localStorage.getItem(key) || '{}'); } catch (e) {}
+    const STEP = +($('xpb').dataset.step || 10), key = 'chronos-pxp-' + (course || 'x'); let xp = {}; try { xp = JSON.parse(localStorage.getItem(key) || '{}'); } catch (e) {}
     const save = () => { try { localStorage.setItem(key, JSON.stringify(xp)); } catch (e) {} };
     const paint = () => document.querySelectorAll('#xpb .xp').forEach(el => el.textContent = (xp[el.dataset.xp] || 0) + ' XP');
     document.querySelectorAll('#xpb .xpsq').forEach(b => { b.onclick = e => { const m = e.target.closest('[data-minus]'); const s = b.dataset.sq; xp[s] = Math.max(0, (xp[s] || 0) + (m ? -STEP : STEP)); save(); paint(); if (!m) { chime(); b.classList.remove('bump'); void b.offsetWidth; b.classList.add('bump'); } };
@@ -1476,7 +1510,7 @@ function mountWidgets() {
   document.querySelectorAll('#fit .pgrid:not(.agrid)').forEach(g => {
     const v = $('pview');
     g.querySelectorAll('.pg').forEach(b => b.onclick = () => { const p = PILGRIMS[+b.dataset.p];
-      $('pvImg').src = IMG.pil[p.k]; $('pvSq').innerHTML = `Squad ${p.sq}`; $('pvName').textContent = p.name; $('pvText').innerHTML = pilText(p);
+      $('pvImg').src = IMG.pil[p.k]; $('pvSq').innerHTML = `Group ${p.sq}`; $('pvName').textContent = p.name; $('pvText').innerHTML = pilText(p);
       $('pvLine').textContent = '«' + p.line + '»'; $('pvModern').textContent = '→ ' + p.modern; v.querySelector('.pvline').classList.remove('show');
       g.hidden = true; v.hidden = false; v.querySelectorAll('.dw').forEach(d => d.onclick = e => { e.stopPropagation(); d.classList.toggle('show'); fitStage(); }); fitStage(); });
     v.querySelector('.pvline').onclick = e => { e.stopPropagation(); e.currentTarget.classList.toggle('show'); };
@@ -1490,7 +1524,7 @@ function mountWidgets() {
   document.querySelectorAll('#fit .agrid').forEach(g => {
     const v = $('aview'); let cur = 0;
     g.querySelectorAll('.pg').forEach(b => b.onclick = () => { cur = +b.dataset.a; const a = ARGS[cur], p = PILGRIMS.find(x => x.k === a.k);
-      $('avImg').src = IMG.pil[a.k]; $('avSq').textContent = `Squad ${p.sq}`; $('avName').textContent = a.who; $('avText').innerHTML = '«' + argText(a, false) + '»';
+      $('avImg').src = IMG.pil[a.k]; $('avSq').textContent = `Group ${p.sq}`; $('avName').textContent = a.who; $('avText').innerHTML = '«' + argText(a, false) + '»';
       $('avKey').classList.remove('show'); g.hidden = true; v.hidden = false; fitStage(); });
     $('avCheck').onclick = e => { e.stopPropagation(); const a = ARGS[cur]; $('avText').innerHTML = '«' + argText(a, true) + '»';
       $('avRas').innerHTML = RAS3.map((l, j) => `<span class="${a.ras[j] ? 'y' : 'n'}">${l} ${a.ras[j] ? '✔' : '✘'}</span>`).join('') + `<span class="vd ${a.verdict === 'STRONG' ? 'y' : 'n'}">${a.verdict}</span>`;
@@ -1534,7 +1568,7 @@ function mountWidgets() {
     $('rqRev').onclick = () => { $('rq').classList.add('rev'); [...$('rqO').children].forEach((li, j) => li.classList.toggle('ok', j === RQ[k].key)); chime(); fitStage(); };
     $('rqNext').onclick = () => { k = Math.min(RQ.length - 1, k + 1); show(); }; $('rqPrev').onclick = () => { k = Math.max(0, k - 1); show(); };
     $('c4line').onclick = () => $('c4line').classList.toggle('show'); show(); }
-  if ($('pit')) { let k = 0; const show = () => { const d = PITCH[k]; $('ptN').textContent = `Sentence ${k + 1} / ${PITCH.length} · Squad ${SQUADS[k]}`; $('ptS').textContent = '«' + d.p + '»';
+  if ($('pit')) { let k = 0; const show = () => { const d = PITCH[k]; $('ptN').textContent = `Sentence ${k + 1} / ${PITCH.length} · ${SQUADS[k]}`; $('ptS').textContent = '«' + d.p + '»';
       $('ptH').textContent = d.hid; $('ptW').innerHTML = d.why;
       $('ptRas').innerHTML = RAS3.map(l => `<span class="${l === d.ras ? 'n' : 'y'}">${l} ${l === d.ras ? '✘' : '✔'}</span>`).join('') + `<span class="vd n">${d.bug ? 'BUG #' + d.bug : (k === 4 ? 'THE GUILT TRAP' : 'BUG')}</span>`;
       $('ptR').classList.remove('show'); };
@@ -1545,7 +1579,7 @@ function mountWidgets() {
   if ($('ptx')) $('ptxBtn').onclick = () => { const on = $('ptx').classList.toggle('two'); $('ptxBtn').textContent = on ? '◀ Paragraphs 1–4' : 'Paragraphs 5–7 ▶'; fitStage(); };
   // ---- Class 5 widgets
   if ($('wcard')) { const show = n => { const t = TOWNS[n];
-      $('wcard').innerHTML = `<div class="wch"><i>${t.ic}</i><div><b>${t.t}</b><span>Squad ${t.sq} · tomorrow</span></div></div>
+      $('wcard').innerHTML = `<div class="wch"><i>${t.ic}</i><div><b>${t.t}</b><span>Group ${t.sq} · tomorrow</span></div></div>
         <p><u>You can see</u> ${t.see} → It<b>'s going to</b> ${t.seeV}.</p><p><u>The Chronos computer is sure</u> → It <b>will</b> ${t.sure}.</p><p><u>Maybe</u> → It <b>might</b> ${t.maybe}.</p>
         ${isImm() ? '' : `<p class="wfr">«Good morning, pilgrims! This is the Chronos Weather Forecast for ${t.t}… So, pilgrims, if I were you, I <b>would</b> ______.»</p>`}`;
       document.querySelectorAll('#fit .town').forEach(b => b.classList.toggle('on', +b.dataset.town === n)); fitStage(); };
