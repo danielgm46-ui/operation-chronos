@@ -401,6 +401,22 @@ body.still .buglineup img, body.still .alertbox { animation: none; }
 /* notebook cue (print-saving policy) */
 .nb { display: flex; gap: .8vw; align-items: center; width: fit-content; max-width: 92%; margin: .8vh auto 0; padding: .5vh 1.2vw; border: 2px dashed #2b6f6a; border-radius: 1.2vh; background: rgba(255,253,245,.92); color: #1d3557; font-size: 2.2vh; line-height: 1.25; }
 .nb > span:first-child { font-size: 2.8vh; color: #2b6f6a; }
+/* Power teams (10 nov 2026): XP by power, mixed groups numbered */
+.xpboard.pw { grid-template-columns: repeat(4, 1fr); max-width: 120vh; margin: 0 auto; }
+.xpboard.pw .xpsq img { width: 70%; margin: 0 auto; display: block; }
+.xpboard.pw.mini .xpsq img { width: 52%; }
+.gnum { display: inline-grid; place-items: center; width: 5vh; height: 5vh; flex: none; border-radius: 50%; background: var(--navy); color: #f2d48a; font-family: var(--f-display); font-style: normal; font-weight: 700; font-size: 2.8vh; border: .3vh solid var(--gold); box-shadow: 0 .3vh .6vh rgba(0, 0, 0, .3); }
+.claimc .gnum { width: 6vh; height: 6vh; font-size: 3.2vh; }
+.rot .sqg .gnum { width: 4.6vh; height: 4.6vh; font-size: 2.4vh; }
+.ptrules { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1vw; margin: 1.2vh 0; }
+.ptrules > div { background: var(--note); border: 2px solid var(--line); border-radius: 1vh; padding: 1vh 1vw; font-size: 2.2vh; line-height: 1.25; display: flex; gap: .6vw; align-items: flex-start; }
+@media (max-aspect-ratio: 3/2) { .rot .sqg .gnum { width: 3.4vh; height: 3.4vh; font-size: 1.8vh; } .ptrules > div { font-size: 1.8vh; } }
+.ptrules + .scroll { margin-top: 0; } #fit .powers .power b { font-size: 3vh; }
+.mixg { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2vw; margin: 1.4vh 0; }
+.mixg > div { display: flex; flex-direction: column; align-items: center; gap: .4vh; background: var(--note); border: 2px solid var(--line); border-radius: 1.2vh; padding: 1.2vh .6vw; }
+.mixg img { width: 11vh; height: 11vh; object-fit: contain; }
+.mixg b { font-family: var(--f-display); font-size: 2.8vh; color: var(--navy); }
+.mixg span { font-size: 2.6vh; letter-spacing: .1em; color: var(--red); font-weight: 700; }
 
 </style>
 </head>
@@ -525,7 +541,19 @@ const SENT = [
 ];
 const ROT = [[0, 1, 2, 3], [1, 2, 3, 0], [2, 3, 0, 1], [3, 0, 1, 2]]; // group g, round r -> trial ROT[g][r]
 // ---------- Class 3 content
-const SQUADS = ['Hourglass', 'Sundial', 'Pendulum', 'Compass', 'Astrolabe', 'Chronometer', 'Lantern'];
+// Power teams (since 10 nov 2026): no fixed squads. XP goes to the power team; work groups are mixed (one agent of each power) and change every activity.
+const ngroups = () => ['7A', '7B'].includes(course) ? 6 : 7;
+const gb = n => `<i class="gnum">${n}</i>`;
+// Mixed groups of the day: every power team counts off with a different rule, so the groups change every class.
+const MIXR = ['from the window to the door', 'in alphabetical order of first names (A → Z)', 'from the back of the room to the front', 'by birthday month (January → December)', 'from the door to the window', 'in alphabetical order of surnames (Z → A)', 'from the front of the room to the back', 'by birthday day (1 → 31)', 'by the length of your first name (shortest first)', 'by birthday month (December → January)'];
+const mixRule = n => MIXR[n % MIXR.length];
+const MIXNOTE = 'Grupos mixtos del día (2 min). Cada equipo de poder se pone de pie y se numera 1, 2, 3… según la regla de la pantalla. El grupo 1 son los cuatro «1» (un Timekeeper, un Decoder, un Herald y un Chronicler), el grupo 2 los cuatro «2», y así. Si un equipo tiene un agente menos, ese grupo queda de tres y otro agente asume ese poder; si tiene uno más, el agente extra se une al grupo 1 (luego al 2…). La regla cambia en cada clase para que los grupos no se repitan.';
+const mixSlide = (stop, n, host) => ({ stop, host: [host || 'point', 'Count off in your <b>power team</b>!'], note: MIXNOTE,
+  html: () => `<div class="kicker">Today's mixed groups · ${course || ''}</div><h2>Count off in your power team <u>${mixRule(n)}</u>.</h2>
+  <div class="mixg">${POWERS.map(([k, nm]) => `<div><img src="${IMG.emb[k]}" alt=""><b>${nm}s</b><span>1 · 2 · 3 · 4 …</span></div>`).join('')}</div>
+  <div class="task" style="justify-content:center">All the <b>&nbsp;1s&nbsp;</b> = ${gb(1)} · all the <b>&nbsp;2s&nbsp;</b> = ${gb(2)} · all the <b>&nbsp;3s&nbsp;</b> = ${gb(3)} …</div>
+  <p class="hint center" style="margin:0">One Timekeeper · one Decoder · one Herald · one Chronicler in every group.</p>` });
+const pxBoard = (step, mini) => `<div class="xpboard pw${mini ? ' mini' : ''}" id="xpb" data-step="${step}">${POWERS.map(([k, n]) => `<button type="button" class="xpsq" data-sq="${k}"><img src="${IMG.emb[k]}" alt=""><b>${n}s</b><span class="xp" data-xp="${k}">0 XP</span><i class="minus" data-minus="${k}" title="−${step} XP">−</i></button>`).join('')}</div>`;
 const AON = [['Chaucer was an English writer.', 'fact', 'FACT · sit down'], ['The Canterbury Tales is boring.', 'op', 'OPINION ONLY · sit down'],
   ['We should visit the Manzana Jesuítica because it shows how old our school is.', 'arg', 'ARGUMENT · stand up! What is the reason?'], ['Pilgrims travelled to Canterbury.', 'fact', 'FACT · sit down'],
   ['Time travel is dangerous because we can change the past by accident.', 'arg', 'ARGUMENT · stand up! What is the reason?'], ['I love history!', 'op', 'OPINION ONLY · sit down']];
@@ -540,9 +568,9 @@ const LR = [['a', 'My cousin lost his backpack on a mission to 1850.', 'Mateo', 
   ['d', "I'm the tallest agent.", 'Mateo', 'NR', 'height has nothing to do with leadership'],
   ['e', 'The leader will need to talk to the pilgrims.', 'Valentina', 'R', 'the leader must communicate'],
   ['f', 'In 1380 there are no phones.', 'Valentina', 'R', 'it explains why paper is the safest option']];
-const CLAIMS = [['Hourglass', 'Agents should travel to 1380 on foot, not by horse.'], ['Sundial', 'Pilgrims should not buy relics from strangers.'], ['Pendulum', 'Every agent should write with a pencil in 1380.'],
-  ['Compass', 'The best leader of a mission is the best listener.'], ['Astrolabe', 'Our school should organise a visit to the Manzana Jesuítica every year.'], ['Chronometer', 'The Herald is the most important power of a squad.'],
-  ['Lantern', 'People in 2126 will believe fewer lies than people in 1380.']];
+const CLAIMS = ['Agents should travel to 1380 on foot, not by horse.', 'Pilgrims should not buy relics from strangers.', 'Every agent should write with a pencil in 1380.',
+  'The best leader of a mission is the best listener.', 'Our school should organise a visit to the Manzana Jesuítica every year.', 'The Herald is the most important power of a group.',
+  'People in 2126 will believe fewer lies than people in 1380.'];
 let LPLAYS = 0;
 const lq = key => `<ol class="lq">${LQ.map(([q, o, k], n) => `<li class="${key ? 'keyq' : ''}"><span>${q}</span><span class="opts">${o.map((t, j) => `<span class="opt${key && j === k ? ' right' : ''}"><b>${'ABC'[j]}</b> ${t}</span>`).join('')}</span></li>`).join('')}</ol>`;
 const lr = key => `<table class="lrtab"><tr><th>Reason</th><th>Who?</th><th>R / NR</th><th>Why?</th></tr>${LR.map(([l, t, w, r, y]) => `<tr class="${key ? 'keyr hid' : ''}"><td><b>${l})</b> «${t}»</td><td>${key ? w : ''}</td><td>${key ? `<span class="rn ${r}">${r}</span>` : ''}</td><td>${key ? y : ''}</td></tr>`).join('')}</table>`;
@@ -567,11 +595,11 @@ const SORTL = { cl: 'CLAIM', re: 'REASON', ev: 'EVIDENCE' };
 const VQ = [['A person who buys and sells things', 'merchant'], ['One hundred years', 'century'], ['A small hotel for travellers', 'inn'], ['The talk of a preacher', 'sermon'], ['Wanting much more than you need', 'greed'],
   ['A person who travels to a holy place', 'pilgrim'], ['Forgiveness you can buy from the Pardoner', 'pardon'], ['An object from a holy person', 'relic'], ['Connected to the topic', 'relevant'], ['What a speaker wants you to believe', 'claim']];
 const STN = [['decoder', 'Picture–Word Match', 'Decoder'], ['herald', 'Pronunciation Booth', 'Herald'], ['timekeeper', 'Words in Context', 'Timekeeper'], ['chronicler', 'Argument Words', 'Chronicler']];
-const GROUPS = [['Hourglass', 'Sundial'], ['Pendulum', 'Compass'], ['Astrolabe', 'Chronometer'], ['Lantern']];
-const CHECK = ['My signed permission slip is in my folder.', 'I have two pencils and an eraser (no pens: we are pilgrims of 1380!).', 'I have my Chronos Field Log and something hard to write on.', 'I am wearing my complete school uniform and comfortable shoes.', 'I know my squad and my fellow pilgrim.', 'I know my three missions: chronal coordinates, a temporal signature and voices of the past.', 'I will speak English with my squad as much as I can.'];
+const GROUPS = () => ngroups() === 6 ? [[1, 2], [3, 4], [5], [6]] : [[1, 2], [3, 4], [5, 6], [7]]; // mixed groups of the day per station
+const CHECK = ['My signed permission slip is in my folder.', 'I have two pencils and an eraser (no pens: we are pilgrims of 1380!).', 'I have my Chronos Field Log and something hard to write on.', 'I am wearing my complete school uniform and comfortable shoes.', 'I know my power team and my fellow pilgrim.', 'I know my three missions: chronal coordinates, a temporal signature and voices of the past.', 'I will speak English with my group as much as I can.'];
 const bank = ws => `<div class="bank">${ws.map(w => `<span>${w}</span>`).join('')}</div>`;
 const stHead = (k, n, title, task) => `<div class="sthead"><img src="${IMG.emb[STN[k][0]]}" alt=""><div><div class="kicker">Station ${k + 1} · led by the ${STN[k][2]}</div><h2>${title}</h2>${task ? `<p class="hint" style="margin:.4vh 0 0">${task}</p>` : ''}</div></div>`;
-const xpMini = () => `<div class="xpboard mini" id="xpb" data-step="5">${SQUADS.map(s => `<button type="button" class="xpsq" data-sq="${s}"><img src="${IMG.sq[s.toLowerCase()]}" alt=""><b>${s}</b><span class="xp" data-xp="${s}">0 XP</span><i class="minus" data-minus="${s}" title="−5 XP">−</i></button>`).join('')}</div>`;
+const xpMini = () => pxBoard(5, true);
 // ---------- lessons
 const LESSONS = {
   map: { stops: [], scene: { '-1': 'hq' }, arrive: {}, plaque: 'Harry Bailly · Chronos Agent', slides: [
@@ -617,7 +645,7 @@ const LESSONS = {
       html: () => `<div class="kicker">Canterbury · Check your decoding</div>${vowList(['C8', 'C9', 'C10'], true)}
       <div class="info">${!course ? '' : DATES[course][3] === 'archive'
         ? `<b>Term test · The Chronos Archive</b> (${course}, ${DATES[course][2]}): you will speak as a person of the past and send a message to the future — a video and a Time Capsule Letter. In March, 7C, 7D and 7E will quote your messages in their museum.`
-        : `<b>Term test · The Museum of the Future · 2126</b> (${course}, ${DATES[course][2]}): your squad will open a room in the future, every agent will write a placard and guide visitors, and you will quote the messages from the past of 7A and 7B.`}
+        : `<b>Term test · The Museum of the Future · 2126</b> (${course}, ${DATES[course][2]}): your group will open a room in the future, every agent will write a placard and guide visitors, and you will quote the messages from the past of 7A and 7B.`}
         The Host's prize: the rank of <b>Chrono-Master</b>, won with XP and artifacts.</div>` },
     { stop: 4, host: ['think', 'Which vow is the <b>hardest</b> for you?'], note: 'Pulse ▶ (3 min). Cada estudiante marca con ★ el voto más difícil y completa la frase.',
       html: () => `<div class="kicker">Back at the inn · My hardest vow</div><h2>Put a ★ next to the vow that looks hardest for you.</h2>
@@ -662,7 +690,7 @@ const LESSONS = {
       <div class="marks">${[[33, 'Decoder Lens', 'Artifact 1 · 1380'], [66, "Pardoner's Relic", 'Artifact 2 · 1380'], [90, "Antony's Scroll", 'Artifact 3 · Rome'], [100, 'Term test', course ? (DATES[course][3] === 'archive' ? 'The Chronos Archive' : 'Museum of the Future · 2126') : 'The future']].map(([p, t, s]) => `<div class="mark"><b>${t}</b>${s}</div>`).join('')}</div>` },
     { stop: 0, host: ['present', 'Four powers. Today you <b>test them all</b> — then you choose yours!'],
       note: 'Lea cada poder en voz alta mientras aparece. Anuncie: «Today you will test the four powers. Then you will choose yours.»',
-      html: () => `<div class="kicker">Every squad has four powers</div>
+      html: () => `<div class="kicker">Four powers · four teams</div>
       <div class="powers ${ANIM ? 'anim' : ''}">${POWERS.map(([k, n, s, d]) => `<div class="power"><img src="${IMG.emb[k]}" alt=""><b>The ${n}</b><small>${s}</small><span>${d}</span></div>`).join('')}</div>
       <p class="lead center" style="margin:0 auto">Today you will <b>test</b> the four powers. Then you will <b>choose</b> yours.</p>` },
     { stop: 1, dense: true, host: ['idea', 'Find the <b>five forms</b> in the transmission!'],
@@ -720,28 +748,29 @@ const LESSONS = {
       <div class="scroll"><p class="frame" style="margin:0"><b>My first choice:</b> ______________ because I would ______________________.<br><b>My second choice:</b> ______________ because I would ______________________.</p></div>
       <p class="hint center">Example: «I would be a good <b>Decoder</b> because I like guessing words.»</p>${timer([['Write', 180]])}` },
     { stop: 3, host: ['thumbs', 'Great reasons, agents!'],
-      note: 'Cinco voluntarios leen su razón. Aclare: el poder no cambia los criterios; todos se evalúan en los diez. Después de clase forme escuadrones de 4 con las Role Cards (1 por poder) y regístrelos en el Registro Chronos.',
+      note: 'Cinco voluntarios leen su razón. Aclare: el poder no cambia los criterios; todos se evalúan en los diez. Después de clase asigne el poder de cada agente con las Role Cards, equilibrando los cuatro equipos (unos 6–7 por poder), y regístrelo en el Registro Chronos.',
       html: () => `<div class="kicker">Five agents read their reason</div><h2>«I would be a good … because …»</h2>
       <div class="info">Your power <b>does not change</b> the criteria: every agent is assessed on the ten vows. Your power is your <b>role in every mission</b> and a short <b>role task</b> in each evidence.</div>
-      <p class="hint center" style="margin:0">Next class you will meet your squad:</p><div class="squads">${['Hourglass', 'Sundial', 'Pendulum', 'Compass', 'Astrolabe', 'Chronometer', 'Lantern'].map(s => `<span>${s}</span>`).join('')}</div>` },
+      <p class="hint center" style="margin:0">Next class you will meet your <b>power team</b>. Your XP goes to your team — and in every mission you will work in a <b>new group</b>, with one agent of each power.</p>` },
     { stop: 3, host: ['listen', 'I\'m listening, agents…'],
       note: 'Pregunta de salida, en voz alta. Escuche a varios voluntarios y recoja las Role Cards.',
-      html: () => `<div class="kicker">Exit question</div><div class="big-q">If you were the <b>Timekeeper</b> of your squad, what would you do?</div>
+      html: () => `<div class="kicker">Exit question</div><div class="big-q">If you were the <b>Timekeeper</b> of your group, what would you do?</div>
       <p class="hint center">Answer with <b>If I were…, I would…</b></p>` },
     { stop: 3, host: ['wave', () => ['7B', '7C'].includes(course) ? 'See you after your <b>FAS</b>, agents!' : 'See you in <b>1604</b>, agents!'],
       note: () => ['7B', '7C'].includes(course) ? 'Para 7B/7C: su próxima clase es después del FAS (vie 13). Recuérdeles la lista de chequeo y el Chronos Field Log que les envió (los imprimen o los copian en el cuaderno) y la autorización de salida para el martes 17.' : 'Recuerde la visita del martes 17 nov a la Manzana Jesuítica. Recoja las Role Cards.',
-      html: () => `<div class="kicker">Mission briefing complete</div><h1>Next class: your squad and your power.</h1>
+      html: () => `<div class="kicker">Mission briefing complete</div><h1>Next class: your power and your team.</h1>
       <div class="info">${['7B', '7C'].includes(course) ? `Your next class is on <b>Friday, November 13</b>, after your FAS. Then, on <b>Tuesday, November 17</b>, the time machine leaves from the Manzana Jesuítica (1604): bring your checklist and your permission slip.` : `On <b>Tuesday, November 17</b> the time machine leaves from the Manzana Jesuítica — the place of <b>1604</b>. There you will calibrate it.`}</div>
       <button type="button" class="endbtn" data-tomap="1">☰ Back to the cycle map</button>` },
   ] },
-  c3: { stops: ['Squads', 'Arguments', 'Listening', 'Reason Relay', 'Bug Alert'], scene: { 0: 'hq', 1: 'mission', 2: 'mission', 3: 'hq', 4: 'buglab' }, plaque: 'Harry Bailly · Chronos Agent',
-    arrive: { 0: ['Class 3 · Logic Bug Alert', 'Your Squads', 'Seven squads · four powers each'], 1: ['Mission Control', 'What Is an Argument?', 'Claim · reason · evidence'], 2: ['Incoming call', 'Mission Control Briefing', 'Listen twice · find the reasons'], 3: ['Squad game', 'The Reason Relay', 'Catch the irrelevant reason'], 4: ['Warning', 'Logic Bug Alert', 'The first bug is caught…'] },
+  c3: { stops: ['Power Teams', 'Arguments', 'Listening', 'Reason Relay', 'Bug Alert'], scene: { 0: 'hq', 1: 'mission', 2: 'mission', 3: 'hq', 4: 'buglab' }, plaque: 'Harry Bailly · Chronos Agent',
+    arrive: { 0: ['Class 3 · Logic Bug Alert', 'Your Power Team', 'Four teams · new groups every mission'], 1: ['Mission Control', 'What Is an Argument?', 'Claim · reason · evidence'], 2: ['Incoming call', 'Mission Control Briefing', 'Listen twice · find the reasons'], 3: ['Group game', 'The Reason Relay', 'Catch the irrelevant reason'], 4: ['Warning', 'Logic Bug Alert', 'The first bug is caught…'] },
     slides: [
-    { stop: 0, host: ['present', 'Agents, meet your <b>squads</b>!'],
-      note: 'Anuncio de escuadrones (5 min con el warm-up). Cada agente busca su escuadrón y su poder en el tablero o en la tarjeta de su puesto (usted los asignó en el Registro Chronos). Cada agente escribe en el Pilgrim\'s Book su ID: «Agent [apellido] · Squad [nombre] · Power [poder]».',
-      html: () => `<div class="kicker">Class 3 · What Is an Argument? · Logic Bug Alert</div><h2>Seven squads. Four powers in each one.</h2>
-      <div class="shields ${ANIM ? 'anim' : ''}">${SQUADS.map(s => `<div class="shield"><img src="${IMG.sq[s.toLowerCase()]}" alt=""><b>${s}</b></div>`).join('')}</div>
-      <div class="scroll"><p class="frame" style="margin:0;text-align:center">Agent ________ · Squad ________ · Power ________</p></div>` },
+    { stop: 0, host: ['present', 'Agents, meet your <b>power team</b>!'],
+      note: 'Anuncio de los equipos de poder (5 min con el warm-up). Lea en voz alta quiénes forman cada equipo (usted asignó el poder en el Registro Chronos, unos 6–7 por poder). Explique las tres reglas de la pantalla: el XP va al equipo del poder; en cada actividad de grupo se forman grupos mixtos nuevos, con un agente de cada poder (la regla de numeración del día aparece en pantalla antes de cada actividad de grupo); los puntos los gana el poder del agente que responde o hace el trabajo. Cada agente escribe en el Pilgrim\'s Book su ID: «Agent [apellido] · Power [poder]».',
+      html: () => `<div class="kicker">Class 3 · What Is an Argument? · Logic Bug Alert</div><h2>Four power teams. A new group in every mission.</h2>
+      <div class="powers ${ANIM ? 'anim' : ''}">${POWERS.map(([k, n, s2]) => `<div class="power"><img src="${IMG.emb[k]}" alt=""><b>The ${n}s</b><small>${s2}</small></div>`).join('')}</div>
+      <div class="ptrules"><div><span class="step">1</span><span>Your <b>XP</b> goes to your <b>power team</b>.</span></div><div><span class="step">2</span><span>Every mission: a <b>new group</b> — one Timekeeper, one Decoder, one Herald, one Chronicler.</span></div><div><span class="step">3</span><span>You answer or do the job → <b>your team</b> wins the XP.</span></div></div>
+      <div class="scroll"><p class="frame" style="margin:0;text-align:center">Agent ________ · Power ________</p></div>` },
     { stop: 0, host: ['stand', 'Stand up if it is an <b>ARGUMENT</b>!'],
       note: 'Warm-up «Argument or not?». Todos sentados. Pulse «Next sentence»: lea la frase. Si es un argumento (opinión + razón), se ponen de pie. Pulse «Reveal» y, si es argumento, pregunte a alguien de pie: «What is the reason?».',
       html: () => `<div class="kicker">Warm-up · Argument or not?</div><h2>An argument = an opinion + a reason.</h2>
@@ -782,16 +811,17 @@ const LESSONS = {
     { stop: 2, dense: true, host: ['magnifier', 'Can you turn a bad reason into a <b>relevant</b> one?'],
       note: 'Revisión (parte 2). Toque cada razón para revelar quién la dijo y si es R o NR. Para cada NR, pida que alguien la convierta en una razón relevante. Ej.: «My cousin\'s mission to 1850 failed because nobody prepared the language.» La transcripción puede subirse a OPEN.',
       html: () => `<div class="kicker">Listening · Part 2 · the key</div>${lr(true)}` },
+    mixSlide(3, 13),
     { stop: 3, host: ['coin', '<b>10 XP</b> for every bug you catch!'],
-      note: 'Reason Relay (11 min). Cada escuadrón recibe su claim card (Anexo G). En 3 minutos escribe dos razones: una relevante y una irrelevante, sin decir cuál es cuál. Roles: Herald lee · Chronicler escribe · Decoder revisa las palabras · Timekeeper controla el tiempo. Pulse ▶ (3 min).',
-      html: () => `<div class="kicker">The Reason Relay · one claim per squad</div>
-      <div class="claims">${CLAIMS.map(([s, c]) => `<div class="claimc"><img src="${IMG.sq[s.toLowerCase()]}" alt=""><span><b>${s}</b>${c}</span></div>`).join('')}</div>
+      note: 'Reason Relay (11 min). Con los grupos mixtos del día (pantalla anterior), cada grupo recibe una claim card (Anexo G, numeradas 1–7). En 3 minutos escribe dos razones: una relevante y una irrelevante, sin decir cuál es cuál. Roles: Herald lee · Chronicler escribe · Decoder revisa las palabras · Timekeeper controla el tiempo. Pulse ▶ (3 min).',
+      html: () => `<div class="kicker">The Reason Relay · one claim per group</div>
+      <div class="claims">${CLAIMS.slice(0, ngroups()).map((c, i) => `<div class="claimc">${gb(i + 1)}<span><b>Group ${i + 1}</b>${c}</span></div>`).join('')}</div>
       <div class="task"><span class="step">1</span>Write ONE relevant and ONE irrelevant reason. <span class="step">2</span>Don't say which is which!</div>${timer([['Write', 180]])}` },
     { stop: 3, host: ['coin', 'Who found the <b>irrelevant</b> reason?'],
-      note: 'El Herald de cada escuadrón lee su claim y sus dos razones. Los demás levantan la mano y dicen cuál es la irrelevante y por qué. Toque el escudo del escuadrón que acierta: +10 XP (si nadie acierta, +10 XP para el que leyó). Clic derecho o «−» resta. El puntaje queda guardado en este computador para este curso.',
+      note: 'El Herald de cada grupo lee su claim y sus dos razones. Los demás levantan la mano y dicen cuál es la irrelevante y por qué. Toque el emblema del poder del agente que acierta: +10 XP para su equipo (si nadie acierta, +10 XP para los Heralds, por leer bien). Clic derecho o «−» resta. El puntaje queda guardado en este computador para este curso.',
       html: () => `<div class="kicker">The Reason Relay · XP board · ${course || ''}</div>
-      <div class="xpboard" id="xpb">${SQUADS.map(s => `<button type="button" class="xpsq" data-sq="${s}"><img src="${IMG.sq[s.toLowerCase()]}" alt=""><b>${s}</b><span class="xp" data-xp="${s}">0 XP</span><i class="minus" data-minus="${s}" title="−10 XP">−</i></button>`).join('')}</div>
-      <div class="revealbar"><button type="button" class="tbtn" id="xpReset">Reset XP</button><span class="hint">Tap a shield: +10 XP</span></div>` },
+      ${pxBoard(10)}
+      <div class="revealbar"><button type="button" class="tbtn" id="xpReset">Reset XP</button><span class="hint">Tap the power of the agent who answers: +10 XP for the team</span></div>` },
     { stop: 4, host: ['write', 'A reason is relevant when…'],
       note: 'Exit ticket en el Pilgrim\'s Book (3 min). Pulse ▶.',
       html: () => `<div class="kicker">Exit ticket · in your Pilgrim's Book</div>
@@ -804,7 +834,7 @@ const LESSONS = {
     { stop: 4, host: ['wave', () => ['7B', '7C'].includes(course) ? 'See you on <b>Tuesday 17</b>, agents!' : 'See you at the <b>Role Bootcamp</b>!'],
       note: () => ['7B', '7C'].includes(course) ? 'Para 7B/7C (no tienen Clase 4): use los últimos 5 minutos para la lista de chequeo de la visita del martes 17 (Anexo J): lápiz, Field Log, autorización firmada y uniforme.' : 'Fin de la clase. La próxima es el Role Bootcamp (Clase 4).',
       html: () => ['7B', '7C'].includes(course) ? `<div class="kicker">Before Tuesday, November 17 · Visit checklist</div><h2>Calibrating the Time Machine · Manzana Jesuítica</h2>
-      <ul class="checklist">${['My signed permission slip is in my folder.', 'I have two pencils and an eraser (no pens: we are pilgrims of 1380!).', 'I have my Chronos Field Log and something hard to write on.', 'I am wearing my complete school uniform and comfortable shoes.', 'I know my squad and my fellow pilgrim.', 'I know my three missions: chronal coordinates, a temporal signature and voices of the past.', 'I will speak English with my squad as much as I can.'].map(t => `<li>${t}</li>`).join('')}</ul>
+      <ul class="checklist">${['My signed permission slip is in my folder.', 'I have two pencils and an eraser (no pens: we are pilgrims of 1380!).', 'I have my Chronos Field Log and something hard to write on.', 'I am wearing my complete school uniform and comfortable shoes.', 'I know my power team and my fellow pilgrim.', 'I know my three missions: chronal coordinates, a temporal signature and voices of the past.', 'I will speak English with my group as much as I can.'].map(t => `<li>${t}</li>`).join('')}</ul>
       <button type="button" class="endbtn" data-tomap="1">☰ Back to the cycle map</button>`
       : `<div class="kicker">Class 3 complete</div><h1>One bug caught. Many more to go.</h1><div class="info">Next class: <b>Role Bootcamp</b> — four stations, each one led by a power.</div>
       <button type="button" class="endbtn" data-tomap="1">☰ Back to the cycle map</button>` },
@@ -818,12 +848,12 @@ const LESSONS = {
       <div class="minipow">${POWERS.map(([k]) => `<img src="${IMG.emb[k]}" alt="">`).join('')}</div>
       <div class="info">Four stations, and <b>each station is led by a power</b>. Then: <b>Vocabulary Quiz 1</b> and your checklist for Tuesday.</div>` },
     { stop: 0, host: ['charades', 'Act it out — <b>no talking!</b>'],
-      note: 'Warm-up Chronos Charades (4 min, 3 rondas). Un voluntario pasa al frente. La clase cierra los ojos y usted pulsa «🙈 Show the actor»: la palabra aparece 4 segundos solo para el actor (también puede susurrársela). El actor la actúa sin hablar; el primer escuadrón que la dice en inglés gana 5 XP: toque su escudo («−» resta). «Reveal» muestra la respuesta a todos. El XP se suma al de la Clase 3 de este curso.',
+      note: 'Warm-up Chronos Charades (4 min, 3 rondas). Un voluntario pasa al frente. La clase cierra los ojos y usted pulsa «🙈 Show the actor»: la palabra aparece 4 segundos solo para el actor (también puede susurrársela). El actor la actúa sin hablar; el primer agente que la dice en inglés gana 5 XP para su equipo: toque el emblema de su poder («−» resta). «Reveal» muestra la respuesta a todos. El XP se suma al de la Clase 3 de este curso.',
       html: () => `<div class="kicker">Warm-up · Chronos Charades</div>
       <div class="chwrap"><div class="chcard" id="chc"><span class="q">?</span><div class="face"><img id="chImg" alt=""><b id="chW"></b></div><span class="peek" id="chPeek"></span></div>
-        <div class="chside"><div class="chn" id="chN">Word 1 / ${CHAR.length}</div><h2 style="font-size:4.4vh">The actor acts. The squads guess — <b style="color:var(--red)">in English</b>.</h2>
+        <div class="chside"><div class="chn" id="chN">Word 1 / ${CHAR.length}</div><h2 style="font-size:4.4vh">The actor acts. Everybody guesses — <b style="color:var(--red)">in English</b>.</h2>
         <div class="revealbar" style="flex-wrap:wrap"><button type="button" class="tbtn" id="chPeekBtn">🙈 Show the actor</button><button type="button" class="tbtn go" id="chRev">Reveal</button><button type="button" class="tbtn" id="chNext">Next word ▶</button></div>
-        <p class="hint" style="margin:0">First squad to say the word: <b>+5 XP</b>. Tap its shield.</p></div></div>${xpMini()}` },
+        <p class="hint" style="margin:0">First agent to say the word: <b>+5 XP</b> for their power team.</p></div></div>${xpMini()}` },
     { stop: 0, dense: true, host: ['wordcard', 'Your <b>mission words</b>!'],
       note: 'Glosario del Anexo I (2–3 min). Léalo en coro: usted dice la palabra y ellos repiten. Cada estación tiene una copia impresa en la tarjeta de instrucciones.',
       html: () => `<div class="kicker">The words of the mission · Annex I</div>
@@ -847,11 +877,12 @@ const LESSONS = {
       html: () => `${stHead(3, 3, 'Argument Words', 'Sort the cards. Then write one sentence of your own with each word in your Pilgrim\'s Book.')}
       <div class="sortc">${SORT.map(([t, c]) => `<div class="sc" data-c="${c}"><span>«${t}»</span><em>${SORTL[c]}</em></div>`).join('')}</div>
       <div class="cre-key"><span class="k claim">CLAIM = what you say is true</span><span class="k reason">REASON = why</span><span class="k evid">EVIDENCE = the proof</span></div>` },
+    mixSlide(1, 14, 'present'),
     { stop: 1, host: ['hourglass', '<b>Rotate</b> when the sand runs out!'],
-      note: 'Tablero de rotación (4 × 9 min). Pulse ▶ Round 1: al terminar suena la campana, aparece «ROTATE!» y el tablero pasa a la siguiente ronda; pulse ▶ otra vez. En cada estación, el agente del poder que la dirige lee las instrucciones y organiza a su escuadrón. El Timekeeper avisa el cambio. Con siete escuadrones, dos escuadrones comparten estación (el grupo 4 es solo Lantern); ajuste los grupos si falta alguno.',
+      note: 'Tablero de rotación (4 × 9 min). Pulse ▶ Round 1: al terminar suena la campana, aparece «ROTATE!» y el tablero pasa a la siguiente ronda; pulse ▶ otra vez. Antes, forme los grupos mixtos del día con la pantalla anterior: dos grupos comparten estación (con 7 grupos, el grupo 7 va solo; con 6, los grupos 5 y 6 van solos). En cada estación, el agente del poder que la dirige lee las instrucciones y organiza a su grupo. El Timekeeper avisa el cambio.',
       html: () => `<div class="kicker">Role Bootcamp · Rotation board · 9 minutes per station</div>
       <div class="rot" id="rot" data-sec="540"><div></div>${[1, 2, 3, 4].map(r => `<div class="h" data-r="${r - 1}">Round ${r}</div>`).join('')}
-        ${GROUPS.map((g, gi) => `<div class="g sqg">${g.map(s => `<img src="${IMG.sq[s.toLowerCase()]}" alt="" title="${s}">`).join('')}</div>${[0, 1, 2, 3].map(r => { const t = STN[ROT[gi][r]]; return `<div class="c" data-r="${r}"><img src="${IMG.emb[t[0]]}" alt=""><span>${t[1]}<small>${t[2]} leads</small></span></div>`; }).join('')}`).join('')}</div>
+        ${GROUPS().map((g, gi) => `<div class="g sqg">${g.map(n => gb(n)).join('')}</div>${[0, 1, 2, 3].map(r => { const t = STN[ROT[gi][r]]; return `<div class="c" data-r="${r}"><img src="${IMG.emb[t[0]]}" alt=""><span>${t[1]}<small>${t[2]} leads</small></span></div>`; }).join('')}`).join('')}</div>
       <div class="rotctl"><button type="button" class="tbtn go" id="rotgo">▶ Round 1 · 9:00</button><span class="clock" id="rotclock"></span><button type="button" class="tbtn" id="rotskip">Next round</button></div>` },
     { stop: 2, dense: true, host: ['wordcard', 'Alone now. <b>5 XP</b> for every correct word!'],
       note: 'Vocabulary Quiz 1 (7 min), individual, de vuelta en el puesto (Anexo I). Pulse ▶. Responden en el cuaderno (1–10). PIAR: el banco de palabras queda visible en la pantalla.',
@@ -961,7 +992,7 @@ function mountWidgets() {
   document.querySelectorAll('#fit .lq li.keyq').forEach(li => li.onclick = () => li.classList.toggle('show'));
   document.querySelectorAll('#fit .lrtab tr.keyr').forEach(tr => tr.onclick = () => tr.classList.toggle('hid'));
   if ($('xpb')) {
-    const STEP = +($('xpb').dataset.step || 10), key = 'chronos-xp-' + (course || 'x'); let xp = {}; try { xp = JSON.parse(localStorage.getItem(key) || '{}'); } catch (e) {}
+    const STEP = +($('xpb').dataset.step || 10), key = 'chronos-pxp-' + (course || 'x'); let xp = {}; try { xp = JSON.parse(localStorage.getItem(key) || '{}'); } catch (e) {}
     const save = () => { try { localStorage.setItem(key, JSON.stringify(xp)); } catch (e) {} };
     const paint = () => document.querySelectorAll('#xpb .xp').forEach(el => el.textContent = (xp[el.dataset.xp] || 0) + ' XP');
     document.querySelectorAll('#xpb .xpsq').forEach(b => { b.onclick = e => { const m = e.target.closest('[data-minus]'); const s = b.dataset.sq; xp[s] = Math.max(0, (xp[s] || 0) + (m ? -STEP : STEP)); save(); paint(); if (!m) { chime(); b.classList.remove('bump'); void b.offsetWidth; b.classList.add('bump'); } };
