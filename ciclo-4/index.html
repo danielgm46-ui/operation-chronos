@@ -947,6 +947,33 @@ a.tbtn { text-decoration: none; display: inline-block; }
 .exit2 { display: grid; gap: 1.4vh; margin: 1vh 0; } .exit2 p { margin: 0; font-family: var(--f-display); font-size: 3.6vh; color: var(--navy); background: var(--note); border: .3vh solid var(--gold); border-radius: 1.2vh; padding: 1vh 1.4vw; }
 .exit2 p b { color: var(--red); margin-right: .8vw; }
 @media (max-aspect-ratio: 3/2) { .tts, .cqs { grid-template-columns: 1fr; } .ttpil { height: 28vh; } }
+/* Cycle 4 · Class 2 · Logic Bug Lab */
+.vbugs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1vw; margin-top: 1vh; }
+.vbugs > div { background: var(--note); border: .3vh solid var(--gold); border-radius: 1.2vh; padding: .8vh 1vw; display: flex; flex-direction: column; gap: .3vh; }
+.vbugs b { font-family: var(--f-caps); font-size: 2.3vh; color: var(--navy); letter-spacing: .04em; } .vbugs span { font-size: 2.1vh; line-height: 1.25; }
+.vbugs .y { border-color: #3e7d4f; } .vbugs .n { border-color: var(--red); } .vbugs .x { opacity: .8; }
+.sci { position: relative; } .scic { display: none; grid-template-columns: 1.05fr 1fr; gap: 1.6vw; align-items: stretch; } .scic.on { display: grid; }
+.scic .sl { background: var(--note); border: .35vh solid var(--gold); border-radius: 1.4vh; padding: 1.4vh 1.6vw; }
+.scic .sl small { font-family: var(--f-caps); font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-size: 1.8vh; }
+.scic .sl h2 { font-family: var(--f-display); font-size: 7vh; color: var(--red); margin: .4vh 0 1vh; line-height: 1.05; } .scic .sl p { font-size: 2.6vh; margin: 0; line-height: 1.3; }
+.scic .sr { background: #fff8e6; border: .35vh dashed var(--gold); border-radius: 1.4vh; padding: 1.2vh 1.6vw; display: flex; flex-direction: column; gap: .6vh; position: relative; }
+.scic .sr > * { visibility: hidden; } .scic.show .sr > * { visibility: visible; }
+.scic .sr::before { content: '?'; position: absolute; inset: 0; display: grid; place-items: center; font-family: var(--f-display); font-size: 16vh; color: var(--gold); opacity: .55; } .scic.show .sr::before { content: none; }
+.scic .sr .num { font-family: var(--f-display); font-size: 5.4vh; color: var(--red); line-height: 1; } .scic .sr > b { font-family: var(--f-caps); font-weight: 700; font-size: 3vh; color: var(--navy); letter-spacing: .04em; }
+.scic .sr p { margin: 0; font-family: var(--f-display); font-size: 2.7vh; color: var(--navy); line-height: 1.25; } .scic .sr p small { display: block; font-family: var(--f-caps); font-size: 1.6vh; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.scic .sr .ask { font-family: inherit; font-size: 2.5vh; color: var(--teal); font-weight: 700; } .scic .filt { align-self: flex-start; font-family: var(--f-caps); font-weight: 700; letter-spacing: .08em; font-size: 1.8vh; border-radius: 99px; padding: .3vh 1.2vw; }
+.now { display: none; align-items: center; gap: 1vw; background: #eef5ee; border: .3vh solid #3e7d4f; border-radius: 1.2vh; padding: .8vh 1.2vw; margin-top: 1vh; font-family: var(--f-display); font-size: 2.7vh; color: var(--navy); } .now.show { display: flex; }
+.now b { font-family: var(--f-caps); color: #fff; background: #3e7d4f; border-radius: .8vh; padding: .2vh .8vw; font-size: 2vh; } .now i { font-style: normal; color: var(--red); font-size: 3.4vh; }
+.dsp { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1vw; margin-top: 1vh; }
+.dsc { font: inherit; cursor: pointer; background: var(--note); border: .3vh solid var(--gold); border-radius: 1.2vh; padding: .8vh .8vw; display: flex; flex-direction: column; gap: .4vh; text-align: center; min-height: 11vh; justify-content: center; }
+.dsc span { font-family: var(--f-display); font-size: 2.5vh; color: var(--navy); line-height: 1.2; } .dsc b { visibility: hidden; font-size: 2.3vh; color: var(--red); } .dsc.show b { visibility: visible; } .dsc.show { background: #fff; }
+.bgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .6vh; width: 34vh; margin: 0 auto; } .bgrid span { aspect-ratio: 1; display: grid; place-items: center; background: var(--note); border: .35vh solid var(--navy); border-radius: .8vh; font-family: var(--f-display); font-size: 4vh; color: var(--gold); }
+.bgrid .free { background: var(--navy); color: #f2d48a; font-family: var(--f-caps); font-weight: 700; font-size: 2vh; letter-spacing: .06em; }
+.bgs .bgc { display: none; } .bgs .bgc.on { display: block; }
+.bgc p { margin: 0; font-family: var(--f-display); font-size: 4.6vh; line-height: 1.22; color: var(--navy); background: var(--note); border: .4vh solid var(--gold); border-radius: 1.6vh; padding: 2vh 2vw; min-height: 17vh; display: grid; align-items: center; }
+.bgc .ans { visibility: hidden; display: flex; align-items: baseline; gap: 1.4vw; margin-top: 1vh; justify-content: center; } .bgc.show .ans { visibility: visible; }
+.bgc .ans b { font-family: var(--f-caps); font-weight: 700; letter-spacing: .08em; font-size: 3.4vh; color: #fff; background: var(--red); border-radius: 1vh; padding: .3vh 1.4vw; } .bgc .ans span { font-size: 2.6vh; color: var(--teal); }
+.bank.small span { font-size: 1.9vh; padding: .2vh .8vw; }
 
 </style>
 </head>
@@ -1062,6 +1089,36 @@ const RELI = [
   { who: 'The Host', img: null, ico: '🍺', claim: '«His relics are not real.»', q: ['the leader of the pilgrims', 'He <b>heard</b> the Pardoner\'s confession — everybody heard it.', 'He wants to keep <b>his</b> money… and he is angry!'], v: ['m', 'QUITE RELIABLE · check again'] },
   { who: 'The young Squire', img: null, ico: '🛡️', claim: '«The bones are pig bones.»', q: ['a young pilgrim', 'He <b>saw</b> the cook give the Pardoner pig bones.', 'He wants to know the <b>truth</b> — he sells nothing.'], v: ['y', 'RELIABLE'] }];
 const RQS = ['Who says it?', 'How do they know?', 'Why do they say it?'];
+// ---------- Class 2 content · Logic Bug Lab
+const C2VIDEO = 'https://edu.gcfglobal.org/en/problem-solving-and-decision-making/logical-fallacies/1/';
+const C2GENIALLY = 'https://view.genially.com/6518e451e0c3d80011c54279';
+const VIDBUGS = [['False cause', 'We know it! It is Bugdex <b>#4</b>.', 'y'], ['Straw man', '<b>New today:</b> Bugdex #9.', 'n'], ['Begging the question', 'Extra: the reason only repeats the claim.', 'x'], ['False dilemma', 'Extra: «only two options». It is waiting in Rome…', 'x']];
+// the six bugs we already caught: scientific name · meaning · Bugdex number · who · quote · detector question · lens filter
+const SCI = [
+  { sci: 'Ad Hominem', mean: 'Latin: «to the person»', n: 7, who: 'the Reeve', said: '«Don\'t listen to the Miller — he\'s a fool and a thief!»', ask: 'Is he answering the idea — or attacking the person?', f: 'R' },
+  { sci: 'Bandwagon', mean: 'a bandwagon = the wagon with the music: everybody jumps on it', n: 5, who: 'the Pardoner', said: '«Everybody in Canterbury has already bought a relic from me!»', ask: 'Is it true only because many people do it?', f: 'R' },
+  { sci: 'Texas Sharpshooter', mean: 'also called «cherry picking»: you choose only the data you like', n: 6, who: 'the Pardoner', said: '«Three farmers tried my bone, and their animals got better!»', ask: 'What data is he hiding?', f: 'S' },
+  { sci: 'Post Hoc', mean: 'Latin: «after this» (…so because of this). Also called «false cause»', n: 4, who: 'the Merchant', said: '«I bought the tooth, and one week later my ship came back.»', ask: 'Did the first thing really cause the second?', f: 'S' },
+  { sci: 'Hasty Generalization', mean: 'hasty = too fast · to generalize = to say «all» or «always»', n: 3, who: 'the Miller', said: '«I had one bad pie, so all the food in Kent is terrible!»', ask: 'How many examples? Are they enough?', f: 'S' },
+  { sci: 'Slippery Slope', mean: 'a slope where you slip… and you can\'t stop', n: 8, who: 'one of the three rioters', said: '«If we let Death live, he will kill our friends, then our families, then everybody in England!»', ask: 'Will the first step really lead to the last one?', f: 'A' }];
+const BUG9 = { n: 9, name: 'Straw Man · «Twist it, then hit it»', who: 'the Pardoner, answering the Host, 1380',
+  said: 'Host: «We shouldn\'t buy relics without evidence.»<br>Pardoner: «So you say that all the saints are lies! Pilgrims, this man hates the Church!»',
+  why: 'The Host <b>never said that</b>. The Pardoner changes the argument into a different, uglier one — a man of straw — and attacks it. His answer is not <b>relevant</b> to the real argument.', catch: 'Ask: «Did he really say that?»',
+  now: ['«I think we should have less homework on Fridays.»', '«So you want students to learn nothing!»'] };
+const BUG10 = { n: 10, name: 'Doublespeak · «Pretty words, ugly truth»', who: 'the Pardoner, in a village, 1380',
+  said: '«I don\'t sell pardons, good people. I only accept small gifts of love for the Church.»',
+  why: 'Pretty words hide the truth: the «gifts» are a price, and the money goes into his own bag. We can\'t <b>accept</b> a reason when the words hide the facts.', catch: 'Ask: «What does it mean in plain words?»',
+  pairs: [['a pre-owned phone', 'a used phone'], ['We are adjusting our prices.', 'Prices are going up.'], ['The company is restructuring.', 'Workers are losing their jobs.'], ['an ill-advised plan', 'a bad idea']] };
+const BINGO = [
+  ['«My team lost when I wore my blue socks. Blue socks bring bad luck!»', 'Post Hoc', 'After it ≠ because of it.'],
+  ['«Don\'t listen to Camila\'s idea for the school trip — she can\'t even play football.»', 'Ad Hominem', 'It attacks Camila, not her idea.'],
+  ['«All my friends use this app, so it must be safe.»', 'Bandwagon', 'Popular ≠ true.'],
+  ['«If you get one bad grade, you will fail the year, and then you will never find a job!»', 'Slippery Slope', 'One step does not bring the whole chain.'],
+  ['«I watched one maths video and it was boring. All maths videos are boring.»', 'Hasty Generalization', 'One example is not enough.'],
+  ['«Our energy drink works: look at these three happy customers!» (2,000 customers said nothing.)', 'Texas Sharpshooter', 'It shows only the data it likes.'],
+  ['«We should use less plastic at school.» — «So you want to close the cafeteria and leave us hungry!»', 'Straw Man', 'Nobody said that!'],
+  ['«Our game isn\'t "pay to win". It only has "optional time-saving purchases".»', 'Doublespeak', 'Plain words: you pay to win.']];
+const BNAMES = ['Ad Hominem', 'Bandwagon', 'Texas Sharpshooter', 'Post Hoc', 'Hasty Generalization', 'Slippery Slope', 'Straw Man', 'Doublespeak'];
 const LESSONS = {
   map: { stops: [], scene: { '-1': 'hq' }, arrive: {}, plaque: 'Harry Bailly · Chronos Agent', slides: [
     { stop: -1, host: ['map', () => course ? 'Choose your class, agents!' : 'Good morrow, agents! First, choose your course.'],
@@ -1142,6 +1199,63 @@ const LESSONS = {
       note: 'Cierre (1 min). Próxima clase: Logic Bug Lab (dos bugs nuevos para la Bugdex, #9 y #10). Pida que traigan la Bugdex y el Decoder Lens.',
       html: () => `<div class="kicker">Class 1 complete</div><h1>A liar can say true things. A good agent checks every claim.</h1>
       <div class="info">Next class: <b>The Logic Bug Lab</b> — two new bugs are escaping into the Bugdex. Bring your <b>Bugdex</b> and your <b>Decoder Lens</b>!</div>
+      <button type="button" class="endbtn" data-tomap="1">☰ Back to the cycle map</button>` },
+  ] },
+  c2: { stops: ['The Video', 'Scientific Names', 'New Bugs', 'Bug Bingo', 'Exit'], scene: { '-1': 'hq', 0: 'mission', 1: 'buglab', 2: 'buglab', 3: 'bridge', 4: 'inn' }, plaque: 'Harry Bailly · Chronos Agent',
+    arrive: { 0: ['Class 2 · Logic Bug Lab', 'What Is a Fallacy?', 'One video · one question'], 1: ['The Bug Lab', 'Scientific Names', 'Six bugs you already caught'], 2: ['Bug alert!', 'Two New Bugs', 'Bugdex #9 and #10'], 3: ['The Training Bridge', 'Bug Bingo', 'Eight sentences · eight bugs'], 4: ['Back at the inn', 'Exit Ticket', 'Tomorrow: the auction'] },
+    slides: [
+    { stop: -1, host: ['magnifier', 'Agents, today every bug gets its <b>scientific name</b>!'],
+      note: 'Objetivo (1 min). En español: es la única clase de explicación de falacias. Los estudiantes ya atraparon seis de las ocho del Genially con apodos (Bugdex #3 a #8); hoy aprenden sus nombres «científicos» y atrapan dos nuevas: #9 Straw Man y #10 Doublespeak. Criterio C5 (lectura: analizar si un argumento es confiable o esconde una falacia). No se imprime nada: la Bugdex es una sección del cuaderno. Que tengan a mano la Bugdex y el Decoder Lens.',
+      html: () => `<div class="kicker">Cycle 4 · The Pardoner's Relic · Class 2 · Logic Bug Lab</div><h1>Today, agents, you will name eight logic bugs — and catch two new ones.</h1>
+      <div class="goals"><span><b>C5</b> which fallacy hides here?</span><span><b>+</b> detector questions</span><span><b>+</b> Bugdex #9 · #10</span></div>
+      <div class="info">On your desk: your <b>Bugdex</b> (notebook) and your <b>Decoder Lens</b>. In the lab, a logic bug is called a <b>fallacy</b>.</div>` },
+    { stop: 0, dense: true, host: ['listen', 'Watch the video. One question: <b>what is a fallacy?</b>'],
+      note: 'Warm-up (6 min). «▶ Open the video» abre en otra pestaña la lección «Logical Fallacies» de GCFGlobal (LearnFree); el video dura unos 3 minutos. Si el enlace no abre, búsquelo en YouTube como «GCFLearnFree Logical Fallacies». Una sola pregunta: «What is a fallacy?». Al volver, toque «Reveal» para mostrar la definición y pregunte cuáles de los cuatro bugs del video ya conocían: False cause es nuestro #4 y Straw man es el #9 de hoy; los otros dos son extra (el falso dilema vuelve en Roma). La definición va al cuaderno, como título de la página.',
+      html: () => `<div class="kicker">Warm-up · the video · GCFGlobal «Logical Fallacies»</div><div class="big-q" style="font-size:6vh">What is a fallacy?</div>
+      <div class="revealbar"><a class="tbtn go" href="${C2VIDEO}" target="_blank" rel="noopener">▶ Open the video</a><button type="button" class="tbtn" id="vdRev">Reveal</button></div>
+      <div id="vdBox" style="visibility:hidden"><div class="defn">A <b>fallacy</b> is an error in reasoning: the argument <b>sounds</b> good, but it doesn't work.</div>
+        <div class="vbugs">${VIDBUGS.map(([n, t, k]) => `<div class="${k}"><b>${n}</b><span>${t}</span></div>`).join('')}</div></div>
+      ${nb('title: <b>Logic Bug Lab</b> · copy the definition of a fallacy.')}` },
+    { stop: 1, dense: true, host: ['book', 'You caught these bugs. Now learn their <b>real names</b>.'],
+      note: () => `Scientific names (14 min, unos 2 min por bug). Rutina para cada uno: 1) muestre la diapositiva del Genially (botón «Open the Genially»; diapositivas 3 a 8, en este orden); 2) el Decoder del escuadrón lee el nombre y su significado en esta pantalla; 3) pregunte «Which bug of our Bugdex is it?» y todos muestran el número con los dedos; 4) toque «Reveal»: aparecen el apodo, la frase de 1380 y la pregunta detectora; 5) cada agente escribe el nombre científico junto a ese bug en su Bugdex, a lápiz. +5 XP al escuadrón que acierte primero. Ojo con el Genially: algunos ejemplos están en la diapositiva equivocada (la camiseta de la suerte y «lavar el carro» son Post Hoc, no Texas Sharpshooter; «gun control… hate freedom» es Straw Man). Use los ejemplos de 1380 de esta pantalla como referencia.${isImm() ? ' En 7A y 7B, además, dicen qué filtro del lente falla (R, A o S) antes de revelar.' : ''}`,
+      html: () => `<div class="kicker">Scientific names · six bugs you already caught <span id="sciN" class="hint"></span></div>
+      <div class="sci" id="sci">${SCI.map((b, n) => `<div class="scic${n ? '' : ' on'}"><div class="sl"><small>The lab calls it…</small><h2>${b.sci}</h2><p>🔎 <b>Decoder:</b> ${b.mean}</p><div class="big-q" style="font-size:3.6vh;margin:1vh 0 0">Which bug of our Bugdex is it?</div></div>
+        <div class="sr"><span class="num">#${b.n}</span><b>${BUGLIST[b.n - 1]}</b><p><small>${b.who}, 1380</small>${b.said}</p><p class="ask">Detector: «${b.ask}»</p><span class="filt" style="background:${LENSCOLOR[b.f]};color:${b.f === 'A' ? '#3a2a10' : '#fff'}">Lens filter · ${b.f}</span></div></div>`).join('')}</div>
+      <div class="revealbar"><a class="tbtn" href="${C2GENIALLY}" target="_blank" rel="noopener">Open the Genially ↗</a><button type="button" class="tbtn" id="sciPrev">◀</button><button type="button" class="tbtn go" id="sciRev">Reveal</button><button type="button" class="tbtn" id="sciNext">Next bug ▶</button></div>
+      ${nb('in your Bugdex, write the scientific name next to each bug.')}${xpBoard()}` },
+    { stop: 2, dense: true, host: ['alert', 'Bug alert! He <b>changed</b> the Host\'s words!'],
+      note: () => `Bugdex #9 · Straw Man (5 min). Muestre primero la diapositiva 9 del Genially. Luego lea el diálogo de 1380 a dos voces (usted es el Bulero; un Herald es el Host). Pregunte: «Did the Host say that?». «2026 example» muestra un ejemplo de colegio. Cada agente escribe la tarjeta #9 en su Bugdex: nombre, definición sencilla, ejemplo de 1380, ejemplo de 2026 y pregunta detectora. Filtro del lente: R (la respuesta no es relevante para el argumento real).${isImm() ? ' En 7A y 7B el ejemplo de 2026 lo inventa cada escuadrón; no copian el del sitio.' : ''}`,
+      html: () => `${bugCard(BUG9, IMG.bug.normal)}
+      <div class="now" id="now9"><b>2026</b><span>${BUG9.now[0]}</span><i>→</i><span>${BUG9.now[1]}</span></div>
+      <div class="revealbar"><button type="button" class="tbtn" data-now="now9">2026 example</button><span class="hint">Lens filter · <b style="color:${LENSCOLOR.R}">R</b></span></div>
+      ${nb('Bugdex #9 · name · simple definition · 1380 example · 2026 example · detector question.')}` },
+    { stop: 2, dense: true, host: ['oops', 'Pretty words… but what do they <b>really</b> mean?'],
+      note: () => `Bugdex #10 · Doublespeak (5 min). En el Genially es la diapositiva 10: muéstrela solo de paso, porque varios pares son de temas adultos (violencia, sexualidad) y no son para 7.°. Use los cuatro pares de esta pantalla: los escuadrones adivinan «the plain words» y usted toca cada tarjeta para revelar. Luego escriben la tarjeta #10 en la Bugdex. Filtro del lente: A (no podemos aceptar una razón cuando las palabras esconden los hechos). La diapositiva 11 del Genially (tarea en un foro) no se usa.${isImm() ? ' En 7A y 7B inventan un par propio («pretty words → plain words») sobre la vida del colegio.' : ''}`,
+      html: () => `${bugCard(BUG10, IMG.bug.normal)}
+      <div class="dsp">${BUG10.pairs.map(([a, b]) => `<button type="button" class="dsc"><span>«${a}»</span><b>${b}</b></button>`).join('')}</div>
+      ${nb('Bugdex #10 · name · simple definition · 1380 example · 2026 example · detector question.')}` },
+    { stop: 3, dense: true, host: ['wordcard', 'Draw your card: <b>eight bugs</b> and one free star!'],
+      note: 'Bug Bingo · preparar (2 min). Cada agente dibuja en el cuaderno una cuadrícula de 3 × 3 y escribe los ocho nombres científicos en el orden que quiera; la casilla del centro es FREE ★. Insista en que cada cartón quede distinto. Mientras tanto, revise dos o tres Bugdex.',
+      html: () => `<div class="kicker">Bug Bingo · make your card</div>
+      <div class="cols"><div><div class="bgrid">${[0, 1, 2, 3, 'f', 4, 5, 6, 7].map(k => k === 'f' ? '<span class="free">FREE ★</span>' : '<span>?</span>').join('')}</div></div>
+        <div><div class="task"><span class="step">1</span>Draw a 3 × 3 grid. <span class="step">2</span>Centre = FREE ★. <span class="step">3</span>Write the eight names <b>in any order</b>.</div>
+        <div class="bank">${BNAMES.map(n => `<span>${n}</span>`).join('')}</div></div></div>
+      ${timer([['Make your card', 120]])}` },
+    { stop: 3, dense: true, host: ['hourglass', 'Listen, find the bug, cross it out. Three in a line? <b>BINGO!</b>'],
+      note: () => `Bug Bingo · jugar (11 min). Lea cada frase en voz alta (o pida a un Herald que la lea). Los escuadrones deciden en 20 segundos qué bug es; toque «Reveal» y cada agente tacha ese nombre en su cartón. Quien complete una línea de tres grita «BINGO!» y su Herald debe justificar una de las frases con la pregunta detectora; si lo hace bien, +10 XP para su escuadrón. Siga hasta la frase 8: al final todos tienen el cartón lleno. Las ocho frases son de 2026 para que vean que los bugs de 1380 siguen vivos.${isImm() ? ' En 7A y 7B, para validar el bingo, el Herald dice además qué filtro del lente falla.' : ''}`,
+      html: () => `<div class="kicker">Bug Bingo · sentence <b id="bgN">1</b> of 8</div>
+      <div class="bgs" id="bgs">${BINGO.map(([s, b, w], n) => `<div class="bgc${n ? '' : ' on'}"><p>${s}</p><div class="ans"><b>${b}</b><span>${w}</span></div></div>`).join('')}</div>
+      <div class="revealbar"><button type="button" class="tbtn" id="bgPrev">◀</button><button type="button" class="tbtn go" id="bgRev">Reveal</button><button type="button" class="tbtn" id="bgNext">Next sentence ▶</button><span class="hint">Three in a line = BINGO! · your Herald explains one bug.</span></div>
+      <div class="bank small">${BNAMES.map(n => `<span>${n}</span>`).join('')}</div>${xpBoard(10)}` },
+    { stop: 4, host: ['write', 'Which bug is the most <b>dangerous</b> today?'],
+      note: () => `Exit ticket (4 min, en el cuaderno). Dos frases: el bug más peligroso en 2026 con una razón, y un ejemplo propio con su pregunta detectora.${isImm() ? ' En 7A y 7B añaden una frase con segundo condicional.' : ''} Revise algunos cuadernos para el seguimiento de C5 (práctica, no evidencia).`,
+      html: () => `<div class="kicker">Exit ticket</div>
+      <div class="exit2"><p><b>1</b> In 2026, the most dangerous bug is ______, because ______.</p><p><b>2</b> My example: «______». Detector question: «______?»</p></div>
+      ${immBox('<b>3</b> If people knew this bug, they wouldn\'t…')}${timer([['Write', 240]])}` },
+    { stop: 4, host: ['moneybag', 'Next class: the <b>Pilgrims\' Auction</b>. Bring your Bugdex!'],
+      note: 'Cierre (1 min). Próxima clase: The Pilgrims\' Auction. Los escuadrones pujarán con libras de 1380 por pergaminos sellados y tendrán que descubrir qué bug esconde cada uno; allí se gana el Artefacto 2. Que traigan la Bugdex completa (#1 a #10).',
+      html: () => `<div class="kicker">Class 2 complete</div><h1>Ten bugs in your Bugdex. You are ready for the auction.</h1>
+      <div class="info">Next class: <b>The Pilgrims' Auction</b>. You will bid with the pounds of 1380 for sealed scrolls… and some of them hide a bug. Bring your <b>Bugdex</b>!</div>
       <button type="button" class="endbtn" data-tomap="1">☰ Back to the cycle map</button>` },
   ] },
 };
@@ -1270,6 +1384,15 @@ function mountWidgets() {
   document.querySelectorAll('#fit .incb').forEach(b => b.onclick = () => { b.parentElement.classList.add('show'); b.remove(); chime(); fitStage(); });
   document.querySelectorAll('#fit .inc.extra').forEach(d => d.onclick = e => { if (d.classList.contains('extra')) { d.classList.remove('extra'); e.stopPropagation(); fitStage(); } });
   document.querySelectorAll('#reli .rc').forEach(c => c.onclick = () => { c.classList.toggle('show'); if (c.classList.contains('show') && c.classList.contains('rv')) chime(); });
+  // Class 2 · Logic Bug Lab
+  if ($('vdRev')) $('vdRev').onclick = () => { $('vdBox').style.visibility = 'visible'; chime(); };
+  const stepper = (box, prev, rev, next, lab) => { const cs = [...document.querySelectorAll(`#${box} > div`)]; let i = 0;
+    const show = () => { cs.forEach((c, k) => c.classList.toggle('on', k === i)); if (lab) lab(i, cs.length); $(rev).style.visibility = cs[i].classList.contains('show') ? 'hidden' : 'visible'; fitStage(); };
+    $(rev).onclick = () => { cs[i].classList.add('show'); chime(); show(); }; $(next).onclick = () => { if (i < cs.length - 1) { i++; show(); } }; $(prev).onclick = () => { if (i > 0) { i--; show(); } }; show(); };
+  if ($('sci')) stepper('sci', 'sciPrev', 'sciRev', 'sciNext', (i, n) => { $('sciN').textContent = `· ${i + 1} of ${n}`; });
+  if ($('bgs')) stepper('bgs', 'bgPrev', 'bgRev', 'bgNext', i => { $('bgN').textContent = i + 1; });
+  document.querySelectorAll('#fit [data-now]').forEach(b => b.onclick = () => { $(b.dataset.now).classList.add('show'); b.remove(); chime(); fitStage(); });
+  document.querySelectorAll('#fit .dsc').forEach(b => b.onclick = () => { b.classList.toggle('show'); if (b.classList.contains('show')) chime(); });
   document.querySelectorAll('#fit [data-tomap]').forEach(b => b.onclick = () => openLesson('map'));
   document.querySelectorAll('#fit [data-course]').forEach(b => b.onclick = () => { setCourse(b.dataset.course); startMusic(); render(); });
   document.querySelectorAll('#fit [data-lesson]').forEach(b => b.onclick = () => { if (!b.disabled) { startMusic(); openLesson(b.dataset.lesson); } });
