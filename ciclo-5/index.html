@@ -1122,7 +1122,50 @@ body.era-rome .rsc .d, body.era-rome .rsc .r { font-family: var(--f-body); }
 .rank b { display: block; font-family: var(--f-caps); font-size: 3vh; color: var(--navy); } .rank small { display: block; font-family: var(--f-body); font-size: 2vh; color: var(--muted); } .rank i { display: block; font-style: normal; font-family: var(--f-caps); font-size: 2vh; color: var(--red); margin-top: .4vh; }
 .why5 { min-height: 0; margin-top: .8vh; } .why5 > b { font-family: var(--f-body); font-weight: 400; font-size: 2.5vh !important; color: var(--ink) !important; line-height: 1.3; }
 @media (max-aspect-ratio: 3/2) { .flash { grid-template-columns: repeat(2, 1fr); } .pdrow { grid-template-columns: repeat(2, 1fr); } }
-.lessons.five .lesson .ttl { font-size: 2.7vh; }
+.lessons.five .lesson .ttl { font-size: 2.3vh; overflow-wrap: anywhere; }
+/* ---------- Cycle 5 · Class 2 · The Consistency Court */
+.twov { display: grid; grid-template-columns: repeat(2, 1fr); gap: .8vw; }
+.tv { font: inherit; cursor: pointer; text-align: left; background: var(--note); border: .3vh solid var(--gold); border-radius: 1.2vh; padding: .8vh 1vw; display: grid; grid-template-columns: auto 1fr 1fr; gap: .3vh .8vw; align-items: start; }
+.tv .n { font-family: var(--f-caps); font-size: 3.6vh; color: var(--red); grid-row: span 3; line-height: 1; }
+.tv .p { grid-column: 2 / 4; font-family: var(--f-caps); font-size: 2.1vh; color: var(--navy); }
+.tv .q { font-family: var(--f-body); font-size: 2.2vh; line-height: 1.25; color: var(--ink); } .tv .q small { display: block; font-size: 1.7vh; color: var(--muted); font-style: italic; }
+.tv em, .tv i { display: none; grid-column: 2 / 4; } .tv em { font-style: normal; font-family: var(--f-caps); font-size: 2.2vh; } .tv i { font-family: var(--f-body); font-size: 1.9vh; color: var(--muted); }
+.tv.ok em { color: #2f7a4a; } .tv.bad em { color: var(--red); } .tv.show { background: #fff; } .tv.show em, .tv.show i { display: block; }
+.rfg { display: grid; grid-template-columns: 1.1fr repeat(5, 1.3fr); gap: .5vh .5vw; }
+.rfg .ph { display: flex; flex-direction: column; align-items: center; text-align: center; gap: .2vh; } .rfg .ph img { height: 5.5vh; }
+.rfg .ph b { font-family: var(--f-caps); font-size: 2.2vh; color: var(--navy); } .rfg .ph small { font-family: var(--f-body); font-size: 1.7vh; color: var(--muted); }
+.rfg .pdr { background: var(--navy); color: #f2d48a; border-radius: 1vh; padding: .6vh .6vw; display: flex; flex-direction: column; justify-content: center; }
+.rfg .pdr b { font-family: var(--f-caps); font-size: 2.3vh; } .rfg .pdr small { font-family: var(--f-body); font-size: 1.7vh; color: #fff; }
+.rfg .pdk { background: var(--note); border: .25vh dashed var(--line); border-radius: 1vh; min-height: 7vh; }
+.pairs { display: flex; justify-content: center; align-items: center; gap: 1.5vw; margin-top: 1vh; font-family: var(--f-body); font-size: 2.2vh; color: var(--muted); }
+.pairs span { display: flex; align-items: center; gap: .4vw; } .pairs img { height: 5vh; } .pairs b { font-family: var(--f-caps); font-size: 2vh; color: var(--navy); }
+.exh { display: grid; grid-template-columns: 1fr auto 1fr; gap: 1vw; align-items: stretch; }
+.exh > div { background: var(--note); border: .3vh solid var(--gold); border-radius: 1.2vh; padding: 1vh 1.2vw; } .exh > div.r { border-color: var(--navy); }
+.exh .vs { align-self: center; font-family: var(--f-caps); font-size: 6vh; color: var(--red); }
+.eh { display: grid; grid-template-columns: 1fr auto; align-items: center; border-bottom: .2vh solid var(--line); padding-bottom: .5vh; margin-bottom: .8vh; }
+.eh b { font-family: var(--f-caps); font-size: 2.8vh; color: var(--red); } .eh small { grid-column: 1; font-family: var(--f-body); font-size: 1.9vh; color: var(--muted); font-style: italic; }
+.eh span { grid-row: 1 / 3; grid-column: 2; display: flex; gap: .3vw; } .eh span img { height: 5vh; }
+.exh p { margin: 0; font-family: var(--f-body); font-size: 2.9vh; line-height: 1.35; color: var(--ink); } .exh p b { color: var(--navy); } .exh p small { font-size: 2.2vh; color: var(--muted); font-style: italic; }
+.exh .orig { display: block; margin-top: .8vh; font-family: var(--f-body); font-size: 2.1vh; color: #6b3a8a; }
+.ccl { display: grid; grid-template-columns: repeat(4, 1fr); gap: .8vw; }
+.ccb { font: inherit; cursor: pointer; background: var(--note); border: .3vh solid var(--gold); border-radius: 1.2vh; padding: .6vh .6vw; display: flex; flex-direction: column; align-items: center; gap: .2vh; }
+.ccb b { font-family: var(--f-caps); font-size: 2.4vh; color: var(--red); } .ccb span { font-family: var(--f-caps); font-size: 2.2vh; color: var(--navy); } .ccb small { font-family: var(--f-body); font-size: 1.8vh; color: var(--muted); } .ccb .gnum { font-size: 1.7vh; }
+.ccb.cur { background: var(--navy); } .ccb.cur b, .ccb.cur span { color: #f2d48a; } .ccb.cur small { color: #fff; }
+.ccp { margin: .8vh 0; } .cch { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: .6vh; } .cch b { font-family: var(--f-caps); font-size: 2.6vh; color: var(--navy); } .cch span { font-family: var(--f-body); font-size: 2vh; color: var(--muted); } .cch .gnum { font-size: 1.7vh; }
+.ccr { display: grid; grid-template-columns: repeat(4, 1fr) 1.6fr; gap: .6vw; }
+.ccc { justify-content: flex-start; min-height: 22vh; } .ccc img { height: 5vh; align-self: center; } .ccc span { font-family: var(--f-caps); font-size: 2.2vh; }
+.ccc > b { font-family: var(--f-body); font-weight: 400; font-size: 2vh !important; line-height: 1.3; color: var(--ink) !important; text-align: left; } .ccc > b small { display: block; margin-top: .4vh; font-size: 1.7vh; color: var(--muted); } .ccc > b b { color: var(--red); }
+.vl { display: block; font-style: normal; font-family: var(--f-caps); font-size: 2.1vh; margin-bottom: .4vh; } .vl.ok { color: #2f7a4a; } .vl.bad { color: var(--red); } .vl.mid { color: #a7701a; }
+.chron { display: grid; grid-template-columns: 1.6fr 1fr; gap: 1vw; }
+.cframe { background: #fff; border: .3vh double var(--navy); border-radius: 1vh; padding: 1vh 1.2vw; } .cframe > b { display: block; text-align: center; font-family: var(--f-caps); font-size: 3vh; color: var(--navy); letter-spacing: .1em; border-bottom: .2vh solid var(--navy); }
+.cframe p { margin: .6vh 0; font-family: var(--f-body); font-size: 2.1vh; font-style: italic; color: var(--muted); } .cframe ol { margin: 0; padding-left: 2.4vw; font-family: var(--f-body); font-size: 2.4vh; line-height: 1.5; color: var(--ink); } .cframe li b { color: var(--red); }
+.ccheck { background: var(--note); border: .3vh solid var(--gold); border-radius: 1vh; padding: .8vh 1vw; display: flex; flex-direction: column; gap: .5vh; font-family: var(--f-body); font-size: 2vh; color: var(--ink); }
+.ccheck b { display: flex; align-items: center; gap: .5vw; font-family: var(--f-caps); font-size: 2.2vh; color: var(--navy); } .ccheck img { height: 4.5vh; } .ccheck span::before { content: '✓ '; color: #2f7a4a; }
+@media (max-aspect-ratio: 3/2) { .twov { grid-template-columns: 1fr; } .exh { grid-template-columns: 1fr; } .exh .vs { display: none; } .ccr { grid-template-columns: repeat(2, 1fr); } .chron { grid-template-columns: 1fr; } }
+
+.chm { margin: .8vh 0 0; padding: .8vh 1vw .8vh 3vw; background: #fff; border: .3vh solid #2f6fb3; border-radius: 1vh; font-family: var(--f-body); font-size: 2.3vh; line-height: 1.45; color: var(--ink); } .chm b { color: var(--red); } .chm u { text-decoration-color: #2f6fb3; text-decoration-thickness: .25vh; }
+.vframe { margin: .6vh 0; text-align: center; font-family: var(--f-body); font-size: 2.3vh; color: var(--navy); } .vframe b { color: var(--red); }
+.ccc { min-height: 17vh; }
 
 </style>
 </head>
@@ -1274,12 +1317,112 @@ const castOf = (si, r) => r === 'N' ? 'a volunteer · any power' : r === 'T' ? '
 const rtCols = sc => { const L = sc.lines.map(l => l[1].length + (l[2] && isImm() ? l[2].length : 0) + 40), tot = L.reduce((a, b) => a + b, 0); let acc = 0, cut = 0; while (cut < L.length && acc + L[cut] / 2 < tot / 2) acc += L[cut++]; return [sc.lines.slice(0, cut), sc.lines.slice(cut)]; };
 const PDCOLS = [['herald', 'Who → whom?', 'What does he want?'], ['decoder', 'Bug #', 'Which bug? Number + name'], ['chronicler', 'Doesn\'t fit', '«He says…, but…»'], ['timekeeper', 'Does it work?', 'Yes / no · why?']];
 const RANK = [['Cassius', 'the mirror · Scene 1'], ['the forged letters', 'Cassius again · Scene 2'], ['Decius', 'the dream · Scene 3']];
+// ---------- Class 2 · Consistency Court: Rome (7C–7E) · Consistency Court & Senate Chronicle (7A–7B)
+const TWOV = [
+  ['Mateo, a candidate for class rep', ['in his speech to 7C', 'I will listen to <b>everybody</b> in 7C.'], ['in a voice message to his friends', 'I\'m not going to listen to the girls\' ideas. They\'re boring.'], 0, 'He can\'t listen to everybody AND not listen to the girls.'],
+  ['a YouTuber', ['in a video', 'This energy drink is amazing! I drink it <b>every day</b>.'], ['in an interview', 'I <b>never</b> drink energy drinks. They\'re bad for you.'], 0, '«Every day» and «never» cannot both be true.'],
+  ['Sara, a student', ['to her teacher', 'I didn\'t finish the homework because I was <b>sick</b>.'], ['to her best friend', 'I was sick all weekend. I couldn\'t do anything.'], 1, 'The same story in private and in public.'],
+  ['a footballer', ['to the fans', 'I love this club. I want to win a trophy here.'], ['to a journalist', 'It\'s a difficult season, but I\'m happy here.'], 1, 'Different words, but they don\'t contradict each other.']];
+// Exhibits: two texts by the same person (left = read by the Herald + the Decoder · right = read by the Chronicler + the Timekeeper).
+const EXH = [
+  { who: 'Cassius', L: ['In private', 'to Casca, a conspirator · a stormy night',
+      'Listen, Casca. We <b>need</b> Brutus. The people love him. If <b>we</b> kill Caesar, people will call it a crime. But if <b>Brutus</b> is with us, they will call it a noble act. His good name will cover our plan like a beautiful cloak. Tonight my letters will do the job: Brutus is almost ours.', 'Three parts of him is ours already.'],
+    R: ['In public', 'to Brutus · the Forum',
+      'Brutus, I am your mirror. I <b>never flatter</b> anybody, and I only want what is best for Rome. You are the noblest Roman of all. Rome doesn\'t need me. Rome needs <b>you</b>.', 'I, your glass, will modestly discover to yourself that of yourself which you yet know not of.'],
+    k: { claim: '«You are the noblest Roman. Rome needs you.»', src: 'Cassius: he hates Caesar and he needs Brutus\'s good name.', ev: 'None. Only his own fake letters.', bug: 13, bugx: 'also #5: the fake «all Rome»',
+      v: 'no', why: 'To Brutus he says he only wants what is best for Rome; to Casca he says Brutus is a <b>cloak</b> to hide their crime. He uses his friend.' } },
+  { who: 'Brutus', L: ['In private', 'alone in his garden · at night',
+      'It must be by his death. Caesar has never done anything bad to me. To be honest, I have never seen him do anything <b>unreasonable</b>. But if he gets the crown, he <b>might</b> change. So I will think of him as a snake\'s egg: we must kill it in the shell.', 'It must be by his death: and for my part, I know no personal cause to spurn at him.'],
+    R: ['In public', 'to the conspirators · in the garden',
+      'Friends, we are not killers. Let us be sacrificers, not butchers. We are doing this for Rome, and only for Rome. Caesar <b>must</b> die: there is <b>no other way</b>. Let\'s do it bravely, with clean hands.', 'Let us be sacrificers, but not butchers, Caius.'],
+    k: { claim: '«Caesar must die. There is no other way.»', src: 'Brutus: honourable, and he wins nothing personally.', ev: 'None. In private he says Caesar «might» change: a guess.', bug: 11, bugx: 'also #8 The dangerous chain: the snake\'s egg',
+      v: 'part', why: 'His reason is the same (Rome), so he is <b>honest</b>. But in private he is <b>not sure</b> («might»), and in public he says «there is no other way».' } },
+  { who: 'Decius', L: ['In private', 'to the conspirators · before sunrise',
+      'Leave Caesar to me. He loves to hear that he <b>hates flatterers</b>, and when I tell him that, he is flattered most! I know exactly how to talk to him. Tomorrow I will bring him to the Senate.', 'But when I tell him he hates flatterers, he says he does, being then most flattered.'],
+    R: ['In public', 'to Caesar · the morning of the Ides',
+      'Good morning, <b>great Caesar</b>! I am here to honour you and to take you to the Senate. Your wife\'s dream is a wonderful dream: it means that Rome <b>loves</b> you.', 'This dream is all amiss interpreted; it was a vision fair and fortunate.'],
+    k: { claim: '«Your dream is wonderful. Rome loves you.»', src: 'Decius: a conspirator. He wants Caesar in the Senate.', ev: 'None. He invents a new meaning for the dream.', bug: 13, bugx: 'and he planned it the night before',
+      v: 'no', why: 'In private he laughs at Caesar and plans the flattery; in public he says he wants to <b>honour</b> him.' } },
+  { who: 'The Soothsayer', L: ['First time', 'in the street · a festival in February',
+      'Caesar! <b>Beware the Ides of March.</b><br><small>(Caesar: «He is a dreamer. Let\'s go.»)</small>', 'Beware the Ides of March.'],
+    R: ['Second time', 'in the street · the morning of the Ides',
+      '<small>(Caesar, laughing: «The Ides of March have come!»)</small><br>Yes, Caesar… but they have <b>not gone</b>.', 'Ay, Caesar; but not gone.'],
+    k: { claim: '«Beware the Ides of March.»', src: 'An old man in the street. He wins nothing.', ev: 'None: a vision. The reason is not sufficient (S).', bug: 0, bugx: 'no bug from the Bugdex',
+      v: 'yes', why: 'He says the <b>same</b> thing twice, and he has nothing to win. Consistent does not mean proven… but here it means more reliable.' } }];
+const GCOLS = [['chronicler', 'Claim', 'What does he want us to believe?'], ['timekeeper', 'Source', 'Who? Why does he say it?'], ['timekeeper', 'Evidence?', 'How does he know?'], ['decoder', 'Bug #', 'number + name'], ['herald', 'Consistent?', 'yes · no · partly']];
+const VLAB = { yes: ['✔ CONSISTENT', 'ok'], no: ['✘ INCONSISTENT', 'bad'], part: ['≈ PARTLY CONSISTENT', 'mid'] };
+const exGroups = e => Array.from({ length: ngroups() }, (_, g) => g + 1).filter(g => (g - 1) % 4 === e);
+const CHRON = [
+  'Cassius <b>told</b> Brutus that he <u>was</u> the noblest Roman, <b>but</b> he <u>had told</u> Casca that they <u>needed</u> Brutus\'s good name.',
+  'Brutus <b>told</b> the conspirators that Caesar <u>had to</u> die for Rome, <b>but</b> alone in his garden he <u>had admitted</u> that Caesar <u>had</u> never <u>done</u> anything bad to him.',
+  'Decius <b>told</b> Caesar that the dream <u>was</u> lucky, <b>but</b> he <u>had promised</u> the conspirators that he <u>would</u> bring Caesar to the Senate.',
+  'The Soothsayer <b>warned</b> Caesar to beware the Ides of March, <b>and</b> on the Ides he <b>insisted</b> that the day <u>had</u> not <u>gone</u> yet.'];
 // Map titles change with the course: 7C–7E follow «The Conspiracy»; 7A–7B «The Conspiracy and the Funeral».
 const TITLES5 = () => isImm()
   ? [['c1', 'Class 1', 'The Conspirators\' Persuasion'], ['c2', 'Class 2', 'Consistency Court & Senate Chronicle'], ['c3', 'Class 3', 'Brutus Speaks: The Human Opinion Line'], ['c4', 'Class 4', 'Friends, Romans, Countrymen'], ['c5', 'Class 5', 'Argument Builder']]
   : [['c1', 'Class 1', 'The Conspirators\' Persuasion'], ['c2', 'Class 2', 'Consistency Court: Rome'], ['c3', 'Class 3', 'The Senate Chronicle'], ['c4', 'Class 4', 'Argument Builder 1'], ['c5', 'Class 5', 'The Ides of March Radio']];
 // Lessons that differ by course live under key + 'i' (immersion). Shared lessons use the plain key.
 const lk = k => isImm() && LESSONS[k + 'i'] ? k + 'i' : !isImm() && LESSONS[k + 'r'] ? k + 'r' : k;
+// Class 2 · built twice: c2r (7C–7E · Consistency Court: Rome) and c2i (7A–7B · + Senate Chronicle)
+const c2Lesson = imm => ({ stops: ['Two Voices', 'Exhibits', 'The Court', imm ? 'Chronicle' : 'Verdict'], era: 'rome', scene: { '-1': 'senate', 0: 'street', 1: 'garden', 2: 'senate', 3: imm ? 'forum' : 'senate' }, plaque: 'Harry Bailly · Rome, 44 BC',
+  arrive: { 0: ['Class 2 · The Consistency Court', 'Two Voices', 'Same person, two places'], 1: ['Rome · March, 44 BC', 'The Exhibits', 'In private… and in public'], 2: ['The Senate', 'The Consistency Court', 'Your Honour, the verdict!'], 3: imm ? ['The Forum · the Ides of March', 'The Senate Chronicle', 'Report it like a Roman historian'] : ['The Senate', 'The Last Word', 'Reliable or not?'] },
+  slides: [
+  { stop: -1, host: ['scales', 'Order in the court! Today we judge <b>consistency</b>.'],
+    note: `Objetivo (2 min). En español: hoy la clase es un tribunal. Comparamos lo que cuatro romanos dicen en privado y lo que dicen en público (o en dos momentos distintos). Si las dos cosas no pueden ser verdad a la vez, el argumento es inconsistente y la fuente es menos confiable. Criterio: C5 (leer y decidir si una fuente es confiable o tiene un bug).${imm ? ' En 7A y 7B, además, C6: los últimos 15 minutos el Chronicler escribe la «Senate Chronicle» en estilo indirecto y el Timekeeper revisa el cambio de tiempos.' : ''} No se imprime nada: los textos se proyectan y la rejilla va en el cuaderno.`,
+    html: () => `<div class="kicker">Cycle 5 · The Conspiracy · Class 2 · ${imm ? 'Consistency Court & Senate Chronicle' : 'Consistency Court: Rome'}</div><h1>Today, agents, you will compare what the Romans say in private and in public — and judge them.</h1>
+    <div class="goals"><span><b>C5</b> is the source reliable?</span><span><b>✘</b> two things that can't both be true</span>${imm ? '<span><b>C6</b> the Senate Chronicle</span>' : '<span><b>★</b> 30-second verdicts</span>'}</div>
+    <div class="info">An argument is <b>inconsistent</b> when two of its parts <b>cannot both be true</b>. A person who says one thing in private and the opposite in public is a <b>red flag</b>.</div>` },
+  { stop: 0, dense: true, host: ['thumbs', 'Consistent? Thumbs <b>up</b>. Inconsistent? Thumbs <b>down</b>!'],
+    note: 'Warm-up «Two Voices» (4 min). Cuatro personas de 2026 dicen dos cosas en dos lugares distintos. Lea las dos frases; todos muestran el pulgar a la vez (arriba = consistente, abajo = inconsistente). Toque la tarjeta para revelar. Claves: 1 ✘ · 2 ✘ · 3 ✔ · 4 ✔. Punto fino de la 4: palabras distintas no son lo mismo que contradicción; inconsistente es cuando las dos cosas no pueden ser verdad a la vez.',
+    html: () => `<div class="kicker">Warm-up · Two Voices · same person, two places</div>
+    <div class="twov">${TWOV.map(([p, a, b, ok, w], k) => `<button type="button" class="tv ${ok ? 'ok' : 'bad'}"><b class="n">${k + 1}</b><span class="p">${p}</span><span class="q"><small>${a[0]}</small>«${a[1]}»</span><span class="q"><small>${b[0]}</small>«${b[1]}»</span><em>${ok ? '👍 CONSISTENT' : '👎 INCONSISTENT'}</em><i>${w}</i></button>`).join('')}</div>
+    <div class="revealbar"><span class="hint">👍 consistent · 👎 inconsistent · tap a card to reveal</span></div>` },
+  mixSlide(0, 57),
+  { stop: 1, dense: true, host: ['write', 'Copy the <b>Reliability & Fallacy Grid</b>!'],
+    note: () => `La rejilla y la lectura en parejas (3 min). Cada agente copia la rejilla: cuatro filas (Exhibits A–D) y cinco columnas. Cada poder dirige una columna: el Chronicler, la afirmación (claim); el Timekeeper, la fuente y la evidencia; el Decoder, el bug; el Herald, el veredicto (¿consistente?). Explique la lectura en parejas: en cada grupo, el Herald y el Decoder leen en voz baja el texto de la izquierda (en privado) y el Chronicler y el Timekeeper el de la derecha (en público); luego se cuentan lo que leyeron y comparan. Recuerde las preguntas de la Clase 1 del Ciclo 4: Who says it? How do they know? Why do they say it?`,
+    html: () => `<div class="kicker">The Reliability & Fallacy Grid · copy it in your notebook</div>
+    <div class="rfg"><div class="ph"></div>${GCOLS.map(([p, h, s]) => `<div class="ph"><img src="${IMG.emb[p]}" alt=""><b>${h}</b><small>${s}</small></div>`).join('')}
+      ${EXH.map((e, k) => `<div class="pdr"><b>Exhibit ${'ABCD'[k]}</b><small>${e.who}</small></div>${GCOLS.map(() => '<div class="pdk"></div>').join('')}`).join('')}</div>
+    <div class="pairs"><span><img src="${IMG.emb.herald}" alt=""><img src="${IMG.emb.decoder}" alt=""><b>read the LEFT text</b></span><span>↔ tell · compare ↔</span><span><img src="${IMG.emb.chronicler}" alt=""><img src="${IMG.emb.timekeeper}" alt=""><b>read the RIGHT text</b></span></div>
+    ${timer([['Copy', 180]])}` },
+  ...EXH.map((e, k) => ({ stop: 1, dense: true, host: [['magnifier', 'think', 'oops', 'listen'][k], [`Exhibit ${'ABCD'[k]}: <b>${e.who}</b>. Read in pairs!`, 'Brutus is honest… or <b>is he</b>?', 'Two faces? Look <b>closely</b>!', 'The same words… <b>twice</b>.'][k]],
+    note: () => `Exhibit ${'ABCD'[k]} · ${e.who} (${imm ? 3 : 4} min). Lectura en parejas dentro del grupo: Herald + Decoder leen la izquierda; Chronicler + Timekeeper, la derecha. Luego se cuentan lo que leyeron con «In private he says…» / «In public he says…» y llenan la fila ${'ABCD'[k]} de la rejilla. No revele nada todavía: las respuestas salen en el tribunal. ${k === 1 ? 'Ojo: es el caso más fino. Bruto es honesto en su motivo (Roma), pero en privado duda («might») y en público dice «no other way».' : k === 3 ? 'Es el caso de control: aquí sí hay consistencia. Sirve para que no respondan «inconsistent» siempre.' : ''}${imm ? ' En 7A y 7B, las líneas ★ son el original de Shakespeare: el Decoder lo explica en inglés sencillo.' : ''}`,
+    html: () => `<div class="kicker">Exhibit ${'ABCD'[k]} · ${e.who} · read in pairs · fill row ${'ABCD'[k]}</div>
+    <div class="exh">${[e.L, e.R].map(([t, c, x, o], s) => `<div class="${s ? 'r' : 'l'}"><div class="eh"><b>${t}</b><small>${c}</small><span>${(s ? ['chronicler', 'timekeeper'] : ['herald', 'decoder']).map(p => `<img src="${IMG.emb[p]}" alt="">`).join('')}</span></div><p>${x}</p>${imm && o ? `<em class="orig">★ ${o}</em>` : ''}</div>`).join('<b class="vs">?</b>')}</div>
+    <p class="hint center" style="margin:0">✎ ${k === 3 ? '«First he says…, and then he says…»' : '«In private he says that…, <u>but</u> in public he says that…»'} · Claim · Source · Evidence? · Bug # · Consistent?</p>
+    ${timer([['Read + compare', imm ? 180 : 240]])}` })),
+  { stop: 2, dense: true, host: ['scales', 'Heralds, <b>your Honour is waiting</b>.'],
+    note: () => `The Consistency Court (${imm ? 7 : 12} min). Cada grupo defiende el veredicto de un exhibit (la pantalla dice cuál): ${EXH.map((e, k) => `${'ABCD'[k]}: ${exGroups(k).length > 1 ? 'grupos ' + exGroups(k).join(' y ') : 'grupo ' + exGroups(k)[0]}`).join(' · ')}. Toque el exhibit: el Herald del primer grupo da su veredicto de 30 segundos con el marco; el Herald del segundo grupo debe estar de acuerdo o en desacuerdo con una razón nueva. Luego toque las celdas para revelar la fila modelo (los demás corrigen su rejilla). +10 XP para los Heralds por un veredicto con evidencia de los textos; +5 para el poder de cada columna que coincida (Chronicler: claim; Timekeeper: fuente y evidencia; Decoder: bug). No hay un único veredicto correcto para Bruto: «partly» con buena razón vale lo mismo.`,
+    html: () => `<div class="kicker">The Consistency Court · 30-second verdicts · the Heralds speak</div>
+    <div class="ccl" id="ccl">${EXH.map((e, k) => `<button type="button" class="ccb" data-n="${k}"><b>Exhibit ${'ABCD'[k]}</b><span>${e.who}</span><small>groups ${exGroups(k).map(gb).join(' ')}</small></button>`).join('')}</div>
+    <div class="ccp" id="ccp"><p class="hint center" style="margin:0">Tap an exhibit. Its Heralds give the verdict.</p></div>
+    <p class="vframe">«Your Honour, <b>…</b> is <u>consistent / inconsistent</u>. In private he says that <b>…</b>, but in public he says that <b>…</b>. So he is <u>(not)</u> a reliable source.»</p>
+    ${xpBoard(10)}` },
+  ...(imm ? [
+  { stop: 3, dense: true, host: ['scroll', 'Chroniclers, <b>write the Chronicle</b>!'],
+    note: 'The Senate Chronicle (13 min, C6). Cada grupo escribe en el cuaderno del Chronicler la crónica del Senado: cuatro frases en estilo indirecto, una por exhibit, con «but» para mostrar la contradicción (y «and» para el Soothsayer). Use el pasado perfecto para lo que pasó antes: «he had told…». El Chronicler escribe; el Herald y el Decoder dictan las ideas; el Timekeeper revisa el cambio de tiempos con el código de colores: subraya cada verbo que dio un paso atrás. A los 9 minutos, toque «Show the model»: aparecen las cuatro frases modelo con los verbos que cambiaron subrayados, y los Timekeepers comparan. +10 XP para los Chroniclers por una crónica completa y correcta; +5 para los Timekeepers por cada error de tiempos que encuentren y corrijan.',
+    html: () => `<div class="kicker">The Senate Chronicle · 15 March, 44 BC · morning edition · in the Chronicler's notebook</div>
+    <div class="chron"><div class="cframe"><b>THE SENATE CHRONICLE</b><p>Rome, the Ides of March. Today our agents discovered that some senators say one thing in private and another thing in public.</p>
+      <ol>${EXH.map(e => `<li><b>${e.who}</b> ${e.who === 'The Soothsayer' ? 'warned… , and…' : 'told… that…, <u>but</u> he had…'}</li>`).join('')}</ol></div>
+      <div class="ccheck"><b><img src="${IMG.emb.timekeeper}" alt=""> Timekeeper's check</b><span><u>underline</u> every verb that took one step back</span><span>is → was · will → would · say → had said</span><span>I → he · you → him · today → that day</span><span>verbs: told · claimed · promised · admitted · insisted · warned</span></div></div>
+    <ol class="chm" id="chm" hidden>${CHRON.map(c => `<li>${c}</li>`).join('')}</ol>
+    <div class="revealbar"><button type="button" class="tbtn" id="chAll">Show the model</button><span class="hint">after 9 minutes · the Timekeepers compare</span></div>
+    ${xpBoard(5)}${timer([['Write', 540], ['Check', 240]])}` },
+  { stop: 3, host: ['wave', 'Next time, Brutus <b>speaks</b> to Rome…'],
+    note: 'Cierre (2 min). Dos Chroniclers leen una frase de su crónica. Revise algunos cuadernos para el seguimiento de C5 y C6 en el Registro. Próxima clase: «Brutus Speaks: The Human Opinion Line»: el discurso de Bruto en el funeral, y la clase se mueve en una línea entre «I trust Brutus» y «I don\'t».',
+    html: () => `<div class="kicker">Class 2 complete · the Senate Chronicle is written</div><h1>What you say in private should fit what you say in public.</h1>
+    <div class="info">Next class: <b>Brutus Speaks</b>. Caesar is dead. Brutus explains to the people of Rome <b>why</b>. Will you trust him? You will <b>stand on a line</b> and move while he speaks.</div>
+    <button type="button" class="endbtn" data-tomap="1">☰ Back to the cycle map</button>` }] : [
+  { stop: 3, host: ['write', 'One exhibit. One verdict. <b>Write it!</b>'],
+    note: 'Exit ticket (4 min, en el cuaderno). Cada agente elige un exhibit distinto al de su grupo y escribe el veredicto con los dos marcos. Dos o tres lo leen. Revise algunos cuadernos al salir para el seguimiento de C5 en el Registro (es práctica, no evidencia).',
+    html: () => `<div class="kicker">Exit ticket · in your notebook · choose a different exhibit</div>
+    <div class="exit2"><p><b>1</b> In private, <b>…</b> says that ______, <u>but</u> in public he says that ______.</p><p><b>2</b> So he <u>is / isn't</u> a reliable source, because ______.</p></div>${timer([['Write', 240]])}` },
+  { stop: 3, host: ['idea', 'Next time: the <b>Chroniclers</b> report it all…'],
+    note: 'Cierre (1 min). Próxima clase: «The Senate Chronicle»: el reporte de la conspiración en estilo indirecto (lo que dijeron y planearon Casio, Bruto, Decio y Calpurnia), con «but» para la contradicción. Que traigan la rejilla de hoy: es la materia prima de la crónica.',
+    html: () => `<div class="kicker">Class 2 complete · the court is adjourned</div><h1>What you say in private should fit what you say in public.</h1>
+    <div class="info">Next class: <b>The Senate Chronicle</b>. You will <b>report</b> what the conspirators said and planned: «Decius told Caesar that the dream was lucky, but…». Bring today's grid!</div>
+    <button type="button" class="endbtn" data-tomap="1">☰ Back to the cycle map</button>` }]),
+  ] });
 const LESSONS = {
   map: { stops: [], era: 'rome', scene: { '-1': 'forum' }, arrive: {}, plaque: 'Harry Bailly · Rome, 44 BC', slides: [
     { stop: -1, host: ['wave', () => course ? 'Choose your class, agents!' : 'Salvete, agents! First, choose your course.'],
@@ -1342,6 +1485,8 @@ const LESSONS = {
       <div class="info">Next class: <b>${isImm() ? 'Consistency Court & Senate Chronicle' : 'Consistency Court: Rome'}</b>. Cassius says one thing to Brutus… and another thing to the others. Is that <b>consistent</b>? Bring your <b>Bugdex</b> and today's grid.</div>
       <button type="button" class="endbtn" data-tomap="1">☰ Back to the cycle map</button>` },
   ] },
+  c2r: c2Lesson(false),
+  c2i: c2Lesson(true),
 };
 // ---------- engine
 let L = 'map', i = 0, tick = null, AC = null, ANIM = true, lastStop = -2;
@@ -1452,6 +1597,18 @@ function mountWidgets() {
   // reveal cards (Bugdex Flash, detectives grid, verdict)
   document.querySelectorAll('#fit .dsc, #fit .fl').forEach(b => b.onclick = () => { b.classList.toggle('show'); if (b.classList.contains('show')) chime(); fitStage(); });
   if (document.fonts && $('fit').querySelector('.rth')) document.fonts.ready.then(fitStage);
+  // Class 2 · Two Voices
+  document.querySelectorAll('#fit .tv').forEach(b => b.onclick = () => { b.classList.toggle('show'); if (b.classList.contains('show')) chime(); fitStage(); });
+  // Class 2 · The Consistency Court (tap an exhibit → its verdict panel; tap cells to reveal)
+  if ($('ccl')) { window.CCO = window.CCO || {};
+    const open = n => { const e = EXH[n], k = e.k, vl = VLAB[k.v]; window.CCN = n; document.querySelectorAll('#ccl .ccb').forEach(b => b.classList.toggle('cur', +b.dataset.n === n));
+      $('ccp').innerHTML = `<div class="cch"><b>Exhibit ${'ABCD'[n]} · ${e.who}</b><span>Heralds of groups ${exGroups(n).map(gb).join(' ')}: 30 seconds each</span></div>
+        <div class="ccr">${[[GCOLS[0], k.claim], [GCOLS[1], k.src], [GCOLS[2], k.ev], [GCOLS[3], k.bug ? `#${k.bug} · ${BUGLIST13[k.bug - 1]}<small>${k.bugx}</small>` : `—<small>${k.bugx}</small>`], [GCOLS[4], `<i class="vl ${vl[1]}">${vl[0]}</i>${k.why}`]].map(([[p, h], a]) => `<button type="button" class="dsc ccc"><img src="${IMG.emb[p]}" alt=""><span>${h}</span><b>${a}</b></button>`).join('')}</div>`;
+      $('ccp').querySelectorAll('.dsc').forEach(b => b.onclick = () => { b.classList.toggle('show'); if (b.classList.contains('show')) chime(); fitStage(); });
+      fitStage(); };
+    document.querySelectorAll('#ccl .ccb').forEach(b => b.onclick = () => open(+b.dataset.n)); if (window.CCN != null) open(window.CCN); }
+  // Class 2 (7A–7B) · the Chronicle model
+  if ($('chAll')) $('chAll').onclick = () => { const on = $('chm').hidden; $('chm').hidden = !on; document.querySelector('#fit .cframe ol').hidden = on; $('chAll').textContent = on ? 'Hide the model' : 'Show the model'; if (on) chime(); fitStage(); };
   document.querySelectorAll('#fit [data-tomap]').forEach(b => b.onclick = () => openLesson('map'));
   document.querySelectorAll('#fit [data-course]').forEach(b => b.onclick = () => { setCourse(b.dataset.course); startMusic(); render(); });
   document.querySelectorAll('#fit [data-lesson]').forEach(b => b.onclick = () => { if (!b.disabled) { startMusic(); openLesson(b.dataset.lesson); } });
