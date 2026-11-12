@@ -1170,6 +1170,47 @@ body.era-rome .rsc .d, body.era-rome .rsc .r { font-family: var(--f-body); }
 .chm { margin: .8vh 0 0; padding: .8vh 1vw .8vh 3vw; background: #fff; border: .3vh solid #2f6fb3; border-radius: 1vh; font-family: var(--f-body); font-size: 2.3vh; line-height: 1.45; color: var(--ink); } .chm b { color: var(--red); } .chm u { text-decoration-color: #2f6fb3; text-decoration-thickness: .25vh; }
 .vframe { margin: .6vh 0; text-align: center; font-family: var(--f-body); font-size: 2.3vh; color: var(--navy); } .vframe b { color: var(--red); }
 .ccc { min-height: 17vh; }
+/* ---------- Cycle 5 · Class 3 · The Senate Chronicle (7C–7E) · Brutus Speaks (7A–7B) */
+.ping { display: grid; grid-template-columns: repeat(3, 1fr); gap: .8vw; }
+.pgc { font: inherit; cursor: pointer; text-align: left; background: var(--note); border: .3vh solid var(--gold); border-radius: 1.2vh; padding: .8vh .8vw; display: grid; grid-template-columns: auto 1fr; gap: .2vh .6vw; min-height: 14vh; align-content: start; }
+.pgc .n { font-family: var(--f-caps); font-size: 3.2vh; color: var(--red); grid-row: span 3; line-height: 1; } .pgc .w { font-family: var(--f-caps); font-size: 2vh; color: var(--navy); }
+.pgc .x { font-family: var(--f-body); font-size: 2.6vh; color: var(--ink); } .pgc .r { visibility: hidden; font-family: var(--f-body); font-size: 2.2vh; color: var(--ink); } .pgc .r b { color: var(--red); } .pgc .r u { text-decoration-color: #2f6fb3; text-decoration-thickness: .3vh; }
+.pgc.show { background: #fff; } .pgc.show .r { visibility: visible; }
+.cfile { display: grid; grid-template-columns: repeat(2, 1fr); gap: .6vh 1vw; }
+.cfile > div { display: grid; grid-template-columns: auto 13vw 1fr; gap: .8vw; align-items: center; background: var(--note); border-left: .5vh solid var(--gold); border-radius: .8vh; padding: .6vh .8vw; }
+.cfile .n { font-family: var(--f-caps); font-size: 3vh; color: var(--red); } .cfile .w { font-family: var(--f-caps); font-size: 2.2vh; color: var(--navy); } .cfile .w small { display: block; font-family: var(--f-body); font-size: 1.7vh; color: var(--muted); font-style: italic; }
+.cfile .x { font-family: var(--f-body); font-size: 2.4vh; color: var(--ink); line-height: 1.25; }
+.model5 { background: #fff; border: .3vh solid var(--navy); border-radius: 1.2vh; padding: 1vh 1.4vw; display: flex; gap: 1.2vw; align-items: center; }
+.model5 p { margin: 0; font-family: var(--f-body); font-size: 3vh; line-height: 1.45; color: var(--ink); flex: 1; } .model5 p i { font-style: normal; }
+.model5 p u { text-decoration: none; } .model5.coded p u { text-decoration: underline; text-decoration-color: #2f6fb3; text-decoration-thickness: .35vh; color: #1f4f8a; }
+.model5.coded .pt { border: .3vh solid #b23a2c; border-radius: 50%; padding: 0 .4vw; } .model5.coded .rwd { border: .3vh solid #3e8e5a; border-radius: .6vh; padding: 0 .3vw; }
+.kit5 { display: grid; grid-template-columns: 1.2fr 1.2fr 1fr; gap: 1vw; margin-top: 1vh; }
+.kit5 > div { background: var(--note); border: .25vh solid var(--gold); border-radius: 1vh; padding: .8vh .9vw; display: flex; flex-direction: column; gap: .3vh; font-family: var(--f-body); font-size: 2vh; color: var(--ink); }
+.kit5 b { font-family: var(--f-caps); font-size: 2.2vh; color: var(--navy); } .kit5 span i { font-style: normal; font-weight: 700; color: var(--red); margin-right: .5vw; } .kit5 small { color: var(--muted); }
+.kit5 .cb { text-decoration-color: #2f6fb3; text-decoration-thickness: .3vh; color: #1f4f8a; font-weight: 700; } .kit5 .cr { color: #b23a2c !important; } .kit5 .cg { color: #3e8e5a !important; } .kit5 .rw8 { line-height: 1.5; }
+.rep5 { display: grid; grid-template-columns: 1.4fr 1fr; gap: 1.2vw; }
+.rep5 ol { margin: 0; padding: 1vh 1vw 1vh 3vw; background: #fff; border: .3vh double var(--navy); border-radius: 1vh; font-family: var(--f-body); font-size: 2.6vh; line-height: 1.6; color: var(--ink); } .rep5 li.verdict { color: var(--red); }
+.roles5 { display: flex; flex-direction: column; gap: .6vh; } .roles5 span { display: flex; align-items: center; gap: .6vw; background: var(--note); border-radius: 1vh; padding: .4vh .6vw; font-family: var(--f-body); font-size: 2vh; color: var(--ink); } .roles5 img { height: 5vh; } .roles5 b { font-family: var(--f-caps); font-size: 2vh; color: var(--navy); min-width: 9vw; }
+.chk5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: .6vw; }
+.chk5 > div { background: var(--note); border: .25vh solid var(--gold); border-radius: 1vh; padding: .8vh .6vw; display: flex; flex-direction: column; align-items: center; gap: .4vh; text-align: center; } .chk5 img { height: 5.5vh; }
+.chk5 b { font-family: var(--f-caps); font-size: 2.4vh; color: var(--navy); } .chk5 span { font-family: var(--f-body); font-size: 2vh; color: var(--ink); line-height: 1.25; }
+.chk5 > div:nth-child(1) b { color: #2f6fb3; } .chk5 > div:nth-child(2) b { color: #b23a2c; } .chk5 > div:nth-child(3) b { color: #3e8e5a; }
+.onair { display: flex; flex-direction: column; align-items: center; gap: .6vh; background: var(--navy); color: #f2d48a; border-radius: 1.2vh; padding: 1.4vh 2vw; margin-bottom: 1vh; }
+.onair b { font-family: var(--f-caps); font-size: 4vh; letter-spacing: .12em; } .onair span { font-family: var(--f-body); font-size: 2.8vh; color: #fff; font-style: italic; }
+.ides { display: grid; grid-template-columns: repeat(3, 1fr); gap: .8vw; } .idc { min-height: 24vh; } .idc > b { font-family: var(--f-body); font-weight: 400; font-size: 2.5vh !important; line-height: 1.35; color: var(--ink) !important; text-align: left; } .idc > b b { color: var(--red); }
+.tg5 { display: grid; grid-template-columns: 1.4fr 1fr; gap: 1.4vw; align-items: center; } .tg5 svg { width: 100%; background: #fff; border: .3vh solid var(--gold); border-radius: 1vh; }
+.tg5 > div { display: flex; flex-direction: column; gap: .5vh; font-family: var(--f-body); font-size: 2.3vh; color: var(--ink); } .tg5 > div > b { font-family: var(--f-caps); font-size: 2.4vh; color: var(--navy); }
+.bq { font-family: var(--f-body); font-size: 3.2vh; color: var(--navy); background: var(--note); border-left: .6vh solid var(--red); border-radius: .8vh; padding: 1vh 1.2vw; margin-bottom: 1vh; } .bq b { font-family: var(--f-caps); color: var(--red); }
+.bsp { visibility: hidden; background: #fff; border: .3vh solid var(--gold); border-radius: 1.2vh; padding: 1vh 1.4vw; } .bsp.show { visibility: visible; }
+.bsp p { margin: 0; font-family: var(--f-body); font-size: 3vh; line-height: 1.4; color: var(--ink); } .bsp p b { color: var(--red); } .bsp .orig { display: block; margin-top: .6vh; font-family: var(--f-body); font-size: 2.2vh; color: #6b3a8a; }
+.bsp p.crowd { margin-top: .8vh; font-family: var(--f-caps); font-size: 2.6vh; color: var(--navy); }
+.btr { display: grid; grid-template-columns: repeat(3, 1fr); gap: .7vw; } .btc { min-height: 15vh; }
+.btc > b { font-family: var(--f-body); font-weight: 400; font-size: 2.1vh !important; line-height: 1.3; color: var(--ink) !important; text-align: left; } .btc > b i { display: block; font-style: normal; font-family: var(--f-caps); font-size: 2.2vh; color: var(--red); } .btc > b small { display: block; color: var(--muted); margin-top: .3vh; }
+@media (max-aspect-ratio: 3/2) { .ping, .ides, .btr { grid-template-columns: repeat(2, 1fr); } .cfile, .kit5, .rep5, .tg5 { grid-template-columns: 1fr; } .chk5 { grid-template-columns: repeat(2, 1fr); } }
+/* Cycle 5 · exit tickets: inline blanks, body font in Rome */
+.exit2 p b { display: inline; font-size: inherit; letter-spacing: 0; font-family: inherit; }
+.exit2 p > b:first-child { font-family: var(--f-caps); font-size: 3vh; }
+body.era-rome .exit2 p { font-family: var(--f-body); font-size: 3.2vh; line-height: 1.4; }
 
 </style>
 </head>
@@ -1366,6 +1407,47 @@ const CHRON = [
   'Brutus <b>told</b> the conspirators that Caesar <u>had to</u> die for Rome, <b>but</b> alone in his garden he <u>had admitted</u> that Caesar <u>had</u> never <u>done</u> anything bad to him.',
   'Decius <b>told</b> Caesar that the dream <u>was</u> lucky, <b>but</b> he <u>had promised</u> the conspirators that he <u>would</u> bring Caesar to the Senate.',
   'The Soothsayer <b>warned</b> Caesar to beware the Ides of March, <b>and</b> on the Ides he <b>insisted</b> that the day <u>had</u> not <u>gone</u> yet.'];
+// ---------- Class 3 · 7C–7E · The Senate Chronicle (C6 · C7)
+const PING = [
+  ['Calpurnia', 'I am afraid.', 'Calpurnia <b>said</b> that she <u>was</u> afraid.'],
+  ['Cassius', 'Brutus is honourable.', 'Cassius <b>said</b> that Brutus <u>was</u> honourable.'],
+  ['Caesar', 'I will go to the Senate.', 'Caesar <b>said</b> that he <u>would</u> go to the Senate.'],
+  ['Brutus', 'I can\'t sleep.', 'Brutus <b>said</b> that he <u>couldn\'t</u> sleep.'],
+  ['Decius', 'I have come to take you to the Senate.', 'Decius <b>told</b> Caesar that he <u>had come</u> to take him to the Senate.'],
+  ['The Soothsayer', 'Beware the Ides of March!', 'The Soothsayer <b>warned</b> Caesar <u>to beware</u> the Ides of March.']];
+// The Conspiracy File: the exact words from Classes 1–2
+const CFILE = [
+  ['Cassius', 'to Brutus · the Forum', 'You are the noblest man in Rome. I never flatter anybody.'],
+  ['Cassius', 'to Casca · a stormy night', 'We need Brutus. His good name will cover our plan.'],
+  ['The letters', 'to Brutus · through the window', 'All Rome is waiting for you!'],
+  ['Brutus', 'alone · in his garden', 'Caesar has never done anything bad to me, but he might change.'],
+  ['Brutus', 'to the conspirators', 'We are doing this for Rome. Caesar must die.'],
+  ['Decius', 'to the conspirators · before sunrise', 'I will bring Caesar to the Senate tomorrow.'],
+  ['Calpurnia', 'to Caesar · the morning of the Ides', 'Don\'t go to the Senate! I dreamed of your statue covered in blood.'],
+  ['Decius', 'to Caesar · the morning of the Ides', 'Your dream is wonderful. It means that Rome loves you.']];
+const RVERB5 = [['told', 'told + person + that'], ['claimed', 'said it was true (maybe not!)'], ['promised', 'said he would do it'], ['warned', 'said something bad could happen'], ['admitted', 'said something difficult'], ['insisted', 'said it again, strongly']];
+const RWORDS = ['Senate', 'senator', 'conspirator', 'honourable', 'traitor', 'the Ides of March', 'soothsayer', 'tribune'];
+const MODEL5 = 'Decius <b>told</b> Caesar that his dream <u>was</u> wonderful, <b>but</b> before sunrise he <u>had promised</u> the <i class="rwd">conspirators</i> that <i class="pt">he</i> <u>would</u> bring Caesar to the <i class="rwd">Senate</i>.';
+const REPORT5 = [['headline', 'A headline: <b>«THE SENATE CHRONICLE · …»</b>'], ['Cassius', '1 sentence about <b>Cassius</b>'], ['Brutus', '1 sentence about <b>Brutus</b>'], ['Decius', '1 sentence about <b>Decius</b>'], ['Calpurnia', '1 sentence about <b>Calpurnia</b>'], ['verdict', '<b>Our verdict:</b> «In our opinion, … was the most dangerous, because …»']];
+// ---------- Class 3 · 7A–7B · Brutus Speaks: The Human Opinion Line (C4)
+const IDES = [
+  ['The Senate · the Ides of March', 'Caesar arrives at the Senate. The Soothsayer is there. «The Ides of March have come,» says Caesar. «Yes… but they have not gone.»'],
+  ['The attack', 'The conspirators surround Caesar. They attack him with daggers. Brutus is the last one. Caesar looks at his friend: «<b>Et tu, Brute?</b>» — «You too, Brutus?»'],
+  ['The Forum', 'Caesar is dead. The people of Rome are scared and angry. Brutus goes up to the Rostra to explain. Will the people <b>trust</b> him?']];
+const BSEG = [
+  { f: 'Why does Brutus say they should believe him?', t: 'Romans, friends! Listen to me, and be quiet, so you can hear. Believe me, because I am an <b>honourable</b> man — you know that. Judge me with your wisdom, and listen with your minds.', o: 'Believe me for mine honour, and have respect to mine honour, that you may believe.' },
+  { f: 'Did Brutus love Caesar?', t: 'If any friend of Caesar is here today, I say to him: Brutus <b>loved</b> Caesar too. So why did Brutus kill him? Here is my answer: not because I loved Caesar less, but because I loved <b>Rome</b> more.', o: 'Not that I loved Caesar less, but that I loved Rome more.' },
+  { f: 'How many options does Brutus give the people?', t: 'Tell me: would you prefer Caesar <b>alive</b>, and all of you living as <b>slaves</b>? Or Caesar <b>dead</b>, and all of you living as <b>free</b> men?', o: 'Had you rather Caesar were living and die all slaves, than that Caesar were dead, to live all free men?' },
+  { f: 'Why did Brutus kill Caesar? Does he give an example?', t: 'Caesar loved me, so I cry for him. He was lucky, so I am happy for him. He was brave, so I honour him. But he was <b>ambitious</b>, so I killed him.', o: 'As he was ambitious, I slew him.' },
+  { f: 'Does anybody in the crowd answer «yes»? Why not?', t: 'Is there anybody here who wants to be a <b>slave</b>? If there is, speak! Is there anybody here who does not love Rome? If there is, speak! … I am waiting for an answer.', o: 'Who is here so base that would be a bondman? If any, speak; for him have I offended.', crowd: 'Nobody, Brutus, nobody!' },
+  { f: 'What does Brutus offer at the end?', t: 'And now I go. I killed my best friend for the good of Rome. I have the same <b>dagger</b> for myself, when Rome needs my death.', o: 'I have the same dagger for myself, when it shall please my country to need my death.', crowd: 'Live, Brutus! Live, live!' }];
+const BTRICK = [
+  ['Inconsistency', 2, '«I <b>loved</b> Caesar»… and he <b>killed</b> him. Can both be true?', 'C4'],
+  ['#11 False Dilemma', 3, 'Only two doors: Caesar alive and Romans slaves, or Caesar dead and Romans free. Is there <b>no other way</b>?', 'S'],
+  ['No evidence', 4, '«He was <b>ambitious</b>.» What did Caesar do? Brutus gives no example.', 'A · S'],
+  ['Who, not why', 1, '«Believe me because I am <b>honourable</b>.» That is who he is, not a reason.', 'A'],
+  ['Pressure', 5, 'Nobody wants to say «I want to be a slave» in front of everybody. <b>Silence</b> is not proof.', 'R'],
+  ['#12 Appeal to Emotion', 6, 'The dagger moves the crowd… but it proves <b>nothing</b> about Caesar.', 'R']];
 // Map titles change with the course: 7C–7E follow «The Conspiracy»; 7A–7B «The Conspiracy and the Funeral».
 const TITLES5 = () => isImm()
   ? [['c1', 'Class 1', 'The Conspirators\' Persuasion'], ['c2', 'Class 2', 'Consistency Court & Senate Chronicle'], ['c3', 'Class 3', 'Brutus Speaks: The Human Opinion Line'], ['c4', 'Class 4', 'Friends, Romans, Countrymen'], ['c5', 'Class 5', 'Argument Builder']]
@@ -1432,6 +1514,121 @@ const c2Lesson = imm => ({ stops: ['Two Voices', 'Exhibits', 'The Court', imm ? 
     <div class="info">Next class: <b>The Senate Chronicle</b>. You will <b>report</b> what the conspirators said and planned: «Decius told Caesar that the dream was lucky, but…». Bring today's grid!</div>
     <button type="button" class="endbtn" data-tomap="1">☰ Back to the cycle map</button>` }]),
   ] });
+// Class 3 · 7C–7E · The Senate Chronicle
+const C3R = { stops: ['Ping-Pong', 'The File', 'Write', 'Check', 'On air'], era: 'rome', scene: { '-1': 'senate', 0: 'street', 1: 'garden', 2: 'senate', 3: 'senate', 4: 'forum' }, plaque: 'Harry Bailly · Rome, 44 BC',
+  arrive: { 0: ['Class 3 · The Senate Chronicle', 'Backshift Ping-Pong', 'One step back!'], 1: ['Rome · March, 44 BC', 'The Conspiracy File', 'Eight things they said'], 2: ['The Senate', 'The Chronicler\'s Report', 'Report it like a Roman historian'], 3: ['The Senate', 'The Colour Check', 'Blue · red · green'], 4: ['The Forum', 'On Air', 'This is the Senate Chronicle…'] },
+  slides: [
+  { stop: -1, host: ['scroll', 'Chroniclers, today <b>you</b> lead!'],
+    help: 'Hoy tu grupo escribe la crónica de la conspiración: cuentas lo que dijeron Casio, Bruto, Decio y Calpurnia, sin copiar sus palabras exactas (estilo indirecto). El Chronicler dirige y escribe.',
+    note: 'Objetivo (2 min). En español: cada grupo escribe el «Chronicler\'s Report» de la conspiración en estilo indirecto (C6): lo que dijeron y planearon Casio, Bruto, Decio y Calpurnia, con «but» para mostrar el contraste, y al final un veredicto con una razón (C7). El Chronicler escribe en su cuaderno (es el cuaderno del grupo); el Timekeeper revisa el cambio de tiempos con un código de colores y el Decoder revisa el vocabulario romano. No se imprime nada.',
+    html: () => `<div class="kicker">Cycle 5 · The Conspiracy · Class 3 · The Senate Chronicle</div><h1>Today, agents, you will report the conspiracy like Roman historians.</h1>
+    <div class="goals"><span><b>C6</b> report what they said</span><span><b>C7</b> give a verdict with a reason</span><span><b>✎</b> the Chronicler's notebook</span></div>
+    <div class="info">A historian doesn't copy the exact words. A historian <b>reports</b>: «Decius told Caesar that the dream was wonderful, <b>but</b>…»</div>` },
+  { stop: 0, dense: true, host: ['hourglass', 'Exact words… <b>one step back</b>!'],
+    help: 'Lee las palabras exactas del romano. Repórtalas en voz alta con «said that» o «told … that»: el verbo da un paso atrás (am → was, will → would, can\'t → couldn\'t) y la persona cambia (I → he / she).',
+    note: 'Warm-up «Backshift Ping-Pong» (5 min). Lea las palabras exactas con voz de romano. Pida el reporte a un poder distinto cada vez (Timekeeper, Decoder, Herald, Chronicler…). Toque la tarjeta para revelar. +5 XP para el poder del agente que lo dice bien. Claves: was · was · would · couldn\'t · had come · warned … to beware. La 6 tiene trampa: una advertencia se reporta con «warned + persona + to + verbo».',
+    html: () => `<div class="kicker">Warm-up · Backshift Ping-Pong · exact words → report</div>
+    <div class="ping">${PING.map(([w, x, r], k) => `<button type="button" class="pgc"><b class="n">${k + 1}</b><span class="w">${w}</span><span class="x">«${x}»</span><span class="r">${r}</span></button>`).join('')}</div>
+    <p class="hint center" style="margin:.4vh 0 0">am / is → <b>was</b> · will → <b>would</b> · can't → <b>couldn't</b> · have come → <b>had come</b> · I → <b>he / she</b></p>${xpBoard(5)}` },
+  mixSlide(0, 58),
+  { stop: 1, dense: true, host: ['book', 'Eight things they said. <b>Choose well!</b>'],
+    help: 'Este es el archivo de la conspiración: ocho cosas que dijeron los romanos en las Clases 1 y 2. Tu grupo elige qué va a reportar de cada personaje. Busca los contrastes: lo que dijo en privado y lo que dijo en público.',
+    note: 'The Conspiracy File (4 min). Lea las ocho frases con la clase (son de las Clases 1 y 2). Pregunte: «Where is the contrast?» — Casio (1 y 2), Bruto (4 y 5), Decio (6 y 8), Calpurnia y Decio (7 y 8). Los grupos dejan esta pantalla a la vista mientras escriben (vuelva a ella con ◀ si la piden).',
+    html: () => `<div class="kicker">The Conspiracy File · their exact words · Classes 1 and 2</div>
+    <div class="cfile">${CFILE.map(([w, c, x], k) => `<div><b class="n">${k + 1}</b><span class="w">${w}<small>${c}</small></span><span class="x">«${x}»</span></div>`).join('')}</div>` },
+  { stop: 2, dense: true, host: ['idea', 'Three colours. <b>One model.</b>'],
+    help: 'Mira el modelo. Azul: los verbos que dieron un paso atrás (was, would, had promised). Rojo: las personas y palabras de tiempo que cambiaron (I → he). Verde: palabras romanas. Usa «but» para mostrar el contraste. Los verbos del recuadro dicen CÓMO habló la persona.',
+    note: () => `El kit y el modelo (5 min). Lea la frase modelo y pulse «Colour code»: aparecen los tres colores. Azul = verbos que dieron un paso atrás (lo revisa el Timekeeper); rojo = personas y palabras de tiempo que cambiaron (también el Timekeeper); verde = palabras romanas (las revisa el Decoder: mínimo tres en el reporte). Si no hay colores, sirven subrayado, círculo y recuadro. ★ «had promised» es pasado perfecto: lo que pasó antes; es un bonus, no una exigencia en 7C–7E.`,
+    html: () => `<div class="kicker">The Chronicler's toolkit · reporting verbs · colour code</div>
+    <div class="model5" id="model5"><p>${MODEL5}</p><button type="button" class="tbtn" id="mcode">Colour code</button></div>
+    <div class="kit5"><div><b>Reporting verbs</b>${RVERB5.map(([v, m]) => `<span><i>${v}</i>${m}</span>`).join('')}</div>
+      <div><b>The colour code</b><span><u class="cb">blue</u> verbs one step back <small>· Timekeeper</small></span><span><i class="cr">red</i> people and time words <small>· Timekeeper</small></span><span><i class="cg">green</i> Roman words (3 or more) <small>· Decoder</small></span></div>
+      <div><b>Roman words</b><span class="rw8">${RWORDS.join(' · ')}</span><b style="margin-top:.6vh">Contrast</b><span><i>but</i> · <i>while</i> · <i>however</i></span></div></div>` },
+  { stop: 2, dense: true, host: ['write', 'Chroniclers, <b>write</b>! Everybody, <b>help</b>!'],
+    help: 'El Chronicler escribe la crónica en su cuaderno: un titular, una frase sobre cada personaje (Casio, Bruto, Decio, Calpurnia) y al final el veredicto del grupo con una razón. El Herald y el Decoder dictan ideas del archivo; el Timekeeper revisa los verbos mientras escriben.',
+    note: 'The Chronicler\'s Report (15 min). El Chronicler escribe en su cuaderno (es el cuaderno del grupo). El Herald y el Decoder dictan las ideas desde el archivo (pantalla anterior); el Timekeeper revisa el cambio de tiempos mientras escriben. Lista de chequeo en la pantalla. Pase por los grupos: pida «but» en al menos dos frases y una razón real en el veredicto (C7). +10 XP para los Chroniclers por un reporte completo.',
+    html: () => `<div class="kicker">The Chronicler's Report · in the Chronicler's notebook · 15 minutes</div>
+    <div class="rep5"><ol>${REPORT5.map(([k, t]) => `<li class="${k}">${t}</li>`).join('')}</ol>
+      <div class="roles5">${[['chronicler', 'writes'], ['herald', 'dictates ideas from the File'], ['decoder', 'dictates + checks Roman words'], ['timekeeper', 'checks one step back']].map(([p, t]) => `<span><img src="${IMG.emb[p]}" alt=""><b>${p[0].toUpperCase() + p.slice(1)}</b>${t}</span>`).join('')}</div></div>
+    ${nb('in the Chronicler\'s notebook · use «but» in two sentences or more')}${timer([['Write', 900]])}` },
+  { stop: 3, dense: true, host: ['magnifier', 'Swap notebooks. <b>Check the colours!</b>'],
+    help: 'Pasa el cuaderno del Chronicler al grupo de al lado (en el sentido del reloj). El Timekeeper de ese grupo marca con colores los verbos y las personas; el Decoder cuenta las palabras romanas. Escriban una estrella (algo bueno) y un deseo (algo para mejorar).',
+    note: 'The Colour Check (6 min). Los grupos pasan el cuaderno del Chronicler al grupo siguiente (1→2, 2→3… el último → 1). El Timekeeper revisor marca en azul y rojo; el Decoder revisor cuenta las palabras romanas (verde). Escriben al final «★ … / Wish: …». +5 XP para los Timekeepers por cada error de tiempos que encuentren y que el grupo corrija. Luego devuelven el cuaderno.',
+    html: () => `<div class="kicker">The Colour Check · swap with the next group · ★ one star · one wish</div>
+    <div class="chk5">${[['timekeeper', 'Blue', 'Did every verb take <b>one step back</b>? is → was · will → would · say → said'], ['timekeeper', 'Red', 'Did the <b>people</b> and the <b>time words</b> change? I → he · today → that day'], ['decoder', 'Green', 'Are there <b>3 Roman words</b> or more? Are they used well?'], ['herald', 'But', 'Is there a <b>contrast</b> with «but» in two sentences?'], ['chronicler', 'Verdict', 'Is there an <b>opinion + a reason</b>? «In our opinion…, because…»']].map(([p, c, t]) => `<div><img src="${IMG.emb[p]}" alt=""><b>${c}</b><span>${t}</span></div>`).join('')}</div>
+    <div class="task"><span class="step">Write</span>★ One star: «Great …» · Wish: «Next time, …»</div>${xpBoard(5)}${timer([['Check', 300]])}` },
+  { stop: 4, host: ['present', 'This is <b>the Senate Chronicle</b>!'],
+    help: 'El Herald lee la crónica de su grupo como un noticiero: «This is the Senate Chronicle…». Escucha a los otros grupos: ¿qué personaje eligieron como el más peligroso? ¿Con qué razón?',
+    note: 'On Air (6 min). Dos o tres Heralds leen la crónica de su grupo como noticiero de radio, empezando con «This is the Senate Chronicle, live from Rome». La clase escucha el veredicto: ¿quién fue el más peligroso y por qué? +5 XP para los Heralds por una lectura clara. Revise algunos cuadernos para el seguimiento de C6 y C7 en el Registro (práctica, no evidencia).',
+    html: () => `<div class="kicker">On Air · the Heralds read the news</div>
+    <div class="onair"><b>📯 THE SENATE CHRONICLE</b><span>«This is the Senate Chronicle, live from Rome. Today, our agents discovered that…»</span></div>
+    <div class="info">Listen to every verdict. Who was the <b>most dangerous</b>? Do you agree with the reason?</div>${xpBoard(5)}` },
+  { stop: 4, host: ['write', 'One sentence. <b>Your</b> report.'],
+    help: 'Escribe en tu cuaderno una frase tuya en estilo indirecto con «but»: elige un personaje que no escribió tu grupo. Ejemplo: «Cassius told Brutus that…, but…».',
+    note: 'Exit ticket (3 min, en el cuaderno de cada agente). Una frase en estilo indirecto con «but», sobre un personaje distinto al que escribió su grupo (por ejemplo Calpurnia o Casio). Revise algunas al salir.',
+    html: () => `<div class="kicker">Exit ticket · in your notebook</div><div class="big-q" style="font-size:4.6vh">Report one Roman with <u>but</u>.</div>
+    <div class="scroll"><p class="frame" style="margin:0"><b>…</b> told <b>…</b> that <b>…</b>, <u>but</u> <b>…</b>.</p></div>${timer([['Write', 180]])}` },
+  { stop: 4, host: ['scales', 'Next time: <b>should</b> Brutus join them?'],
+    help: 'La próxima clase vas a construir tu primer argumento escrito: ¿debería Bruto unirse a la conspiración? Piensa: ¿qué harías tú?',
+    note: 'Cierre (1 min). Próxima clase: Argument Builder 1 (C7): «Should Brutus join the conspiracy?». Que traigan la crónica: tiene las ideas para el argumento.',
+    html: () => `<div class="kicker">Class 3 complete · the Chronicle is published</div><h1>A historian reports. A good historian weighs.</h1>
+    <div class="info">Next class: <b>Argument Builder 1</b>. <i>Should Brutus join the conspiracy?</i> You will build your first written argument: a claim, two reasons, evidence.</div>
+    <button type="button" class="endbtn" data-tomap="1">☰ Back to the cycle map</button>` },
+  ] };
+// Class 3 · 7A–7B · Brutus Speaks: The Human Opinion Line
+const C3I = { stops: ['The Ides', 'The speech', 'Bug hunt', 'Verdict'], era: 'rome', scene: { '-1': 'senate', 0: 'senate', 1: 'rostra', 2: 'rostra', 3: 'forum' }, plaque: 'Harry Bailly · Rome, 44 BC',
+  arrive: { 0: ['The Senate · the Ides of March, 44 BC', 'Et tu, Brute?', 'What happened today?'], 1: ['The Rostra · the Forum', 'Brutus Speaks', 'Do you trust him?'], 2: ['The Forum', 'The Bug Hunt', 'Six moments, six tricks'], 3: ['The Forum', 'The Trust Verdict', 'When did you move?'] },
+  slides: [
+  { stop: -1, host: ['listen', 'Brutus speaks. <b>Do you trust him?</b>'],
+    help: 'Hoy escuchas el discurso de Bruto después de la muerte de César. Después de cada parte decides cuánto confías en él (de 0 a 5) y lo marcas en una gráfica en tu cuaderno. Al final buscas sus trucos.',
+    note: 'Objetivo (2 min). En español: hoy escuchamos el discurso fúnebre de Bruto (adaptado de Julius Caesar, Acto 3, Escena 2) en seis partes. Después de cada parte, cada agente muestra con los dedos cuánto confía en Bruto (0 a 5) y lo marca en su «Trust Graph». Es la «Human Opinion Line»: en un salón escalonado se hace con los dedos desde el puesto; si el espacio lo permite, la línea puede ser real, frente al tablero. Criterio C4 (escuchar y detectar inconsistencias). Usted lee a Bruto (si puede, con la sábana de toga); toda la clase es la multitud.',
+    html: () => `<div class="kicker">Cycle 5 · The Conspiracy and the Funeral · Class 3 · Brutus Speaks</div><h1>Today, agents, you will listen to Brutus — and decide, moment by moment, if you trust him.</h1>
+    <div class="goals"><span><b>C4</b> what doesn't fit?</span><span><b>0–5</b> the trust line</span><span><b>✎</b> your Trust Graph</span></div>
+    <div class="info">Caesar is dead. Brutus must explain <b>why</b> to the people of Rome. You are the people.</div>` },
+  { stop: 0, dense: true, host: ['alert', 'The Ides of March <b>have come</b>…'],
+    help: 'Lee lo que pasó en los idus de marzo. «Et tu, Brute?» significa «¿Tú también, Bruto?». Antes de que Bruto hable, decide: ¿confías en él? Muestra de 0 (nada) a 5 (totalmente) con los dedos.',
+    note: 'Et tu, Brute? (4 min). Lea las tres viñetas con teatro (toque cada una para mostrarla). Luego la primera votación: «Before Brutus speaks: do you trust him? Show me 0 to 5». Es el punto 0 de la gráfica. Pida dos razones rápidas.',
+    html: () => `<div class="kicker">The Ides of March · 44 BC · what happened today</div>
+    <div class="ides">${IDES.map(([h, t], k) => `<button type="button" class="dsc idc"><span>${k + 1} · ${h}</span><b>${t}</b></button>`).join('')}</div>
+    <div class="task"><span class="step">Show me</span>Before Brutus speaks: do you trust him? <b>0 ✊</b> not at all … <b>5 🖐</b> totally</div>` },
+  mixSlide(0, 58),
+  { stop: 1, dense: true, host: ['write', 'Draw your <b>Trust Graph</b>!'],
+    help: 'Dibuja la gráfica en tu cuaderno: abajo los números 0 a 6 (las partes del discurso), a la izquierda 0 a 5 (cuánto confías). Marca tu punto 0 (antes del discurso). El Chronicler de tu grupo anota cuándo y por qué el grupo cambió más.',
+    note: 'Trust Graph (3 min). Cada agente dibuja la gráfica (eje x: 0–6, partes del discurso; eje y: 0–5, confianza) y marca su punto 0. El Chronicler del grupo abre además una tabla: «Moment · we moved up / down · because…». El Herald la explicará al final.',
+    html: () => `<div class="kicker">Your Trust Graph · in your notebook</div>
+    <div class="tg5"><svg viewBox="0 0 420 200" aria-hidden="true"><g stroke="#9c8a6a" stroke-width="1">${[0, 1, 2, 3, 4, 5].map(y => `<line x1="40" x2="400" y1="${170 - y * 30}" y2="${170 - y * 30}" stroke-dasharray="${y ? '3 4' : ''}"/>`).join('')}</g>${[0, 1, 2, 3, 4, 5].map(y => `<text x="22" y="${175 - y * 30}" font-size="14" fill="#3a1d2c">${y}</text>`).join('')}${[0, 1, 2, 3, 4, 5, 6].map(x => `<text x="${45 + x * 57}" y="192" font-size="14" fill="#3a1d2c">${x}</text>`).join('')}<polyline points="45,80 102,110 159,50 216,140 273,110 330,80 387,50" fill="none" stroke="#9a3b22" stroke-width="3" stroke-dasharray="6 5"/><text x="300" y="20" font-size="12" fill="#9a3b22">(an example)</text></svg>
+      <div><b>The Chronicler's table</b><span>Moment · <b>up / down</b> · because…</span><span>«In moment 3 we moved <b>down</b>, because Brutus gave only two options.»</span><b style="margin-top:1vh">The trust line</b><span>0 ✊ I don't trust Brutus … 5 🖐 I trust Brutus</span></div></div>
+    ${timer([['Draw', 180]])}` },
+  ...BSEG.map((g, k) => ({ stop: 1, dense: true, host: ['listen', `Moment ${k + 1}. <b>Listen…</b>`],
+    help: `Momento ${k + 1}: escucha a Bruto. Pregunta para escuchar: «${g.f}». Si quieres, después de la primera lectura puedes ver el texto. Luego muestra con los dedos cuánto confías (0 a 5) y marca el punto ${k + 1} en tu gráfica.${g.crowd ? ' ¡Al final, toda la clase es la multitud y grita la respuesta!' : ''}`,
+    note: `Momento ${k + 1} de 6 (3 min). Lea como Bruto, con pausas. La pregunta de escucha está en la pantalla; el texto está oculto (C4). Segunda lectura: pulse «Show the text» si el grupo lo necesita (PIAR: siempre). Luego «Show me 0–5» y cada agente marca el punto ${k + 1} en su gráfica. ${g.crowd ? `Antes, la clase entera grita la respuesta de la multitud: «${g.crowd}». ` : ''}No revele trucos todavía: van en el Bug Hunt. Pregunte a un agente que se movió mucho: «Why did you move?».`,
+    html: () => `<div class="kicker">Brutus speaks · moment ${k + 1} of 6 · listen</div>
+    <div class="bq"><b>Listen for:</b> ${g.f}</div>
+    <div class="bsp" id="bsp${k}"><p>«${g.t}»</p><em class="orig">★ ${g.o}</em>${g.crowd ? `<p class="crowd">THE CROWD (everybody!): «${g.crowd}»</p>` : ''}</div>
+    <div class="revealbar"><button type="button" class="tbtn bshow" data-k="${k}">Show the text</button><span class="hint">Then: show me 0 ✊ … 5 🖐 · mark point ${k + 1} on your graph</span></div>` })),
+  { stop: 2, dense: true, host: ['magnifier', 'Six moments. <b>Find the tricks!</b>'],
+    help: 'Con tu grupo, busca en tus notas los trucos de Bruto. Pistas: ¿dice algo y hace lo contrario? ¿Da solo dos opciones? ¿Dice que César era ambicioso… pero da un ejemplo? Escribe el momento y el truco en tu cuaderno.',
+    note: 'The Bug Hunt (8 min). Los grupos tienen 4 minutos para encontrar en qué momento está cada truco (los textos de los seis momentos quedan abiertos en la pantalla anterior si los piden). Luego toque cada tarjeta: el Decoder del grupo que lo encontró lo explica (+10 XP para los Decoders; robar +5). Los tres obligatorios: la inconsistencia (momento 2), el falso dilema (3) y la falta de evidencia (4).',
+    html: () => `<div class="kicker">The Bug Hunt · which moment? which trick?</div>
+    <div class="btr">${BTRICK.map(([n, m, t, f]) => `<button type="button" class="dsc btc"><span>Moment ${m}</span><b><i>${n}</i>${t}<small>filter ${f}</small></b></button>`).join('')}</div>${xpBoard(10)}${timer([['Hunt', 240]])}` },
+  { stop: 3, dense: true, host: ['present', 'Heralds: <b>when did you move?</b>'],
+    help: 'El Herald de tu grupo explica en 30 segundos el momento en que el grupo más cambió y por qué, con el marco de la pantalla. Escucha a los otros grupos: ¿se movieron en el mismo momento?',
+    note: 'The Trust Verdict (7 min). Cada Herald explica en 30 segundos el gran movimiento de su grupo con el marco y con «although» si puede. +10 XP para los Heralds por una explicación con un momento concreto del discurso. Cierre con la pregunta: «Did Brutus win the crowd? Yes… for now.»',
+    html: () => `<div class="kicker">The Trust Verdict · 30 seconds per Herald</div>
+    <div class="scroll"><p class="frame" style="margin:0">In moment <b>…</b>, our group moved <u>up / down</u>, because Brutus <b>…</b>. <b>Although</b> Brutus <b>…</b>, we <u>(don't)</u> trust him, because <b>…</b>.</p></div>
+    <div class="info">The crowd shouted «Live, Brutus!». Brutus <b>won</b>… for now.</div>${xpBoard(10)}` },
+  { stop: 3, host: ['write', 'Your final trust: <b>0 to 5</b>.'],
+    help: 'Escribe en tu cuaderno: cuánto confías en Bruto al final (0 a 5) y por qué, y cuál fue la parte más débil de su discurso. Usa «although» si puedes.',
+    note: 'Exit ticket (3 min, en el cuaderno). Dos frases: la confianza final con razón y la parte más débil del discurso (C4). Revise algunas para el seguimiento de C4 en el Registro.',
+    html: () => `<div class="kicker">Exit ticket · in your notebook</div>
+    <div class="exit2"><p><b>1</b> At the end, I trusted Brutus <b>…/5</b>, because ______.</p><p><b>2</b> The weakest part of his speech was moment <b>…</b>, because ______.</p></div>${timer([['Write', 180]])}` },
+  { stop: 3, host: ['alert', 'Wait… who is <b>coming</b>?'],
+    help: '¡Alguien llega al Foro con el cuerpo de César! Es Marco Antonio. La próxima clase escuchas su discurso: «Friends, Romans, countrymen…».',
+    note: 'Cierre (1 min). Cliffhanger: «But look… who is coming with Caesar\'s body? Mark Antony!». Próxima clase: «Friends, Romans, Countrymen & Voices from the Forum» (el discurso de Antonio y un listening). Que guarden la Trust Graph: la compararán con la de Antonio.',
+    html: () => `<div class="kicker">Class 3 complete · the crowd loves Brutus… for now</div><h1>«Live, Brutus! Live!» … But who is coming with Caesar's body?</h1>
+    <div class="info">Next class: <b>Friends, Romans, Countrymen</b>. Mark Antony speaks. Keep your Trust Graph: will the crowd change its mind?</div>
+    <button type="button" class="endbtn" data-tomap="1">☰ Back to the cycle map</button>` },
+  ] };
 const LESSONS = {
   map: { stops: [], era: 'rome', scene: { '-1': 'forum' }, arrive: {}, plaque: 'Harry Bailly · Rome, 44 BC', slides: [
     { stop: -1, host: ['wave', () => course ? 'Choose your class, agents!' : 'Salvete, agents! First, choose your course.'],
@@ -1496,6 +1693,8 @@ const LESSONS = {
   ] },
   c2r: c2Lesson(false),
   c2i: c2Lesson(true),
+  c3r: C3R,
+  c3i: C3I,
 };
 // ---------- engine
 let L = 'map', i = 0, tick = null, AC = null, ANIM = true, lastStop = -2;
@@ -1618,6 +1817,11 @@ function mountWidgets() {
     document.querySelectorAll('#ccl .ccb').forEach(b => b.onclick = () => open(+b.dataset.n)); if (window.CCN != null) open(window.CCN); }
   // Class 2 (7A–7B) · the Chronicle model
   if ($('chAll')) $('chAll').onclick = () => { const on = $('chm').hidden; $('chm').hidden = !on; document.querySelector('#fit .cframe ol').hidden = on; $('chAll').textContent = on ? 'Hide the model' : 'Show the model'; if (on) chime(); fitStage(); };
+  // Class 3 (7C–7E) · Ping-Pong + the colour code
+  document.querySelectorAll('#fit .pgc').forEach(b => b.onclick = () => { b.classList.toggle('show'); if (b.classList.contains('show')) chime(); fitStage(); });
+  if ($('mcode')) $('mcode').onclick = () => { $('model5').classList.toggle('coded'); chime(); };
+  // Class 3 (7A–7B) · Brutus's speech: show the text after the first reading
+  document.querySelectorAll('#fit .bshow').forEach(b => b.onclick = () => { const t = $('bsp' + b.dataset.k); t.classList.toggle('show'); b.textContent = t.classList.contains('show') ? 'Hide the text' : 'Show the text'; fitStage(); });
   document.querySelectorAll('#fit [data-tomap]').forEach(b => b.onclick = () => openLesson('map'));
   document.querySelectorAll('#fit [data-course]').forEach(b => b.onclick = () => { setCourse(b.dataset.course); startMusic(); render(); });
   document.querySelectorAll('#fit [data-lesson]').forEach(b => b.onclick = () => { if (!b.disabled) { startMusic(); openLesson(b.dataset.lesson); } });
