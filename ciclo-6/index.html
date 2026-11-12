@@ -1293,6 +1293,32 @@ button.vp > i { visibility: hidden; } .vp.ex { opacity: .85; } .vp em { display:
 .wl6 .dsc > span i { font-style: normal; display: inline-grid; place-items: center; width: 3.6vh; height: 3.6vh; border-radius: 50%; color: #fff; font-family: var(--f-caps); margin-right: .4vw; }
 .wl6 .dsc > b { font-family: var(--f-body); font-weight: 400; font-size: 2.15vh; color: var(--ink); line-height: 1.3; } .wl6 .dsc > b b { color: var(--red); visibility: inherit; font-size: inherit; }
 @media (max-aspect-ratio: 3/2) { .bw6, .trs6, .rg6, .rl6, .wl6 { grid-template-columns: repeat(2, 1fr); } .rm6 { grid-template-columns: 1fr; } }
+/* ===== Cycle 6 · Class 2 ===== */
+.crt6 { display: grid; grid-template-columns: 1fr 1fr; gap: .7vw; }
+.crt6 .dsc { min-height: 16vh; text-align: left; justify-content: flex-start; padding: .7vh .8vw; }
+.crt6 .dsc > span { font-family: var(--f-body); font-size: 2.3vh; color: var(--ink); line-height: 1.25; }
+.crt6 .dsc > span i.rh { display: flex; justify-content: space-between; align-items: center; font-style: normal; margin-bottom: .4vh; }
+.crt6 .dsc > span i.rh u { text-decoration: none; background: var(--navy); color: #fff; border-radius: .6vh; padding: 0 .6vw; font-family: var(--f-caps); font-size: 1.8vh; }
+.crt6 .dsc > span small { display: inline-flex; align-items: center; gap: .3vw; font-family: var(--f-caps); font-size: 1.7vh; color: var(--navy); }
+.crt6 .dsc > span small img { height: 2.8vh; } .crt6 .dsc > span small .gnum { font-size: 1.6vh; }
+.crt6 .dsc > span > i:not(.rh) { color: var(--muted); font-size: 1.9vh; } .crt6 .dsc > span em { display: block; font-style: normal; font-weight: 700; color: var(--navy); font-size: 2vh; margin-top: .3vh; }
+.crt6 .dsc > b { font-family: var(--f-body); font-weight: 400; font-size: 2.1vh; color: var(--ink); line-height: 1.25; display: block; }
+.crt6 .dsc > b .rp { display: block; margin-bottom: .3vh; font-family: var(--f-body); text-transform: none; letter-spacing: 0; font-size: 2.15vh; color: var(--ink); font-weight: 400; } .crt6 .dsc > b .rp b { font-family: inherit; text-transform: none; letter-spacing: 0; } .crt6 .dsc > b small { display: block; margin-top: .3vh; }
+.crt6 .dsc > b b { color: var(--red); font-weight: 700; visibility: inherit; font-size: inherit; display: inline; }
+.crt6 .dsc > b strong { font-family: var(--f-caps); font-size: 1.9vh; color: #fff; background: var(--red); border-radius: .6vh; padding: .1vh .5vw; display: inline-block; }
+.crt6 .dsc > b strong.ok { background: #3e8e5a; } .crt6 .dsc > b small { font-size: 1.85vh; color: var(--muted); font-style: italic; }
+.ml6 { display: flex; flex-direction: column; gap: .6vh; }
+.ml6 > div { display: grid; grid-template-columns: 4.5vh 22% 1fr 30%; align-items: center; gap: .8vw; background: var(--note); border: .25vh solid var(--gold); border-radius: 1vh; padding: .6vh .8vw; font-family: var(--f-body); font-size: 2.1vh; line-height: 1.25; }
+.ml6 > div > i { font-style: normal; display: grid; place-items: center; width: 4.2vh; height: 4.2vh; border-radius: 50%; background: var(--navy); color: #fff; font-family: var(--f-caps); font-size: 2.3vh; }
+.ml6 > div > b { font-family: var(--f-caps); color: var(--navy); font-size: 2.4vh; display: flex; flex-direction: column; } .ml6 > div > b small { font-family: var(--f-body); font-size: 1.8vh; color: var(--red); }
+.ml6 > div > em { font-style: normal; color: var(--muted); font-size: 1.9vh; } .ml6 > div > em b { color: var(--ink); }
+.rules6 { display: grid; grid-template-columns: 1fr 1fr; gap: .5vh .8vw; } .rules6 p { margin: 0; font-family: var(--f-body); font-size: 2.3vh; line-height: 1.3; background: var(--note); border-radius: 1vh; padding: .6vh .7vw; }
+.rules6 p > b:first-child { display: inline-grid; place-items: center; width: 3.2vh; height: 3.2vh; border-radius: 50%; background: var(--red); color: #fff; margin-right: .4vw; font-family: var(--f-caps); }
+.rv6 { display: flex; flex-wrap: wrap; gap: .5vw; justify-content: center; } .rv6 span { background: #fff; border: .2vh solid var(--gold); border-radius: 1vh; padding: .4vh .7vw; font-family: var(--f-body); font-size: 1.9vh; color: var(--muted); display: flex; flex-direction: column; align-items: center; }
+.rv6 span b { font-family: var(--f-caps); font-size: 2.3vh; color: var(--navy); }
+.rdy6 { display: flex; flex-direction: column; gap: .5vh; } .rdy6 p { margin: 0; font-family: var(--f-body); font-size: 2.4vh; background: var(--note); border-radius: 1vh; padding: .5vh .8vw; display: flex; align-items: center; gap: .7vw; }
+.rdy6 p i { font-style: normal; display: inline-grid; place-items: center; min-width: 3.4vh; height: 3.4vh; border-radius: 50%; background: var(--navy); color: #fff; font-family: var(--f-caps); }
+@media (max-aspect-ratio: 3/2) { .crt6, .rules6 { grid-template-columns: 1fr; } .ml6 > div { grid-template-columns: 4.5vh 1fr; } }
 
 </style>
 </head>
@@ -1688,6 +1714,47 @@ const BWORDS = [
   ['🕊️', 'free', 'you decide for yourself; nobody owns you'],
   ['🗡️', 'a dagger', 'a short knife — the conspirators used daggers'],
   ['👥', 'the crowd', 'a big group of people in one place']];
+// ======================================================================
+// ---------- Cycle 6 · Class 2 · 7C–7E · Friends, Romans, Countrymen (C4 · C5) · key words (the Decoders lead)
+const AWORDS = [
+  ['⚰️', 'to bury', 'to put a dead person in the ground'],
+  ['👏', 'to praise', 'to say very good things about a person'],
+  ['✋', 'to refuse', 'to say «no» to something they offer you'],
+  ['🧥', 'a cloak', 'a long, big coat with no sleeves'],
+  ['🩸', 'a wound', 'a cut in the body — Caesar had many'],
+  ['😢', 'to weep', 'to cry']];
+// ---------- Cycle 6 · Class 2 · 7A–7B · Bug Court · Evidence 2 rehearsal (C4 · C5 · C6 · C7)
+// What is inside Mission Log 2 (format only — no exam content)
+const ML2 = [
+  ['A', 'Listening', 'C4', 10, 'a person of Rome speaks · choose A, B or C · find what contradicts', 'Read the questions before the audio. Listen for what he said <b>before</b>.'],
+  ['B', 'Reading', 'C5', 11, 'texts from the funeral · claim · evidence · reliability · bug · verdict', 'Who says it? How do they know? Why do they say it?'],
+  ['C', 'Use of English', 'C6', 9, 'quotes → reported speech with a good reporting verb', 'claimed · warned · promised · admitted · asked · told … to'],
+  ['D', 'Writing', 'C7', 12, 'a memo: claim · two reasons with evidence · «although» · conclusion', 'Plan for 2 minutes. Use the five blocks.'],
+  ['★', 'Role Power', 'your power', 8, 'a short task for your power', 'Herald C4 · Decoder C5 · Timekeeper C6 · Chronicler C7']];
+const RVERBS = [['claimed', 'said something is true'], ['warned', 'said something bad can happen'], ['promised', 'said he would do it'], ['admitted', 'said something true but bad about himself'], ['asked', 'a question · asked … to'], ['begged', 'asked very strongly'], ['told … to', 'a command'], ['shouted', 'said very loudly']];
+// Twelve cases: [who, quote, starter, model report, verdict, bug number (0 = VALID), why]
+const COURT = [
+  ['Cassius to Brutus', '«Look, Brutus: hundreds of citizens wrote these letters to you!»', 'Cassius claimed that…', 'Cassius claimed that hundreds of citizens <b>had written</b> those letters to Brutus.', 1, 'Cassius wrote the letters himself: fake evidence (also #5).'],
+  ['an advert, 2026', '«If you don\'t buy our phone today, you will lose all your friends.»', 'The advert warned us that…', 'The advert warned us that if we <b>didn\'t buy</b> their phone that day, we <b>would lose</b> all our friends.', 8, 'One small step → a terrible ending. A phone doesn\'t decide your friends.'],
+  ['the Soothsayer to Caesar', '«Beware the Ides of March.»', 'The Soothsayer warned Caesar…', 'The Soothsayer warned Caesar <b>to beware</b> the Ides of March.', 0, 'A real warning, and he said the same thing every time: consistent. And he was right!'],
+  ['Brutus to the crowd', '«Caesar must die, or Rome will be a slave.»', 'Brutus claimed that…', 'Brutus claimed that Caesar <b>had to</b> die, or Rome <b>would</b> be a slave.', 11, 'Only two options. There were others: the Senate could stop Caesar without killing him.'],
+  ['Antony to the crowd', '«I am not here to speak against Brutus.»', 'Antony told the crowd that…', 'Antony told the crowd that he <b>was not</b> there to speak against Brutus.', 10, 'His words say one thing; his speech does the opposite. Nice words that hide the real plan.'],
+  ['Cassius to Brutus', '«Caesar once cried like a sick girl. How can he rule the world?»', 'Cassius asked…', 'Cassius asked Brutus how Caesar <b>could</b> rule the world.', 7, 'He attacks Caesar as a person (a fever, tears), not his ideas or his actions.'],
+  ['Decius to Caesar', '«You are the greatest man in the world. The Senate wants to give you a crown today!»', 'Decius told Caesar that…', 'Decius told Caesar that he <b>was</b> the greatest man in the world and that the Senate <b>wanted</b> to give him a crown that day.', 13, 'Sweet words to move Caesar to the Senate — where the daggers were waiting.'],
+  ['an influencer, 2026', '«I used this cream for one day and my skin is perfect, so it works for everybody!»', 'The influencer claimed that…', 'The influencer claimed that she <b>had used</b> the cream for one day and that it <b>worked</b> for everybody.', 3, 'One person, one day → «everybody». Too fast, too few.'],
+  ['a citizen about Cinna', '«His name is Cinna, so he is a traitor!»', 'The citizen shouted that…', 'The citizen shouted that Cinna <b>was</b> a traitor because his name <b>was</b> Cinna.', 2, 'A name is not a reason. The reason is not connected to the claim.'],
+  ['Antony to the crowd', '«Caesar refused the crown three times. Was that ambitious?»', 'Antony asked the crowd…', 'Antony asked the crowd <b>if that had been</b> ambitious, because Caesar <b>had refused</b> the crown three times.', 0, 'Real counter-evidence: everybody saw it at the festival. The good part of his speech.'],
+  ['a football player, 2026', '«I wore my lucky sandals and we won. These sandals bring victory!»', 'The player claimed that…', 'The player claimed that he <b>had worn</b> his lucky sandals and that they <b>brought</b> victory.', 4, 'First the sandals, then the victory… but that does not mean the sandals caused it.'],
+  ['Antony to the Romans', '«Look at this cloak! Look at the blood! Weep with me, Romans!»', 'Antony told the Romans…', 'Antony told the Romans <b>to look</b> at the cloak and <b>to weep</b> with him.', 12, 'Tears and blood move the crowd, but they are not evidence that Brutus lied.']];
+const CPAIR = [[1, 2], [3, 4], [5, 6], [2, 3], [4, 5], [6, 1], [1, 3], [2, 4], [3, 5], [4, 6], [5, 1], [6, 2]];
+const CBUG = n => n ? `#${n} · ${BUGLIST13[n - 1]}` : '✔ VALID · no bug';
+// Counter-arguments after each round (C7): [case index, model]
+const COUNTER = [
+  [3, 'Brutus claimed that Caesar had to die, or Rome would be a slave. <b>However</b>, there was a third option: the Senate could stop Caesar without killing him.'],
+  [6, 'Decius told Caesar that the Senate wanted to give him a crown. <b>Although</b> his words were sweet, they were a trap: he had promised the conspirators to bring Caesar to the Senate.'],
+  [11, 'Antony told the Romans to weep with him. <b>Although</b> his tears were real, tears are not evidence that Brutus lied.']];
+// Ready check before Evidence 2
+const READY = ['I know the 13 bugs of the Bugdex by heart (no Bugdex in the evidence!).', 'I can report a statement, a question and a command.', 'I can use claimed · warned · promised · admitted.', 'I can write a memo with claim, two reasons, «although» and a conclusion.', 'I know my Role Power task.'];
 // Map titles change with the course: 7C–7E follow «The Funeral»; 7A–7B «Antony's Scroll».
 const TITLES6 = () => isImm()
   ? [['c1', 'Class 1', 'Caesar\'s Will'], ['c2', 'Class 2', 'Bug Court · Evidence 2 rehearsal'], ['c3', 'Class 3', 'Evidence 2 · Mission Log 2'], ['c4', 'Class 4', 'Antony\'s Scroll & Evidence 3 Brief'], ['c5', 'Class 5', 'Persona Workshop (at home)']]
@@ -1827,6 +1894,118 @@ const C1I = { stops: ['The Will', 'Words', 'The Scene', 'Report it', 'Greed?'], 
     <button type="button" class="endbtn" data-tomap="1">☰ Back to the cycle map</button>` },
   ] };
 
+// ======================================================================
+// Class 2 · 7C–7E · Friends, Romans, Countrymen (C4 · C5) — adapted from the 7A–7B version of Cycle 5
+const C2R = { stops: ['Objects', 'Words', 'Antony', 'Margins', 'Two graphs'], era: 'rome', scene: { '-1': 'forum', 0: 'forum', 1: 'street', 2: 'rostra', 3: 'rostra', 4: 'forum' }, plaque: 'Harry Bailly · Rome, 44 BC',
+  arrive: { 0: ['The Forum · the day after the Ides', 'Three Objects', 'A crown, a cloak, a will'], 1: ['A street near the Forum', 'Key Words', 'Six words to understand Antony'], 2: ['The Rostra', 'Friends, Romans, Countrymen', 'Mark Antony speaks'], 3: ['The Rostra', 'Antony\'s Margins', 'Is Antony consistent?'], 4: ['The Forum', 'Two Graphs', 'Brutus or Antony?'] },
+  slides: [
+  { stop: -1, host: ['present', 'Now <b>Antony</b> speaks…'],
+    help: 'Hoy los Heralds actúan el discurso de Marco Antonio y los Decoders anotan sus trucos en el margen del cuaderno. En tu Trust Graph dibujas una segunda línea: cuánto confías en Antonio. Al final comparas: ¿quién movió más a la multitud, Bruto o Antonio?',
+    note: 'Objetivo (2 min). En español: hoy los Heralds actúan el discurso de Antonio (Julius Caesar, Acto 3, Escena 2, adaptado) como teatro leído en cuatro partes; los Decoders anotan los trucos en el margen de su cuaderno y el grupo decide si Antonio es consistente (C5). Cada agente añade a su Trust Graph de la clase pasada una segunda línea, de otro color, para Antonio (C4). Que saquen la Trust Graph de Bruto.',
+    html: () => `<div class="kicker">Cycle 6 · The Funeral · Class 2 · Friends, Romans, Countrymen</div><h1>Today, agents, you will perform Antony's speech, catch his tricks — and compare him with Brutus.</h1>
+    <div class="goals"><span><b>C5</b> is Antony consistent?</span><span><b>C4</b> your second trust line</span><span><b>✎</b> the Decoders' margins</span></div>
+    <div class="info">Open your notebook at your <b>Trust Graph</b>. Today you will draw a second line — in another colour — for Antony.</div>` },
+  { stop: 0, dense: true, host: ['think', 'Three objects. <b>How</b> will he use them?'],
+    help: 'Antonio trae tres objetos: una corona, la capa de César y su testamento. Con tu compañero, predice cómo los va a usar para convencer a la multitud: «He will… / He might…». Toca cada objeto para verlo.',
+    note: 'Three objects (4 min). Toque cada objeto. En parejas predicen con will / might cómo los usará Antonio («He will show the cloak to make them cry»). Escuche tres predicciones y escríbalas en una esquina del tablero: se comprueban durante el discurso.',
+    html: () => `<div class="kicker">Warm-up · Three objects · predict with will / might</div>
+    <div class="obj3">${OBJ3.map(([e, n, t]) => `<button type="button" class="dsc ob3"><span>${e} ${n}</span><b>${t}</b></button>`).join('')}</div>
+    <div class="task"><span class="step">Predict</span>«Antony will / might use the … to…»</div>` },
+  mixSlide(0, 62),
+  { stop: 1, dense: true, host: ['magnifier', 'Decoders: six <b>key words</b>!'],
+    help: 'Seis palabras que Antonio va a usar. Lee la palabra, adivina qué significa y toca la tarjeta para ver el significado. Cópialas en tu glosario romano con un dibujo pequeño.',
+    note: 'Key words (3 min). El Decoder de cada grupo adivina antes de tocar la tarjeta (+5 XP a los Decoders si acierta). Todos copian las seis palabras en el glosario romano: bury, praise, refuse, cloak, wound, weep.',
+    html: () => `<div class="kicker">Key words · Antony will use them · the Decoders lead</div>
+    <div class="bw6">${AWORDS.map(([e, w, d]) => `<button type="button" class="dsc"><span><i>${e}</i>${w}</span><b>${d}</b></button>`).join('')}</div>
+    ${nb('add the six words to your <b>Roman glossary</b> + a small drawing.')}${xpBoard(5)}${timer([['Words', 180]])}` },
+  ...ANTONY.map((pt, pi) => ({ stop: 2, dense: true, host: [['wave', 'scales', 'oops', 'letter'][pi], [`Part ${pi + 1}: <b>${pt.title}</b>`, 'Was that <b>ambitious</b>?', 'Look at the <b>cloak</b>…', 'And now… the <b>will</b>!'][pi]],
+    help: `Parte ${pi + 1}: «${pt.title}». Si eres Herald y te toca un papel, lee con voz fuerte y con emoción. Si eres Decoder, escribe en el margen de tu cuaderno qué truco o qué prueba usa Antonio en esta parte. Todos: al final muestra con los dedos cuánto confías en Antonio (0 a 5) y marca el punto ${pi + 1} de tu segunda línea.`,
+    note: `Parte ${pi + 1} de 4 · ${pt.title} (5 min). Lectura: Antonio = Herald del grupo ${pi + 1}; ciudadanos = Heralds de otros grupos (en pantalla). ${pi === 3 ? 'La última línea la grita toda la clase. ' : ''}Después de leer: 1 minuto para que cada Decoder escriba en el margen qué hace Antonio (truco o evidencia), y «Show me 0–5»: cada agente marca el punto ${pi + 1} de la línea de Antonio (otro color; eje x de 1 a 4). No revele todavía los trucos. ${pi === 0 ? 'Pida a la clase que cuente cuántas veces dice «honourable man».' : ''}${pi === 1 ? 'Si hace falta, explique «refused the crown»: César dijo que no a la corona tres veces.' : ''}`,
+    html: () => `<div class="kicker">Friends, Romans, Countrymen · part ${pi + 1} of 4 · ${pt.title}</div>
+    <div class="rtcast">${[...new Set(pt.lines.map(l => l[0]))].map(r => `<span class="${r === 'ALL' ? 'all' : 'h'}"><b>${AROLES[r]}</b><small>${ACAST(pi, r)}</small></span>`).join('')}</div>
+    <div class="ant">${pt.lines.map(([r, t]) => `<p class="${r === 'ANT' ? 'a' : 'c'}"><b>${AROLES[r]}</b><span>${t}</span></p>`).join('')}</div>
+    <div class="revealbar"><span class="hint">✎ Decoders: write the trick or the evidence of part ${pi + 1} in the margin · Everybody: show me 0 ✊ … 5 🖐 and mark point ${pi + 1} of Antony's line</span></div>` })),
+  { stop: 3, dense: true, host: ['magnifier', 'Decoders, <b>read your margins</b>!'],
+    help: 'Los Decoders leen lo que anotaron en cada parte. Toca para ver la respuesta. Después, con tu grupo, decide: ¿Antonio es consistente? Pista: compara lo que dice al principio («vine a enterrar a César, no a alabarlo») con lo que hace después.',
+    note: 'Antony\'s margins (7 min). Pida cada parte al Decoder de un grupo distinto y toque la tarjeta (+10 XP para los Decoders; robar +5). Luego la pregunta del grupo: «Is Antony consistent?». Toque el botón: NO — dice que viene a enterrar a César y no a alabarlo, y lo alaba todo el tiempo; dice que Bruto es honorable y demuestra lo contrario. Pero la parte 2 sí tiene evidencia real (la corona rechazada): un argumento puede tener partes buenas y partes con bugs.',
+    html: () => `<div class="kicker">Antony's margins · the Decoders read · is Antony consistent?</div>
+    <div class="amg">${ANTONY.map((pt, k) => `<button type="button" class="dsc amc"><span>Part ${k + 1} · ${pt.title}</span><b><i>${pt.m[0]}</i>${pt.m[1]}</b></button>`).join('')}</div>
+    <button type="button" class="dsc why5"><span>Is Antony consistent?</span><b><b>No.</b> He says «I came to bury Caesar, <u>not to praise him</u>»… and then he praises Caesar all the time. He says «Brutus is honourable»… and shows the opposite. <b>But</b> part 2 has real evidence: one argument can have good parts and buggy parts.</b></button>${xpBoard(10)}` },
+  { stop: 4, dense: true, host: ['present', 'Heralds: <b>Brutus or Antony?</b>'],
+    help: 'Mira tus dos líneas: Bruto y Antonio. ¿Cuál subió más? ¿En qué parte? El Herald de tu grupo explica en 30 segundos quién movió más a la multitud y con qué: ¿evidencia o trucos?',
+    note: 'Two graphs (6 min). Cada grupo compara sus dos líneas (1 minuto). Luego cada Herald, 30 segundos, con el marco (+10 XP por una explicación con una parte concreta). Cierre la idea clave del C5: Antonio ganó a la multitud, pero casi siempre con emociones y dinero (la capa, el testamento); su única evidencia real fue la corona rechazada.',
+    html: () => `<div class="kicker">Two graphs · Brutus vs Antony · 30 seconds per Herald</div>
+    <div class="tg5"><svg viewBox="0 0 420 200" aria-hidden="true"><g stroke="#9c8a6a" stroke-width="1">${[0, 1, 2, 3, 4, 5].map(y => `<line x1="40" x2="400" y1="${170 - y * 30}" y2="${170 - y * 30}" stroke-dasharray="${y ? '3 4' : ''}"/>`).join('')}</g><polyline points="45,80 102,110 159,50 216,140 273,110 330,80 387,50" fill="none" stroke="#9a3b22" stroke-width="3" stroke-dasharray="6 5"/><polyline points="45,140 140,110 235,80 330,50 400,20" fill="none" stroke="#2f6fb3" stroke-width="3"/><text x="300" y="195" font-size="12" fill="#9a3b22">— — Brutus</text><text x="230" y="195" font-size="12" fill="#2f6fb3">—— Antony</text></svg>
+      <div><b>Compare your two lines</b><span>Which line went <b>higher</b>? In which part?</span><span>Did he move you with <b>evidence</b> or with a <b>trick</b>?</span></div></div>
+    <div class="scroll"><p class="frame" style="margin:0"><b>…</b> moved our group more. In part <b>…</b>, Antony <b>…</b>, and our line went <u>up / down</u>. That was <u>evidence / a trick</u>, because <b>…</b>.</p></div>${xpBoard(10)}` },
+  { stop: 4, host: ['write', 'Antony or Brutus? <b>Your verdict.</b>'],
+    help: 'Escribe en tu cuaderno: ¿quién tuvo el mejor argumento, Bruto o Antonio? ¿Por qué? Y ¿cuál fue el mejor truco de Antonio?',
+    note: 'Exit ticket (3 min, en el cuaderno). Dos frases. Revise algunos cuadernos para el seguimiento de C4 y C5 en el Registro. PIAR: solo la frase 1.',
+    html: () => `<div class="kicker">Exit ticket · in your notebook</div>
+    <div class="exit2"><p><b>1</b> The best argument was <b>…</b>'s, because ______.</p><p><b>2</b> Antony's best trick was <b>…</b>, because ______.</p></div>${timer([['Write', 180]])}` },
+  { stop: 4, host: ['listen', 'Tomorrow: the <b>people</b> speak.'],
+    help: 'La próxima clase escuchas a dos personas de Roma que hablan del funeral: ¿quién cambió de opinión y por qué? Guarda tus notas de hoy.',
+    note: 'Cierre (1 min). Próxima clase: «Rome Today: Voices from the Forum» (listening tipo A2 Key Part 5, audio grabado). Que guarden los márgenes y las dos líneas.',
+    html: () => `<div class="kicker">Class 2 complete · Rome is burning…</div><h1>Antony won the crowd. But did he win with good reasons?</h1>
+    <div class="info">Next class: <b>Rome Today: Voices from the Forum</b>. A reporter asks the people of Rome: who changed their mind — and why?</div>
+    <button type="button" class="endbtn" data-tomap="1">☰ Back to the cycle map</button>` },
+  ] };
+
+// ======================================================================
+// Class 2 · 7A–7B · Bug Court · Evidence 2 rehearsal (C4 · C5 · C6 · C7)
+const courtRound = r => ({ stop: r + 1, dense: true, host: [['scales', 'point', 'alert'][r], [`Round ${r + 1}. <b>Run to the stand!</b>`, 'Round 2. <b>Report it, name it!</b>', 'Last round. <b>Win the case!</b>'][r]],
+  help: `Ronda ${r + 1} del Bug Court. En cada caso, dos grupos compiten y corre al estrado (al frente) el poder que dice la tarjeta. Gana quien primero reporta bien la cita en estilo indirecto Y nombra el bug (o dice que es VALID). Todos los demás escriben el reporte en su cuaderno.`,
+  note: `Ronda ${r + 1} (8 min · 4 casos). Por caso: lea la cita en voz alta con teatro. Los dos grupos que indica la tarjeta mandan al estrado (frente al tablero) al agente del poder que corre. El primero que reporta bien (con un verbo introductor adecuado) Y nombra el bug o dice «valid» gana: +5 XP al equipo de ese poder por el reporte y +5 por el bug. Si falla, el otro tiene 10 segundos. Mientras tanto, todos escriben el reporte en el cuaderno. Toque la tarjeta para revelar. Pista del adivino (una por grupo en todo el juego): usted susurra la primera letra del bug o el filtro (R, A o S). Claves: ${COURT.slice(r * 4, r * 4 + 4).map(([, , , , n], k) => `${r * 4 + k + 1} ${n ? '#' + n : 'VALID'}`).join(' · ')}.`,
+  html: () => `<div class="kicker">The Bug Court · round ${r + 1} of 3 · report it + name the bug (or «valid»)</div>
+  <div class="crt6">${COURT.slice(r * 4, r * 4 + 4).map(([who, q, st, rep, n, why], j) => { const k = r * 4 + j, [pk, pn] = RELAYP(k), [a, b] = CPAIR[k].map(g => Math.min(g, ngroups())); return `<button type="button" class="dsc"><span><i class="rh"><u>Case ${k + 1}</u><small><img src="${IMG.emb[pk]}" alt="">${pn}s run · ${gb(a)} vs ${gb(b)}</small></i>${q} <i>— ${who}</i><em>${st}</em></span><b><span class="rp">${rep}</span><strong class="${n ? 'bug' : 'ok'}">${CBUG(n)}</strong><small>${why}</small></b></button>`; }).join('')}</div>
+  ${xpBoard(5)}${timer([['Round ' + (r + 1), 480]])}` });
+const counterSlide = r => { const [ci, model] = COUNTER[r], c = COURT[ci]; return { stop: r + 1, dense: true, host: ['write', 'Two sentences. <b>Answer him!</b>'],
+  help: `Contraargumento (C7): responde a ${c[0].split(' to ')[0]} en dos frases en tu cuaderno. Primera frase: reporta lo que dijo. Segunda frase: explica por qué no es un buen argumento, con «however» o «although». Es la práctica del memo de la Evidencia 2.`,
+  note: `Counter-argument ${r + 1} (3 min, en el cuaderno, individual). Sobre el caso ${ci + 1}. Primera frase: el reporte; segunda: la respuesta con «however» o «although». El Chronicler de un grupo lee el suyo (+5 XP para los Chroniclers). Luego toque «Model». Es la práctica de la Parte D (memo) y de la tarea Role Power del Chronicler (una refutación de 40 palabras).`,
+  html: () => `<div class="kicker">Counter-argument ${r + 1} of 3 · the Chroniclers lead · write two sentences</div>
+  <div class="bq"><b>Case ${ci + 1}:</b> ${c[1]} <i>— ${c[0]}</i></div>
+  <div class="scroll"><p class="frame" style="margin:0"><b>…</b> claimed / told … that <b>…</b>. <b>However / Although</b> <b>…</b>, <b>…</b>.</p></div>
+  <button type="button" class="dsc why5"><span>Model</span><b>${model}</b></button>${xpBoard(5)}${timer([['Write', 180]])}` }; };
+const C2I = { stops: ['The Log', 'Round 1', 'Round 2', 'Round 3', 'Ready?'], era: 'rome', scene: { '-1': 'senate', 0: 'senate', 1: 'senate', 2: 'forum', 3: 'street', 4: 'senate' }, plaque: 'Harry Bailly · Rome, 44 BC',
+  arrive: { 0: ['The Senate · the Chronos Agency', 'Mission Log 2', 'What is inside?'], 1: ['The Senate · the Bug Court', 'Round 1', 'Report it · name it'], 2: ['The Forum · the Bug Court', 'Round 2', 'Report it · name it'], 3: ['A street in Rome · the Bug Court', 'Round 3', 'Report it · name it'], 4: ['The Senate', 'Ready for Evidence 2?', 'Check yourself'] },
+  slides: [
+  { stop: -1, host: ['scales', 'Order in the <b>Bug Court</b>!'],
+    help: () => `Hoy es el ensayo de la Evidencia 2. En el Bug Court, dos grupos compiten en cada caso: reportan una cita en estilo indirecto y nombran el bug. Cada tres o cuatro casos escribes un contraargumento. ${course ? 'Tu Evidencia 2: ' + DATES[course][1] + '.' : ''}`,
+    note: () => `Objetivo (2 min). En español: hoy es el ensayo de la Evidencia 2 (${course ? course + ', ' + DATES[course][1] : '7B mar 2 feb · 7A jue 4 feb'}). Primero ven qué trae el Mission Log 2 (solo el formato, no el contenido). Luego el Bug Court: 12 casos en tres rondas; en cada caso corre al estrado un poder distinto (Herald → Decoder → Timekeeper → Chronicler), como en la tarea Role Power; dos grupos compiten. Después de cada ronda, un contraargumento de dos frases (C7). Al final, el chequeo «Ready?». Criterios practicados: C4, C5, C6 y C7.`,
+    html: () => `<div class="kicker">Cycle 6 · Antony's Scroll · Class 2 · Bug Court</div><h1>Today, agents, you will rehearse Evidence 2: report the quote, name the bug — and win the case.</h1>
+    <div class="goals"><span><b>C6</b> report it</span><span><b>C5</b> name the bug</span><span><b>C7</b> answer it</span><span><b>C4</b> listen for what doesn't fit</span></div>
+    <div class="info">${course ? `<b>Evidence 2 · Mission Log 2</b> for ${course}: <b>${DATES[course][1]}</b>.` : '<b>Evidence 2 · Mission Log 2</b> is next class.'}</div>` },
+  { stop: 0, dense: true, host: ['scroll', 'What is inside <b>Mission Log 2</b>?'],
+    help: 'Así es la Evidencia 2: cinco partes, 50 minutos, individual, a lápiz, sin diccionario y SIN Bugdex. Lee el consejo de cada parte. Copia en tu cuaderno la tabla de tiempos y la tarea Role Power de tu poder.',
+    note: 'Mission Log 2 · el formato (5 min). Lea las cinco partes con los tiempos y el consejo (no se muestra el contenido de la prueba). Subraye: sin diccionario y SIN Bugdex — hay que saber los 13 bugs de memoria. Role Power (8 min): Herald (C4) veredicto oral de 45 s en su escritorio sobre una inconsistencia de la Parte A; Decoder (C5) nombra y explica el bug en tres líneas romanas; Timekeeper (C6) reporta una pregunta y una orden del motín; Chronicler (C7) refutación de 40 palabras al contraargumento del memo. Que cada agente copie su tarea.',
+    html: () => `<div class="kicker">Evidence 2 · Mission Log 2 · 50 minutes · alone · pencil · no dictionary · no Bugdex</div>
+    <div class="ml6">${ML2.map(([l, n, c, m, t, tip]) => `<div><i>${l}</i><b>${n}<small>${c} · ${m}'</small></b><span>${t}</span><em>Tip: ${tip}</em></div>`).join('')}</div>
+    ${nb('copy the five parts with the minutes + the <b>Role Power</b> task of your power.')}` },
+  mixSlide(0, 62),
+  { stop: 0, dense: true, host: ['point', 'The rules of the <b>court</b>.'],
+    help: 'Reglas: el profe lee una cita. Los dos grupos de la tarjeta mandan al frente al agente del poder que corre. Gana quien primero dice el reporte con un buen verbo («Cassius claimed that…») y nombra el bug o dice «valid». Usa los verbos de la pantalla.',
+    note: 'Las reglas (2 min). Muestre los verbos introductores: el reporte debe usar uno adecuado (es lo que pide la Parte C). Explique la «pista del adivino»: una por grupo en todo el juego (usted susurra la primera letra del bug o el filtro R, A o S). En el salón escalonado, el «estrado» es el frente, junto al tablero; si bajar es lento, el agente se pone de pie y responde desde su puesto. Todos los demás escriben cada reporte en el cuaderno (1–12).',
+    html: () => `<div class="kicker">The Bug Court · the rules</div>
+    <div class="rules6"><p><b>1</b> I read a quote.</p><p><b>2</b> The two groups on the card send the <b>power</b> on the card to the stand.</p><p><b>3</b> First to <b>report it</b> with a good verb <u>and</u> <b>name the bug</b> (or say «valid») wins: +5 +5 XP.</p><p><b>4</b> Everybody else writes the report in the notebook (1–12).</p></div>
+    <div class="rv6">${RVERBS.map(([v, d]) => `<span><b>${v}</b>${d}</span>`).join('')}</div>
+    <p class="hint center" style="margin:0">One <b>Soothsayer's whisper</b> per group: the first letter of the bug, or its filter (R · A · S).</p>` },
+  courtRound(0), counterSlide(0),
+  courtRound(1), counterSlide(1),
+  courtRound(2), counterSlide(2),
+  { stop: 4, dense: true, host: ['think', 'Are you <b>ready</b>? Be honest!'],
+    help: 'Para cada frase, muestra con los dedos qué tan listo estás: 1 (nada) a 5 (totalmente). Luego escribe en tu cuaderno la parte que más necesitas practicar y qué vas a hacer esta noche.',
+    note: () => `Ready check y exit ticket (4 min). Lea cada frase; los agentes muestran 1–5 con los dedos. Anote mentalmente qué parte sale más baja en el curso y dé el consejo: la Bugdex de memoria (los 13 bugs con su filtro), las tres máquinas y los cuatro verbos, el marco del memo. Exit ticket en el cuaderno. Recuerde: lápiz y borrador; sin diccionario ni Bugdex.`,
+    html: () => `<div class="kicker">Ready check · show me 1 ✊ … 5 🖐 · then write</div>
+    <div class="rdy6">${READY.map((t, k) => `<p><i>${k + 1}</i>${t}</p>`).join('')}</div>
+    <div class="exit2"><p><b>✎</b> The part I need to practise is <b>…</b>, so tonight I will ______.</p></div>${timer([['Write', 120]])}` },
+  { stop: 4, host: ['alert', 'Next class: <b>Evidence 2</b>!'],
+    help: () => `La próxima clase es la Evidencia 2. Trae lápiz y borrador. Repasa la Bugdex (13 bugs) y las tres máquinas del estilo indirecto. ${course ? 'Fecha: ' + DATES[course][1] + '.' : ''}`,
+    note: () => `Cierre (1 min). Evidencia 2 (${course ? course + ': ' + DATES[course][1] : '7B mar 2 feb · 7A jue 4 feb'}). Lápiz y borrador; sin diccionario ni Bugdex. Que repasen en casa la Bugdex y las tres máquinas. XP final del Bug Court en el Registro.`,
+    html: () => `<div class="kicker">Class 2 complete · the court is closed</div><h1>Next class: Evidence 2 · Mission Log 2${course ? ` · ${DATES[course][1]}` : ''}.</h1>
+    <div class="info">Bring a <b>pencil</b> and an <b>eraser</b>. Tonight: the <b>13 bugs</b> by heart and the <b>three machines</b>. Good luck, agents — Rome is counting on you.</div>
+    <button type="button" class="endbtn" data-tomap="1">☰ Back to the cycle map</button>` },
+  ] };
+
 const LESSONS = {
   map: { stops: [], era: 'rome', scene: { '-1': 'forum' }, arrive: {}, plaque: 'Harry Bailly · Rome, 44 BC', slides: [
     { stop: -1, host: ['wave', () => course ? 'Choose your class, agents!' : 'Salvete, agents! First, choose your course.'],
@@ -1840,6 +2019,8 @@ const LESSONS = {
   ] },
   c1r: C1R,
   c1i: C1I,
+  c2r: C2R,
+  c2i: C2I,
 };
 // ---------- engine
 let L = 'map', i = 0, tick = null, AC = null, ANIM = true, lastStop = -2;
