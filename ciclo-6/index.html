@@ -1319,6 +1319,21 @@ button.vp > i { visibility: hidden; } .vp.ex { opacity: .85; } .vp em { display:
 .rdy6 { display: flex; flex-direction: column; gap: .5vh; } .rdy6 p { margin: 0; font-family: var(--f-body); font-size: 2.4vh; background: var(--note); border-radius: 1vh; padding: .5vh .8vw; display: flex; align-items: center; gap: .7vw; }
 .rdy6 p i { font-style: normal; display: inline-grid; place-items: center; min-width: 3.4vh; height: 3.4vh; border-radius: 50%; background: var(--navy); color: #fff; font-family: var(--f-caps); }
 @media (max-aspect-ratio: 3/2) { .crt6, .rules6 { grid-template-columns: 1fr; } .ml6 > div { grid-template-columns: 4.5vh 1fr; } }
+/* ===== Cycle 6 · Class 3 ===== */
+.ws6 { display: grid; grid-template-columns: repeat(3, 1fr); gap: .8vw; }
+.ws6 .dsc { min-height: 13vh; } .ws6 .dsc > span { font-family: var(--f-body); font-size: 2.4vh; line-height: 1.3; color: var(--ink); }
+.ws6 .dsc > span i { font-style: normal; display: inline-grid; place-items: center; width: 3.4vh; height: 3.4vh; border-radius: 50%; background: var(--navy); color: #fff; font-family: var(--f-caps); margin-right: .4vw; }
+.ws6 .dsc > b { font-family: var(--f-caps); font-size: 2.8vh; color: var(--red); }
+.hol6 { display: grid; grid-template-columns: 1.6fr repeat(6, 1fr) 1.6fr; gap: .5vw; align-items: center; margin: 1vh 0 1.4vh; }
+.hol6 b { font-family: var(--f-caps); font-size: 2.3vh; color: var(--navy); text-align: center; }
+.hol6 span { display: grid; place-items: center; height: 8vh; border-radius: 1vh; font-family: var(--f-display); font-size: 4vh; color: #fff; background: linear-gradient(90deg, #9a3b22, #2f6fb3); background-size: 700% 100%; }
+.hol6 span:nth-of-type(1) { background-position: 0 0; } .hol6 span:nth-of-type(2) { background-position: 20% 0; } .hol6 span:nth-of-type(3) { background-position: 40% 0; } .hol6 span:nth-of-type(4) { background-position: 60% 0; } .hol6 span:nth-of-type(5) { background-position: 80% 0; } .hol6 span:nth-of-type(6) { background-position: 100% 0; }
+@media (max-aspect-ratio: 3/2) { .ws6 { grid-template-columns: 1fr 1fr; } }
+.ev2p { display: grid; grid-template-columns: repeat(5, 1fr); gap: .7vw; margin: 1vh 0; }
+.ev2p > div { background: var(--note); border: .3vh solid var(--gold); border-radius: 1.2vh; padding: 1vh .7vw; text-align: center; display: flex; flex-direction: column; gap: .3vh; }
+.ev2p i { font-style: normal; align-self: center; display: grid; place-items: center; width: 4.4vh; height: 4.4vh; border-radius: 50%; background: var(--navy); color: #fff; font-family: var(--f-caps); font-size: 2.4vh; }
+.ev2p b { font-family: var(--f-display); font-size: 2.5vh; color: var(--navy); } .ev2p span { font-family: var(--f-caps); font-size: 1.9vh; color: var(--red); font-weight: 700; } .ev2p p { margin: 0; font-size: 2vh; line-height: 1.3; }
+@media (max-aspect-ratio: 3/2) { .ev2p { grid-template-columns: 1fr 1fr; } }
 
 </style>
 </head>
@@ -1755,6 +1770,15 @@ const COUNTER = [
   [11, 'Antony told the Romans to weep with him. <b>Although</b> his tears were real, tears are not evidence that Brutus lied.']];
 // Ready check before Evidence 2
 const READY = ['I know the 13 bugs of the Bugdex by heart (no Bugdex in the evidence!).', 'I can report a statement, a question and a command.', 'I can use claimed · warned · promised · admitted.', 'I can write a memo with claim, two reasons, «although» and a conclusion.', 'I know my Role Power task.'];
+// ======================================================================
+// ---------- Cycle 6 · Class 3 · 7C–7E · Rome Today: Voices from the Forum (C4) · warm-up «Who said it?»
+const WHOSAID = [
+  ['«Believe me, because I am an honourable man.»', 'B'],
+  ['«I came to bury Caesar, not to praise him.»', 'A'],
+  ['«Would you prefer Caesar alive, and all of you living as slaves?»', 'B'],
+  ['«Three times I offered him a crown, and three times he said no.»', 'A'],
+  ['«I killed my best friend for the good of Rome.»', 'B'],
+  ['«Look at this cloak. Here is Caesar himself!»', 'A']];
 // Map titles change with the course: 7C–7E follow «The Funeral»; 7A–7B «Antony's Scroll».
 const TITLES6 = () => isImm()
   ? [['c1', 'Class 1', 'Caesar\'s Will'], ['c2', 'Class 2', 'Bug Court · Evidence 2 rehearsal'], ['c3', 'Class 3', 'Evidence 2 · Mission Log 2'], ['c4', 'Class 4', 'Antony\'s Scroll & Evidence 3 Brief'], ['c5', 'Class 5', 'Persona Workshop (at home)']]
@@ -2006,6 +2030,60 @@ const C2I = { stops: ['The Log', 'Round 1', 'Round 2', 'Round 3', 'Ready?'], era
     <button type="button" class="endbtn" data-tomap="1">☰ Back to the cycle map</button>` },
   ] };
 
+// ======================================================================
+// Class 3 · 7C–7E · Rome Today: Voices from the Forum (C4)
+const C3R = { stops: ['Who said it?', 'Before', 'Listen', 'Reasons', 'The line'], era: 'rome', scene: { '-1': 'street', 0: 'rostra', 1: 'street', 2: 'street', 3: 'forum', 4: 'forum' }, plaque: 'Harry Bailly · Rome, 44 BC',
+  arrive: { 0: ['The Rostra · yesterday', 'Who Said It?', 'Brutus or Antony?'], 1: ['Rome · the next morning', 'Before You Listen', 'Read the answers first'], 2: ['Rome · the next morning', 'Voices from the Forum', 'Who changed their mind?'], 3: ['The Forum', 'Good Reasons?', 'Evidence or trick?'], 4: ['The Forum', 'The Human Opinion Line', 'Your final position'] },
+  slides: [
+  { stop: -1, host: ['listen', 'Rome <b>today</b>. Who changed?'],
+    help: 'Hoy escuchas una conversación: una reportera, Livia, habla con Gaius, un panadero, la mañana después del funeral. Gaius cuenta qué hizo cambiar de opinión a cinco personas. Tú emparejas cada persona con la razón. Al final, la línea humana: ¿Bruto o Antonio?',
+    note: 'Objetivo (2 min). En español: hoy el listening «Rome Today: Voices from the Forum» (tipo A2 Key Part 5: emparejar cinco personas con ocho opciones; sobran tres). Audio grabado de unos 5 minutos con las dos escuchas incluidas (C4). Luego deciden quién cambió por una buena razón y quién por un truco, y cierran con la línea humana de opinión: Bruto frente a Antonio, con el Herald de cada grupo defendiendo la posición final.',
+    html: () => `<div class="kicker">Cycle 6 · The Funeral · Class 3 · Rome Today: Voices from the Forum</div><h1>Today, agents, you will listen to the people of Rome — and find out who changed their mind, and why.</h1>
+    <div class="goals"><span><b>C4</b> listen and match</span><span><b>A2 Key</b> Part 5</span><span><b>0–5</b> the final opinion line</span></div>` },
+  { stop: 0, dense: true, host: ['think', 'Brutus… or <b>Antony</b>?'],
+    help: 'Seis frases de los dos discursos. ¿Quién la dijo: Bruto (B) o Antonio (A)? Escribe 1–6 y la letra en tu cuaderno. Luego muestra con la mano: izquierda = Bruto, derecha = Antonio. Toca la tarjeta para ver la respuesta.',
+    note: 'Warm-up «Who said it?» (5 min). Escriben 1–6 con B o A. Por tarjeta: mano izquierda arriba = Bruto, derecha = Antonio; luego toque para revelar. Claves: 1 B · 2 A · 3 B · 4 A · 5 B · 6 A. Repaso rápido de las dos clases anteriores antes del listening.',
+    html: () => `<div class="kicker">Warm-up · Who said it? · B = Brutus · A = Antony</div>
+    <div class="ws6">${WHOSAID.map(([q, a], k) => `<button type="button" class="dsc"><span><i>${k + 1}</i>${q}</span><b>${a === 'B' ? '🗡️ Brutus' : '🧥 Antony'}</b></button>`).join('')}</div>
+    ${nb('write 1–6 and <b>B</b> or <b>A</b>.')}` },
+  mixSlide(0, 63),
+  { stop: 1, dense: true, host: ['listen', 'Read the answers <b>first</b>!'],
+    help: 'Antes de escuchar, lee las ocho respuestas (A a H) y las cinco personas. Copia en tu cuaderno los números 1 a 5. Mira el ejemplo: Gaius cambió por el testamento (B). Ojo: sobran respuestas. Con tu grupo, predice: ¿quién crees que cambió por la capa?',
+    note: 'Before you listen (4 min). Lean juntos las ocho opciones y las seis personas (0 es el ejemplo: B). Cada agente copia 1–5 en el cuaderno. Estrategia de Key Part 5: (1) lean las opciones antes; (2) un hablante puede mencionar una opción que NO es la respuesta (trampa); (3) escriban algo en todas. Predicción en grupo de 1 minuto: «I think Titus changed because of…».',
+    html: () => `<div class="kicker">Before you listen · Rome Today: Voices from the Forum · A2 Key Part 5</div>${vfTask(false)}
+    <div class="task"><span class="step">Tip</span>A speaker can <b>mention</b> an option… but it is <u>not</u> the answer. Listen for the reason!</div>` },
+  { stop: 2, dense: true, host: ['listen', 'Listen <b>twice</b>. Match the people!'],
+    help: 'Escucha la conversación entre Livia (reportera) y Gaius (panadero). Se escucha dos veces dentro del mismo audio. Para cada persona, escribe la letra (A a H) de lo que la hizo cambiar de opinión. Pista: ¡algunas personas mencionan una opción, pero esa no es la respuesta!',
+    note: 'Listening (10 min). El audio dura unos 5 minutos e incluye las dos escuchas (intro, 10 s para leer, conversación, «Now listen again», conversación). Pulse ▶ y déjelo correr. Luego «Show me!» persona por persona (escriben la letra grande en el cuaderno y la levantan) y toque cada persona para revelar. Claves: 1 G · 2 D · 3 E · 4 H · 5 C (0 = B). Trampas: F (Cornelia la menciona, pero no cambió) y A (la daga de Bruto, Marcus). Si hay tiempo, «Transcript» para mostrar dónde estaban las trampas. PIAR: transcripción visible en la segunda escucha.',
+    html: () => `<div class="kicker">Listening · Rome Today: Voices from the Forum · two voices · twice</div>
+    <div class="player" id="vfP"><button type="button" class="play" id="vfPlay">▶ Listen</button><div class="bar"><i id="vfBar"></i></div><span class="time" id="vfTime">0:00</span><button type="button" class="tbtn" id="vfTr">Transcript</button></div>
+    ${vfTask(true)}
+    <div class="lqt vft" id="vfT">${VCONV.map(([w, t]) => `<p><b>${w === 'L' ? 'Livia' : 'Gaius'}:</b> ${t}</p>`).join('')}</div>` },
+  { stop: 3, dense: true, host: ['scales', 'Who changed for a <b>good reason</b>?'],
+    help: 'Con tu grupo, decide: ¿quién cambió de opinión por una buena razón (evidencia) y quién por un truco (emociones, dinero, la multitud)? Copia la tabla de dos columnas en tu cuaderno. El Herald da el veredicto del grupo con el marco.',
+    note: 'Good reasons? (7 min). Los grupos copian la tabla GOOD REASON / TRICK y clasifican a los seis ciudadanos: buena razón (Julia: la corona que vio; Flavia: notó la inconsistencia; Cornelia no cambió y fue consistente) o truco (Gaius: dinero; Titus: emoción; Marcus: la multitud). El Herald da el veredicto con el marco (+10 XP). Conexión: los bugs de la Bugdex funcionan con la gente común.',
+    html: () => `<div class="kicker">Good reasons? · evidence or trick? · the Herald gives the verdict</div>
+    <div class="gr5"><div class="ok"><b>✔ A good reason</b><span>evidence · something you saw · an inconsistency you noticed</span></div><div class="bad"><b>✘ A trick</b><span>money · tears · «everybody is shouting»</span></div></div>
+    <div class="scroll"><p class="frame" style="margin:0"><b>…</b> changed his / her mind because of <b>…</b>. That was <u>a good reason / a trick</u>, because <b>…</b>.</p></div>${xpBoard(10)}` },
+  { stop: 4, dense: true, host: ['present', 'Brutus ◀ … ▶ Antony. <b>Where are you?</b>'],
+    help: 'La línea humana final. Cada grupo decide su posición: 0 = Bruto tenía razón … 5 = Antonio tenía razón. El Herald del grupo defiende la posición en 30 segundos con el marco. Puedes usar «although».',
+    note: 'The Human Opinion Line (9 min). 1 minuto: cada grupo decide su número (0 = Brutus was right … 5 = Antony was right) y el Chronicler escribe la razón. Luego cada Herald dice el número con los dedos y la defiende en 30 s con el marco (+10 XP por una razón con evidencia de las clases). Si el espacio lo permite, los Heralds se paran en una línea real frente al tablero según su número. Remate: ¿la línea de hoy es igual a la Trust Graph del final de la Clase 2?',
+    html: () => `<div class="kicker">The Human Opinion Line · final position · 30 seconds per Herald</div>
+    <div class="hol6"><b>🗡️ Brutus was right</b><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><b>Antony was right 🧥</b></div>
+    <div class="scroll"><p class="frame" style="margin:0">Our group is at <b>…</b>, because <b>…</b>. <b>Although</b> <u>Brutus / Antony</u> <b>…</b>, we think that <b>…</b>.</p></div>${xpBoard(10)}` },
+  { stop: 4, host: ['write', 'Two sentences. <b>Your</b> opinion.'],
+    help: 'Escribe en tu cuaderno: la persona del audio que cambió por la mejor razón, y tu posición final en la línea con una razón.',
+    note: 'Exit ticket (3 min, en el cuaderno). Revise algunos cuadernos para el seguimiento de C4 en el Registro. PIAR: solo la frase 1.',
+    html: () => `<div class="kicker">Exit ticket · in your notebook</div>
+    <div class="exit2"><p><b>1</b> The person with the best reason was <b>…</b>, because ______.</p><p><b>2</b> On the line, I am at <b>…</b>, because ______.</p></div>${timer([['Write', 180]])}` },
+  { stop: 4, host: ['scroll', 'Next time: <b>your</b> argument.'],
+    help: 'La próxima clase escribes tu propio argumento: ¿debieron los ciudadanos de Roma confiar en Antonio? Tus notas de las Clases 1, 2 y 3 son tu evidencia: tráelas.',
+    note: 'Cierre (1 min). Próxima clase: «Argument Builder 2» (C7): borrador individual «Should the citizens of Rome have trusted Antony?», revisión entre pares por poderes y corrección en otro color. Es la práctica del memo de su Evidencia 2.',
+    html: () => `<div class="kicker">Class 3 complete · the people have spoken</div><h1>Some changed for good reasons. Some changed for tricks. What about you?</h1>
+    <div class="info">Next class: <b>Argument Builder 2</b>. <i>Should the citizens of Rome have trusted Antony?</i> Bring your notes from Classes 1–3: they are your evidence.</div>
+    <button type="button" class="endbtn" data-tomap="1">☰ Back to the cycle map</button>` },
+  ] };
+
 const LESSONS = {
   map: { stops: [], era: 'rome', scene: { '-1': 'forum' }, arrive: {}, plaque: 'Harry Bailly · Rome, 44 BC', slides: [
     { stop: -1, host: ['wave', () => course ? 'Choose your class, agents!' : 'Salvete, agents! First, choose your course.'],
@@ -2021,6 +2099,7 @@ const LESSONS = {
   c1i: C1I,
   c2r: C2R,
   c2i: C2I,
+  c3r: C3R,
 };
 // ---------- engine
 let L = 'map', i = 0, tick = null, AC = null, ANIM = true, lastStop = -2;
@@ -2128,6 +2207,7 @@ function mountWidgets() {
   document.querySelectorAll('#fit .sc').forEach(s => s.onclick = () => s.classList.toggle('show'));
   if ($('vqAll')) $('vqAll').onclick = () => { const all = [...document.querySelectorAll('#fit .vq.key li')]; const on = all.every(li => li.classList.contains('show')); all.forEach(li => li.classList.toggle('show', !on)); $('vqAll').textContent = on ? 'Show all' : 'Hide all'; };
   // ---- Cycle 6 widgets
+  if ($('vlt') && typeof vaultUI === 'function') vaultUI();
   // reveal cards (Bugdex Flash, detectives grid, verdict)
   document.querySelectorAll('#fit .dsc, #fit .fl').forEach(b => b.onclick = () => { b.classList.toggle('show'); if (b.classList.contains('show')) chime(); fitStage(); });
   if (document.fonts && $('fit').querySelector('.rth')) document.fonts.ready.then(fitStage);
