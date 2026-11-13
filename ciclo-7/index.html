@@ -1420,6 +1420,18 @@ body.era-2126 .exit2 p { font-family: var(--f-body); font-size: 3.2vh; line-heig
 .sb7 b { font-family: var(--f-caps); font-size: 2vh; color: var(--navy); line-height: 1.15; } .sb7 small { font-family: var(--f-body); font-size: 1.7vh; color: var(--red); }
 .sb7 .m { display: none; font-family: var(--f-body); font-size: 1.85vh; line-height: 1.3; color: var(--ink); background: var(--note); border-radius: .8vh; padding: .4vh .4vw; } .sb7.show .m { display: block; }
 @media (max-aspect-ratio: 3/2) { .src7 { grid-template-columns: 1fr; } .sb7 { grid-template-columns: 1fr 1fr; } }
+/* ---------- Cycle 7 · Class 2 · 7A–7B · Time Capsule Letter & Peer Review Clinic */
+.ws7 { display: grid; grid-template-columns: 1fr 1fr; gap: .9vh 1vw; } .ws7 .dsc { text-align: left; min-height: 8vh; } .ws7 .dsc:last-child { grid-column: 1 / -1; }
+.ws7 .dsc span { font-family: var(--f-body); font-size: 2.3vh; } .ws7 .dsc span u { text-decoration: none; font-family: var(--f-caps); color: var(--red); margin-right: .6vw; } .ws7 .dsc b { font-size: 2vh; font-family: var(--f-body); }
+.lp7 { display: grid; grid-template-columns: repeat(4, 1fr); gap: .8vw; } .lp7 > div { background: var(--note); border: .3vh solid var(--gold); border-radius: 1.2vh; padding: .8vh .8vw; display: flex; flex-direction: column; gap: .3vh; }
+.lp7 b { font-family: var(--f-caps); font-size: 2.3vh; color: var(--navy); } .lp7 small { font-family: var(--f-caps); font-size: 1.7vh; color: var(--red); } .lp7 span { font-family: var(--f-body); font-size: 2vh; line-height: 1.3; }
+.rub6.one { grid-template-columns: 1fr; }
+.tl7 { display: none; background: #fff; border: .3vh solid var(--gold); border-radius: 1.2vh; padding: .8vh 1.2vw; max-height: 34vh; overflow: auto; } .tl7.show { display: block; }
+.tl7 p { margin: .4vh 0; font-family: var(--f-body); font-size: 2.05vh; line-height: 1.38; } .tl7 b { color: #6d3fd6; } .tl7 small { font-size: 1.7vh; color: var(--muted); }
+.cite7 { display: flex; flex-wrap: wrap; gap: .6vh .8vw; justify-content: center; } .cite7 span { font-family: var(--f-body); font-size: 2.05vh; background: var(--note); border: .2vh solid var(--gold); border-radius: 2vh; padding: .3vh .9vw; display: flex; align-items: center; gap: .5vw; } .cite7 b { font-family: var(--f-caps); color: var(--red); font-size: 1.7vh; }
+.cl7 { display: grid; grid-template-columns: repeat(4, 1fr); gap: .8vw; } .cl7 > div { background: var(--note); border: .3vh solid var(--gold); border-radius: 1.2vh; padding: 1vh .8vw; display: flex; flex-direction: column; gap: .5vh; align-items: flex-start; }
+.cl7 img { height: 5vh; } .cl7 b { font-family: var(--f-caps); font-size: 2.1vh; color: var(--navy); } .cl7 span { font-family: var(--f-body); font-size: 2vh; line-height: 1.3; } .cl7 em { font-style: normal; font-family: var(--f-caps); font-size: 1.7vh; color: #fff; background: var(--red); border-radius: 2vh; padding: .2vh .7vw; }
+@media (max-aspect-ratio: 3/2) { .ws7, .lp7, .cl7 { grid-template-columns: 1fr 1fr; } }
 
 </style>
 </head>
@@ -1942,6 +1954,30 @@ const TOMSRC = [
   ['📱', 'A modern example', 'an advert, a post, a speech of 2026–2027', 'an advert for a «miracle» bracelet', '«Today, in 2027, an advert says that…»', 'move 4']];
 const PCHK = [['herald', 'Herald', 'the opening line', 'Is move 1 clear and strong? Read it aloud.'], ['decoder', 'Decoder', 'the words of the time', 'Two words of your person\'s time (relic, pilgrim · Senate, will…)'], ['timekeeper', 'Timekeeper', 'the verbs', 'Move 2: told / said that + backshift · Move 4: will · If + past, would / should'], ['chronicler', 'Chronicler', 'the source line', 'Three sources, used inside the moves — and named at the end']];
 const PASSPORT = ['My person: …', 'Year and place: …', 'The bug that fooled my time: #… …', 'My literary source: …'];
+// ======================================================================
+// ---------- Cycle 7 · Class 2 · 7C–7E · Bug Court · the Evidence 2 format for the regular courses (memo 120–150 words)
+const ML2R = ML2.map(r => r[0] === 'D' ? ['D', 'Writing', 'C7', 12, 'a memo of <b>120–150 words</b>: claim · two reasons with evidence · «although» · conclusion', 'Plan for 2 minutes. Use the five blocks.'] : r);
+// ---------- Cycle 7 · Class 2 · 7A–7B · Time Capsule Letter & Peer Review Clinic (C10) · 2126
+// Warm-up «Which source?»: 1 finger = literary text · 2 = Bugdex / Genially · 3 = modern example · fist = no source
+const WSRC = [
+  ['As Chaucer wrote, the Pardoner kept his «relics» in a glass box.', 1, 'a literary text, used inside the sentence'],
+  ['He was a very bad man, and everybody hated him.', 0, 'no source: only an opinion'],
+  ['In my Bugdex, this is bug #1, The Fake Relic.', 2, 'the Bugdex, used inside the sentence'],
+  ['Today, in 2027, an advert says that a bracelet cures everything.', 3, 'a modern example, used inside the sentence'],
+  ['Sources: Chaucer. The Bugdex. An advert.', 0, 'a list is not enough: C10 wants the sources INSIDE the text']];
+const LPLAN = [['Introduction', 'move 1', 'who I am · when and where · why I am writing'], ['Argument', 'moves 2–3', 'the bug in reported speech · R · A · S · two sources inside'], ['Conclusion', 'moves 4–5', 'my advice for the future · my question · goodbye'], ['Source line', 'at the end', 'name the three sources']];
+const TOMLETTER = [
+  'Dear people of the future,',
+  'My name is Tom, and in 1380 I looked after the horses at the Tabard Inn in Southwark. Every spring, hundreds of pilgrims <b>were welcomed</b> at our inn before they rode to Canterbury. I am writing to you because I was fooled once, and I do not want you to be fooled too.',
+  'One evening, the Pardoner arrived. <b>As Chaucer wrote</b> in <i>The Canterbury Tales</i>, he carried a glass full of old bones. He <b>told us that</b> they <b>were</b> holy relics, and he <b>promised that</b> they <b>would</b> cure our sick animals. <b>In my Bugdex</b>, this is bug #1, The Fake Relic: his argument was not <b>acceptable</b>, because the bones came from a pig, and it was not <b>sufficient</b>, because he never showed us one animal that he had cured.',
+  '<b>Today, in 2027, an advert says that</b> a «miracle» bracelet cures everything. In your time, people <b>will</b> sell magic with screens and smiles. <b>If you heard</b> a voice like the Pardoner\'s, you <b>should</b> ask one question: where is the evidence?',
+  'Your friend from the past,<br>Tom',
+  '<small>Sources: Geoffrey Chaucer, <i>The Canterbury Tales</i> (the Pardoner\'s Prologue) · Bugdex #1, The Fake Relic · an online advert for a «miracle» bracelet (2027).</small>'];
+const CLINIC = [
+  ['timekeeper', 'Timekeeper', 'Reported speech', 'Find «told / said / promised that…». Is the verb one step back (is → was · will → would)?', 'underline it · ✔ or ↺'],
+  ['decoder', 'Decoder', 'Words of the time', 'Two words of the person\'s time (relic, pilgrim, inn · Senate, will, drachma…). Are they used well?', 'circle them · ✔ or ?'],
+  ['herald', 'Herald', 'Read it aloud', 'Read the letter in a low voice. Which sentence is not clear? Is the opinion clear?', 'a wavy line under it'],
+  ['chronicler', 'Chronicler', 'Connectors & sources', 'Three sources INSIDE the text + the source line at the end · because · but · so · if…', 'number the sources 1 · 2 · 3']];
 // Map titles change with the course: 7C–7E follow «Antony's Scroll»; 7A–7B «Messages to the Future» (2126).
 const TITLES7 = () => isImm()
   ? [['c1', 'Class 1', 'Script Lab I: Who Speaks from the Past?'], ['c2', 'Class 2', 'Time Capsule Letter & Peer Review Clinic'], ['c3', 'Class 3', 'Director\'s Chair: Rehearsal'], ['c4', 'Class 4', 'Recording Studio on the Bridge'], ['c5', 'Class 5', 'Final Cut & Submission']]
@@ -2079,6 +2115,112 @@ const C1I = { stops: ['Voices', 'Your person', 'Sources', 'Storyboard', 'Checks'
   ] };
 
 
+// Class 2 · 7C–7E · Bug Court · Evidence 2 rehearsal · from the immersion lesson of Cycle 6 (C4 · C5 · C6 · C7)
+const courtRound = r => ({ stop: r + 1, dense: true, host: [['scales', 'point', 'alert'][r], [`Round ${r + 1}. <b>Run to the stand!</b>`, 'Round 2. <b>Report it, name it!</b>', 'Last round. <b>Win the case!</b>'][r]],
+  help: `Ronda ${r + 1} del Bug Court. En cada caso, dos grupos compiten y corre al estrado (al frente) el poder que dice la tarjeta. Gana quien primero reporta bien la cita en estilo indirecto Y nombra el bug (o dice que es VALID). Todos los demás escriben el reporte en su cuaderno.`,
+  note: `Ronda ${r + 1} (8 min · 4 casos). Por caso: lea la cita en voz alta con teatro. Los dos grupos que indica la tarjeta mandan al estrado (frente al tablero) al agente del poder que corre. El primero que reporta bien (con un verbo introductor adecuado) Y nombra el bug o dice «valid» gana: +5 XP al equipo de ese poder por el reporte y +5 por el bug. Si falla, el otro tiene 10 segundos. Mientras tanto, todos escriben el reporte en el cuaderno. Toque la tarjeta para revelar. Pista del adivino (una por grupo en todo el juego): usted susurra la primera letra del bug o el filtro (R, A o S). Claves: ${COURT.slice(r * 4, r * 4 + 4).map(([, , , , n], k) => `${r * 4 + k + 1} ${n ? '#' + n : 'VALID'}`).join(' · ')}.`,
+  html: () => `<div class="kicker">The Bug Court · round ${r + 1} of 3 · report it + name the bug (or «valid»)</div>
+  <div class="crt6">${COURT.slice(r * 4, r * 4 + 4).map(([who, q, st, rep, n, why], j) => { const k = r * 4 + j, [pk, pn] = RELAYP(k), [a, b] = CPAIR[k].map(g => Math.min(g, ngroups())); return `<button type="button" class="dsc"><span><i class="rh"><u>Case ${k + 1}</u><small><img src="${IMG.emb[pk]}" alt="">${pn}s run · ${gb(a)} vs ${gb(b)}</small></i>${q} <i>— ${who}</i><em>${st}</em></span><b><span class="rp">${rep}</span><strong class="${n ? 'bug' : 'ok'}">${CBUG(n)}</strong><small>${why}</small></b></button>`; }).join('')}</div>
+  ${xpBoard(5)}${timer([['Round ' + (r + 1), 480]])}` });
+const counterSlide = r => { const [ci, model] = COUNTER[r], c = COURT[ci]; return { stop: r + 1, dense: true, host: ['write', 'Two sentences. <b>Answer him!</b>'],
+  help: `Contraargumento (C7): responde a ${c[0].split(' to ')[0]} en dos frases en tu cuaderno. Primera frase: reporta lo que dijo. Segunda frase: explica por qué no es un buen argumento, con «however» o «although». Es la práctica del memo de la Evidencia 2.`,
+  note: `Counter-argument ${r + 1} (3 min, en el cuaderno, individual). Sobre el caso ${ci + 1}. Primera frase: el reporte; segunda: la respuesta con «however» o «although». El Chronicler de un grupo lee el suyo (+5 XP para los Chroniclers). Luego toque «Model». Es la práctica de la Parte D (memo) y de la tarea Role Power del Chronicler (una refutación de 40 palabras).`,
+  html: () => `<div class="kicker">Counter-argument ${r + 1} of 3 · the Chroniclers lead · write two sentences</div>
+  <div class="bq"><b>Case ${ci + 1}:</b> ${c[1]} <i>— ${c[0]}</i></div>
+  <div class="scroll"><p class="frame" style="margin:0"><b>…</b> claimed / told … that <b>…</b>. <b>However / Although</b> <b>…</b>, <b>…</b>.</p></div>
+  <button type="button" class="dsc why5"><span>Model</span><b>${model}</b></button>${xpBoard(5)}${timer([['Write', 180]])}` }; };
+const C2R = { stops: ['The Log', 'Round 1', 'Round 2', 'Round 3', 'Ready?'], era: 'rome', scene: { '-1': 'senate', 0: 'senate', 1: 'senate', 2: 'forum', 3: 'street', 4: 'senate' }, plaque: 'Harry Bailly · Rome, 44 BC',
+  arrive: { 0: ['The Senate · the Chronos Agency', 'Mission Log 2', 'What is inside?'], 1: ['The Senate · the Bug Court', 'Round 1', 'Report it · name it'], 2: ['The Forum · the Bug Court', 'Round 2', 'Report it · name it'], 3: ['A street in Rome · the Bug Court', 'Round 3', 'Report it · name it'], 4: ['The Senate', 'Ready for Evidence 2?', 'Check yourself'] },
+  slides: [
+  { stop: -1, host: ['scales', 'Order in the <b>Bug Court</b>!'],
+    help: () => `Hoy es el ensayo de la Evidencia 2. En el Bug Court, dos grupos compiten en cada caso: reportan una cita en estilo indirecto y nombran el bug. Cada tres o cuatro casos escribes un contraargumento. ${course ? 'Tu Evidencia 2: ' + DATES[course][1] + '.' : ''}`,
+    note: () => `Objetivo (2 min). En español: hoy es el ensayo de la Evidencia 2 (${course ? course + ', ' + DATES[course][1] : '7E mié 10 feb · 7D jue 11 · 7C vie 12'}). Primero ven qué trae el Mission Log 2 (solo el formato, no el contenido). Luego el Bug Court: 12 casos en tres rondas; en cada caso corre al estrado un poder distinto (Herald → Decoder → Timekeeper → Chronicler), como en la tarea Role Power; dos grupos compiten. Después de cada ronda, un contraargumento de dos frases (C7). Al final, el chequeo «Ready?». Criterios practicados: C4, C5, C6 y C7.`,
+    html: () => `<div class="kicker">Cycle 7 · Antony's Scroll · Class 2 · Bug Court</div><h1>Today, agents, you will rehearse Evidence 2: report the quote, name the bug — and win the case.</h1>
+    <div class="goals"><span><b>C6</b> report it</span><span><b>C5</b> name the bug</span><span><b>C7</b> answer it</span><span><b>C4</b> listen for what doesn't fit</span></div>
+    <div class="info">${course ? `<b>Evidence 2 · Mission Log 2</b> for ${course}: <b>${DATES[course][1]}</b>.` : '<b>Evidence 2 · Mission Log 2</b> is next class.'}</div>` },
+  { stop: 0, dense: true, host: ['scroll', 'What is inside <b>Mission Log 2</b>?'],
+    help: 'Así es la Evidencia 2: cinco partes, 50 minutos, individual, a lápiz, sin diccionario y SIN Bugdex. Lee el consejo de cada parte. Copia en tu cuaderno la tabla de tiempos y la tarea Role Power de tu poder.',
+    note: 'Mission Log 2 · el formato (5 min). Lea las cinco partes con los tiempos y el consejo (no se muestra el contenido de la prueba). Subraye: sin diccionario y SIN Bugdex — hay que saber los 13 bugs de memoria. Role Power (8 min): Herald (C4) veredicto oral de 45 s en su escritorio sobre una inconsistencia de la Parte A; Decoder (C5) nombra y explica el bug en tres líneas romanas; Timekeeper (C6) reporta una pregunta y una orden del motín; Chronicler (C7) refutación de 40 palabras al contraargumento del memo. En 7C–7E el memo de la Parte D es de 120–150 palabras. Que cada agente copie su tarea.',
+    html: () => `<div class="kicker">Evidence 2 · Mission Log 2 · 50 minutes · alone · pencil · no dictionary · no Bugdex</div>
+    <div class="ml6">${ML2R.map(([l, n, c, m, t, tip]) => `<div><i>${l}</i><b>${n}<small>${c} · ${m}'</small></b><span>${t}</span><em>Tip: ${tip}</em></div>`).join('')}</div>
+    ${nb('copy the five parts with the minutes + the <b>Role Power</b> task of your power.')}` },
+  mixSlide(0, 67),
+  { stop: 0, dense: true, host: ['point', 'The rules of the <b>court</b>.'],
+    help: 'Reglas: el profe lee una cita. Los dos grupos de la tarjeta mandan al frente al agente del poder que corre. Gana quien primero dice el reporte con un buen verbo («Cassius claimed that…») y nombra el bug o dice «valid». Usa los verbos de la pantalla.',
+    note: 'Las reglas (2 min). Muestre los verbos introductores: el reporte debe usar uno adecuado (es lo que pide la Parte C). Explique la «pista del adivino»: una por grupo en todo el juego (usted susurra la primera letra del bug o el filtro R, A o S). En el salón escalonado, el «estrado» es el frente, junto al tablero; si bajar es lento, el agente se pone de pie y responde desde su puesto. Todos los demás escriben cada reporte en el cuaderno (1–12).',
+    html: () => `<div class="kicker">The Bug Court · the rules</div>
+    <div class="rules6"><p><b>1</b> I read a quote.</p><p><b>2</b> The two groups on the card send the <b>power</b> on the card to the stand.</p><p><b>3</b> First to <b>report it</b> with a good verb <u>and</u> <b>name the bug</b> (or say «valid») wins: +5 +5 XP.</p><p><b>4</b> Everybody else writes the report in the notebook (1–12).</p></div>
+    <div class="rv6">${RVERBS.map(([v, d]) => `<span><b>${v}</b>${d}</span>`).join('')}</div>
+    <p class="hint center" style="margin:0">One <b>Soothsayer's whisper</b> per group: the first letter of the bug, or its filter (R · A · S).</p>` },
+  courtRound(0), counterSlide(0),
+  courtRound(1), counterSlide(1),
+  courtRound(2), counterSlide(2),
+  { stop: 4, dense: true, host: ['think', 'Are you <b>ready</b>? Be honest!'],
+    help: 'Para cada frase, muestra con los dedos qué tan listo estás: 1 (nada) a 5 (totalmente). Luego escribe en tu cuaderno la parte que más necesitas practicar y qué vas a hacer esta noche.',
+    note: () => `Ready check y exit ticket (4 min). Lea cada frase; los agentes muestran 1–5 con los dedos. Anote mentalmente qué parte sale más baja en el curso y dé el consejo: la Bugdex de memoria (los 13 bugs con su filtro), las tres máquinas y los cuatro verbos, el marco del memo. Exit ticket en el cuaderno. Recuerde: lápiz y borrador; sin diccionario ni Bugdex.`,
+    html: () => `<div class="kicker">Ready check · show me 1 ✊ … 5 🖐 · then write</div>
+    <div class="rdy6">${READY.map((t, k) => `<p><i>${k + 1}</i>${t}</p>`).join('')}</div>
+    <div class="exit2"><p><b>✎</b> The part I need to practise is <b>…</b>, so tonight I will ______.</p></div>${timer([['Write', 120]])}` },
+  { stop: 4, host: ['alert', 'Next class: <b>Evidence 2</b>!'],
+    help: () => `La próxima clase es la Evidencia 2. Trae lápiz y borrador. Repasa la Bugdex (13 bugs) y las tres máquinas del estilo indirecto. ${course ? 'Fecha: ' + DATES[course][1] + '.' : ''}`,
+    note: () => `Cierre (1 min). Evidencia 2 (${course ? course + ': ' + DATES[course][1] : '7E mié 10 feb · 7D jue 11 · 7C vie 12'}). Lápiz y borrador; sin diccionario ni Bugdex. Que repasen en casa la Bugdex y las tres máquinas. XP final del Bug Court en el Registro.`,
+    html: () => `<div class="kicker">Class 2 complete · the court is closed</div><h1>Next class: Evidence 2 · Mission Log 2${course ? ` · ${DATES[course][1]}` : ''}.</h1>
+    <div class="info">Bring a <b>pencil</b> and an <b>eraser</b>. Tonight: the <b>13 bugs</b> by heart and the <b>three machines</b>. Good luck, agents — Rome is counting on you.</div>
+    <button type="button" class="endbtn" data-tomap="1">☰ Back to the cycle map</button>` },
+  ] };
+
+
+// ======================================================================
+// Class 2 · 7A–7B · Time Capsule Letter & Peer Review Clinic (C10) — 2126
+const C2I = { stops: ['Which source?', 'The plan', 'Write', 'The Clinic', 'Fix it'], era: '2126', plaque: 'Harry Bailly · Mission Control, 2126',
+  scene: { '-1': 'f-archive', 0: 'f-archive', 1: 'f-hq', 2: 'f-museum', 3: 'f-feed', 4: 'f-hq' },
+  arrive: { 0: ['2126 · The Chronos Archive', 'Which Source?', 'Inside, not only listed'], 1: ['2126 · Mission Control', 'The Letter Plan', 'Three parts + a source line'], 2: ['2126 · The Museum of the Future', 'Write Your Letter', '150–200 words'], 3: ['2126 · The Feed Lab', 'The Peer Review Clinic', 'Four powers · four desks'], 4: ['2126 · Mission Control', 'Fix It', 'Another colour'] },
+  slides: [
+  { stop: -1, host: ['write', 'Today your person <b>writes to the future</b>.'],
+    help: 'Hoy escribes tu Time Capsule Letter: la carta de tu persona del pasado a la gente del futuro, de 150 a 200 palabras, con tus tres fuentes usadas dentro del texto. Después tu grupo la revisa en el Peer Review Clinic y la corriges con otro color.',
+    note: () => `Objetivo (2 min). En español: Time Capsule Letter & Peer Review Clinic (C10). Borrador individual de 150–200 palabras en el cuaderno, a partir del storyboard, con las tres fuentes DENTRO del texto y la línea de fuentes al final. Mientras escriben, conversaciones de 2 minutos con la rúbrica de C10 (las que no alcance, en la Clase 3). Luego el Peer Review Clinic por poderes y corrección en otro color. La versión final va en hoja suelta con el guion (entrega: ${course && E3DUE[course] ? E3DUE[course] : 'lun 15 feb'}).`,
+    html: () => `${brand7()}<div class="kicker">Cycle 7 · Messages to the Future · Class 2 · Time Capsule Letter & Peer Review Clinic</div><h1>Today, agents, your person writes to the future — with three sources inside the letter.</h1>
+    <div class="goals"><span><b>C10</b> 150–200 words</span><span><b>3</b> sources · inside + named</span><span><b>✎</b> the Clinic + another colour</span></div>` },
+  { stop: 0, dense: true, host: ['magnifier', 'Which <b>source</b>? Show me!'],
+    help: 'Cinco frases. Muestra con los dedos qué fuente usa: 1 = texto literario, 2 = Bugdex o Genially, 3 = ejemplo moderno, puño = ninguna. ¡Ojo con la última!',
+    note: 'Warm-up «Which source?» (4 min). Lea cada frase; todos muestran los dedos a la vez; toque para revelar. Claves: 1 literario · 2 ninguna (opinión) · 3 Bugdex · 4 moderno · 5 ninguna: una lista no basta, C10 pide las fuentes DENTRO del texto. Es la diferencia entre «Suficiente» y «Alto» en la rúbrica.',
+    html: () => `<div class="kicker">Warm-up · 1 finger = literary text · 2 = Bugdex / Genially · 3 = modern example · ✊ = no source</div>
+    <div class="ws7">${WSRC.map(([t, n, w], k) => `<button type="button" class="dsc"><span><u>${k + 1}</u>«${t}»</span><b>${n ? n + ' ☝ · ' : '✊ · '}${w}</b></button>`).join('')}</div>` },
+  mixSlide(0, 67),
+  { stop: 1, dense: true, host: ['point', 'Five moves → <b>three parts</b>.'],
+    help: 'Tu storyboard se convierte en carta: los cinco movimientos van en tres partes (introducción, argumento y conclusión) y al final la línea de fuentes. Mira la carta de Tom: las palabras en negrilla son la gramática y las fuentes.',
+    note: 'The letter plan (4 min). Del storyboard a la carta: movimiento 1 = introducción; 2–3 = argumento (con dos fuentes dentro); 4–5 = conclusión; al final la línea de fuentes. Muestre la carta modelo de Tom con «Tom\'s letter» (174 palabras) y señale en negrilla las fuentes dentro del texto y la gramática (pasiva, told/promised that, R·A·S, will, If + past… should). Recuerde la fila C10 de la rúbrica.',
+    html: () => `<div class="kicker">The letter plan · from five moves to three parts · then the source line</div>
+    <div class="lp7">${LPLAN.map(([h, m, t]) => `<div><b>${h}</b><small>${m}</small><span>${t}</span></div>`).join('')}</div>
+    <div class="rub6 one">${E3RUB.filter(r => r[0] === 'C10').map(([c, s, t]) => `<div><b>${c}</b><small>${s}</small><span>${t}</span></div>`).join('')}</div>
+    <div class="revealbar"><button type="button" class="tbtn" id="tlShow">Tom's letter</button></div>
+    <div class="tl7" id="tl7">${TOMLETTER.map(p => `<p>${p}</p>`).join('')}</div>` },
+  { stop: 2, dense: true, host: ['write', 'Write. <b>150–200 words.</b>'],
+    help: 'Escribe tu carta en el cuaderno con tu storyboard al lado: introducción, argumento, conclusión y la línea de fuentes. Usa las frases para citar. Cuenta las palabras al final. Tu profe te llama para una conversación de dos minutos.',
+    note: 'Writing (20 min). Escriben solos en el cuaderno (a lápiz o esfero; se corrige con otro color). Mientras tanto, conversaciones de 2 minutos con la fila C10 de la rúbrica: ¿tres fuentes dentro?, ¿tres partes?, ¿150–200 palabras? Llame primero a quien vea bloqueado. Las conversaciones que falten se hacen en la Clase 3 (Director\'s Chair).',
+    html: () => `<div class="kicker">Your Time Capsule Letter · alone · 150–200 words · storyboard next to you</div>
+    <div class="cite7">${TOMSRC.map(([i, h, , , c]) => `<span><i>${i}</i><b>${h}</b>${c}</span>`).join('')}</div>
+    <div class="scroll"><p class="frame" style="margin:0">Dear people of the future, my name is <b>…</b> · One day, <b>…</b> told us that <b>…</b> · In your time, people will <b>…</b> · If you heard <b>…</b>, you should <b>…</b> · Your friend from the past, <b>…</b></p></div>
+    ${nb('your letter · <b>150–200 words</b> · count them at the end.')}${timer([['Write', 1200]])}` },
+  { stop: 3, dense: true, host: ['present', 'The <b>Peer Review Clinic</b> is open!'],
+    help: 'Pasa tu cuaderno dentro del grupo: cuatro «doctores», uno por poder. Cada uno revisa una cosa de tu carta y deja una marca con lápiz. Nadie corrige por ti: solo marca.',
+    note: 'Peer Review Clinic (12 min). Los cuadernos rotan dentro del grupo cada 3 minutos (suena el reloj): Timekeeper = estilo indirecto; Decoder = palabras de la época; Herald = lo lee en voz baja (claridad y opinión); Chronicler = conectores y fuentes. Cada doctor marca con lápiz, sin corregir. En 7A–7B los grupos son de 4 (o 5): si un grupo tiene 5, el quinto hace la estación que falte en otro grupo.',
+    html: () => `<div class="kicker">The Peer Review Clinic · four desks · rotate every 3 minutes · a pencil mark only</div>
+    <div class="cl7">${CLINIC.map(([k, n, h, t, m]) => `<div><img src="${IMG.emb[k]}" alt=""><b>${n} · ${h}</b><span>${t}</span><em>${m}</em></div>`).join('')}</div>${timer([['Desk 1', 180], ['Desk 2', 180], ['Desk 3', 180], ['Desk 4', 180]])}` },
+  { stop: 4, dense: true, host: ['idea', 'Another <b>colour</b>. Make it better.'],
+    help: 'Recupera tu cuaderno. Mira las marcas de los cuatro doctores y corrige con otro color. Cuenta las palabras otra vez. Luego escribe tu exit ticket.',
+    note: 'Fix it (5 min). Corrigen con otro color a partir de las marcas. Exit ticket en el cuaderno. Revise algunos cuadernos para el seguimiento de C10 en el Registro.',
+    html: () => `<div class="kicker">Fix it · another colour · count your words again</div>
+    <div class="exit2"><p><b>1</b> My letter has <b>…</b> words and <b>…</b> sources inside.</p><p><b>2</b> The doctor\'s mark that helped me most was <b>…</b>, because <b>…</b>.</p></div>${timer([['Fix', 300]])}` },
+  { stop: 4, host: ['tablet', 'Next: the <b>Director\'s Chair</b>.'],
+    help: 'La próxima clase ensayas tu video en parejas, con cronómetro (90 a 120 segundos) y preguntas difíciles. En casa: convierte tu carta en guion (la versión para decir en voz alta) y léelo con reloj.',
+    note: () => `Cierre (2 min). Próxima clase: Director's Chair: Rehearsal (${course === '7B' ? 'mié 10 feb' : course === '7A' ? 'jue 11 feb' : '7B mié 10 feb · 7A jue 11 feb'}). Tarea: el guion del video (la carta dicha en voz alta, 90–120 s) y pensar en el disfraz u objeto de la época.`,
+    html: () => `<div class="kicker">Class 2 complete · the letter is written</div><h1>Your words are ready for the future. Next class, your voice.</h1>
+    <div class="info"><b>At home:</b> turn your letter into your <b>video script</b> and read it with a clock (<b>90–120 seconds</b>). Think about your <b>costume or object</b>. Next class: <b>Director's Chair</b>.</div>
+    <button type="button" class="endbtn" data-tomap="1">☰ Back to the cycle map</button>` },
+  ] };
+
+
 const LESSONS = {
   map: { stops: [], era: 'rome', scene: { '-1': 'forum' }, arrive: {}, plaque: () => IMMERA() === '2126' ? 'Harry Bailly · Mission Control, 2126' : 'Harry Bailly · Rome, 44 BC', slides: [
     { stop: -1, era: IMMERA, scene: () => IMMERA() === '2126' ? 'f-hq' : 'forum', host: ['wave', () => course ? 'Choose your class, agents!' : 'Salvete, agents! First, choose your course.'],
@@ -2092,6 +2234,8 @@ const LESSONS = {
   ] },
   c1r: C1R,
   c1i: C1I,
+  c2r: C2R,
+  c2i: C2I,
 };
 // ---------- engine
 let L = 'map', i = 0, tick = null, AC = null, ANIM = true, lastStop = -2;
@@ -2205,6 +2349,7 @@ function mountWidgets() {
     a.ontimeupdate = upd; a.onplay = () => { duck(true); upd(); }; a.onpause = () => { duck(false); upd(); }; a.onended = () => { duck(false); a.currentTime = 0; upd(); };
     $('arPlay').onclick = () => { if (a.paused) a.play().catch(() => {}); else a.pause(); };
     $('arTr').onclick = () => { $('arT').classList.toggle('on'); fitStage(); }; upd(); }
+  if ($('tlShow')) $('tlShow').onclick = () => { $('tl7').classList.toggle('show'); $('tlShow').textContent = $('tl7').classList.contains('show') ? 'Hide the letter' : 'Tom\'s letter'; fitStage(); };
   if ($('sbShow')) $('sbShow').onclick = () => { $('sb7').classList.toggle('show'); $('sbShow').textContent = $('sb7').classList.contains('show') ? 'Hide the model' : 'Tom\'s storyboard'; fitStage(); };
   // Class 4 (7A–7B) · Artifact 3 and the jump to 2126
   if ($('met6b')) $('met6b').onclick = () => { fanfare(); $('met6i').style.width = '90%'; let v = 66; const t = setInterval(() => { v++; if (!$('met6t')) { clearInterval(t); return; } $('met6t').textContent = v + ' %'; if (v >= 90) { clearInterval(t); $('met6').classList.add('done'); } }, 60); $('met6b').disabled = true; };
