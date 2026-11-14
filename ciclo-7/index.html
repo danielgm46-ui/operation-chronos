@@ -1432,6 +1432,15 @@ body.era-2126 .exit2 p { font-family: var(--f-body); font-size: 3.2vh; line-heig
 .cl7 { display: grid; grid-template-columns: repeat(4, 1fr); gap: .8vw; } .cl7 > div { background: var(--note); border: .3vh solid var(--gold); border-radius: 1.2vh; padding: 1vh .8vw; display: flex; flex-direction: column; gap: .5vh; align-items: flex-start; }
 .cl7 img { height: 5vh; } .cl7 b { font-family: var(--f-caps); font-size: 2.1vh; color: var(--navy); } .cl7 span { font-family: var(--f-body); font-size: 2vh; line-height: 1.3; } .cl7 em { font-style: normal; font-family: var(--f-caps); font-size: 1.7vh; color: #fff; background: var(--red); border-radius: 2vh; padding: .2vh .7vw; }
 @media (max-aspect-ratio: 3/2) { .ws7, .lp7, .cl7 { grid-template-columns: 1fr 1fr; } }
+/* ---------- Cycle 7 · Class 3 · 7A–7B · Director's Chair */
+.st7 { display: grid; grid-template-columns: repeat(4, 1fr); gap: .9vh .8vw; } .st7 .dsc { min-height: 9vh; } .st7 .dsc span { font-family: var(--f-body); font-size: 3vh; } .st7 .dsc b { font-family: var(--f-caps); font-size: 2.2vh; }
+.orub7 { display: grid; grid-template-columns: repeat(4, 1fr); gap: .8vw; } .orub7 > div { background: var(--note); border: .3vh solid var(--gold); border-radius: 1.2vh; padding: 1vh .8vw; display: flex; flex-direction: column; gap: .4vh; }
+.orub7 i { font-style: normal; font-family: var(--f-caps); font-size: 1.7vh; color: #fff; background: var(--red); border-radius: 2vh; padding: .1vh .6vw; align-self: flex-start; } .orub7 b { font-family: var(--f-caps); font-size: 2.3vh; color: var(--navy); } .orub7 span { font-family: var(--f-body); font-size: 2vh; line-height: 1.3; }
+.dn7 { display: flex; flex-wrap: wrap; gap: .5vh 1.2vw; align-items: center; justify-content: center; background: rgba(255, 255, 255, .85); border: .25vh dashed var(--gold); border-radius: 1.2vh; padding: .8vh 1vw; } .dn7 b { font-family: var(--f-caps); font-size: 2vh; color: var(--red); flex-basis: 100%; text-align: center; } .dn7 span { font-family: var(--f-body); font-size: 2.1vh; }
+.tv7 { display: grid; grid-template-columns: 1fr 1fr; gap: .6vh 1vw; } .tv7 span { font-family: var(--f-body); font-size: 2.1vh; background: var(--note); border-left: .5vh solid var(--red); border-radius: .8vh; padding: .5vh .8vw; display: flex; gap: .7vw; align-items: center; }
+.tv7 i { font-style: normal; font-family: var(--f-caps); font-weight: 700; color: #fff; background: #6d3fd6; border-radius: 50%; width: 3.2vh; height: 3.2vh; display: inline-grid; place-items: center; font-size: 1.8vh; flex: none; }
+.rm7 { display: flex; gap: 1vw; justify-content: center; flex-wrap: wrap; } .rm7 span { font-family: var(--f-caps); font-size: 1.9vh; color: var(--navy); background: var(--note); border: .2vh solid var(--gold); border-radius: 2vh; padding: .3vh 1vw; }
+@media (max-aspect-ratio: 3/2) { .st7, .orub7 { grid-template-columns: 1fr 1fr; } .tv7 { grid-template-columns: 1fr; } }
 
 </style>
 </head>
@@ -1978,6 +1987,17 @@ const CLINIC = [
   ['decoder', 'Decoder', 'Words of the time', 'Two words of the person\'s time (relic, pilgrim, inn · Senate, will, drachma…). Are they used well?', 'circle them · ✔ or ?'],
   ['herald', 'Herald', 'Read it aloud', 'Read the letter in a low voice. Which sentence is not clear? Is the opinion clear?', 'a wavy line under it'],
   ['chronicler', 'Chronicler', 'Connectors & sources', 'Three sources INSIDE the text + the source line at the end · because · but · so · if…', 'number the sources 1 · 2 · 3']];
+// ======================================================================
+// ---------- Cycle 7 · Class 3 · 7A–7B · Director's Chair: Rehearsal (C8 · C9) · 2126
+// Say it right: the stressed syllable in CAPITALS (tap to check)
+const STRESS = [['evidence', 'EV-i-dence'], ['acceptable', 'ac-CEPT-a-ble'], ['sufficient', 'suf-FI-cient'], ['relevant', 'REL-e-vant'], ['pilgrim', 'PIL-grim'], ['Pardoner', 'PAR-don-er'], ['ambitious', 'am-BI-tious'], ['honourable', 'HON-our-a-ble (no «h»!)'], ['conspiracy', 'con-SPIR-a-cy'], ['future', 'FU-ture'], ['question', 'QUES-tion'], ['message', 'MES-sage']];
+// The oral rubric in student language (C8 · C9) — the partner checks it
+const ORUB = [['C9', 'Clear opinion', 'You say what YOU think — and you keep it when someone asks.'], ['C8', 'Consistent reasons', 'Your reasons match your evidence: the bug, the R · A · S filter.'], ['C8', 'Eye contact', 'You look at the camera or at the people, not only at the paper.'], ['C8', 'Pronunciation', 'Clear words, good stress, not too fast. 90–120 seconds.']];
+// Tricky viewer cards: unexpected questions from the museum visitors of 2126
+const TRICKY = ['Why should I believe you? You are from the past!', 'Did YOU believe the liar at first?', 'Who told you that? How do you know?', 'What would you do if you met him today?', 'Is there a bug like that in my phone?', 'Was he 100% wrong? Was anything true?', 'What is the most important word in your message?', 'If you could change one thing in your time, what would it be?', 'Why should people in 2126 care about your time?', 'What would your best friend say about your opinion?'];
+const TRICKFRAME = 'That\'s a good question. In my time, <b>…</b>. But I still think that <b>…</b>, because <b>…</b>.';
+const INTRO30 = ['Welcome to the room «<b>…</b>»!', 'My name is <b>…</b>, and I lived in <b>…</b> in <b>…</b>.', 'In my video, you will hear about <b>…</b> — a bug that fooled my time.', 'After the video, ask me two questions. I\'m ready!'];
+const DIRNOTES = ['✔ ✔ two things that worked (use the rubric words)', '→ one tip for the next take', '⏱ time: … seconds (90–120?)'];
 // Map titles change with the course: 7C–7E follow «Antony's Scroll»; 7A–7B «Messages to the Future» (2126).
 const TITLES7 = () => isImm()
   ? [['c1', 'Class 1', 'Script Lab I: Who Speaks from the Past?'], ['c2', 'Class 2', 'Time Capsule Letter & Peer Review Clinic'], ['c3', 'Class 3', 'Director\'s Chair: Rehearsal'], ['c4', 'Class 4', 'Recording Studio on the Bridge'], ['c5', 'Class 5', 'Final Cut & Submission']]
@@ -2221,6 +2241,57 @@ const C2I = { stops: ['Which source?', 'The plan', 'Write', 'The Clinic', 'Fix i
   ] };
 
 
+// ======================================================================
+// Class 3 · 7A–7B · Director's Chair: Rehearsal (C8 · C9) — 2126
+const C3I = { stops: ['Say it right', 'The rubric', 'Take 1', 'Tricky viewers', 'Live intro'], era: '2126', plaque: 'Harry Bailly · Mission Control, 2126',
+  scene: { '-1': 'f-museum', 0: 'f-hq', 1: 'f-museum', 2: 'f-archive', 3: 'f-feed', 4: 'f-museum' },
+  arrive: { 0: ['2126 · Mission Control', 'Say It Right', 'Stress · clear words'], 1: ['2126 · The Museum of the Future', 'The Director\'s Rubric', 'Four things to watch'], 2: ['2126 · The Chronos Archive', 'Take 1 · Take 2', 'Pairs · 90–120 seconds'], 3: ['2126 · The Feed Lab', 'Tricky Viewers', 'Questions nobody expects'], 4: ['2126 · The Museum of the Future', 'Your Live Intro', '30 seconds'] },
+  slides: [
+  { stop: -1, host: ['present', 'Lights. Camera. <b>Rehearsal!</b>'],
+    help: 'Hoy ensayas tu video en parejas: lo dices con cronómetro (90 a 120 segundos), tu compañero es el director y te da retroalimentación con la rúbrica oral, y luego te hace preguntas difíciles de «espectador». Al final preparas tu introducción en vivo de 30 segundos para el día del museo.',
+    note: () => `Objetivo (2 min). En español: Director's Chair (C8 · C9). Ensayo en parejas con cronómetro, rúbrica oral del compañero (opinión clara, razones consistentes, contacto visual, pronunciación), tarjetas de «espectador difícil» e introducción en vivo de 30 s para los días del archivo. Mientras ensayan, termine las conversaciones de C10 sobre la carta que quedaron pendientes en la Clase 2.${course === '7B' ? ' Hoy es Miércoles de Ceniza: si la clase se acorta, reduzca el ensayo a una toma por agente.' : ''}`,
+    html: () => `${brand7()}<div class="kicker">Cycle 7 · Messages to the Future · Class 3 · Director's Chair</div><h1>Today, agents, you will rehearse your message — and answer the questions nobody expects.</h1>
+    <div class="goals"><span><b>C8</b> 90–120 seconds · five moves</span><span><b>C9</b> keep your opinion</span><span><b>30 s</b> your live intro</span></div>` },
+  { stop: 0, dense: true, host: ['listen', 'Say it <b>right</b>: where is the stress?'],
+    help: 'Doce palabras de tu mensaje. Dilas en voz alta con la clase. ¿Dónde está la fuerza (el acento)? Toca para ver la sílaba fuerte en MAYÚSCULAS. En «honourable» no se pronuncia la h.',
+    note: 'Say it right (4 min). Lea cada palabra; la clase repite en coro; luego pregunte «Where is the stress?» y toque para revelar. Atención: honourable sin h; sufficient /səˈfɪʃənt/; Pardoner con fuerza en PAR. Es el criterio de pronunciación de la rúbrica oral.',
+    html: () => `<div class="kicker">Say it right · repeat · where is the stress? · tap to check</div>
+    <div class="st7">${STRESS.map(([w, s]) => `<button type="button" class="dsc"><span>${w}</span><b>${s}</b></button>`).join('')}</div>` },
+  mixSlide(0, 68),
+  { stop: 1, dense: true, host: ['magnifier', 'You are the <b>director</b> now.'],
+    help: 'Dentro de tu grupo trabajas en pareja: Timekeeper con Decoder, Herald con Chronicler. Uno actúa (dice su mensaje) y el otro es el director: mira el reloj y la rúbrica, y escribe las notas del director en el cuaderno de quien actuó.',
+    note: 'Parejas y rúbrica (4 min). En cada grupo: Timekeeper + Decoder, Herald + Chronicler (si el grupo tiene 5, una pareja es trío). Explique la rúbrica oral (4 puntos) y las notas del director: dos ✔ con palabras de la rúbrica, un consejo y el tiempo en segundos. El director escribe en el cuaderno del actor.',
+    html: () => `<div class="kicker">The Director's Chair · pairs: Timekeeper + Decoder · Herald + Chronicler</div>
+    <div class="orub7">${ORUB.map(([c, h, t]) => `<div><i>${c}</i><b>${h}</b><span>${t}</span></div>`).join('')}</div>
+    <div class="dn7"><b>Director's notes · in the actor's notebook</b>${DIRNOTES.map(t => `<span>${t}</span>`).join('')}</div>` },
+  { stop: 2, dense: true, host: ['point', 'Take 1… <b>Action!</b>'],
+    help: 'Primer ensayo. El actor A dice su mensaje completo (puede usar tarjetas con palabras clave, pero no leer todo). El director mira el reloj y escribe sus notas. Luego cambian. Después hacen la toma 2 mejorando con el consejo.',
+    note: 'Take 1 y Take 2 (14 min). El reloj marca: A actúa 2:00 · notas 1:30 · B actúa 2:00 · notas 1:30; repita para la toma 2. Las tarjetas con palabras clave se permiten (no leer palabra por palabra). Circule y haga las conversaciones de C10 pendientes. Si alguien no tiene guion, que diga sus cinco cajas del storyboard.',
+    html: () => `<div class="kicker">Take 1 · then Take 2 · 90–120 seconds each · the director keeps the time</div>
+    <div class="mv7">${MOVES.map(([t], k) => `<span><i>${k + 1}</i>${t}</span>`).join('')}</div>
+    <div class="task"><span class="step">A</span>acts · <span class="step">B</span>directs · then swap · <span class="step">Take 2</span>use the tip!</div>
+    ${timer([['A acts', 120], ['Notes', 90], ['B acts', 120], ['Notes', 90]])}` },
+  { stop: 3, dense: true, host: ['alert', 'A visitor has a <b>tricky</b> question…'],
+    help: 'En el museo los visitantes te harán preguntas. El director elige dos números y lee las preguntas; el actor responde en personaje, sin cambiar su opinión. Usa el marco. Luego cambian.',
+    note: 'Tricky viewers (7 min). El director escoge dos números de la lista y lee la pregunta; el actor responde en personaje con el marco y sin cambiar su opinión (eso es C9). Unos 3 min por actor. Pida que noten si la opinión «se mantuvo».',
+    html: () => `<div class="kicker">Tricky viewer cards · the director chooses two numbers · answer in character</div>
+    <div class="tv7">${TRICKY.map((q, k) => `<span><i>${k + 1}</i>${q}</span>`).join('')}</div>
+    <div class="scroll"><p class="frame" style="margin:0">${TRICKFRAME}</p></div>${timer([['A answers', 180], ['B answers', 180]])}` },
+  { stop: 4, dense: true, host: ['wave', 'Welcome to <b>my room</b>!'],
+    help: 'En los días del archivo recibes a los visitantes con una introducción en vivo de 30 segundos. Escríbela en tu cuaderno con el marco y ensáyala con tu pareja: el director cuenta 30 segundos.',
+    note: 'Live intro (8 min). Escriben su introducción de 30 s con el marco (4 líneas) y la dicen a su pareja con el reloj de 30 s. Las salas son: «1380: The Pilgrims\' Road», «44 BC / 1599: Rome and the Globe», «1604: Santafé and the Jesuits». Luego dos voluntarios la dicen a la clase (+5 XP al equipo de su poder).',
+    html: () => `<div class="kicker">Your 30-second live intro · write it · say it · the director counts 30 seconds</div>
+    <div class="scroll"><p class="frame" style="margin:0;line-height:1.55">${INTRO30.join('<br>')}</p></div>
+    <div class="rm7"><span>🛣 1380 · The Pilgrims' Road</span><span>🏛 44 BC / 1599 · Rome and the Globe</span><span>⛪ 1604 · Santafé and the Jesuits</span></div>
+    ${xpBoard(5)}${timer([['Write', 180], ['A', 30], ['B', 30]])}` },
+  { stop: 4, host: ['tablet', 'Next: the <b>Recording Studio</b>.'],
+    help: 'La próxima clase grabas tu video en el Recording Studio: una sola toma de 90 a 120 segundos, con disfraz u objeto de tu época y fondo silencioso. Trae tu disfraz u objeto y tu guion. Si prefieres grabar en casa, usa la misma lista de chequeo.',
+    note: () => `Cierre (2 min). Próxima clase: Recording Studio on the Bridge (${course ? 'vie 12 feb' : '7A y 7B vie 12 feb'}; Día de la Mano Roja a las 7:00, puede acortar la clase de 7B). Que traigan disfraz u objeto, guion y tarjetas. Reserve las tabletas del colegio para tres rincones de grabación.`,
+    html: () => `<div class="kicker">Class 3 complete · the rehearsal is over</div><h1>Next class, the camera is real. One take. Your voice for the future.</h1>
+    <div class="info"><b>Bring:</b> your <b>costume or object</b> of your time, your script and your key-word cards. Recording at home? Use the same checklist.</div>
+    <button type="button" class="endbtn" data-tomap="1">☰ Back to the cycle map</button>` },
+  ] };
+
 const LESSONS = {
   map: { stops: [], era: 'rome', scene: { '-1': 'forum' }, arrive: {}, plaque: () => IMMERA() === '2126' ? 'Harry Bailly · Mission Control, 2126' : 'Harry Bailly · Rome, 44 BC', slides: [
     { stop: -1, era: IMMERA, scene: () => IMMERA() === '2126' ? 'f-hq' : 'forum', host: ['wave', () => course ? 'Choose your class, agents!' : 'Salvete, agents! First, choose your course.'],
@@ -2236,6 +2307,7 @@ const LESSONS = {
   c1i: C1I,
   c2r: C2R,
   c2i: C2I,
+  c3i: C3I,
 };
 // ---------- engine
 let L = 'map', i = 0, tick = null, AC = null, ANIM = true, lastStop = -2;
