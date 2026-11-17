@@ -1461,6 +1461,7 @@ body.era-2126 .exit2 p { font-family: var(--f-body); font-size: 3.2vh; line-heig
 .rot7 .rbar { grid-column: 1 / -1; display: flex; gap: 1vw; align-items: center; justify-content: center; } .rot7 .rr { font-family: var(--f-caps); font-size: 2.4vh; color: var(--navy); } .rot7 .rt { font-family: var(--f-caps); font-weight: 700; font-size: 5vh; color: var(--navy); min-width: 10vw; text-align: center; } .rot7 .rt.late { color: var(--red); }
 .lb7 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1vw; } .lb7 > div { background: var(--note); border: .3vh solid var(--gold); border-radius: 1.4vh; padding: 1.2vh .8vw; display: flex; flex-direction: column; gap: .6vh; }
 .lb7 b { font-family: var(--f-caps); font-size: 2.5vh; color: var(--navy); } .lb7 span { font-family: var(--f-body); font-size: 1.95vh; line-height: 1.3; } .lb7 em { font-family: var(--f-body); font-size: 2vh; color: #6d3fd6; border-top: .2vh dashed var(--gold); padding-top: .5vh; }
+.qr7 { display: flex; gap: 1.4vw; align-items: center; justify-content: center; } .qr7 img { width: 16vh; height: 16vh; background: #fff; border-radius: 1vh; padding: .6vh; border: .3vh solid #1ba6c4; } .qr7 span { display: flex; flex-direction: column; gap: .4vh; font-size: 2.2vh; } .qr7 b { font-family: var(--f-caps); color: var(--navy); } .qr7 a { color: #6d3fd6; font-weight: 700; }
 
 </style>
 </head>
@@ -2048,6 +2049,9 @@ const ASSIST = ['holds the tablet still, horizontal, at eye level', 'checks ligh
 const ROOMLABEL = [['Title', 'a short, strong title for your message'], ['Persona', 'who you are'], ['Year · place', 'when and where you lived'], ['Logic bug', 'number + name']];
 const ROOMMODEL = ['«The Judge of Stories»', 'Harry Bailly, the Host of the Tabard Inn', '1380 · Southwark, London', 'Bug #7 · Attack the person'];
 const ROSTER = { '7A': 24, '7B': 24 };
+// Evidence 3 · the teacher's Microsoft Forms (only people of the school can answer; videos go to the teacher's OneDrive) · 17 nov 2026
+const E3FORM = 'https://forms.cloud.microsoft/r/MLtiMhyvtH';
+const E3FORMQR = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAYwAAAGMAQAAAADhQqjnAAACZUlEQVR4nO2cUW7jMAxEZxb5l26Q+x+rN5BOwP0gTclpgIWzuwXTDmEEtsKHhoBAUWOqNFy0+esqAQgRIkTI/0NgtmWyZja2e7NnDmVjEVIYaeYGgPe4wSQ7bID95FA9FiFVEZLsAGAfJLlmVLMHh/qxCHkLhB2ZxNbq+a//ipCfgdwentkMs9skJg2wyU8bz7KxCKmJxBzLiWQAmxGw2X2EbewOhWMRUhiZdAMQRVcz3o0dvNuDQ/VYhJRDbjjlKNhkXvDPs0PhWITURbzC9ws4cteulXl+m8pjQl7VYJvZQF45GDJsOxzCs2wsQmoia630Uv9kuamcxPq2bCxC6iJe29sHI4kNkPSVMbcAPm7jS3+YkG+B3ICVr9gshQvXLixqsBDK2EbhWITURG4A0AYBNMOxiyTgc4vHIIBjuSwbi5CayKrHbNKnWTwCmB0AU7sIVbZsLEJqIjDb9oxu2wZzufmgaV8p5FXEK3yX+u9Lcz01j8UWoHwsQmohXo/FRPJKLMp7AG2EVxtY4kbZWITURA65FUjhwsbRlOiL49ENG+NaK4VctDV5cjqNGA+Ptiah6jEh15HttdFY6StfVu4z7dgRlI1FSE0EdrbIWttaud5aQmulkFfzWFr2Wmzr48O95piQixY6vz+4oG+zWzRad9f21T8m5C+Q6LVOpSJfITGFC3+X1MYhcZSNRch7ICnv+6GkOFw5gHX87W1iEVIDeXIuiZsku7eQhTBbNxYhNZEn55LyvBvjmNKIlXR2+7ofJuTbINE/ls9Hk09fj5upf0zIdeTzEd0/mf43lBAhQmohvwGa343a8YTUuQAAAABJRU5ErkJggg==';
 // Map titles change with the course: 7C–7E follow «Antony's Scroll»; 7A–7B «Messages to the Future» (2126).
 const TITLES7 = () => isImm()
   ? [['c1', 'Class 1', 'Script Lab I: Who Speaks from the Past?'], ['c2', 'Class 2', 'Time Capsule Letter & Peer Review Clinic'], ['c3', 'Class 3', 'Director\'s Chair: Rehearsal'], ['c4', 'Class 4', 'Recording Studio on the Bridge'], ['c5', 'Class 5', 'Final Cut & Submission']]
@@ -2446,10 +2450,11 @@ const C4I = { stops: ['The briefing', 'Studio rules', 'Recording', 'Room label',
     <div class="lb7">${ROOMLABEL.map(([h, t], k) => `<div><b>${h}</b><span>${t}</span><em>${ROOMMODEL[k]}</em></div>`).join('')}</div>
     ${nb('write your <b>room label</b> in pencil: title · persona · year and place · logic bug.')}` },
   { stop: 4, host: ['tablet', 'Monday: the <b>Final Cut</b>.'],
-    help: 'El lunes 15 de febrero entregas todo: el video en la carpeta privada OPEN de tu curso, y la carta, el guion y el Source Log en hojas sueltas en perfecto estado. Si no grabaste hoy, graba en casa con la misma lista.',
-    note: () => `Cierre (2 min). ¿Quién falta por grabar? Anote los números: graban en casa con la misma lista o en el primer rato de la Clase 5. Próxima clase: Final Cut & Submission (lun 15 feb${course === '7B' ? ', 7:05' : course === '7A' ? ', 12:05' : ''}): revisión final con la lista, carga en OPEN y entrega en hojas sueltas de la carta (150–200 palabras), el guion y el Source Log.`,
+    help: 'El lunes 15 de febrero entregas todo: el video lo subes al formulario «The Chronos Archive» (Microsoft Forms, con tu cuenta del colegio), y la carta, el guion y el Source Log en hojas sueltas en perfecto estado. Si no grabaste hoy, graba en casa con la misma lista.',
+    note: () => `Cierre (2 min). ¿Quién falta por grabar? Anote los números: graban en casa con la misma lista o en el primer rato de la Clase 5. Próxima clase: Final Cut & Submission (lun 15 feb${course === '7B' ? ', 7:05' : course === '7A' ? ', 12:05' : ''}): revisión final con la lista, subida del video al Forms «The Chronos Archive» (ventana privada en las tabletas: cada agente inicia y cierra su sesión) y entrega en hojas sueltas de la carta (150–200 palabras), el guion y el Source Log.`,
     html: () => `<div class="kicker">Class 4 complete · that's a wrap!</div><h1>Your voice is recorded. On Monday, it goes into the Archive.</h1>
-    <div class="info"><b>Monday, February 15:</b> your video → the private <b>OPEN</b> folder of your course · your letter, your script and your Source Log → <b>loose sheets</b>, in perfect condition. Not recorded yet? Record at home with the same checklist.</div>
+    <div class="info"><b>Monday, February 15:</b> your video → the <b>Chronos Archive form</b> (sign in with your school account) · your letter, your script and your Source Log → <b>loose sheets</b>, in perfect condition. Not recorded yet? Record at home with the same checklist.</div>
+    <div class="qr7"><img src="${E3FORMQR}" alt="QR code of the Chronos Archive form"><span><b>The Chronos Archive form</b><a href="${E3FORM}" target="_blank" rel="noopener">${E3FORM.replace('https://', '')}</a></span></div>
     <button type="button" class="endbtn" data-tomap="1">☰ Back to the cycle map</button>` },
   ] };
 
