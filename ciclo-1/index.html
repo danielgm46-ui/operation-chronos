@@ -422,6 +422,7 @@ body.still .buglineup img, body.still .alertbox { animation: none; }
 .mixg b { font-family: var(--f-display); font-size: 2.8vh; color: var(--navy); }
 .mixg span { font-size: 2.6vh; letter-spacing: .1em; color: var(--red); font-weight: 700; }
 
+.fl5 { display: grid; grid-template-columns: 1fr 1fr; gap: 1vh 1vw; } .fl5 > div { background: var(--note); border: .3vh solid var(--gold); border-radius: 1.4vh; padding: 1.1vh 1vw; display: grid; grid-template-columns: auto 1fr; column-gap: .8vw; align-items: center; } .fl5 i { font-style: normal; font-weight: 700; color: #fff; background: var(--red); border-radius: 50%; width: 4.4vh; height: 4.4vh; display: grid; place-items: center; font-size: 2.4vh; grid-row: span 3; } .fl5 b { font-size: 2.5vh; color: var(--navy); } .fl5 span { font-size: 2vh; } .fl5 em { font-size: 2vh; color: #6b4a1d; border-top: .2vh dashed var(--gold); padding-top: .4vh; margin-top: .3vh; }
 </style>
 </head>
 <body>
@@ -481,6 +482,7 @@ const WHEN = {
   c2: { '7A': 'Wed Nov 11', '7B': 'Tue Nov 10', '7C': 'Wed Nov 11', '7D': 'Wed Nov 11', '7E': 'Tue Nov 10' },
   c3: { '7A': 'Thu Nov 12', '7B': 'Fri Nov 13', '7C': 'Fri Nov 13', '7D': 'Thu Nov 12', '7E': 'Wed Nov 11' },
   c4: { '7A': 'Fri Nov 13', '7B': '—', '7C': '—', '7D': 'Fri Nov 13', '7E': 'Thu Nov 12' },
+  c5: { '7A': '—', '7B': '—', '7C': '—', '7D': '—', '7E': 'Tue Nov 17' },
 };
 // ---------- Class 1 content
 const VOWS = {
@@ -617,9 +619,9 @@ const LESSONS = {
       help: "Este es el mapa del ciclo. Espera a que tu profe elija el curso y la clase de hoy.", note: 'Mapa del ciclo. Toque primero el curso (queda guardado en este computador) y luego la clase. Avance con «Siguiente ▶» o la flecha →; «☰ Map» o Esc vuelve aquí. S = música · M = sin animaciones · F o «⛶ Full screen» = pantalla completa (también dentro de OPEN).',
       html: () => `<div class="maphead"><div class="kicker">Operation Chronos · Term 29 · Cycle 1</div><h1>Code Red · Pilgrims of 1380</h1>
         <div class="courserow"><span class="kicker">Course</span><div class="courses small">${COURSES.map(c => `<button type="button" data-course="${c}" aria-pressed="${c === course}">${c}</button>`).join('')}</div></div></div>
-        <div class="lessons">${[['c1', 'Class 1', "The Pilgrims' Way"], ['c2', 'Class 2', 'Mission Briefing & The Role Draft'], ['c3', 'Class 3', 'What Is an Argument?'], ['c4', 'Class 4', 'Role Bootcamp']].map(([k, n, t]) => {
+        <div class="lessons">${[['c1', 'Class 1', "The Pilgrims' Way"], ['c2', 'Class 2', 'Mission Briefing & The Role Draft'], ['c3', 'Class 3', 'What Is an Argument?'], ['c4', 'Class 4', 'Role Bootcamp'], ['c5', 'Extra · 7E', 'Back from 1604']].map(([k, n, t]) => {
           const ready = !!LESSONS[k], w = course ? WHEN[k][course] : '';
-          return `<button type="button" class="lesson${ready ? '' : ' soon'}" data-lesson="${k}" ${ready && course ? '' : 'disabled'} style="background-image:url('${IMG.card[k]}')">${!course && ready ? '<span class="lock">choose a course</span>' : ''}<span class="num">${n}</span><span class="ttl">${t}</span><span class="when">${course ? (w === '—' ? 'not for ' + course : course + ' · ' + w) : ''}</span></button>`; }).join('')}</div>
+          return `<button type="button" class="lesson${ready ? '' : ' soon'}" data-lesson="${k}" ${ready && course ? '' : 'disabled'} style="background-image:url('${IMG.card[k] || IMG.card.c4}')">${!course && ready ? '<span class="lock">choose a course</span>' : ''}<span class="num">${n}</span><span class="ttl">${t}</span><span class="when">${course ? (w === '—' ? 'not for ' + course : course + ' · ' + w) : ''}</span></button>`; }).join('')}</div>
         <p class="credits">Music: «Pippin the Hunchback», Kevin MacLeod (incompetech.com), CC BY 3.0 · Illustrations: Operation Chronos</p>` },
   ] },
   c1: { stops: ['Tabard Inn', 'Rochester', 'Ospringe', 'Canterbury'], scene: { '-1': 'inn', 0: 'inn', 1: 'roch', 2: 'osp', 3: 'cant', 4: 'inn' }, plaque: 'Harry Bailly · The Host · 1380',
@@ -918,6 +920,46 @@ const LESSONS = {
 };
 // ---------- engine
 let L = 'map', i = 0, tick = null, AC = null, ANIM = true, lastStop = -2;
+// ---------- Extra class · 7E · Tue Nov 17 · Back from 1604 (the ten vows + Chronos Field Log)
+const FLOG = [['1', 'Chronal coordinates', 'three dates or inscriptions you saw', 'In <b>1604</b> the Jesuits… · The inscription said…'], ['2', 'Temporal signature', 'draw one object + write a caption', 'This is a … It was used for … in 1604.'],
+  ['3', 'Voices of the past', 'If I lived in 1610, I would…', 'If I lived in 1610, I <b>would</b> … because …'], ['4', 'Ignatian question', 'Which voices do I trust, and why?', 'I trust … because … · I do not trust … because …']];
+(() => { const C1S = LESSONS.c1.slides, chk = C1S.filter(x => String(x.html).includes('Check your decoding')), star = C1S.find(x => String(x.html).includes('My hardest vow'));
+  const re = (sl, stop, note, help) => Object.assign({}, sl, { stop, note, help });
+  LESSONS.c5 = { stops: ['Welcome back', 'Rochester', 'Ospringe', 'Canterbury', 'Field Log', 'Share'], scene: { '-1': 'bogota', 0: 'bogota', 1: 'roch', 2: 'osp', 3: 'cant', 4: 'bogota', 5: 'hq' }, plaque: 'Harry Bailly · Chronos Agent',
+    arrive: { 1: ['The ten vows · 1', 'Rochester', 'C1 · C2 · C3'], 2: ['The ten vows · 2', 'Ospringe', 'C4 · C5 · C6 · C7'], 3: ['The ten vows · 3', 'Canterbury', 'C8 · C9 · C10'], 4: ['Santafé · 1604', 'Chronos Field Log', 'Four missions'], 5: ['Chronos HQ', 'Share', 'Your voice from the past'] },
+    slides: [
+    { stop: -1, host: ['wave', 'Welcome back from <b>1604</b>, agents!'],
+      help: 'Hoy hacemos dos cosas: repasamos los diez votos (los criterios del periodo) con la versión moderna, y terminas tu Chronos Field Log con lo que viste en la Manzana Jesuítica.',
+      note: 'Objetivo (1 min). En español: el Ciclo 1 de 7E tuvo la Clase 1 con reemplazo; hoy se retoman los diez criterios (C1–C10) con la versión moderna y la fecha de cada evidencia, y se completa el Chronos Field Log de la salida. Material: cuaderno con el Pilgrim\'s Book pegado y el Field Log. No se imprime nada.',
+      html: () => `<div class="kicker">Cycle 1 · Extra class · Back from the Manzana Jesuítica</div><h1>Today, agents, you will review the ten vows — and finish your Chronos Field Log.</h1>
+      <div class="info">Take out your <b>English notebook</b> (your Pilgrim's Book is inside) and your <b>Chronos Field Log</b>.</div>` },
+    { stop: 0, host: ['listen', 'What did you <b>see</b> in 1604?'],
+      help: 'Piensa en la visita. Di en inglés una frase con uno de estos comienzos. Si no sabes una palabra, pregúntala: «How do you say … in English?».',
+      note: 'Warm-up (3 min). Cuatro o cinco voluntarios dicen una frase con los marcos. Corrija solo con eco (repita la frase bien dicha). Si nadie empieza, modele: «I saw a very old door. It was made of wood.»',
+      html: () => `<div class="kicker">Back from 1604 · one sentence each</div><h2>Tell Mission Control what you saw.</h2>
+      <div class="scroll"><p class="frame" style="margin:0;line-height:1.7">I saw <b>…</b> · It was made of <b>…</b> · The oldest thing was <b>…</b><br>I learned that the Jesuits <b>…</b> · My favourite place was <b>…</b>, because <b>…</b></p></div>
+      <p class="hint center">Don't know a word? Ask: <b>«How do you say … in English?»</b></p>` },
+    re(chk[0], 1, 'Rochester · C1–C3 (4 min). Sacan el Pilgrim\'s Book del cuaderno. Leen la versión moderna; cada uno compara su «I can…» y corrige con otro color (quien no lo hizo en la clase de reemplazo, lo copia ahora). Explique el recuadro azul: Evidencia 1 · Mission Log 1, miércoles 2 de diciembre.', 'Compara tu «I can…» del Pilgrim\'s Book con la versión moderna y corrígelo con otro color. Si no lo tienes, cópialo ahora.'),
+    re(chk[1], 2, 'Ospringe · C4–C7 (4 min). Igual: comparan y corrigen. Explique el recuadro azul: los logic bugs, el salto a Roma y la Evidencia 2 (miércoles 10 de febrero).', 'Compara tu «I can…» con la versión moderna y corrígelo con otro color. El recuadro azul cuenta qué viene después: los logic bugs y Roma.'),
+    re(chk[2], 3, 'Canterbury · C8–C10 (4 min). Comparan y corrigen. Explique el recuadro azul: la prueba del periodo de 7E (Museum of the Future, 1 y 3 de marzo).', 'Revisa tu «I can…» con la versión moderna. El recuadro azul explica la prueba final del periodo y el premio.'),
+    ...(star ? [re(star, 3, 'My hardest vow (3 min). Marcan con ★ el voto más difícil y completan la frase. Pregunte a dos o tres voluntarios cuál marcaron.', 'Marca con ★ el voto que te parece más difícil y completa la frase en tu cuaderno.')] : []),
+    { stop: 4, dense: true, host: ['map', 'Your <b>Chronos Field Log</b>: four missions.'],
+      help: 'Primero compara con tu fellow pilgrim lo que anotaste en la Manzana (5 minutos). Después trabaja solo y completa las cuatro misiones. Usa los marcos de frase de cada misión.',
+      note: 'Field Log (20 min). 5 min con el fellow pilgrim: comparan fechas, inscripciones y objetos. 15 min individual: completan lo que falte. Pase por los puestos y revise la misión 3 (If + past simple, would + verb, de la Clase 2). Quien no fue a la salida hace las misiones 3 y 4 con lo que le cuenten sus compañeros. El Field Log se guarda en el cuaderno: se usa en el Ciclo 2.',
+      html: () => `<div class="kicker">Chronos Field Log · Manzana Jesuítica · Santafé, 1604</div>
+      <div class="fl5">${FLOG.map(([n, t, d, f]) => `<div><i>${n}</i><b>${t}</b><span>${d}</span><em>${f}</em></div>`).join('')}</div>${timer([['With your fellow pilgrim', 300], ['Alone', 900]])}` },
+    { stop: 5, host: ['present', 'Read us your <b>voice from the past</b>!'],
+      help: 'Si quieres, lee en voz alta tu misión 3 («If I lived in 1610, I would…») o tu misión 4. Tu equipo de poder gana 10 XP.',
+      note: 'Share (5 min). Tres o cuatro voluntarios leen su misión 3 o 4; +10 XP al equipo de su poder (toque el emblema). Al final, que guarden el Field Log dentro del cuaderno.',
+      html: () => `<div class="kicker">Share · missions 3 and 4</div><div class="scroll"><p class="frame" style="margin:0;line-height:1.7">If I lived in 1610, I <b>would</b> … because …<br>I trust <b>…</b>, because <b>…</b></p></div>${pxBoard(10)}` },
+    { stop: 5, host: ['wave', 'Keep your Field Log, agents. <b>1380 is next!</b>'],
+      help: 'Guarda tu Field Log en el cuaderno de inglés: lo vas a usar en el próximo ciclo, cuando lleguemos a 1380.',
+      note: 'Cierre (1 min). Guardan el Field Log en el cuaderno. Próximo ciclo: Ciclo 2 · Landing in 1380.',
+      html: () => `<div class="kicker">Extra class complete</div><h1>The time machine is calibrated. Next stop: Chaucer's England, 1380.</h1>
+      <div class="info">Keep your <b>Chronos Field Log</b> inside your English notebook. You will need it in Cycle 2.</div>
+      <button type="button" class="endbtn" data-tomap="1">☰ Back to the cycle map</button>` },
+  ] };
+})();
 const cur = () => LESSONS[L].slides[i];
 const val = v => typeof v === 'function' ? v() : v;
 function chime() { try { AC = AC || new (window.AudioContext || window.webkitAudioContext)(); [523, 659, 784].forEach((f, k) => { const o = AC.createOscillator(), g = AC.createGain(); o.frequency.value = f; o.connect(g); g.connect(AC.destination); const t = AC.currentTime + k * 0.22; g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(0.25, t + 0.03); g.gain.exponentialRampToValueAtTime(0.0001, t + 0.9); o.start(t); o.stop(t + 1); }); } catch (e) {} }
