@@ -1504,6 +1504,13 @@ body.era-2126 .exit2 p { font-family: var(--f-body); font-size: 3.2vh; line-heig
 .ob8 { display: grid; grid-template-columns: repeat(6, 1fr); gap: .5vh .4vw; } .ob8 button { font: inherit; font-family: var(--f-caps); font-size: 2.2vh; padding: .7vh 0; border-radius: .9vh; border: .2vh solid var(--line); background: #fff; color: var(--navy); cursor: pointer; }
 .ob8 button.on { background: #1ba6c4; color: #fff; border-color: #1ba6c4; } .ob8 small { grid-column: 1 / -1; text-align: right; font-size: 1.7vh; color: var(--muted); }
 
+/* ---- Cycle 8 · Class 3 (18 nov) */
+.rv8 { display: grid; grid-template-columns: repeat(4, 1fr); gap: .8vw; } .rv8 > div { background: var(--note); border: .3vh solid var(--gold); border-top: 1vh solid #6d3fd6; border-radius: 1.4vh; padding: 1vh .8vw; display: flex; flex-direction: column; gap: .4vh; }
+.rv8 img { width: 5vh; height: 5vh; align-self: center; } .rv8 b { font-family: var(--f-caps); font-size: 2.1vh; color: var(--navy); text-align: center; } .rv8 ul { margin: .3vh 0; padding-left: 1.4vw; font-family: var(--f-body); font-size: 1.85vh; line-height: 1.3; } .rv8 em { font-style: normal; font-size: 1.75vh; color: var(--red); }
+.va8 { display: grid; grid-template-columns: repeat(4, 1fr); gap: .7vh .7vw; } .va8 > div { position: relative; background: #fff; border: .2vh solid var(--line); border-left: .7vh solid #1ba6c4; border-radius: 1vh; padding: .7vh .7vw .7vh 4.6vh; display: flex; flex-direction: column; gap: .2vh; }
+.va8 b { position: absolute; left: .5vw; top: .8vh; font-family: var(--f-caps); font-size: 2vh; color: #fff; background: var(--navy); border-radius: .6vh; padding: .2vh .3vw; } .va8 strong { font-family: var(--f-caps); font-size: 1.9vh; color: var(--navy); } .va8 span { font-family: var(--f-body); font-size: 1.7vh; line-height: 1.28; }
+.st8.g8 { grid-template-columns: repeat(4, 1fr); }
+
 </style>
 </head>
 <body class="era-rome">
@@ -2203,6 +2210,27 @@ const SHIFTS8 = [['Shift 1', 'Heralds + Timekeepers curate', 'Decoders + Chronic
 const PASSPORT8 = ['Room · curator\'s persona · year', 'The bug: #… …', 'My question: … ?', 'Was the opinion clear? ✔ / ✘', 'Curator\'s initials ★'];
 const VISQ = ['Why did you trust / not trust …?', 'What was the evidence?', 'How will this bug look in 2126?', 'What would you say to the people of 2126?', 'Would you change your opinion if … ?', 'Which source helped you most?'];
 const OPENTX = ['Curators, this is Mission Control. Today, <b>the Chronos Archive opens</b>.', 'Your messages travel from 1380, 44 BC, 1599 and 1604 to the people of 2126 — and to 7C, 7D and 7E, who will open their Museum in March.', 'Speak clearly, keep your opinion, and answer like a true voice from the past. <b>The Archive is open!</b>'];
+// ---------- Cycle 8 · Class 3 · 7C–7E · Peer Review Clinic (C10)
+const REVIEW8 = [
+  ['timekeeper', 'Timekeeper', 'Verbs', ['passive: was / were / will be + participle', 'future: will · might', 'If + past, … would / should'], 'Circle a wrong verb · write the right one in pencil.'],
+  ['decoder', 'Decoder', 'Words', ['the bug is named and defined', 'the 2126 words are explained', 'no word three times in a row'], 'Underline an unclear word · suggest a better one.'],
+  ['chronicler', 'Chronicler', 'Connectors + sources', ['two sources inside the text', 'the message from 7A / 7B in reported speech', 'connectors: because · so · however · first'], 'Mark each source with S1 / S2.'],
+  ['herald', 'Herald', 'Read it aloud', ['read the placard aloud, quietly', 'is it clear for a visitor of 2126?', 'count the words: 75–100 (Chronicler 120–150)'], 'Write the number of words.']];
+const ROT8 = ['Round 1 · pass your notebook to the person on your <b>left</b>', 'Round 2 · pass it to the <b>left</b> again', 'Round 3 · one more time — then it comes back to you'];
+const STARS8 = ['★ I like how you … (+ your power\'s initial: T · D · C · H)', '★ Your … is very clear because …', '✦ I wish you would … , because a visitor of 2126 …'];
+const V2STEPS = ['Read the stars and the wishes in your notebook.', 'Choose <b>two wishes</b> to fix.', 'Write <b>version 2</b> under version 1 — do not erase version 1.', 'Count the words · tick the 7-point checklist.'];
+// ---------- Cycle 8 · Class 3 · 7A–7B · ARCHIVE OPEN II · Guests & Archive Vault (term test · recovery C1–C7)
+const GUEST8 = [['👋', 'A Herald welcomes you', 'at the door of each room'], ['🎬', 'Meet a curator', '30 seconds live + the video'], ['❓', 'Ask two questions', 'English or Spanish · the question bank helps'], ['🖊️', 'Sign the guestbook', '«Dear people of 2126, …»']];
+const VAULT8 = [
+  ['C1', 'Listen to a curator', 'Write the curator\'s opinion and one reason. Is it relevant to the point? R / NR — why?'],
+  ['C2', 'Read a room catalogue', 'What does the Chronicler want visitors to believe? Which detail shows it?'],
+  ['C3', 'The future of your room', 'Write three sentences about 2126: one with will, one with might and one with If…, … would.'],
+  ['C4', 'Listen to two curators', 'Are their reasons consistent and reliable? Write one example.'],
+  ['C5', 'Read a timeline or a placard', 'Name the bug. Is the argument sufficient and acceptable? Why?'],
+  ['C6', 'Report what curators said', 'Three sentences: … said that … · … told us that … · … claimed that …'],
+  ['C7', 'An argument in the guestbook', '60–80 words: Which message from the past is the most important for 2126? Claim · reason · evidence · conclusion.']];
+const SHIFTS9 = [['Shift A', 'Curators not yet observed curate first', '+ one Herald per room for the welcome'], ['Shift B', 'All the other curators', 'a second chance to show C8 · C9']];
+const GUESTBOOK = ['Dear people of 2126, …', 'The message I will remember is … because …', 'My advice for 2126: never trust … without …'];
 const TITLES8 = () => isImm()
   ? [['c1', 'Class 1', 'Archive Installation'], ['c2', 'Class 2', 'ARCHIVE OPEN I · Messages to the Future'], ['c3', 'Class 3', 'ARCHIVE OPEN II · Guests & Archive Vault'], ['c4', 'Class 4', 'Restoration Shift'], ['c5', 'Class 5', 'PAUSE · Timeline Stabilized']]
   : [['c1', 'Class 1', ['7C', '7E'].includes(course) ? 'Jump to 2126 & Curators\' Brief' : 'Curators\' Brief'], ['c2', 'Class 2', 'Placard Drafting by Power'], ['c3', 'Class 3', 'Peer Review Clinic'], ['c4', 'Class 4', 'Logic Simulator Workshop'], ['c5', 'Class 5', 'Tour Script Lab']];
@@ -2457,6 +2485,78 @@ const C2I = { stops: ['Opening', 'Passport', 'Shift 1', 'Shift 2', 'Close'], era
     <button type="button" class="endbtn" data-tomap="1">☰ Back to the cycle map</button>` },
   ] };
 
+// ======================================================================
+// Class 3 · 7C–7E · Peer Review Clinic (C10) · review rotation inside the fixed crew
+const C3R = { stops: ['The clinic', 'Review', 'Version 2', 'Next'], era: '2126', plaque: 'Harry Bailly · Mission Control, 2126',
+  scene: { '-1': 'f-museum', 0: 'f-archive', 1: 'f-archive', 2: 'f-museum', 3: 'f-hq' },
+  arrive: { 0: ['2126 · The Restoration Lab', 'The Peer Review Clinic', 'Four powers · four checks'], 1: ['2126 · The Restoration Lab', 'Review Rounds', 'Two stars and a wish'], 2: ['2126 · The Museum of the Future', 'Version 2', 'Keep both versions'], 3: ['2126 · Mission Control', 'Next: the Logic Simulator', 'Bug or no bug?'] },
+  slides: [
+  { stop: -1, host: ['present', 'Welcome to the <b>Clinic</b>, curators!'],
+    help: 'Hoy las fichas pasan por la clínica: cada poder revisa una cosa distinta en las fichas de su equipo y deja dos estrellas y un deseo. Luego escribes la versión 2 de tu ficha, debajo de la primera, sin borrarla.',
+    note: () => `Objetivo (2 min). En español: Peer Review Clinic (C10). Tres rondas de revisión dentro del equipo de sala (18 min), versión 2 (15 min) con conferencias para quienes no la tuvieron en la Clase 2. Se guardan las dos versiones para el portafolio. ${crewNote()}`,
+    html: () => `${brand7()}<div class="kicker">Cycle 8 · Curators of 2126 · Class 3 · Peer Review Clinic</div><h1>Today, curators, your placards go to the Clinic — and come back better.</h1>
+    <div class="goals"><span><b>C10</b> peer review by power</span><span><b>★★✦</b> two stars and a wish</span><span><b>v2</b> your placard, version 2</span></div>` },
+  { stop: 0, dense: true, host: ['point', 'Every power checks <b>one thing</b>.'],
+    help: 'Cada poder revisa una cosa: el Timekeeper los verbos, el Decoder las palabras, el Chronicler los conectores y las fuentes, y el Herald lee la ficha en voz baja y cuenta las palabras. Copia en el cuaderno la tarjeta de tu poder.',
+    note: 'The clinic (5 min). Lea las cuatro tarjetas. Cada agente copia la de su poder (3 puntos + qué marca). Las marcas se hacen a lápiz en el cuaderno del autor, debajo de la ficha; nadie tacha la ficha de otro.',
+    html: () => `<div class="kicker">The Peer Review Clinic · one check per power</div>
+    <div class="rv8">${REVIEW8.map(([k, n, h, l, m]) => `<div><img src="${IMG.emb[k]}" alt=""><b>${n} · ${h}</b><ul>${l.map(t => `<li>${t}</li>`).join('')}</ul><em>${m}</em></div>`).join('')}</div>` },
+  { stop: 1, dense: true, host: ['listen', 'Pass the notebook to the <b>left</b>.'],
+    help: 'En cada ronda pasas tu cuaderno a la persona de tu izquierda. Revisas la ficha que te llegó con la tarjeta de tu poder y escribes debajo dos estrellas y un deseo, con la inicial de tu poder. Son tres rondas: al final tu cuaderno vuelve a ti.',
+    note: 'Review rounds (18 min · 3 × 6 min). Señal al final de cada ronda: «Pass to the left!». Si un equipo es de 3, hace dos rondas y el autor se revisa a sí mismo con la tarjeta que falta. Mientras tanto, usted hace conferencias de 2 min a quienes no la tuvieron en la Clase 2.',
+    html: () => `<div class="kicker">Review rounds · inside your room crew · pencil only</div>
+    <div class="up7"><div>${timer([['Round 1', 360], ['Round 2', 360], ['Round 3', 360]])}<div class="cframe sm8"><ol>${ROT8.map(t => `<li>${t}</li>`).join('')}</ol></div></div>
+    <div class="cframe"><b>Two stars and a wish</b><ol>${STARS8.map(t => `<li>${t}</li>`).join('')}</ol></div></div>` },
+  { stop: 2, dense: true, host: ['write', 'Now, <b>version 2</b>.'],
+    help: 'Lee las estrellas y los deseos que te dejaron. Elige dos deseos y escribe la versión 2 de tu ficha debajo de la primera, sin borrarla. Al final cuenta las palabras y revisa la lista de 7 puntos.',
+    note: () => `Version 2 (15 min, reloj). Escritura individual. Siga con las conferencias. Las dos versiones quedan en el cuaderno para el portafolio; la versión 2 es la que se copia en limpio para la sala en el Ciclo 9 y la que usted valora para C10. Ajustes PIAR (7D): versión 2 de 50–70 palabras con un solo deseo.`,
+    html: () => `<div class="kicker">Version 2 · under version 1 · keep both</div>
+    <div class="up7"><div class="cframe"><ol>${V2STEPS.map(t => `<li>${t}</li>`).join('')}</ol></div>${timer([['Version 2', 720], ['Count + check', 180]])}</div>` },
+  { stop: 3, host: ['cheer', 'Next: the <b>Logic Simulator</b>!'],
+    help: 'La próxima clase el Decoder de cada equipo dirige el diseño del Logic Simulator 2126 de la sala: 6 a 8 ejemplos de 2126 para que los visitantes digan «bug or no bug».',
+    note: () => `Cierre (2 min). Próxima clase: Logic Simulator Workshop (${course === '7E' ? 'vie 19 feb' : 'lun 22 feb'}). Si quiere valorar la versión 2 antes del Ciclo 9, recoja los cuadernos hoy.`,
+    html: () => `<div class="kicker">Class 3 complete</div><h1>Next class: build your room's Logic Simulator — bug or no bug?</h1>
+    <button type="button" class="endbtn" data-tomap="1">☰ Back to the cycle map</button>` },
+  ] };
+
+// Class 3 · 7A–7B · ARCHIVE OPEN II · Guests & Archive Vault (TERM TEST · C8 · C9 · recovery C1–C7)
+const shiftSlide9 = (st, k) => ({ stop: st, dense: true, host: [k ? 'listen' : 'tablet', `<b>${SHIFTS9[k][0]}</b>: the Archive is open!`],
+  help: `${k ? 'Segundo turno: atienden los demás curadores; es otra oportunidad para mostrar C8 y C9' : 'Primer turno: atienden primero los curadores que la profe todavía no ha observado, y un Herald por sala da la bienvenida'}. Los demás visitan con su pasaporte; si tienes tareas de la Archive Vault, hazlas mientras visitas.`,
+  note: `${SHIFTS9[k][0]} (${k ? 18 : 20} min · rondas de 4 min). ${k ? 'Puede volver a observar a quien quiera mejorar.' : 'Mire la cuadrícula: los números sin marcar atienden en este turno.'} Toque el número de cada curador observado. Atienda primero a los invitados. Si un invitado solo habla español, el curador responde en inglés y repite la idea clave en español.`,
+  html: () => `<div class="kicker">${SHIFTS9[k][0]} · ${SHIFTS9[k][1]} · ${SHIFTS9[k][2]}</div>
+  <div class="up7"><div>${timer(k ? [['Round 1', 240], ['Round 2', 240], ['Round 3', 240], ['Round 4', 360]] : [['Round 1', 240], ['Round 2', 240], ['Round 3', 240], ['Round 4', 240], ['Round 5', 240]])}<div class="cframe sm8"><b>Every visit · about 4 minutes</b><ol><li>Curator: 30-second live introduction</li><li>Visitors and guests: watch the video</li><li>Two questions · keep your opinion</li><li>Passport + curator's initials ★ · Vault tasks</li></ol></div></div>
+  <div><p class="hint" style="margin:0 0 .6vh">Observed curators (list numbers · for the teacher)</p>${obsGrid()}</div></div>` });
+const C3I = { stops: ['Welcome', 'The Vault', 'Shift A', 'Shift B', 'Guestbook'], era: '2126', plaque: 'Harry Bailly · Mission Control, 2126',
+  scene: { '-1': 'f-archive', 0: 'f-museum', 1: 'f-archive', 2: 'f-archive', 3: 'f-museum', 4: 'f-hq' },
+  arrive: { 0: ['2126 · The Chronos Archive', 'Welcome, Guests', 'Visitors from the present'], 1: ['2126 · The Archive Vault', 'The Archive Vault', 'A second chance · C1–C7'], 2: ['2126 · The Chronos Archive', 'Shift A', 'Not yet observed first'], 3: ['2126 · The Chronos Archive', 'Shift B', 'A second chance'], 4: ['2126 · Mission Control', 'The Guestbook', 'Dear people of 2126'] },
+  slides: [
+  { stop: -1, host: ['present', 'Today we have <b>guests</b>!'],
+    help: 'Hoy es Archive Open II, el segundo día de la prueba. Vienen invitados a visitar el archivo. Primero atienden los curadores que la profe todavía no ha observado. Quien tiene criterios pendientes de C1 a C7 hace la Archive Vault mientras visita. Al final, todos firman el libro de visitas.',
+    note: () => `Objetivo (2 min). En español: ARCHIVE OPEN II · Guests & Archive Vault (prueba · C8 · C9 · recuperación de C1–C7). Bienvenida a invitados (3 min), la Vault (5 min), turno A (20 min), turno B (18 min), libro de visitas (2 min). Antes de clase: invite a la docente de Literatura L2, a coordinación o a otro grupo; prepare un pliego de papel o cartulina como libro de visitas junto a la puerta; anote en su lista qué agentes hacen la Vault y en qué criterios (máximo dos por agente; ver el Registro Chronos).`,
+    html: () => `${brand7()}<div class="kicker">Cycle 8 · The Chronos Archive · Class 3 · ARCHIVE OPEN II · term test</div><h1>Today, curators, guests from the present visit the Chronos Archive.</h1>
+    <div class="goals"><span><b>C8 · C9</b> curators not yet observed first</span><span><b>🔐</b> the Archive Vault · C1–C7</span><span><b>🖊️</b> the guestbook</span></div>` },
+  { stop: 0, dense: true, host: ['wave', 'Welcome, <b>guests</b>!'],
+    help: 'Esta pantalla es para los invitados: así se visita el archivo. Un Herald les da la bienvenida en cada sala, conocen a un curador, le hacen dos preguntas (en inglés o en español) y firman el libro de visitas.',
+    note: 'Welcome (3 min). Un Herald voluntario da la bienvenida general en inglés y usted la resume en español para los invitados. Entregue a cada invitado el banco de preguntas (pantalla) o pídales que lo fotografíen.',
+    html: () => `<div class="kicker">How to visit the Chronos Archive · Cómo visitar el archivo</div>
+    <div class="st8 g8">${GUEST8.map(([i, h, t]) => `<div><i>${i}</i><b>${h}</b><span>${t}</span></div>`).join('')}</div>
+    <div class="vq8"><b>Questions</b>${VISQ.map(t => `<span>${t}</span>`).join('')}</div>` },
+  { stop: 1, dense: true, host: ['magnifier', 'The <b>Archive Vault</b>.'],
+    help: 'La Archive Vault es una segunda oportunidad para los criterios de C1 a C7 que todavía no has alcanzado. Tu profe te dice cuáles (máximo dos). Haz cada tarea en tu pasaporte mientras visitas, con el título «ARCHIVE VAULT · C…». Si no tienes criterios pendientes, solo visitas y haces preguntas.',
+    note: 'The Vault (5 min). Diga a cada agente, en privado, sus criterios (máximo dos de C1–C7; la recuperación por evidencia 3 es la única del periodo y su resultado es definitivo). Las tareas se hacen durante los turnos, como visitantes, en el cuaderno. Recoja los cuadernos de la Vault al final o revíselos en el Restoration Shift (lun 22).',
+    html: () => `<div class="kicker">The Archive Vault · a second chance for C1–C7 · max two criteria · in your passport</div>
+    <div class="va8">${VAULT8.map(([c, h, t]) => `<div><b>${c}</b><strong>${h}</strong><span>${t}</span></div>`).join('')}</div>` },
+  shiftSlide9(2, 0),
+  shiftSlide9(3, 1),
+  { stop: 4, dense: true, host: ['cheer', 'The Archive is <b>complete</b>!'],
+    help: 'Cerramos el archivo. Cada agente y cada invitado escribe una línea en el libro de visitas. Quien hace la tarea C7 de la Vault escribe allí su argumento de 60 a 80 palabras.',
+    note: () => `Guestbook (2 min) y cierre. Agradezca a los invitados. Próximo: Restoration Shift (lun 22 feb): mensaje en vivo de 90 s para C8/C9 no alcanzados y reescritura supervisada de la carta para C10. Revise la cuadrícula: ¿quedó alguien sin observar? Ese agente presenta en el Restoration Shift.`,
+    html: () => `<div class="kicker">The guestbook · by the door · one line each</div>
+    <div class="cframe"><ol>${GUESTBOOK.map(t => `<li>${t}</li>`).join('')}</ol></div>
+    <div class="info">The Chronos Archive is now <b>complete</b>. Your messages will travel to the Museum of the Future of 7C, 7D and 7E.</div>
+    <button type="button" class="endbtn" data-tomap="1">☰ Back to the cycle map</button>` },
+  ] };
+
 const LESSONS = {
   map: { stops: [], era: '2126', scene: { '-1': 'f-hq' }, arrive: {}, plaque: 'Harry Bailly · Mission Control, 2126', slides: [
     { stop: -1, era: '2126', scene: 'f-hq', host: ['wave', () => course ? 'Choose your class, curators!' : 'Greetings, agents! First, choose your course.'],
@@ -2476,6 +2576,8 @@ const LESSONS = {
   c2_7C: C2J,
   c2_7E: C2J,
   c2i: C2I,
+  c3r: C3R,
+  c3i: C3I,
 };
 // ---------- engine
 let L = 'map', i = 0, tick = null, AC = null, ANIM = true, lastStop = -2;
