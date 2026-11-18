@@ -1493,6 +1493,17 @@ body.era-2126 .exit2 p { font-family: var(--f-body); font-size: 3.2vh; line-heig
 .st8.or8 i { font-family: var(--f-caps); font-size: 3.6vh; color: #6d3fd6; }
 .jr7.sm { margin-bottom: .8vh; } .jr7.sm i { font-size: 3.4vh; } .jr7.sm b { font-size: 2.3vh; } .jr7.sm > div { padding: .7vh .8vw; }
 
+/* ---- Cycle 8 · Class 2 (18 nov) */
+.pf8 { display: grid; grid-template-columns: repeat(3, 1fr); gap: .8vh .8vw; } .pf8 > div { position: relative; background: var(--note); border: .25vh solid var(--gold); border-radius: 1.2vh; padding: .9vh .8vw .9vh 4.6vh; display: flex; flex-direction: column; gap: .3vh; }
+.pf8 i { position: absolute; left: .7vw; top: 1vh; width: 3.2vh; height: 3.2vh; border-radius: 50%; background: #6d3fd6; color: #fff; display: grid; place-items: center; font-style: normal; font-family: var(--f-caps); font-size: 1.9vh; }
+.pf8 b { font-family: var(--f-caps); font-size: 2.1vh; color: var(--navy); } .pf8 span { font-family: var(--f-body); font-size: 2vh; line-height: 1.3; font-style: italic; } .pf8 small { font-size: 1.6vh; color: #6d3fd6; }
+.pp8 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; border: .3vh solid var(--navy); border-radius: 1vh; overflow: hidden; margin-bottom: 1.2vh; } .pp8 span { background: var(--navy); color: #f2d48a; font-family: var(--f-caps); font-size: 1.85vh; padding: 1vh .6vw; text-align: center; border-right: .2vh solid #2c4d6d; }
+.pp8::after { content: ''; grid-column: 1 / -1; height: 9vh; background: repeating-linear-gradient(#fff 0 3vh, #c9d4df 3vh calc(3vh + 1px)); }
+.vq8 { display: flex; flex-wrap: wrap; gap: .6vh .6vw; align-items: center; } .vq8 b { font-family: var(--f-caps); font-size: 2vh; color: var(--navy); margin-right: .4vw; } .vq8 span { background: #fff; border: .2vh solid var(--line); border-radius: 2vh; padding: .5vh .9vw; font-family: var(--f-body); font-size: 1.95vh; }
+.cframe.sm8 ol { font-size: 1.9vh; } .cframe.sm8 { margin-top: 1vh; }
+.ob8 { display: grid; grid-template-columns: repeat(6, 1fr); gap: .5vh .4vw; } .ob8 button { font: inherit; font-family: var(--f-caps); font-size: 2.2vh; padding: .7vh 0; border-radius: .9vh; border: .2vh solid var(--line); background: #fff; color: var(--navy); cursor: pointer; }
+.ob8 button.on { background: #1ba6c4; color: #fff; border-color: #1ba6c4; } .ob8 small { grid-column: 1 / -1; text-align: right; font-size: 1.7vh; color: var(--muted); }
+
 </style>
 </head>
 <body class="era-rome">
@@ -2173,6 +2184,25 @@ const INSTALL = [['herald', 'Herald', 'the welcome sign + the 30-second welcome'
 const WELCOME30 = ['Welcome to Room …, «…», where messages from … travel to the future.', 'Our question today is: … ?', 'Here you will meet … and … (personas) and the bug #… .', 'Watch the messages and ask our curators two questions. Enjoy the Archive!'];
 const PRACTICE8 = [[1, 3], [2, 5], [4, 6]];
 const OPENRULES = [['½', 'Half of each room curates, half visits', 'swap at minute 25'], ['30 s', 'Curator: a live introduction', 'then the visitors watch your video'], ['❓❓', 'Two questions per curator', 'you answer them live (C9)'], ['🛂', 'Visitors fill in the Visitor Passport', 'one stamp per room'], ['👀', 'Your teacher observes every curator', 'with the C8 · C9 rubric']];
+// ---------- Cycle 8 · Class 2 · 7C–7E · Placard Drafting by Power (C10)
+const PFRAME = [
+  ['Title', 'THE …, 2126.', 'a name for the bug in the future'],
+  ['Where it was born', '…, which was first … in 1380 / 44 BC, was used to …', 'relative clause + passive'],
+  ['The bug', 'This is the … bug: …', 'a clear definition, in simple words'],
+  ['The message from the past', 'As … of … told us in the Chronos Archive, …', 'reported speech · 7A or 7B'],
+  ['The future', 'In 2126, … will be … . If people …, they would / should …', 'a prediction + advice'],
+  ['Sources', 'Sources: … ; a message from 7A / 7B.', 'at least two']];
+const PSTART = [
+  ['herald', 'Herald', 'the welcome placard', 'Welcome to Room …! Our question is: … ? Here you will discover how …'],
+  ['timekeeper', 'Timekeeper', 'the timeline panel', 'By 2126, AI sellers will … · If people checked the source, they wouldn\'t …'],
+  ['decoder', 'Decoder', 'the bug definition + 2126 glossary', '… is a logic bug that … · In 2126, a «…» is a …'],
+  ['chronicler', 'Chronicler', 'the catalogue entry · 120–150 words', 'This room shows … . First, … . Then, … . Finally, …']];
+const CONF10 = ['75–100 words (Chronicler 120–150)', 'the bug is named and defined', 'two sources inside the text — one from 7A or 7B', 'passive voice + a prediction', 'it is clear for a visitor of 2126'];
+// ---------- Cycle 8 · Class 2 · 7A–7B · ARCHIVE OPEN I (term test · C8 · C9)
+const SHIFTS8 = [['Shift 1', 'Heralds + Timekeepers curate', 'Decoders + Chroniclers visit'], ['Shift 2', 'Decoders + Chroniclers curate', 'Heralds + Timekeepers visit']];
+const PASSPORT8 = ['Room · curator\'s persona · year', 'The bug: #… …', 'My question: … ?', 'Was the opinion clear? ✔ / ✘', 'Curator\'s initials ★'];
+const VISQ = ['Why did you trust / not trust …?', 'What was the evidence?', 'How will this bug look in 2126?', 'What would you say to the people of 2126?', 'Would you change your opinion if … ?', 'Which source helped you most?'];
+const OPENTX = ['Curators, this is Mission Control. Today, <b>the Chronos Archive opens</b>.', 'Your messages travel from 1380, 44 BC, 1599 and 1604 to the people of 2126 — and to 7C, 7D and 7E, who will open their Museum in March.', 'Speak clearly, keep your opinion, and answer like a true voice from the past. <b>The Archive is open!</b>'];
 const TITLES8 = () => isImm()
   ? [['c1', 'Class 1', 'Archive Installation'], ['c2', 'Class 2', 'ARCHIVE OPEN I · Messages to the Future'], ['c3', 'Class 3', 'ARCHIVE OPEN II · Guests & Archive Vault'], ['c4', 'Class 4', 'Restoration Shift'], ['c5', 'Class 5', 'PAUSE · Timeline Stabilized']]
   : [['c1', 'Class 1', ['7C', '7E'].includes(course) ? 'Jump to 2126 & Curators\' Brief' : 'Curators\' Brief'], ['c2', 'Class 2', 'Placard Drafting by Power'], ['c3', 'Class 3', 'Peer Review Clinic'], ['c4', 'Class 4', 'Logic Simulator Workshop'], ['c5', 'Class 5', 'Tour Script Lab']];
@@ -2329,6 +2359,104 @@ const C1I = { stops: ['The rooms', 'Your stand', 'Install', 'Welcome', 'Ready?']
     <button type="button" class="endbtn" data-tomap="1">☰ Back to the cycle map</button>` },
   ] };
 
+// ======================================================================
+// Class 2 · 7C–7E · Placard Drafting by Power (C10) · fixed crews
+const draftSlides = (st, mins) => [
+  { stop: st, era: '2126', dense: true, host: ['write', 'The placard <b>frame</b>.'],
+    help: 'Tu ficha sigue este marco de seis partes. Cada parte tiene una frase de inicio y lo que debe tener (por ejemplo, la voz pasiva o el estilo indirecto). Copia el marco en el cuaderno antes de escribir.',
+    note: 'The frame (5 min). Lea las seis partes con un ejemplo oral del bug #12 (la ficha modelo). Insista en la parte 4: la cita del mensaje del pasado en estilo indirecto, con el nombre de la persona y su época («As a Roman citizen of 44 BC told us in the Chronos Archive, …»).',
+    html: () => `<div class="kicker">The placard frame · six parts · copy it in your notebook</div>
+    <div class="pf8">${PFRAME.map(([h, s, t], k) => `<div><i>${k + 1}</i><b>${h}</b><span>${s}</span><small>${t}</small></div>`).join('')}</div>` },
+  { stop: st, era: '2126', dense: true, host: ['point', 'Your placard is your <b>power</b>.'],
+    help: 'Tu ficha también es la pieza de tu poder en la sala. Mira la frase de inicio de tu poder. El Chronicler escribe la entrada de catálogo (120 a 150 palabras); los demás, 75 a 100.',
+    note: 'Your power (3 min). Cada agente ubica su poder y copia su frase de inicio. Recuerde: todos escriben una ficha individual de C10; el tipo de ficha cambia con el poder.',
+    html: () => `<div class="kicker">Placard drafting by power · find your power</div>
+    <div class="pc7">${PSTART.map(([k, n, t, s]) => `<div><img src="${IMG.emb[k]}" alt=""><b>${n} · ${t}</b><span>${s}</span></div>`).join('')}</div>` },
+  { stop: st + 1, era: '2126', dense: true, host: ['write', 'Write your <b>placard</b>, curator.'],
+    help: 'Escribe tu ficha sola o solo, en el cuaderno, con el marco, tus fuentes y la lista de 7 puntos. Mientras escribes, tu profe te llama 2 minutos para revisarla contigo. Cuenta las palabras al final.',
+    note: () => `Draft + conferences (${mins} min, reloj). Escritura individual. Usted hace conferencias de 2 minutos con la lista de C10 (pantalla) por número de lista; hoy alcanzan unas ${Math.floor(mins / 2.5)}: empiece por quien más lo necesita y anote a quién vio; el resto en el Peer Review Clinic (Clase 3). Ajustes PIAR (7D): ficha de 50–70 palabras con título, definición, ejemplo y fuente, con el marco impreso en el cuaderno por usted o por un compañero; avísele el tiempo restante.`,
+    html: () => `<div class="kicker">Draft · individual · then count your words</div>
+    <div class="up7"><div class="cframe"><b>Teacher conference · 2 minutes · C10</b><ol>${CONF10.map(t => `<li>${t}</li>`).join('')}</ol></div>${timer([['Draft', (mins - 3) * 60], ['Count + check', 180]])}</div>` },
+  { stop: st + 2, era: '2126', dense: true, host: ['magnifier', 'Check it with the <b>list</b>.'],
+    help: 'Revisa tu ficha con la lista de 7 puntos: subraya la voz pasiva, encierra el estilo indirecto y escribe el número de palabras al final. Si falta algo, añádelo ahora.',
+    note: 'Self-check (4 min). Cada agente marca los 7 puntos en su borrador. La ficha no se entrega hoy: la Clase 3 es el Peer Review Clinic y se guardan las dos versiones para el portafolio.',
+    html: () => `<div class="kicker">Self-check · the placard checklist</div>${pk8()}` },
+];
+const C2R = { stops: ['The frame', 'Draft', 'Check', 'Next'], era: '2126', plaque: 'Harry Bailly · Mission Control, 2126',
+  scene: { '-1': 'f-museum', 0: 'f-museum', 1: 'f-archive', 2: 'f-museum', 3: 'f-hq' },
+  arrive: { 0: ['2126 · The Museum of the Future', 'The Placard Frame', 'Six parts · your power'], 1: ['2126 · The Chronos Archive', 'Draft', 'Your placard, your voice'], 2: ['2126 · The Restoration Lab', 'Check It', 'Seven points'], 3: ['2126 · Mission Control', 'Next: Peer Review', 'Two stars and a wish'] },
+  slides: [
+  { stop: -1, host: ['present', 'Today you write your <b>placard</b>.'],
+    help: 'Hoy escribes tu ficha individual del museo, de 75 a 100 palabras: es la evidencia escrita de C10. Usa el marco, tus fuentes (una debe ser un mensaje de 7°A o 7°B) y la lista de 7 puntos.',
+    note: () => `Objetivo (2 min). En español: Placard Drafting by Power (C10). Siéntelos por equipos de sala. Reparta las Source Cards (ya con el mensaje de 7A–7B pegado). ${crewNote()}`,
+    html: () => `${brand7()}<div class="kicker">Cycle 8 · Curators of 2126 · Class 2 · Placard Drafting by Power</div><h1>Today, curators, you will write your placard — for the people of 2126.</h1>
+    <div class="goals"><span><b>C10</b> your placard · 75–100 words</span><span><b>📼</b> a message from 7A or 7B</span><span><b>🗣️</b> a 2-minute conference</span></div>` },
+  ...draftSlides(0, 25),
+  { stop: 3, era: '2126', host: ['cheer', 'Next: <b>Peer Review</b>!'],
+    help: 'La próxima clase revisan las fichas entre poderes: los Timekeepers revisan los verbos, los Decoders el vocabulario, los Chroniclers los conectores y las fuentes, y los Heralds las leen en voz alta. Trae tu borrador.',
+    note: () => `Cierre (2 min). Recoja las Source Cards. Próxima clase: Peer Review Clinic (${course === '7E' ? 'jue 18 feb' : 'vie 19 feb'}). Anote a quién le hizo conferencia.`,
+    html: () => `<div class="kicker">Class 2 complete</div><h1>Next class: two stars and a wish — the Peer Review Clinic.</h1>
+    <button type="button" class="endbtn" data-tomap="1">☰ Back to the cycle map</button>` },
+  ] };
+// 7C · 7E: the source pack and «What's missing?» from Class 1 come first (decision of 18 nov), then a shorter draft
+const C2J = { stops: ['Sources', 'The frame', 'Draft', 'Check', 'Next'], era: '2126', plaque: 'Harry Bailly · Mission Control, 2126',
+  scene: { '-1': 'f-museum', 0: 'f-archive', 1: 'f-museum', 2: 'f-archive', 3: 'f-museum', 4: 'f-hq' },
+  arrive: { 0: ['2126 · The Chronos Archive', 'The Source Pack', 'Five kinds of sources'], 1: ['2126 · The Museum of the Future', 'The Placard Frame', 'Six parts · your power'], 2: ['2126 · The Chronos Archive', 'Draft', 'Your placard, your voice'], 3: ['2126 · The Restoration Lab', 'Check It', 'Seven points'], 4: ['2126 · Mission Control', 'Next: Peer Review', 'Two stars and a wish'] },
+  slides: [
+  { stop: -1, host: ['present', 'Today you write your <b>placard</b>.'],
+    help: 'Hoy recibes las fuentes de tu sala y escribes tu ficha individual del museo, de 75 a 100 palabras: es la evidencia escrita de C10.',
+    note: () => `Objetivo (2 min). En español: Placard Drafting by Power (C10), con el Source Pack y «What's missing?» que no alcanzaron en la Clase 1 (decisión del docente, 18 nov): fuentes (8 min), ficha débil (5 min), marco (6 min), borrador con conferencias (20 min), revisión (4 min). ${crewNote()}`,
+    html: () => `${brand7()}<div class="kicker">Cycle 8 · Curators of 2126 · Class 2 · Placard Drafting by Power</div><h1>Today, curators, you will get your sources — and write your placard.</h1>
+    <div class="goals"><span><b>📜</b> your room's sources</span><span><b>C10</b> your placard · 75–100 words</span><span><b>🗣️</b> a 2-minute conference</span></div>` },
+  Object.assign({}, C1R.slides[3], { stop: 0 }),
+  Object.assign({}, C1R.slides[2], { stop: 0, note: 'What\'s missing? (5 min). En equipo, con la lista de la Clase 1: escriben lo que le falta a «The Crying Robot» (3 min) y luego «Show the curator\'s notes». +5 XP a quien encuentre el bug escondido (#7).' }),
+  ...draftSlides(1, 20),
+  { stop: 4, era: '2126', host: ['cheer', 'Next: <b>Peer Review</b>!'],
+    help: 'La próxima clase revisan las fichas entre poderes. Trae tu borrador y tu Source Log.',
+    note: () => `Cierre (2 min). Recoja las Source Cards. Próxima clase: Peer Review Clinic (${course === '7E' ? 'jue 18 feb' : 'vie 19 feb'}). Anote a quién le hizo conferencia.`,
+    html: () => `<div class="kicker">Class 2 complete</div><h1>Next class: two stars and a wish — the Peer Review Clinic.</h1>
+    <button type="button" class="endbtn" data-tomap="1">☰ Back to the cycle map</button>` },
+  ] };
+
+// Class 2 · 7A–7B · ARCHIVE OPEN I · Messages to the Future (TERM TEST · C8 · C9)
+const obsGrid = () => `<div class="ob8" id="ob8" data-n="${ROSTER[course] || 24}"></div>`;
+const shiftSlide = (st, k) => ({ stop: st, dense: true, host: [k ? 'listen' : 'tablet', `<b>${SHIFTS8[k][0]}</b>: curators, ready!`],
+  help: `${k ? 'Segundo turno' : 'Primer turno'}: ${k ? 'los Decoders y los Chroniclers atienden su puesto; los Heralds y los Timekeepers visitan' : 'los Heralds y los Timekeepers atienden su puesto; los Decoders y los Chroniclers visitan'}. Visitantes: en parejas, cambian de puesto cada 4 minutos y visitan las tres salas (no la suya). Curador: introducción de 30 segundos, video y dos preguntas.`,
+  note: `${SHIFTS8[k][0]} (${k ? 22 : 22} min · rondas de 4 min). Señal de cambio al final de cada ronda. Usted observa a cada curador al menos una vez con la rúbrica de C8 · C9 (las cinco jugadas, el bug explicado, la opinión clara y sostenida en las dos preguntas). Toque el número de lista del curador que ya observó (queda guardado en este computador para la Clase 3; solo números, sin nombres). Si el video no carga, el curador da su mensaje en vivo con su guion (cuenta igual).`,
+  html: () => `<div class="kicker">${SHIFTS8[k][0]} · ${SHIFTS8[k][1]} · ${SHIFTS8[k][2]}</div>
+  <div class="up7"><div>${timer([['Round 1', 240], ['Round 2', 240], ['Round 3', 240], ['Round 4', 240], ['Round 5', 240]])}<div class="cframe sm8"><b>Every visit · about 4 minutes</b><ol><li>Curator: 30-second live introduction</li><li>Visitors: watch the video</li><li>Visitors: ask <b>two questions</b> · curator: answer and keep your opinion</li><li>Passport: write it down · curator's initials ★</li></ol></div></div>
+  <div><p class="hint" style="margin:0 0 .6vh">Observed curators (list numbers · for the teacher)</p>${obsGrid()}</div></div>` });
+const C2I = { stops: ['Opening', 'Passport', 'Shift 1', 'Shift 2', 'Close'], era: '2126', plaque: 'Harry Bailly · Mission Control, 2126',
+  scene: { '-1': 'f-archive', 0: 'f-hq', 1: 'f-archive', 2: 'f-archive', 3: 'f-museum', 4: 'f-hq' },
+  arrive: { 0: ['2126 · Mission Control', 'The Archive Opens', 'The term test'], 1: ['2126 · The Chronos Archive', 'The Visitor Passport', 'Three rooms · questions'], 2: ['2126 · The Chronos Archive', 'Shift 1', 'Heralds + Timekeepers curate'], 3: ['2126 · The Chronos Archive', 'Shift 2', 'Decoders + Chroniclers curate'], 4: ['2126 · Mission Control', 'Archive Open II', 'Guests and the Vault'] },
+  slides: [
+  { stop: -1, host: ['present', 'Today the Archive <b>opens</b>.'],
+    help: 'Hoy es la prueba del periodo: Archive Open I. Atiendes tu puesto de curador durante un turno y visitas las otras salas durante el otro. Como curador presentas tu mensaje y respondes dos preguntas; como visitante llenas tu Visitor Passport.',
+    note: () => `Objetivo (2 min). En español: ARCHIVE OPEN I (prueba · C8 · C9; C10 es la carta ya entregada). Apertura (3 min), pasaporte (5 min), turno 1 (22 min), turno 2 (22 min, desde el minuto 27), cierre (3 min). Antes de clase: salas montadas, tabletas cargadas con los videos y la rúbrica de C8 · C9 en su tablilla. ${course === '7A' ? 'Archive Open II: vie 19 feb, 12:05.' : course === '7B' ? 'Archive Open II: jue 18 feb, 8:00.' : ''}`,
+    html: () => `${brand7()}<div class="kicker">Cycle 8 · The Chronos Archive · Class 2 · ARCHIVE OPEN I · term test</div><h1>Today, curators, the Chronos Archive opens to the future.</h1>
+    <div class="goals"><span><b>C8</b> your message, live</span><span><b>C9</b> two questions · keep your opinion</span><span><b>🛂</b> your Visitor Passport</span></div>` },
+  { stop: 0, host: ['tablet', 'Mission Control is <b>calling</b>.'],
+    help: 'Mission Control abre el archivo. Escucha cómo funciona: dos turnos, introducción de 30 segundos, el video y dos preguntas por curador.',
+    note: 'Opening (3 min). Lea la transmisión con tono solemne. Luego las reglas: los dos turnos (pantalla), cambio en el minuto 25 aprox., dos preguntas por curador.',
+    html: () => `<div class="kicker">Transmission · Mission Control · 2126</div>
+    <div class="tx6">${OPENTX.map(t => `<p>${t}</p>`).join('')}</div>
+    <div class="ma7">${SHIFTS8.map(([s, a, b]) => `<span><i>⏱</i><em><b>${s}</b> ${a} · ${b}</em></span>`).join('')}</div>` },
+  { stop: 1, dense: true, host: ['magnifier', 'Your <b>Visitor Passport</b>.'],
+    help: 'Dibuja tu Visitor Passport en el cuaderno: una fila por cada curador que visites, con la sala, el bug, tu pregunta, si la opinión fue clara y las iniciales del curador. Mira el banco de preguntas: cada visitante hace preguntas reales.',
+    note: 'Passport (5 min). Cada agente dibuja la tabla en el cuaderno (5 columnas, 5 filas). El banco de preguntas ayuda a los visitantes; los curadores ya prepararon sus dos preguntas esperadas. En Archive Open II los agentes con criterios pendientes de C1–C7 hacen la Archive Vault en el mismo pasaporte.',
+    html: () => `<div class="kicker">The Visitor Passport · in your notebook · one row per visit</div>
+    <div class="pp8">${PASSPORT8.map(t => `<span>${t}</span>`).join('')}</div>
+    <div class="vq8"><b>Question bank for visitors</b>${VISQ.map(t => `<span>${t}</span>`).join('')}</div>` },
+  shiftSlide(2, 0),
+  shiftSlide(3, 1),
+  { stop: 4, host: ['cheer', 'Well done, <b>curators</b>!'],
+    help: 'Cerramos el primer día del archivo. Escribe en tu pasaporte qué mensaje te sorprendió más y por qué. En Archive Open II llegan visitantes invitados y se abre la Archive Vault.',
+    note: () => `Cierre (3 min). Dos voluntarios leen qué mensaje los sorprendió. Mire la cuadrícula: los números sin marcar presentan primero en Archive Open II. Guarde las salas montadas si es posible. ${course === '7A' ? 'Archive Open II: vie 19 feb, 12:05.' : course === '7B' ? 'Archive Open II: jue 18 feb, 8:00.' : ''}`,
+    html: () => `<div class="kicker">Archive Open I complete</div><h1>Next: Archive Open II — guests from the present and the Archive Vault.</h1>
+    <div class="nb"><span>✎</span><span><b>In your passport:</b> «The message that surprised me most was … because …»</span></div>
+    <button type="button" class="endbtn" data-tomap="1">☰ Back to the cycle map</button>` },
+  ] };
+
 const LESSONS = {
   map: { stops: [], era: '2126', scene: { '-1': 'f-hq' }, arrive: {}, plaque: 'Harry Bailly · Mission Control, 2126', slides: [
     { stop: -1, era: '2126', scene: 'f-hq', host: ['wave', () => course ? 'Choose your class, curators!' : 'Greetings, agents! First, choose your course.'],
@@ -2344,6 +2472,10 @@ const LESSONS = {
   c1_7C: C1J,
   c1_7E: C1J,
   c1i: C1I,
+  c2r: C2R,
+  c2_7C: C2J,
+  c2_7E: C2J,
+  c2i: C2I,
 };
 // ---------- engine
 let L = 'map', i = 0, tick = null, AC = null, ANIM = true, lastStop = -2;
@@ -2512,6 +2644,11 @@ function mountWidgets() {
   // ---- Cycle 8 · Class 1 · the placard checklist (highlights the model) + What's missing?
   document.querySelectorAll('#fit .pkb').forEach(b => b.onclick = () => { const k = b.dataset.pk, on = !b.classList.contains('on'); document.querySelectorAll('#fit .pkb').forEach(x => x.classList.remove('on')); document.querySelectorAll('#mp8 [data-k]').forEach(x => x.classList.remove('hl')); if (on) { b.classList.add('on'); document.querySelectorAll('#mp8 [data-k="' + k + '"]').forEach(x => x.classList.add('hl')); chime(); } });
   if ($('wkShow')) $('wkShow').onclick = () => { $('wkBox').classList.toggle('show'); $('wkShow').textContent = $('wkBox').classList.contains('show') ? 'Hide the notes' : 'Show the curator\'s notes'; if ($('wkBox').classList.contains('show')) chime(); fitStage(); };
+  // ---- Cycle 8 · Class 2–3 (7A–7B) · observed curators (list numbers only, saved on this computer)
+  if ($('ob8')) { const n = +$('ob8').dataset.n || 24, K = 'chronos-obs8-' + course; let S = []; try { S = JSON.parse(localStorage.getItem(K) || '[]'); } catch (e) {}
+    const draw = () => { $('ob8').innerHTML = Array.from({ length: n }, (_, k) => `<button type="button" class="${S.includes(k + 1) ? 'on' : ''}" data-o="${k + 1}">${k + 1}</button>`).join('') + `<small>${S.length} / ${n} observed</small>`;
+      $('ob8').querySelectorAll('button').forEach(b => b.onclick = () => { const v = +b.dataset.o; S = S.includes(v) ? S.filter(x => x !== v) : [...S, v]; try { localStorage.setItem(K, JSON.stringify(S)); } catch (e) {} draw(); }); };
+    draw(); }
   document.querySelectorAll('#fit [data-tomap]').forEach(b => b.onclick = () => openLesson('map'));
   document.querySelectorAll('#fit [data-course]').forEach(b => b.onclick = () => { setCourse(b.dataset.course); startMusic(); render(); });
   document.querySelectorAll('#fit [data-lesson]').forEach(b => b.onclick = () => { if (!b.disabled) { startMusic(); openLesson(b.dataset.lesson); } });
