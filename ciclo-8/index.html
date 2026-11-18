@@ -1511,6 +1511,11 @@ body.era-2126 .exit2 p { font-family: var(--f-body); font-size: 3.2vh; line-heig
 .va8 b { position: absolute; left: .5vw; top: .8vh; font-family: var(--f-caps); font-size: 2vh; color: #fff; background: var(--navy); border-radius: .6vh; padding: .2vh .3vw; } .va8 strong { font-family: var(--f-caps); font-size: 1.9vh; color: var(--navy); } .va8 span { font-family: var(--f-body); font-size: 1.7vh; line-height: 1.28; }
 .st8.g8 { grid-template-columns: repeat(4, 1fr); }
 
+/* ---- Cycle 8 · Class 4 (18 nov) */
+.ad8 { display: grid; grid-template-columns: 1.6fr 1fr; gap: 1vw; align-items: start; margin-bottom: .8vh; } .ad8 video { width: 100%; border-radius: 1.2vh; border: .3vh solid var(--gold); background: #000; aspect-ratio: 16 / 9; }
+.adl8 { display: flex; flex-direction: column; gap: .7vh; } .adb { display: flex; align-items: center; gap: .8vw; background: #fff; border: .25vh solid var(--line); border-radius: 1.2vh; padding: .8vh .8vw; cursor: pointer; font: inherit; color: inherit; text-align: left; }
+.adb b { font-family: var(--f-caps); font-size: 3.4vh; color: #fff; background: #6d3fd6; border-radius: .9vh; width: 5.4vh; height: 5.4vh; display: grid; place-items: center; flex: none; } .adb span { font-family: var(--f-caps); font-size: 2.2vh; color: var(--navy); } .adb small { display: block; font-family: var(--f-body); font-size: 1.7vh; color: var(--muted); }
+.adb.on { border-color: #1ba6c4; box-shadow: 0 0 0 .3vh rgba(27, 166, 196, .35); } .adb.on b { background: #1ba6c4; }
 </style>
 </head>
 <body class="era-rome">
@@ -2557,6 +2562,103 @@ const C3I = { stops: ['Welcome', 'The Vault', 'Shift A', 'Shift B', 'Guestbook']
     <button type="button" class="endbtn" data-tomap="1">☰ Back to the cycle map</button>` },
   ] };
 
+// ---------- Cycle 8 · Class 4 · 7C–7E · Logic Simulator Workshop (C8) · «Ads from 2126» (images: ElevenLabs; clips: Operation Chronos)
+const ADS8 = [
+  ['A', 'Memory Crystal', 'an AI seller · hologram', 13, '«Someone as brilliant as you deserves it — smart people like you never say no.» Sweet words, no reasons: the seller wants your «yes».'],
+  ['B', 'NeoFeed · Free Gift', 'a feed post', 10, '«A free gift: a brand-new monthly fee.» Pretty words hide an ugly truth: it is a price, not a gift.'],
+  ['C', 'BrainBand', 'an advert to the crowd', 5, '«Ten million people can\'t be wrong — everybody is upgrading.» Popular is not the same as true.'],
+  ['D', 'SkyRail', 'a public announcement', 0, 'NO BUG: a clear claim (30 % faster), a source you can check (the City Transport Lab, 12 months) and an open report. It invites you to check and decide.']];
+const AD8SRC = k => [`ads-2126/ad${k}.mp4`, `https://operation-chronos.vercel.app/ciclo-8/ads-2126/ad${k}.mp4`];
+const SIMSPEC = [['🎮', '6–8 items', 'matching or a quiz (A · B · C)'], ['🛸', '2126 scenarios', 'an AI advert · a hologram speech · a feed post'], ['✅', 'one or two «no bug» items', 'with a checkable source'], ['🔍', 'use the Artifacts', 'the Decoder Lens · the Relic · the Scroll'], ['🃏', 'answers on the back', 'the bug + one sentence why']];
+const SIMROLES = [['decoder', 'Decoder', 'leads the design · chooses the bugs and checks every answer'], ['timekeeper', 'Timekeeper', 'writes the 2126 scenarios (will · might · If…, …would)'], ['chronicler', 'Chronicler', 'writes the answers and the «why» on the back'], ['herald', 'Herald', 'writes the instructions for visitors and reads every item aloud to test it']];
+const SIMITEM = ['Scenario · «In 2126, a … says: "…"»', 'Question · Bug or no bug? Which one?', 'Back of the card · the bug #… + why, in one sentence'];
+const SIMTEST = [['🔁', 'Swap', 'room n plays the simulator of room n + 1 (the last room plays room 1)'], ['⏱', '6 minutes', 'the visitors play; the Decoder of the room watches'], ['★✦', 'One star and one wish', 'written on a card for the other room'], ['🛠', '4 minutes', 'adjust your simulator']];
+// ---------- Cycle 8 · Class 4 · 7A–7B · Restoration Shift (recovery C8 · C9 · C10 · C1–C7)
+const RSTATIONS = [['🎤', 'Live re-take · C8 · C9', 'your message from the past, live, 90 seconds · the same rubric · two questions'], ['✉️', 'The letter · C10', 'supervised redraft of the Time Capsule Letter · 150–200 words'], ['🔐', 'The Vault · C1–C7', 'finish your pending Archive Vault task'], ['🛰️', 'The future audience', 'everybody else: questions for the re-takes + the guestbook']];
+const RETAKE8 = ['Who are you? · persona · year · place', 'What happened? · the scene from your time', 'The bug: #… and why it fooled people', 'Your opinion · «I think … because …»', 'Your message for 2126 · «If people …, they would …»'];
+const LETTER8 = ['150–200 words · count them', 'introduction · argument · conclusion', 'the three sources inside the text', 'a clear opinion with a reason and evidence', 'your name and list number at the top'];
+// ======================================================================
+// Class 4 · 7C–7E · Logic Simulator Workshop (C8) · fixed crews
+const C4R = { stops: ['Ads from 2126', 'Your simulator', 'Build', 'Test', 'Next'], era: '2126', plaque: 'Harry Bailly · Mission Control, 2126',
+  scene: { '-1': 'f-feed', 0: 'f-feed', 1: 'f-museum', 2: 'f-archive', 3: 'f-museum', 4: 'f-hq' },
+  arrive: { 0: ['2126 · The feed', 'Ads from 2126', 'Bug or no bug?'], 1: ['2126 · The Museum of the Future', 'Your Logic Simulator', '6–8 items'], 2: ['2126 · The Restoration Lab', 'Build It', 'Cards and answers'], 3: ['2126 · The Museum wing', 'Test It', 'Swap with another room'], 4: ['2126 · Mission Control', 'Next: the Tour', 'Eight minutes, four guides'] },
+  slides: [
+  { stop: -1, host: ['present', 'Curators, the bugs have <b>mutated</b>.'],
+    help: 'Hoy cada sala construye su Logic Simulator 2126: un juego de 6 a 8 casos del futuro en el que los visitantes descubren el bug escondido. Primero vemos cuatro anuncios de 2126 y decidimos: ¿hay bug o no hay bug?',
+    note: () => `Objetivo (2 min). En español: Logic Simulator Workshop (C8). Cuatro anuncios de 2126 (10 min), el diseño del simulador (6 min), la construcción en tarjetas (18 min), la prueba con otra sala (10 min) y el cierre (4 min). Materiales: hojas de cuaderno cortadas en tarjetas o fichas bibliográficas que traigan los agentes. ${crewNote()}`,
+    html: () => `${brand7()}<div class="kicker">Cycle 8 · Curators of 2126 · Class 4 · Logic Simulator Workshop</div><h1>Today, curators, you will build a game that trains the people of 2126 to find the bugs.</h1>
+    <div class="goals"><span><b>C8</b> bug or no bug — and why</span><span><b>🎮</b> your room's Logic Simulator</span><span><b>🔁</b> test it with another room</span></div>` },
+  { stop: 0, dense: true, host: ['magnifier', 'Four <b>ads</b> from 2126.'],
+    help: 'Mira cada anuncio (A, B, C y D). En el cuaderno escribe A–D y, para cada uno, «bug» o «no bug». Si hay bug, escribe su número y por qué. ¡Cuidado: uno de los cuatro no tiene bug! Son anuncios inventados para la clase.',
+    note: 'Ads from 2126 (10 min). Toque A, B, C y D en orden; cada clip dura 12–14 s (la música se pausa sola). Los equipos responden en el cuaderno: bug o no bug, número y por qué (1 min por anuncio). Luego «Show the answers». Clave: A #13 Flattery · B #10 Doublespeak · C #5 Everybody\'s doing it · D sin bug (fuente verificable y reporte abierto). Diga que son anuncios ficticios hechos para la clase: en 2126 (y hoy) los anuncios reales pueden ser generados por IA. +5 XP al poder de quien explique bien el D.',
+    html: () => `<div class="kicker">Ads from 2126 · fictional · bug or no bug?</div>
+    <div class="ad8"><video id="adv8" controls playsinline preload="metadata">${AD8SRC(1).map(s => `<source src="${s}" type="video/mp4">`).join('')}</video>
+    <div class="adl8">${ADS8.map(([k, n, t]) => `<button type="button" class="adb${k === 'A' ? ' on' : ''}" data-ad="${'ABCD'.indexOf(k) + 1}"><b>${k}</b><span>${n}<small>${t}</small></span></button>`).join('')}</div></div>
+    <div class="revealbar"><button type="button" class="tbtn" id="adKey">Show the answers</button></div><div class="tl7" id="adKeyBox"><ol>${ADS8.map(([k, n, , b, w]) => `<li><b>${k} · ${n}:</b> ${b ? '#' + b + ' ' + BUGLIST13[b - 1] + ' — ' : ''}${w}</li>`).join('')}</ol></div>
+    ${nb('write <b>A–D</b>: bug or no bug · the bug number · why.')}` },
+  { stop: 1, dense: true, host: ['point', 'Your room\'s <b>simulator</b>.'],
+    help: 'El simulador de tu sala tiene 6 a 8 casos de 2126 (un anuncio con IA, un discurso en holograma, una publicación) en forma de quiz o de emparejar. Uno o dos casos no tienen bug. El Decoder dirige; cada poder tiene una tarea.',
+    note: 'Your simulator (6 min). Lea las cinco reglas y los cuatro roles. El simulador es la pieza del Decoder (Role Power de la Evidencia 3), pero lo construye todo el equipo. Los casos deben conectar con el bug de la sala y también incluir otros bugs, para que el visitante tenga que pensar.',
+    html: () => `<div class="kicker">The Logic Simulator 2126 · the rules · the roles</div>
+    <div class="st8">${SIMSPEC.map(([i, h, t]) => `<div><i>${i}</i><b>${h}</b><span>${t}</span></div>`).join('')}</div>
+    <div class="pc7">${SIMROLES.map(([k, n, t]) => `<div><img src="${IMG.emb[k]}" alt=""><b>${n}</b><span>${t}</span></div>`).join('')}</div>` },
+  { stop: 2, dense: true, host: ['write', 'Build the <b>cards</b>.'],
+    help: 'Construyan las tarjetas del simulador: en el frente, el caso de 2126 y la pregunta; atrás, la respuesta con el número del bug y una frase de por qué. Mientras escriben, el Herald lee cada tarjeta en voz alta para ver si se entiende.',
+    note: 'Build (18 min, reloj). Pase por las salas: cada tarjeta tiene un escenario de 2126 en una o dos frases, la pregunta y la respuesta atrás. Revise que haya uno o dos casos sin bug con una fuente que se pueda verificar. El Decoder revisa todas las respuestas antes de la prueba.',
+    html: () => `<div class="kicker">Build your simulator · one card per item · front and back</div>
+    <div class="up7"><div class="cframe"><b>Every card</b><ol>${SIMITEM.map(t => `<li>${t}</li>`).join('')}</ol></div>${timer([['Build', 900], ['Decoder check', 180]])}</div>` },
+  { stop: 3, dense: true, host: ['listen', 'Test it on <b>another room</b>.'],
+    help: 'Prueben el simulador con otra sala: tu sala juega el simulador de la sala siguiente durante 6 minutos y le deja una estrella y un deseo. Luego tienen 4 minutos para ajustar el suyo.',
+    note: 'Test (10 min, reloj). Sala n juega el simulador de la sala n + 1 (la última juega el de la 1). El Decoder de la sala anfitriona observa y anota qué casos fallaron. Una estrella y un deseo en una tarjeta. Ajuste de 4 min.',
+    html: () => `<div class="kicker">Test · swap · adjust</div>
+    <div class="st8 g8">${SIMTEST.map(([i, h, t]) => `<div><i>${i}</i><b>${h}</b><span>${t}</span></div>`).join('')}</div>
+    ${timer([['Play', 360], ['Adjust', 240]])}` },
+  { stop: 4, host: ['cheer', 'Next: the <b>tour</b>!'],
+    help: 'La próxima clase el Herald dirige el guion del recorrido de 8 minutos de la sala: 2 minutos por agente. Guarden las tarjetas del simulador con el número de la sala.',
+    note: () => `Cierre (4 min). Las tarjetas se guardan en un sobre o carpeta con el número de la sala. Próxima clase: Tour Script Lab (mar 23 feb): recorrido de 8 minutos con tarjetas de transición y tarjetas de «visitante difícil».`,
+    html: () => `<div class="kicker">Class 4 complete</div><h1>Next class: the 8-minute tour of your room — two minutes each.</h1>
+    <button type="button" class="endbtn" data-tomap="1">☰ Back to the cycle map</button>` },
+  ] };
+
+// Class 4 · 7A–7B · Restoration Shift (recovery · C8 · C9 · C10 · C1–C7)
+const C4I = { stops: ['The shift', 'Live re-take', 'The letter', 'The Vault', 'Close'], era: '2126', plaque: 'Harry Bailly · Mission Control, 2126',
+  scene: { '-1': 'f-hq', 0: 'f-hq', 1: 'f-archive', 2: 'f-archive', 3: 'f-museum', 4: 'f-hq' },
+  arrive: { 0: ['2126 · Mission Control', 'The Restoration Shift', 'A last chance'], 1: ['2126 · The Chronos Archive', 'Live Re-take', 'Ninety seconds'], 2: ['2126 · The Restoration Lab', 'The Letter', 'Redraft it'], 3: ['2126 · The Archive Vault', 'The Vault', 'Finish it'], 4: ['2126 · Mission Control', 'Next: the PAUSE', 'Timeline stabilized'] },
+  slides: [
+  { stop: -1, host: ['present', 'The <b>Restoration Shift</b> begins.'],
+    help: 'Hoy es la última oportunidad para los criterios que todavía no alcanzaste en la Evidencia 3 o en la Vault. Tu profe te dice en qué estación trabajas: el mensaje en vivo (C8 · C9), la carta (C10) o la Vault (C1–C7). Si ya alcanzaste todo, eres el público del futuro.',
+    note: () => `Objetivo (2 min). En español: Restoration Shift (recuperación de C8 · C9 · C10 y de C1–C7 pendientes de la Vault). Antes de clase: lista de quién va a cada estación (Registro Chronos; máximo dos criterios recuperados por agente en la Evidencia 3; el resultado es definitivo). Orden sugerido: re-takes en vivo al frente con el público (25 min), mientras tanto la carta y la Vault en las mesas del fondo.`,
+    html: () => `${brand7()}<div class="kicker">Cycle 8 · The Chronos Archive · Class 4 · Restoration Shift</div><h1>Today, agents, the timeline gets its last repairs.</h1>
+    <div class="goals"><span><b>C8 · C9</b> live re-take</span><span><b>C10</b> the letter</span><span><b>C1–C7</b> the Vault</span></div>` },
+  { stop: 0, dense: true, host: ['map', 'Four <b>stations</b>.'],
+    help: 'Busca tu estación. Si haces el mensaje en vivo, prepáralo con el marco de cinco partes. Si haces la carta, ve a las mesas del fondo. Si terminas la Vault, trabaja en tu pasaporte. Los demás son el público del futuro: preparan preguntas y escriben en el libro de visitas.',
+    note: 'The stations (3 min). Diga a cada agente su estación en privado. El público del futuro (quienes ya alcanzaron todo) prepara dos preguntas por re-take con el banco de preguntas y luego cierra el libro de visitas.',
+    html: () => `<div class="kicker">The Restoration Shift · four stations</div>
+    <div class="st8 g8">${RSTATIONS.map(([i, h, t]) => `<div><i>${i}</i><b>${h}</b><span>${t}</span></div>`).join('')}</div>` },
+  { stop: 1, dense: true, host: ['listen', 'Live: your message from the <b>past</b>.'],
+    help: 'El mensaje en vivo dura 90 segundos y sigue estas cinco partes. Después responde dos preguntas del público sin cambiar tu opinión. Se califica con la misma rúbrica de C8 y C9.',
+    note: 'Live re-take (25 min). Cada agente: 2 min para repasar su guion, 90 s en vivo (reloj) y dos preguntas del público (C9). Use la misma rúbrica de C8 · C9; marque abajo el número de lista de quien ya hizo el re-take (queda guardado en este computador). Sin disfraz no hay problema: el objeto o el disfraz no se califica.',
+    html: () => `<div class="kicker">Live re-take · 90 seconds · then two questions</div>
+    <div class="up7"><div><div class="cframe sm8"><ol>${RETAKE8.map(t => `<li>${t}</li>`).join('')}</ol></div>${timer([['Live message', 90], ['Two questions', 90]])}</div>
+    <div><p class="hint" style="margin:0 0 .6vh">Re-takes done (list numbers · for the teacher)</p><div class="ob8" id="ob8" data-n="${ROSTER[course] || 24}" data-key="rt8"></div></div></div>` },
+  { stop: 2, dense: true, host: ['write', 'Redraft your <b>letter</b>.'],
+    help: 'Si tu estación es la carta, reescríbela con esta lista, con tu primera carta y tus comentarios a la vista. Entrégala al final de la clase, en una hoja suelta con tu nombre.',
+    note: 'The letter (en paralelo, 30 min). Reescritura supervisada de la Time Capsule Letter para C10 en las mesas del fondo: la primera carta con sus comentarios a la vista, la lista de cinco puntos y su apoyo. Se entrega al final en hoja suelta.',
+    html: () => `<div class="kicker">The Time Capsule Letter · redraft · C10</div>
+    <div class="cframe"><ol>${LETTER8.map(t => `<li>${t}</li>`).join('')}</ol></div>` },
+  { stop: 3, dense: true, host: ['magnifier', 'Finish the <b>Vault</b>.'],
+    help: 'Si tienes una tarea pendiente de la Archive Vault, termínala hoy en tu pasaporte. Son las mismas tareas de Archive Open II.',
+    note: 'The Vault (en paralelo). Las mismas tareas de Archive Open II; recoja los cuadernos al final.',
+    html: () => `<div class="kicker">The Archive Vault · finish your task · C1–C7</div>
+    <div class="va8">${VAULT8.map(([c, h, t]) => `<div><b>${c}</b><strong>${h}</strong><span>${t}</span></div>`).join('')}</div>` },
+  { stop: 4, host: ['cheer', 'The timeline is <b>almost stable</b>!'],
+    help: 'Cerramos el turno de restauración. El público del futuro termina el libro de visitas. La próxima clase es la PAUSA: el Meter llega al 100 %.',
+    note: () => `Cierre (3 min). Recoja las cartas y los cuadernos de la Vault. Registre los re-takes en el Registro Chronos. Próxima clase: PAUSE · Timeline Stabilized (mar 23 feb), la última del periodo.`,
+    html: () => `<div class="kicker">Restoration Shift complete</div><h1>Next class: the PAUSE — the timeline is stabilized.</h1>
+    <div class="cframe"><ol>${GUESTBOOK.map(t => `<li>${t}</li>`).join('')}</ol></div>
+    <button type="button" class="endbtn" data-tomap="1">☰ Back to the cycle map</button>` },
+  ] };
+
 const LESSONS = {
   map: { stops: [], era: '2126', scene: { '-1': 'f-hq' }, arrive: {}, plaque: 'Harry Bailly · Mission Control, 2126', slides: [
     { stop: -1, era: '2126', scene: 'f-hq', host: ['wave', () => course ? 'Choose your class, curators!' : 'Greetings, agents! First, choose your course.'],
@@ -2578,6 +2680,8 @@ const LESSONS = {
   c2i: C2I,
   c3r: C3R,
   c3i: C3I,
+  c4r: C4R,
+  c4i: C4I,
 };
 // ---------- engine
 let L = 'map', i = 0, tick = null, AC = null, ANIM = true, lastStop = -2;
@@ -2747,10 +2851,17 @@ function mountWidgets() {
   document.querySelectorAll('#fit .pkb').forEach(b => b.onclick = () => { const k = b.dataset.pk, on = !b.classList.contains('on'); document.querySelectorAll('#fit .pkb').forEach(x => x.classList.remove('on')); document.querySelectorAll('#mp8 [data-k]').forEach(x => x.classList.remove('hl')); if (on) { b.classList.add('on'); document.querySelectorAll('#mp8 [data-k="' + k + '"]').forEach(x => x.classList.add('hl')); chime(); } });
   if ($('wkShow')) $('wkShow').onclick = () => { $('wkBox').classList.toggle('show'); $('wkShow').textContent = $('wkBox').classList.contains('show') ? 'Hide the notes' : 'Show the curator\'s notes'; if ($('wkBox').classList.contains('show')) chime(); fitStage(); };
   // ---- Cycle 8 · Class 2–3 (7A–7B) · observed curators (list numbers only, saved on this computer)
-  if ($('ob8')) { const n = +$('ob8').dataset.n || 24, K = 'chronos-obs8-' + course; let S = []; try { S = JSON.parse(localStorage.getItem(K) || '[]'); } catch (e) {}
+  if ($('ob8')) { const n = +$('ob8').dataset.n || 24, K = 'chronos-' + ($('ob8').dataset.key || 'obs8') + '-' + course; let S = []; try { S = JSON.parse(localStorage.getItem(K) || '[]'); } catch (e) {}
     const draw = () => { $('ob8').innerHTML = Array.from({ length: n }, (_, k) => `<button type="button" class="${S.includes(k + 1) ? 'on' : ''}" data-o="${k + 1}">${k + 1}</button>`).join('') + `<small>${S.length} / ${n} observed</small>`;
       $('ob8').querySelectorAll('button').forEach(b => b.onclick = () => { const v = +b.dataset.o; S = S.includes(v) ? S.filter(x => x !== v) : [...S, v]; try { localStorage.setItem(K, JSON.stringify(S)); } catch (e) {} draw(); }); };
     draw(); }
+    // ---- Cycle 8 · Class 4 (7C–7E) · Ads from 2126 (switch clips; the music pauses while a clip plays)
+  if ($('adv8')) { const v = $('adv8');
+    v.onplay = () => { if (musicOn) { window.VMR8 = 1; setMusic(false); } };
+    const back = () => { if (window.VMR8) { window.VMR8 = 0; setMusic(true); } }; v.onpause = back; v.onended = back;
+    document.querySelectorAll('#fit .adb').forEach(b => b.onclick = () => { document.querySelectorAll('#fit .adb').forEach(x => x.classList.remove('on')); b.classList.add('on'); const k = b.dataset.ad;
+      v.innerHTML = AD8SRC(k).map(s => `<source src="${s}" type="video/mp4">`).join(''); v.load(); v.play().catch(() => {}); }); }
+  if ($('adKey')) $('adKey').onclick = () => { $('adKeyBox').classList.toggle('show'); $('adKey').textContent = $('adKeyBox').classList.contains('show') ? 'Hide the answers' : 'Show the answers'; if ($('adKeyBox').classList.contains('show')) chime(); fitStage(); };
   document.querySelectorAll('#fit [data-tomap]').forEach(b => b.onclick = () => openLesson('map'));
   document.querySelectorAll('#fit [data-course]').forEach(b => b.onclick = () => { setCourse(b.dataset.course); startMusic(); render(); });
   document.querySelectorAll('#fit [data-lesson]').forEach(b => b.onclick = () => { if (!b.disabled) { startMusic(); openLesson(b.dataset.lesson); } });
