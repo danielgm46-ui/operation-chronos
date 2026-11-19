@@ -1539,6 +1539,8 @@ body.era-2126 .exit2 p { font-family: var(--f-body); font-size: 3.2vh; line-heig
 .rs9 { flex: 1; background: #fff; border: .25vh solid var(--line); border-radius: 1vh; padding: .8vh .8vw; } .rs9 > b { display: block; font-family: var(--f-caps); font-size: 2vh; color: #6d3fd6; margin-bottom: .5vh; }
 .rs9 table { width: 100%; border-collapse: collapse; font-family: var(--f-body); font-size: 2vh; } .rs9 th { text-align: left; font-family: var(--f-caps); font-size: 1.7vh; color: var(--navy); border-bottom: .2vh solid var(--navy); } .rs9 td { padding: .2vh .4vw; border-bottom: .1vh solid var(--line); } .rs9 em { display: block; margin-top: .4vh; font-size: 1.8vh; color: var(--red); }
 .rot9.one .rs9 table { font-size: 2.6vh; }
+/* ---- Cycle 9 · Class 4 (19 nov) */
+.mo9 { display: grid; grid-template-columns: 1.55fr 1fr; gap: 1vw; align-items: start; } .mo9 .rot9.one .rs9 table { font-size: 2.2vh; } .mo9 .ob8 { grid-template-columns: repeat(8, 1fr); } .mo9 .ob8 button { font-size: 1.9vh; padding: .5vh 0; }
 </style>
 </head>
 <body class="era-rome">
@@ -2976,6 +2978,49 @@ const C93R = { stops: ['Install', 'The shifts', 'Passport', 'Dress rehearsal', '
     <button type="button" class="endbtn" data-tomap="1">☰ Back to the cycle map</button>` },
   ] };
 
+
+// Class 4 · MUSEUM OPEN · Shift A (term test · C8 · C9 · C10) · the shift system of Class 3
+const MUSTX9 = ['Curators, this is Mission Control. Today, <b>the Museum of the Future opens</b>.', 'The people of 2126 are at the door. They want to know where the bugs of their time were born — in 1380 and in Rome — and how to defend themselves.', 'Speak clearly, keep your opinion, and be honest with your words. <b>The Museum is open!</b>'];
+const RULES9 = [['🧍', 'Guides', 'at your piece · 2 minutes each · then answer the visitors\' questions'], ['🕰️', 'The tour', '8 minutes · then 2 minutes of the Logic Simulator'], ['🛂', 'Visitors', 'in pairs · fill your Visitor Passport · ask real questions'], ['🇬🇧', 'English only', 'in the rooms · respect every guide']];
+const MOPEN9 = { '7C': ['mar 2 mar, 8:55', 'mié 3 mar, 11:10'], '7D': ['mar 2 mar, 13:55', 'mié 3 mar, 8:55'], '7E': ['lun 1 mar, 11:10', 'mié 3 mar, 13:55'] };
+const museumShift = k => ({ stop: k + 1, dense: true, host: [k ? 'listen' : 'tablet', `<b>${SHIFT9[k][1].split(' · ')[0]}</b>: the rooms are open!`],
+  help: `${SHIFT9[k][1].split(' · ')[0]}: ${k ? 'ahora abren las salas pares y visitan los equipos impares' : 'abren las salas impares y visitan los equipos pares'}. Cada pareja hace dos visitas de 10 minutos (8 de recorrido y 2 del Logic Simulator) y en la segunda cambia de sala. Los visitantes llenan su Visitor Passport.`,
+  note: () => `${SHIFT9[k][1]} (21 min, reloj 10 + 1 + 10). Usted observa a cada guía al menos una vez con la rúbrica de C8 · C9 (en la ficha MRUB de la pantalla anterior) y toca su número de lista (queda guardado en este computador para la Clase 5; solo números, sin nombres). Registre en el Registro Chronos. C10 es la ficha expuesta (puede valorarla en la sala o al recoger las carpetas). Si falta un guía, sus compañeros siguen el recorrido sin esa parada y él presenta en la Clase 5. ${course === '7D' ? 'PIAR: valore con los criterios ajustados (segmento de 1 minuto con los pasos 2, 3 y 5 y una pregunta con marco; ficha de 50–70 palabras).' : ''}`,
+  html: () => `<div class="kicker">MUSEUM OPEN · ${SHIFT9[k][1]} · ${SHIFT9[k][2]}</div>
+  <div class="mo9"><div><div class="rot9 one" id="rot9" data-shift="${k}"></div>${timer([['Visit 1', 600], ['Move', 60], ['Visit 2 · swap rooms', 600]])}</div>
+  <div><p class="hint" style="margin:0 0 .6vh">Observed guides (list numbers · for the teacher)</p><div class="ob8" id="ob8" data-n="${ROSTER[course] || 30}" data-key="mus9"></div></div></div>` });
+const C94R = { stops: ['Opening', 'Shift A', 'Shift B', 'Close'], era: '2126', plaque: 'Harry Bailly · Mission Control, 2126',
+  scene: { '-1': 'f-museum', 0: 'f-hq', 1: 'f-museum', 2: 'f-museum', 3: 'f-hq' },
+  arrive: { 0: ['2126 · Mission Control', 'The Museum Opens', 'The term test'], 1: ['2126 · The Museum of the Future', 'Shift A', 'Odd rooms open'], 2: ['2126 · The Museum of the Future', 'Shift B', 'Even rooms open'], 3: ['2126 · Mission Control', 'Next: Guests & the Archive Vault', 'Museum Open, day 2'] },
+  slides: [
+  { stop: -1, host: ['present', 'Today the Museum <b>opens</b>!'],
+    help: 'Hoy es la prueba del periodo: MUSEUM OPEN. Instala tu sala en 3 minutos. Tu equipo guía su sala en un turno y visita otras salas en el otro. Como guía das tus 2 minutos y respondes las preguntas de los visitantes (la rúbrica pide mantener tu opinión con dos preguntas); como visitante llenas tu Visitor Passport.',
+    note: () => `Objetivo e instalación (4 min, reloj 3 min). En español: MUSEUM OPEN · día 1 (prueba · C8 · C9 · C10). Apertura de Mission Control (3 min), turno A (min 7–28), turno B (min 28–49), cierre (1–2 min). Las salas se instalan desde las carpetas mientras suena la música (lo practicaron en la Clase 3). Tenga a mano la rúbrica (MRUB) y el Registro Chronos. ${crewNote9()} ${course && MOPEN9[course] ? 'Día 2 (invitados y Archive Vault): ' + MOPEN9[course][1] + '.' : ''}`,
+    html: () => `${brand9()}<div class="kicker">Cycle 9 · Class 4 · MUSEUM OPEN · Shift A · term test</div><h1>Today, curators, the Museum of the Future opens its doors.</h1>
+    <div class="goals"><span><b>C8</b> your 2 minutes · the bug, from its birth to 2126</span><span><b>C9</b> your opinion · kept with the visitors</span><span><b>C10</b> your placard on the wall</span></div>
+    ${timer([['Install your room', 180]])}` },
+  { stop: 0, host: ['tablet', 'Mission Control is <b>calling</b>.'],
+    help: 'Mission Control abre el museo. Escucha las reglas: los guías junto a su pieza, recorridos de 8 minutos más 2 del simulador, visitantes en parejas con su pasaporte, solo inglés y respeto por cada guía.',
+    note: 'Apertura (2 min). Lea la transmisión con tono solemne y las cuatro reglas. Recuerde el cambio de turno en el minuto 28 aprox.',
+    html: () => `<div class="kicker">Transmission · Mission Control · 2126</div>
+    <div class="tx6">${MUSTX9.map(t => `<p>${t}</p>`).join('')}</div>
+    <div class="st8 g8">${RULES9.map(([i, h, t]) => `<div><i>${i}</i><b>${h}</b><span>${t}</span></div>`).join('')}</div>` },
+  { stop: 0, dense: true, host: ['point', 'How you are <b>assessed</b> today.'],
+    help: 'Así te evalúan hoy: C8, tus 2 minutos explicando el bug desde su origen hasta 2126 con razones confiables; C9, tu opinión clara que mantienes con las preguntas; C10, tu ficha en la pared.',
+    note: () => `La rúbrica (1 min). Es la misma de Museum Open que conocen desde el Ciclo 7 (MRUB). ${course === '7D' ? 'PIAR (7D): criterios ajustados (segmento de 1 minuto, una pregunta con marco, ficha de 50–70 palabras).' : ''}`,
+    html: () => `<div class="kicker">Museum Open · the rubric</div>
+    <div class="rub6">${MRUB.map(([c, k, t]) => `<div><b>${c} · ${k}</b><span>${t}</span></div>`).join('')}</div>` },
+  museumShift(0),
+  museumShift(1),
+  { stop: 3, host: ['cheer', 'Day 1 of the Museum: <b>complete</b>!'],
+    help: 'Cerramos el primer día del museo. Escribe en tu pasaporte qué guía te convenció más y por qué. En la próxima clase llegan visitantes invitados y se abre la Archive Vault.',
+    note: () => `Cierre (2 min). Dos voluntarios leen su frase. Mire la cuadrícula: los números sin marcar presentan primero en la Clase 5. +10 XP a cada equipo de poder: el museo abrió. Recoja las carpetas (o deje las salas instaladas si el salón lo permite). ${course && MOPEN9[course] ? 'Día 2: ' + MOPEN9[course][1] + '.' : ''}`,
+    html: () => `<div class="kicker">Museum Open · day 1 complete · +10 XP to every power team</div>
+    ${nb('In your passport: «The most convincing guide today was … because …»')}
+    ${pxBoard(10, true)}
+    <button type="button" class="endbtn" data-tomap="1">☰ Back to the cycle map</button>` },
+  ] };
+
 const LESSONS = {
   map: { stops: [], era: '2126', scene: { '-1': 'f-hq' }, arrive: {}, plaque: 'Harry Bailly · Mission Control, 2126', slides: [
     { stop: -1, era: '2126', scene: 'f-hq', host: ['wave', () => course ? 'Choose your class, curators!' : 'Greetings, agents! First, choose your course.'],
@@ -2990,6 +3035,7 @@ const LESSONS = {
   c1r: C91R,
   c2r: C92R,
   c3r: C93R,
+  c4r: C94R,
 
 };
 // ---------- engine
