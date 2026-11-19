@@ -1516,6 +1516,13 @@ body.era-2126 .exit2 p { font-family: var(--f-body); font-size: 3.2vh; line-heig
 .adl8 { display: flex; flex-direction: column; gap: .7vh; } .adb { display: flex; align-items: center; gap: .8vw; background: #fff; border: .25vh solid var(--line); border-radius: 1.2vh; padding: .8vh .8vw; cursor: pointer; font: inherit; color: inherit; text-align: left; }
 .adb b { font-family: var(--f-caps); font-size: 3.4vh; color: #fff; background: #6d3fd6; border-radius: .9vh; width: 5.4vh; height: 5.4vh; display: grid; place-items: center; flex: none; } .adb span { font-family: var(--f-caps); font-size: 2.2vh; color: var(--navy); } .adb small { display: block; font-family: var(--f-body); font-size: 1.7vh; color: var(--muted); }
 .adb.on { border-color: #1ba6c4; box-shadow: 0 0 0 .3vh rgba(27, 166, 196, .35); } .adb.on b { background: #1ba6c4; }
+/* ---- Cycle 8 · Class 5 (19 nov) */
+.tk8 { display: grid; grid-template-columns: repeat(3, 1fr); gap: .8vh .8vw; } .tkb { background: #fff; border: .25vh solid var(--line); border-left: .7vh solid var(--red); border-radius: 1.2vh; padding: 1vh .9vw; text-align: left; font: inherit; color: inherit; cursor: pointer; display: flex; flex-direction: column; gap: .5vh; }
+.tkb b { font-family: var(--f-body); font-size: 2.2vh; color: var(--navy); font-style: italic; } .tkb span { font-size: 1.95vh; color: #1b6f86; opacity: 0; transition: opacity .3s; } .tkb.on span { opacity: 1; } .tkb.on { border-left-color: #1ba6c4; background: #f3fbfd; }
+.met6.done .arts .a3 { background: #fff2cf; border-color: var(--gold); box-shadow: 0 0 1.6vh rgba(201, 160, 70, .8); }
+.rk8 { display: grid; grid-template-columns: repeat(4, 1fr); gap: .8vw; margin-bottom: 1.2vh; } .rk8 > div { background: var(--note); border: .3vh solid var(--gold); border-radius: 1.4vh; padding: 1.2vh .8vw; display: flex; flex-direction: column; align-items: center; gap: .4vh; }
+.rk8 img { width: 7vh; height: 7vh; } .rk8 b { font-family: var(--f-caps); font-size: 2.4vh; color: var(--navy); } .rk8 span { font-family: var(--f-display); font-size: 3.2vh; color: #6d3fd6; } .rk8 em { font-style: normal; font-family: var(--f-caps); font-size: 2vh; color: var(--red); }
+.rk8 .cm { background: #fff2cf; box-shadow: 0 0 2vh rgba(201, 160, 70, .8); } .rk8 .cm em { color: #8a6a00; }
 </style>
 </head>
 <body class="era-rome">
@@ -2659,6 +2666,116 @@ const C4I = { stops: ['The shift', 'Live re-take', 'The letter', 'The Vault', 'C
     <button type="button" class="endbtn" data-tomap="1">☰ Back to the cycle map</button>` },
   ] };
 
+// ---------- Cycle 8 · Class 5 · 7C–7E · Tour Script Lab (C8 · C9)
+const TOUR5 = [
+  ['Hook', '20 s', 'Have you ever … ? · Would you trust … ?'],
+  ['Where it was born', '25 s', 'In 1380 / 44 BC, … . As … told us in the Chronos Archive, …'],
+  ['Its 2126 mutation', '25 s', 'In 2126, this bug will … . If people …, they would …'],
+  ['My opinion', '30 s', 'I think … because … . For example, …'],
+  ['A question for you', '20 s', 'What would you do if … ?']];
+const TOURMAP = [['herald', 'Herald', 'opens the tour', 'at the welcome placard'], ['timekeeper', 'Timekeeper', 'second stop', 'at the timeline panel'], ['decoder', 'Decoder', 'third stop', 'at the Logic Simulator'], ['chronicler', 'Chronicler', 'last stop', 'at the catalogue · closes the tour']];
+const TRANS8 = ['Herald · «Welcome to Room …! Our tour has four stops. Let\'s begin.»', 'Every guide · «Thank you, … . Now … will show you …»', 'Chronicler · «Thank you for visiting Room …. Please play our Logic Simulator!»'];
+const TRICKY8 = [['«But everybody believes it — so it\'s true!»', 'I understand, but popular is not the same as true, because …'], ['«Why should I trust you?»', 'You can check my sources: … and a message from … .'], ['«That\'s just your opinion.»', 'Yes, and my reason is … . The evidence is … .'], ['«In 2126, robots never lie.»', 'Maybe, but if a robot … , we should ask … .'], ['«Can you say it in simple words?»', 'Of course: this bug means … .'], ['«I don\'t care about 1380.»', 'You should, because the same trick is in your feed: … .']];
+const CUE8 = ['1 · my hook: …', '2 · born: year · scene · the message from 7A/7B', '3 · 2126: …', '4 · my opinion + one reason + one example', '5 · my question: … ?'];
+const REH8 = [['🔁', 'Crew A tours crew B', '8 minutes · B plays tricky visitors'], ['🔁', 'Crew B tours crew A', '8 minutes · A plays tricky visitors'], ['★✦', 'One star and one wish', 'for each guide · 2 minutes']];
+const PAIRS8 = [[1, 2], [3, 4], [5, 6], [7, 'teacher']];
+// ---------- Cycle 8 · Class 5 · 7A–7B · PAUSE · Timeline Stabilized (end of term)
+const GQ8 = 'If one deceptive argument could change history, how can we recognise when an argument is relevant, acceptable and sufficient — and use our own voice honestly to help our community decide well?';
+const GQS8 = 'Truth or trick? How do we know — and how do we speak honestly?';
+const EXAMEN8 = [['🕯️', 'Remember', 'one voice of this term that tried to trick you · in 1380, in Rome, in 2126 or in your feed'], ['🔎', 'Notice', 'how you discovered the trick · which bug · which question helped you'], ['🧭', 'Choose', 'which voices you will trust from now on — and why']];
+const PAUSEW = ['From now on, I will trust voices that … because …', 'I will not trust voices that … , because …', 'My first answer (Cycle 1) said … ; now I think … .'];
+const SERVE8 = [['herald', 'Herald', 'my voice · I can speak up for someone who is not heard'], ['timekeeper', 'Timekeeper', 'my precision · I can help others say it clearly and correctly'], ['decoder', 'Decoder', 'my eyes · I can help others detect a trick before they fall for it'], ['chronicler', 'Chronicler', 'my memory · I can write the truth so that others remember it']];
+const RANKS8 = [['Recruit', 0], ['Field Agent', 150], ['Time Ranger', 350], ['Chrono-Master', 600]];
+const rank8 = xp => RANKS8.reduce((r, [n, m]) => xp >= m ? n : r, 'Recruit');
+// ======================================================================
+// Class 5 · 7C–7E · Tour Script Lab (C8 · C9) · fixed crews
+const C5R = { stops: ['The tour', 'Your 2 minutes', 'Tricky visitors', 'Rehearsal', 'Next'], era: '2126', plaque: 'Harry Bailly · Mission Control, 2126',
+  scene: { '-1': 'f-museum', 0: 'f-museum', 1: 'f-archive', 2: 'f-feed', 3: 'f-museum', 4: 'f-hq' },
+  arrive: { 0: ['2126 · The Museum of the Future', 'The Tour', 'Eight minutes · four guides'], 1: ['2126 · The Chronos Archive', 'Your Two Minutes', 'Five moves'], 2: ['2126 · The feed', 'Tricky Visitors', 'Keep your opinion'], 3: ['2126 · The Museum wing', 'Rehearsal', 'Timed · eight minutes'], 4: ['2126 · Mission Control', 'Next: Cycle 9', 'Room build'] },
+  slides: [
+  { stop: -1, host: ['present', 'Curators, your room needs a <b>tour</b>.'],
+    help: 'Hoy cada equipo escribe y ensaya el recorrido de 8 minutos de su sala. Cada agente tiene 2 minutos con cinco pasos. El Herald dirige el recorrido. Al final hacemos el primer ensayo con reloj.',
+    note: () => `Objetivo (2 min). En español: Tour Script Lab (C8 · C9). El recorrido (5 min), los dos minutos de cada guía (6 min), los visitantes difíciles (5 min), la tarjeta-guion (10 min), el primer ensayo cronometrado en parejas de salas (18 min) y el cierre (2 min). Los 2 minutos de cada agente son lo que se evalúa en Museum Open (C8 · C9). ${crewNote()}`,
+    html: () => `${brand7()}<div class="kicker">Cycle 8 · Curators of 2126 · Class 5 · Tour Script Lab</div><h1>Today, curators, you will write and rehearse the 8-minute tour of your room.</h1>
+    <div class="goals"><span><b>C8</b> your two minutes · five moves</span><span><b>C9</b> keep your opinion with tricky visitors</span><span><b>⏱</b> the first timed rehearsal</span></div>` },
+  { stop: 0, dense: true, host: ['map', 'Eight minutes, <b>four guides</b>.'],
+    help: 'El recorrido dura 8 minutos: cuatro paradas de 2 minutos, una por poder, junto a su pieza de la sala. El Herald abre, el Chronicler cierra. Entre una parada y otra se usa una frase de transición.',
+    note: 'The tour (5 min). Muestre el orden de las paradas y las frases de transición. Si un equipo es de 3, el recorrido dura 6 minutos con tres paradas.',
+    html: () => `<div class="kicker">The tour of your room · 8 minutes · 2 minutes per guide</div>
+    <div class="pc7">${TOURMAP.map(([k, n, t, w], j) => `<div><img src="${IMG.emb[k]}" alt=""><b>${j + 1} · ${n} · ${t}</b><span>${w}</span><i>2 min</i></div>`).join('')}</div>
+    <div class="cframe sm8"><b>Transitions</b><ol>${TRANS8.map(t => `<li>${t}</li>`).join('')}</ol></div>` },
+  { stop: 1, dense: true, host: ['point', 'Your <b>two minutes</b>.'],
+    help: 'Tus 2 minutos tienen cinco pasos: una pregunta para enganchar, dónde nació el bug (citando el mensaje de 7°A o 7°B), cómo será en 2126, tu opinión con razones y una pregunta para el visitante. Mira el tiempo de cada paso.',
+    note: 'Five moves (6 min). Modele en voz alta un ejemplo con el bug #12 (2 min exactos, con el reloj del ensayo). Insista en el paso 2: citar el mensaje del pasado en estilo indirecto; y en el paso 4: opinión + razón + ejemplo (C9). Ajustes PIAR (7D): 1 minuto con los pasos 2, 3 y 5, con la tarjeta-guion en la mano.',
+    html: () => `<div class="kicker">Your two minutes · five moves</div>
+    <div class="pf8">${TOUR5.map(([h, t, s], k) => `<div><i>${k + 1}</i><b>${h} · ${t}</b><span>${s}</span></div>`).join('')}</div>` },
+  { stop: 2, dense: true, host: ['oops', 'Watch out for <b>tricky visitors</b>!'],
+    help: 'En el museo, algunos visitantes harán preguntas difíciles. Tu tarea es responder sin cambiar tu opinión, con una razón o una evidencia. Toca una tarjeta para ver una posible respuesta.',
+    note: 'Tricky visitors (5 min). Lea dos o tres tarjetas y pida respuestas en voz alta antes de mostrar el marco (tocar la tarjeta). En el ensayo, el equipo visitante usa estas tarjetas. Esto prepara C9: sostener la opinión con razones.',
+    html: () => `<div class="kicker">Tricky visitors · keep your opinion · tap a card</div>
+    <div class="tk8">${TRICKY8.map(([q, a]) => `<button type="button" class="tkb"><b>${q}</b><span>${a}</span></button>`).join('')}</div>` },
+  { stop: 2, dense: true, host: ['write', 'Your <b>cue card</b>.'],
+    help: 'Escribe tu tarjeta-guion en el cuaderno: palabras clave para los cinco pasos, no oraciones completas. En el museo solo puedes mirar la tarjeta, no leer un texto.',
+    note: 'Cue card (10 min, reloj). Cada agente escribe sus palabras clave; el Herald además escribe la apertura del recorrido y el Chronicler el cierre. Revise que el paso 2 nombre la persona y la época del mensaje de 7A–7B.',
+    html: () => `<div class="kicker">Your cue card · key words only · in your notebook</div>
+    <div class="up7"><div class="cframe"><ol>${CUE8.map(t => `<li>${t}</li>`).join('')}</ol></div>${timer([['Cue card', 600]])}</div>` },
+  { stop: 3, dense: true, host: ['listen', 'The first <b>timed rehearsal</b>.'],
+    help: 'Ensayo con reloj: tu equipo hace el recorrido para otra sala, que hace de visitantes difíciles. Luego cambian. Al final, cada guía recibe una estrella y un deseo.',
+    note: () => `Rehearsal (18 min, reloj): parejas de salas ${PAIRS8.map(([a, b]) => b === 'teacher' ? `${a} con usted` : `${a} ↔ ${b}`).join(' · ')}. Pulse el reloj al empezar cada recorrido; cada guía mira cuánto le queda en su parada. No se califica: es el primer ensayo.`,
+    html: () => `<div class="kicker">The first timed rehearsal · pairs of rooms</div>
+    <div class="st8 g8">${REH8.map(([i, h, t]) => `<div><i>${i}</i><b>${h}</b><span>${t}</span></div>`).join('')}<div><i>👥</i><b>Pairs</b><span>${PAIRS8.map(([a, b]) => b === 'teacher' ? `Room ${a} + teacher` : `Rooms ${a} ↔ ${b}`).join(' · ')}</span></div></div>
+    ${timer([['Tour 1', 480], ['Tour 2', 480], ['Star + wish', 120]])}` },
+  { stop: 4, host: ['cheer', 'Cycle 8 <b>complete</b>!'],
+    help: 'Terminamos el Ciclo 8. En el Ciclo 9 montamos las salas, hacemos el ensayo con «visitantes de 2126» y el ensayo general. El museo abre en marzo: esa es la prueba del periodo.',
+    note: () => `Cierre (2 min). Guarde las tarjetas-guion en el cuaderno. Próximo: Ciclo 9 (24 feb – 1 mar): montaje de las salas, ensayo con visitantes y ensayo general. Museum Open: ${course === '7E' ? 'lun 1 y mié 3 de marzo' : 'mar 2 y mié 3 de marzo'}.`,
+    html: () => `<div class="kicker">Class 5 complete · Cycle 8 complete</div><h1>Next: Cycle 9 — build your room. The Museum opens in March.</h1>
+    <button type="button" class="endbtn" data-tomap="1">☰ Back to the cycle map</button>` },
+  ] };
+
+// Class 5 · 7A–7B · PAUSE · Timeline Stabilized (end of term · metacognition · Ignatian reflection)
+const C5I = { stops: ['The question', 'Discernment', 'My powers', 'Meter', 'Chrono-Masters'], era: '2126', plaque: 'Harry Bailly · Mission Control, 2126',
+  scene: { '-1': 'f-hq', 0: 'f-archive', 1: 'f-archive', 2: 'f-museum', 3: 'f-hq', 4: 'f-hq' },
+  arrive: { 0: ['2126 · The Chronos Archive', 'The Question Returns', 'Truth or trick?'], 1: ['2126 · The Chronos Archive', 'Discernment', 'Which voices will I trust?'], 2: ['2126 · The Museum wing', 'My Powers', 'At the service of others'], 3: ['2126 · Mission Control', 'Timeline Integrity Meter', '100 %'], 4: ['2126 · Mission Control', 'Chrono-Masters', 'Term 29 complete'] },
+  slides: [
+  { stop: -1, host: ['present', 'Agents, it is time for a <b>pause</b>.'],
+    help: 'Hoy es la última clase del periodo: la PAUSA. Volvemos a la pregunta del periodo, escribimos en el Pilgrim\'s Book qué voces vamos a creer desde ahora y por qué, pensamos cómo ponemos nuestro poder al servicio de los demás y llevamos el Meter al 100 %.',
+    note: () => `Objetivo (2 min). En español: PAUSE · Timeline Stabilized (metacognición y reflexión ignaciana). La pregunta del periodo (6 min), el discernimiento en silencio y por escrito (15 min), mis poderes al servicio (8 min), el Meter al 100 % (4 min), rangos y cierre (12 min). Pida que tengan el Pilgrim's Book y un lápiz. Si quedaron re-takes pendientes del Restoration Shift, hágalos al inicio (máximo 10 min). ${course ? 'Último día del periodo: mar 23 feb.' : ''}`,
+    html: () => `${brand7()}<div class="kicker">Cycle 8 · The Chronos Archive · Class 5 · PAUSE · Timeline Stabilized</div><h1>Today, agents, we stop the clocks — and look back at our journey.</h1>
+    <div class="goals"><span><b>❓</b> the question of the term</span><span><b>🧭</b> which voices will I trust?</span><span><b>100 %</b> the timeline, stabilized</span></div>` },
+  { stop: 0, dense: true, host: ['think', 'The question <b>returns</b>.'],
+    help: 'Esta es la pregunta del periodo. En el Ciclo 1 escribiste una primera respuesta a lápiz en el Pilgrim\'s Book. Búscala y léela en silencio. ¿Qué cambió desde entonces?',
+    note: 'The question (6 min). Lea la pregunta y la versión corta. Pida que busquen su primera respuesta del Ciclo 1 en el Pilgrim\'s Book y la lean en silencio (1 min). Dos o tres voluntarios dicen en una frase qué cambió.',
+    html: () => `<div class="kicker">The question of Term 29 · from the Tabard Inn to 2126</div>
+    <div class="tx6"><p><b>${GQS8}</b></p><p>${GQ8}</p></div>
+    <div class="info">Find your <b>first answer</b> from Cycle 1 in your Pilgrim's Book. Read it in silence. What has changed?</div>` },
+  { stop: 1, dense: true, host: ['listen', 'Remember · notice · <b>choose</b>.'],
+    help: 'Tres pasos en silencio: recuerda una voz de este periodo que intentó engañarte, nota cómo descubriste el engaño y elige qué voces vas a creer desde ahora. Luego escribe tu respuesta en el Pilgrim\'s Book, a lápiz.',
+    note: 'Discernment (15 min). Baje la luz si puede y deje la música suave. Guíe los tres pasos con pausas de 1 minuto (es la forma de examen ignaciano: recordar, notar, elegir). Luego 8 minutos de escritura en el Pilgrim\'s Book con los marcos. Nadie lee en voz alta si no quiere.',
+    html: () => `<div class="kicker">Discernment · in silence · then in your Pilgrim's Book</div>
+    <div class="jr7 sm">${EXAMEN8.map(([i, h, t], k) => `<div><i>${i}</i><b>${h}</b><span>${t}</span></div>${k < 2 ? '<em>→</em>' : ''}`).join('')}</div>
+    <div class="up7"><div class="cframe sm8"><b>Write in pencil</b><ol>${PAUSEW.map(t => `<li>${t}</li>`).join('')}</ol></div>${timer([['Silence', 180], ['Write', 480]])}</div>` },
+  { stop: 2, dense: true, host: ['point', 'Your power, <b>for others</b>.'],
+    help: 'Cada poder es también una forma de servir. Responde en el Pilgrim\'s Book: «¿Qué poder mío pongo al servicio de los demás?». Mira las ideas de cada poder y escribe un ejemplo real de tu vida o del colegio.',
+    note: 'My powers (8 min). Cada agente responde con un ejemplo concreto (en el curso, en casa, en el colegio). Un voluntario por poder comparte (+10 XP a su poder).',
+    html: () => `<div class="kicker">Which of my powers do I put at the service of others?</div>
+    <div class="pc7">${SERVE8.map(([k, n, t]) => `<div><img src="${IMG.emb[k]}" alt=""><b>${n}</b><span>${t}</span></div>`).join('')}</div>
+    ${nb('«I put my power of … at the service of others when I … . For example, … »')}` },
+  { stop: 3, host: ['alert', 'The timeline is almost <b>stable</b>…'],
+    help: 'Con la Evidencia 3 y la reflexión de hoy, el Timeline Integrity Meter llega al 100 %. La línea del tiempo quedó estable.',
+    note: 'Meter (4 min). Pulse «Stabilize the timeline»: el Meter sube de 90 % a 100 % y se ilumina el Chronos Archive como cuarto artefacto. Aplausos.',
+    html: () => `<div class="kicker">Timeline Integrity Meter · Term 29</div>
+    <div class="met6" id="met8"><div class="bar"><i id="met8i" style="width:90%"></i><span id="met8t">90 %</span></div>
+    <div class="arts"><span>🔍 Decoder Lens</span><span>⚱️ Pardoner's Relic</span><span>📜 Antony's Scroll</span><span class="a3">🏛️ The Chronos Archive</span></div></div>
+    <div class="revealbar"><button type="button" class="tbtn go" id="met8b">⏳ Stabilize the timeline</button></div>` },
+  { stop: 4, dense: true, host: ['cheer', 'Congratulations, <b>Chrono-Masters</b>!'],
+    help: 'Este es el puntaje de cada equipo de poder en todo el periodo y su rango. Gracias por cuidar la línea del tiempo, agentes. ¡Nos vemos en el próximo periodo!',
+    note: () => `Rangos y cierre (12 min). El tablero muestra el XP acumulado del curso en este computador (es el mismo de todos los ciclos). El rango de cada equipo se calcula con el promedio por agente (XP ÷ ${course === '7B' || course === '7A' ? 6 : 7}): Recruit 0–149 · Field Agent 150–349 · Time Ranger 350–599 · Chrono-Master 600+. Entregue los reconocimientos que haya preparado. Cierre con la pregunta: «Truth or trick?». Reflexión del docente (PAUSA 2) en la guía.`,
+    html: () => `<div class="kicker">Term 29 complete · the ranks of your power teams</div>
+    <div class="rk8" id="rk8" data-n="${course === '7A' || course === '7B' ? 6 : 7}"></div>
+    <div class="info">The timeline is <b>stabilized</b>. Thank you, agents of ${course || '7th grade'} — and remember: <b>truth or trick?</b></div>
+    <button type="button" class="endbtn" data-tomap="1">☰ Back to the cycle map</button>` },
+  ] };
+
 const LESSONS = {
   map: { stops: [], era: '2126', scene: { '-1': 'f-hq' }, arrive: {}, plaque: 'Harry Bailly · Mission Control, 2126', slides: [
     { stop: -1, era: '2126', scene: 'f-hq', host: ['wave', () => course ? 'Choose your class, curators!' : 'Greetings, agents! First, choose your course.'],
@@ -2682,6 +2799,8 @@ const LESSONS = {
   c3i: C3I,
   c4r: C4R,
   c4i: C4I,
+  c5r: C5R,
+  c5i: C5I,
 };
 // ---------- engine
 let L = 'map', i = 0, tick = null, AC = null, ANIM = true, lastStop = -2;
@@ -2862,6 +2981,11 @@ function mountWidgets() {
     document.querySelectorAll('#fit .adb').forEach(b => b.onclick = () => { document.querySelectorAll('#fit .adb').forEach(x => x.classList.remove('on')); b.classList.add('on'); const k = b.dataset.ad;
       v.innerHTML = AD8SRC(k).map(s => `<source src="${s}" type="video/mp4">`).join(''); v.load(); v.play().catch(() => {}); }); }
   if ($('adKey')) $('adKey').onclick = () => { $('adKeyBox').classList.toggle('show'); $('adKey').textContent = $('adKeyBox').classList.contains('show') ? 'Hide the answers' : 'Show the answers'; if ($('adKeyBox').classList.contains('show')) chime(); fitStage(); };
+  // ---- Cycle 8 · Class 5 · tricky visitor cards · the Meter to 100 % · the ranks of the power teams
+  document.querySelectorAll('#fit .tkb').forEach(b => b.onclick = () => { b.classList.toggle('on'); fitStage(); });
+  if ($('met8b')) $('met8b').onclick = () => { fanfare(); $('met8i').style.width = '100%'; let v = 90; const t = setInterval(() => { v++; if (!$('met8t')) { clearInterval(t); return; } $('met8t').textContent = v + ' %'; if (v >= 100) { clearInterval(t); $('met8').classList.add('done'); } }, 90); $('met8b').disabled = true; };
+  if ($('rk8')) { let xp = {}; try { xp = JSON.parse(localStorage.getItem('chronos-pxp-' + (course || 'x')) || '{}'); } catch (e) {} const n = +$('rk8').dataset.n || 6;
+    $('rk8').innerHTML = POWERS.map(([k, nm]) => { const v = xp[k] || 0, r = rank8(Math.round(v / n)); return `<div class="${r === 'Chrono-Master' ? 'cm' : ''}"><img src="${IMG.emb[k]}" alt=""><b>${nm}s</b><span>${v} XP</span><em>${r}</em></div>`; }).join(''); }
   document.querySelectorAll('#fit [data-tomap]').forEach(b => b.onclick = () => openLesson('map'));
   document.querySelectorAll('#fit [data-course]').forEach(b => b.onclick = () => { setCourse(b.dataset.course); startMusic(); render(); });
   document.querySelectorAll('#fit [data-lesson]').forEach(b => b.onclick = () => { if (!b.disabled) { startMusic(); openLesson(b.dataset.lesson); } });
