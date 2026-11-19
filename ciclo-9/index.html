@@ -1533,6 +1533,12 @@ body.era-2126 .exit2 p { font-family: var(--f-body); font-size: 3.2vh; line-heig
 .vs9 { display: grid; grid-template-columns: repeat(4, 1fr); gap: .8vh .7vw; } .vsb { background: #fff; border: .25vh solid var(--line); border-top: .6vh solid #6d3fd6; border-radius: 1.2vh; padding: .9vh .7vw; font: inherit; color: inherit; cursor: pointer; display: flex; flex-direction: column; align-items: center; text-align: center; gap: .4vh; }
 .vsb i { font-style: normal; font-size: 4vh; } .vsb b { font-family: var(--f-caps); font-size: 1.9vh; color: var(--navy); } .vsb span { display: none; font-family: var(--f-body); font-size: 1.8vh; line-height: 1.3; } .vsb .q { font-style: italic; color: var(--ink); } .vsb .a { color: #1b6f86; }
 .vsb.on span { display: block; } .vsb.on { background: #f3fbfd; border-top-color: #1ba6c4; }
+/* ---- Cycle 9 · Class 3 (19 nov) */
+.rot9 { display: flex; flex-wrap: wrap; gap: .8vh 1vw; align-items: flex-start; margin-top: 1vh; } .rn9 { width: 100%; display: flex; gap: .5vw; justify-content: flex-end; }
+.rn9 button { font: inherit; font-family: var(--f-caps); font-size: 1.7vh; padding: .3vh .8vw; border-radius: 99px; border: .2vh solid var(--navy); background: #fff; color: var(--navy); cursor: pointer; } .rn9 button[aria-pressed="true"] { background: var(--navy); color: #fff; }
+.rs9 { flex: 1; background: #fff; border: .25vh solid var(--line); border-radius: 1vh; padding: .8vh .8vw; } .rs9 > b { display: block; font-family: var(--f-caps); font-size: 2vh; color: #6d3fd6; margin-bottom: .5vh; }
+.rs9 table { width: 100%; border-collapse: collapse; font-family: var(--f-body); font-size: 2vh; } .rs9 th { text-align: left; font-family: var(--f-caps); font-size: 1.7vh; color: var(--navy); border-bottom: .2vh solid var(--navy); } .rs9 td { padding: .2vh .4vw; border-bottom: .1vh solid var(--line); } .rs9 em { display: block; margin-top: .4vh; font-size: 1.8vh; color: var(--red); }
+.rot9.one .rs9 table { font-size: 2.6vh; }
 </style>
 </head>
 <body class="era-rome">
@@ -2912,6 +2918,64 @@ const C92R = { stops: ['The rubric', 'Round 1', 'Round 2', 'Second take', 'Next'
     <button type="button" class="endbtn" data-tomap="1">☰ Back to the cycle map</button>` },
   ] };
 
+
+// Class 3 · Dress Rehearsal & Installation (C8 · C9 · C10) · the shift system of Museum Open
+const INSTALL9 = [['🪧', 'Room sign', 'at the entrance of your zone · the question big and clear'], ['🕰️', 'Timeline panel', 'on the wall or the board, at eye level'], ['🎮', 'Logic Simulator', 'on the table · the envelope open · answers on the back'], ['📖', 'Catalogue + placards', 'the catalogue in the centre · the four placards around it'], ['🏺', 'Relic + label', 'in front · the Hall of Relics is at the door']];
+const SHIFT9 = [['A', 'Shift A · minutes 0–25', 'odd rooms open · even crews visit'], ['B', 'Shift B · minutes 25–50', 'even rooms open · odd crews visit']];
+const SLOT9 = [['🔟', '10 minutes per visit', '8-minute tour + 2 minutes of the Logic Simulator'], ['👥', 'Visitors in pairs', 'each visiting crew splits: pair a and pair b'], ['🔁', 'Two visits per shift', 'then the pairs swap rooms · every room guides at least twice']];
+const PASS9 = ['Room no. · the bug: #… …', 'The guide\'s opinion: «…»', 'My question: … ?', 'Logic Simulator: … / 8', '★ Best guide: … (power) · why: …'];
+const PASS9P = ['Room no. · the bug: #…', 'My question: … ?', 'Logic Simulator: … / 8'];
+const FINAL9 = ['My cue card (key words only)', 'My clean placard on the wall', 'My 2 minutes without reading', 'I know the question of our room', 'I know the message from 7A or 7B we quote', 'Two answers ready for tricky visitors', 'My Visitor Passport page ready', 'Our room folder: everything inside'];
+const rot9 = n => { const R = [...Array(n)].map((_, k) => k + 1), open = s => R.filter(r => r % 2 === (s ? 0 : 1));
+  return [0, 1].map(s => { const O = open(s); return { open: O, crews: open(1 - s).map(c => { const lo = O.filter(r => r < c).pop(), hi = O.find(r => r > c); return [c, lo || O[O.length - 1], hi || O[0]]; }) }; }); };
+const rooms9 = () => { try { return +(localStorage.getItem('chronos-rooms9-' + course) || 7); } catch (e) { return 7; } };
+const rotBox = () => `<div class="rot9" id="rot9"></div>`;
+const dressSlide = k => ({ stop: 3, dense: true, host: [k ? 'listen' : 'tablet', `Dress rehearsal · <b>${SHIFT9[k][1].split(' · ')[0]}</b>`],
+  help: `Ensayo general, ${SHIFT9[k][1].split(' · ')[0]}: ${k ? 'abren las salas pares y visitan los equipos impares' : 'abren las salas impares y visitan los equipos pares'}. Hoy es una sola visita de 10 minutos por pareja: 8 minutos de recorrido y 2 del Logic Simulator. Los visitantes llenan su Visitor Passport.`,
+  note: () => `Dress rehearsal ${SHIFT9[k][1].split(' · ')[0]} (11 min, reloj 8 + 2 + 1). Hoy cada pareja hace solo la visita 1 (en Museum Open serán dos visitas por turno). Mire la tabla: cada pareja «a» va a la sala de abajo y la «b» a la de arriba. Recorra las salas y anote quién necesita apoyo para Museum Open (no se califica). ${course === '7D' ? 'PIAR: el guía PIAR hace su segmento de 1 minuto; su pasaporte es de tres líneas.' : ''}`,
+  html: () => `<div class="kicker">Dress rehearsal · ${SHIFT9[k][1]} · ${SHIFT9[k][2]}</div>
+  <div class="rot9 one" id="rot9" data-shift="${k}"></div>
+  ${timer([['Tour', 480], ['Simulator', 120], ['Move', 60]])}` });
+const C93R = { stops: ['Install', 'The shifts', 'Passport', 'Dress rehearsal', 'Ready?', 'Next'], era: '2126', plaque: 'Harry Bailly · Mission Control, 2126',
+  scene: { '-1': 'f-museum', 0: 'f-museum', 1: 'f-hq', 2: 'f-archive', 3: 'f-museum', 4: 'f-museum', 5: 'f-hq' },
+  arrive: { 0: ['2126 · The Museum of the Future', 'Installation', 'The classroom becomes the Museum'], 1: ['2126 · Mission Control', 'The Shifts', 'Half open · half visit'], 2: ['2126 · The Chronos Archive', 'Visitor Passport', 'Your notebook'], 3: ['2126 · The Museum wing', 'Dress Rehearsal', 'The real thing — almost'], 4: ['2126 · The Museum wing', 'Ready?', 'The final checklist'], 5: ['2126 · Mission Control', 'Next: MUSEUM OPEN', 'The term test'] },
+  slides: [
+  { stop: -1, host: ['present', 'Curators, today the classroom becomes <b>the Museum</b>!'],
+    help: 'Hoy instalamos las salas en el salón, aprendemos el sistema de turnos de Museum Open, probamos el Visitor Passport y hacemos el ensayo general. Al final revisamos la lista de «¿Estoy listo?».',
+    note: () => `Objetivo (2 min). En español: Dress Rehearsal & Installation (C8 · C9 · C10). Instalación (12 min), los turnos (4 min), el Visitor Passport (3 min), ensayo general turno A (11 min) y turno B (11 min), lista final (5 min), cierre (2 min). Ponga en la puerta los tres artefactos reales («Hall of Relics»). ${crewNote9()} Es el ensayo: no se califica, pero anote quién necesita apoyo.`,
+    html: () => `${brand9()}<div class="kicker">Cycle 9 · The Museum of the Future opens · Class 3 · Dress Rehearsal &amp; Installation</div><h1>Today, curators, the classroom becomes the Museum — and we rehearse it all.</h1>
+    <div class="goals"><span><b>🏛️</b> install your room</span><span><b>A · B</b> the two shifts</span><span><b>C8 · C9 · C10</b> the dress rehearsal</span></div>` },
+  { stop: 0, dense: true, host: ['map', 'Install your <b>room</b>.'],
+    help: 'Saca todo de la carpeta de tu sala e instálalo en tu zona: el letrero en la entrada, el panel en la pared, el simulador en la mesa, la entrada de catálogo con las cuatro fichas y la reliquia adelante. Si algo faltó en la Clase 1, termínalo ahora.',
+    note: 'Instalación (12 min, reloj 10 + 2). Cada sala en su zona (sala n = grupo n), con el número visible. Lo que faltó en el Room check de la Clase 1 se termina ahora. Las piezas se pegan con cinta de papel para poder retirarlas y guardarlas hasta Museum Open.',
+    html: () => `<div class="kicker">Installation · every piece in its place</div>
+    <div class="st8">${INSTALL9.map(([i, h, t]) => `<div><i>${i}</i><b>${h}</b><span>${t}</span></div>`).join('')}</div>
+    ${timer([['Install', 600], ['Last touches', 120]])}` },
+  { stop: 1, dense: true, host: ['point', 'Half of the rooms open, <b>half visit</b>.'],
+    help: 'En Museum Open hay dos turnos de 25 minutos. En el turno A abren las salas impares y visitan los equipos pares; en el turno B, al revés. Cada equipo visitante se divide en dos parejas y cada pareja hace dos visitas de 10 minutos.',
+    note: () => `Los turnos (4 min). Es el mismo sistema de Museum Open (Clases 4 y 5). Si su curso tiene 6 salas, toque «6 rooms» (queda guardado para este curso y para las Clases 4 y 5). Cada sala abierta guía al menos dos veces por turno, como pide la planeación. ${crewNote9()}`,
+    html: () => `<div class="kicker">The shift system of Museum Open · two shifts of 25 minutes</div>
+    <div class="st8 or8 g8">${SHIFT9.map(([i, h, t]) => `<div><i>${i}</i><b>${h}</b><span>${t}</span></div>`).join('')}${SLOT9.slice(0, 2).map(([i, h, t]) => `<div><i>${i}</i><b>${h}</b><span>${t}</span></div>`).join('')}</div>
+    ${rotBox()}` },
+  { stop: 2, dense: true, host: ['write', 'Your <b>Visitor Passport</b>.'],
+    help: 'Cuando visitas una sala, llenas tu Visitor Passport en el cuaderno: el número de la sala y el bug, la opinión del guía, tu pregunta, tu puntaje en el Logic Simulator y el mejor guía con una razón.',
+    note: () => `Visitor Passport (3 min). Copian el encabezado en el cuaderno (una página para las cuatro visitas de Museum Open). En la Clase 5, los agentes con criterios pendientes resolverán ahí las tareas de la Archive Vault. ${course === '7D' ? 'PIAR (7D): pasaporte de tres líneas (sala y bug · mi pregunta · simulador).' : ''}`,
+    html: () => `<div class="kicker">The Visitor Passport · in your notebook · one block per room you visit</div>
+    <div class="up7"><div class="cframe"><b>Visitor Passport · 2126</b><ol>${PASS9.map(t => `<li>${t}</li>`).join('')}</ol></div>${nb('copy the five lines · leave space for four rooms')}</div>` },
+  dressSlide(0),
+  dressSlide(1),
+  { stop: 4, dense: true, host: ['listen', 'Are you <b>ready</b> for Museum Open?'],
+    help: 'Revisa esta lista en silencio y marca en tu cuaderno lo que ya tienes. Lo que te falte, prepáralo en casa para el día del museo.',
+    note: 'Lista final (5 min). Toque cada punto mientras lo lee en voz alta; los agentes marcan en el cuaderno ✔ o ✘. Pida que en casa practiquen sus 2 minutos dos veces en voz alta. Las piezas se retiran y vuelven a la carpeta de la sala (o se dejan instaladas si el salón lo permite).',
+    html: () => `<div class="kicker">The final checklist · every agent</div>
+    <div class="rc9w">${FINAL9.map((t, k) => `<button type="button" class="rc9"><i>${k + 1}</i>${t}</button>`).join('')}</div>` },
+  { stop: 5, host: ['cheer', 'Next stop: <b>MUSEUM OPEN</b>!'],
+    help: 'La próxima clase abre el Museo del Futuro: es la prueba del periodo. Trae tu tarjeta-guion, tu pasaporte y practica en casa tus 2 minutos.',
+    note: () => `Cierre (2 min). Próxima clase: MUSEUM OPEN · Shift A${course ? ' (' + ({ '7C': 'mar 2 mar, 8:55', '7D': 'mar 2 mar, 13:55', '7E': 'lun 1 mar, 11:10' })[course] + ')' : ''}, la prueba del periodo (C8 · C9 · C10). Recoja las carpetas de las salas.`,
+    html: () => `<div class="kicker">Class 3 complete</div><h1>Next class: MUSEUM OPEN — the term test. Practise your 2 minutes twice at home!</h1>
+    <button type="button" class="endbtn" data-tomap="1">☰ Back to the cycle map</button>` },
+  ] };
+
 const LESSONS = {
   map: { stops: [], era: '2126', scene: { '-1': 'f-hq' }, arrive: {}, plaque: 'Harry Bailly · Mission Control, 2126', slides: [
     { stop: -1, era: '2126', scene: 'f-hq', host: ['wave', () => course ? 'Choose your class, curators!' : 'Greetings, agents! First, choose your course.'],
@@ -2925,6 +2989,7 @@ const LESSONS = {
   ] },
   c1r: C91R,
   c2r: C92R,
+  c3r: C93R,
 
 };
 // ---------- engine
@@ -3115,6 +3180,12 @@ function mountWidgets() {
   document.querySelectorAll('#fit .rc9').forEach(b => b.onclick = () => { b.classList.toggle('on'); if (document.querySelectorAll('#fit .rc9:not(.on)').length === 0) fanfare(); else chime(); });
   // ---- Cycle 9 · Class 2 · visitors from 2126 (tap to show an example question and an answer frame)
   document.querySelectorAll('#fit .vsb').forEach(b => b.onclick = () => { b.classList.toggle('on'); fitStage(); });
+  // ---- Cycle 9 · Class 3–5 · the shift rotation (6 or 7 rooms, saved per course)
+  if ($('rot9')) { const box = $('rot9'), one = box.dataset.shift;
+    const draw = () => { const n = rooms9(), R = rot9(n), S = one != null ? [+one] : [0, 1];
+      box.innerHTML = `<div class="rn9">${[6, 7].map(m => `<button type="button" data-n="${m}" aria-pressed="${m === n}">${m} rooms</button>`).join('')}</div>` + S.map(s => `<div class="rs9"><b>${SHIFT9[s][1]} · open: ${R[s].open.map(r => 'Room ' + r).join(' · ')}</b><table><tr><th>Visiting crew</th><th>Pair a</th><th>Pair b</th></tr>${R[s].crews.map(([c, lo, hi]) => `<tr><td>Crew ${c}</td><td>→ Room ${lo}</td><td>→ Room ${hi}</td></tr>`).join('')}</table>${one == null ? '<em>Visit 2: the pairs swap rooms.</em>' : ''}</div>`).join('');
+      box.querySelectorAll('.rn9 button').forEach(b => b.onclick = () => { try { localStorage.setItem('chronos-rooms9-' + course, b.dataset.n); } catch (e) {} draw(); fitStage(); }); };
+    draw(); }
   document.querySelectorAll('#fit [data-tomap]').forEach(b => b.onclick = () => openLesson('map'));
   document.querySelectorAll('#fit [data-course]').forEach(b => b.onclick = () => { setCourse(b.dataset.course); startMusic(); render(); });
   document.querySelectorAll('#fit [data-lesson]').forEach(b => b.onclick = () => { if (!b.disabled) { startMusic(); openLesson(b.dataset.lesson); } });
