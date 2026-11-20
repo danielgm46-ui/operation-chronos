@@ -1541,6 +1541,8 @@ body.era-2126 .exit2 p { font-family: var(--f-body); font-size: 3.2vh; line-heig
 .rot9.one .rs9 table { font-size: 2.6vh; }
 /* ---- Cycle 9 · Class 4 (19 nov) */
 .mo9 { display: grid; grid-template-columns: 1.55fr 1fr; gap: 1vw; align-items: start; } .mo9 .rot9.one .rs9 table { font-size: 2.2vh; } .mo9 .ob8 { grid-template-columns: repeat(8, 1fr); } .mo9 .ob8 button { font-size: 1.9vh; padding: .5vh 0; }
+/* ---- Cycle 9 · Class 5 (20 nov) */
+.st8.g9 { grid-template-columns: repeat(5, 1fr); }
 </style>
 </head>
 <body class="era-rome">
@@ -2551,7 +2553,7 @@ const C3R = { stops: ['The clinic', 'Review', 'Version 2', 'Next'], era: '2126',
 
 // Class 3 · 7A–7B · ARCHIVE OPEN II · Guests & Archive Vault (TERM TEST · C8 · C9 · recovery C1–C7)
 const shiftSlide9 = (st, k) => ({ stop: st, dense: true, host: [k ? 'listen' : 'tablet', `<b>${SHIFTS9[k][0]}</b>: the Archive is open!`],
-  help: `${k ? 'Segundo turno: atienden los demás curadores; es otra oportunidad para mostrar C8 y C9' : 'Primer turno: atienden primero los curadores que la profe todavía no ha observado, y un Herald por sala da la bienvenida'}. Los demás visitan con su pasaporte; si tienes tareas de la Archive Vault, hazlas mientras visitas.`,
+  help: `${k ? 'Segundo turno: atienden los demás curadores; es otra oportunidad para mostrar C8 y C9' : 'Primer turno: atienden primero los curadores que el profe todavía no ha observado, y un Herald por sala da la bienvenida'}. Los demás visitan con su pasaporte; si tienes tareas de la Archive Vault, hazlas mientras visitas.`,
   note: `${SHIFTS9[k][0]} (${k ? 18 : 20} min · rondas de 4 min). ${k ? 'Puede volver a observar a quien quiera mejorar.' : 'Mire la cuadrícula: los números sin marcar atienden en este turno.'} Toque el número de cada curador observado. Atienda primero a los invitados. Si un invitado solo habla español, el curador responde en inglés y repite la idea clave en español.`,
   html: () => `<div class="kicker">${SHIFTS9[k][0]} · ${SHIFTS9[k][1]} · ${SHIFTS9[k][2]}</div>
   <div class="up7"><div>${timer(k ? [['Round 1', 240], ['Round 2', 240], ['Round 3', 240], ['Round 4', 360]] : [['Round 1', 240], ['Round 2', 240], ['Round 3', 240], ['Round 4', 240], ['Round 5', 240]])}<div class="cframe sm8"><b>Every visit · about 4 minutes</b><ol><li>Curator: 30-second live introduction</li><li>Visitors and guests: watch the video</li><li>Two questions · keep your opinion</li><li>Passport + curator's initials ★ · Vault tasks</li></ol></div></div>
@@ -2561,7 +2563,7 @@ const C3I = { stops: ['Welcome', 'The Vault', 'Shift A', 'Shift B', 'Guestbook']
   arrive: { 0: ['2126 · The Chronos Archive', 'Welcome, Guests', 'Visitors from the present'], 1: ['2126 · The Archive Vault', 'The Archive Vault', 'A second chance · C1–C7'], 2: ['2126 · The Chronos Archive', 'Shift A', 'Not yet observed first'], 3: ['2126 · The Chronos Archive', 'Shift B', 'A second chance'], 4: ['2126 · Mission Control', 'The Guestbook', 'Dear people of 2126'] },
   slides: [
   { stop: -1, host: ['present', 'Today we have <b>guests</b>!'],
-    help: 'Hoy es Archive Open II, el segundo día de la prueba. Vienen invitados a visitar el archivo. Primero atienden los curadores que la profe todavía no ha observado. Quien tiene criterios pendientes de C1 a C7 hace la Archive Vault mientras visita. Al final, todos firman el libro de visitas.',
+    help: 'Hoy es Archive Open II, el segundo día de la prueba. Vienen invitados a visitar el archivo. Primero atienden los curadores que el profe todavía no ha observado. Quien tiene criterios pendientes de C1 a C7 hace la Archive Vault mientras visita. Al final, todos firman el libro de visitas.',
     note: () => `Objetivo (2 min). En español: ARCHIVE OPEN II · Guests & Archive Vault (prueba · C8 · C9 · recuperación de C1–C7). Bienvenida a invitados (3 min), la Vault (5 min), turno A (20 min), turno B (18 min), libro de visitas (2 min). Antes de clase: invite a la docente de Literatura L2, a coordinación o a otro grupo; prepare un pliego de papel o cartulina como libro de visitas junto a la puerta; anote en su lista qué agentes hacen la Vault y en qué criterios (máximo dos por agente; ver el Registro Chronos).`,
     html: () => `${brand7()}<div class="kicker">Cycle 8 · The Chronos Archive · Class 3 · ARCHIVE OPEN II · term test</div><h1>Today, curators, guests from the present visit the Chronos Archive.</h1>
     <div class="goals"><span><b>C8 · C9</b> curators not yet observed first</span><span><b>🔐</b> the Archive Vault · C1–C7</span><span><b>🖊️</b> the guestbook</span></div>` },
@@ -3021,6 +3023,55 @@ const C94R = { stops: ['Opening', 'Shift A', 'Shift B', 'Close'], era: '2126', p
     <button type="button" class="endbtn" data-tomap="1">☰ Back to the cycle map</button>` },
   ] };
 
+
+// Class 5 · MUSEUM OPEN · day 2 · Guests & Archive Vault (term test · C8 · C9 · C10 · recovery C1–C7)
+const GUEST9 = [['👋', 'A Herald welcomes you', 'at the entrance of each room'], ['🧭', 'Take the tour', '8 minutes · four guides · 2 minutes each'], ['🎮', 'Play the Logic Simulator', 'bug or no bug? · 2 minutes'], ['❓', 'Ask two questions', 'English or Spanish · the question bank helps'], ['🖊️', 'Sign the guestbook', '«Dear people of 2126, …»']];
+const VISQ9 = ['Where was this bug born?', 'How will it look in 2126?', 'Why do you think that?', 'Who told you that? What is your source?', 'What would you do if … ?', 'How can I protect myself from this bug?'];
+const VAULT9 = [
+  ['C1', 'Listen to a guide', 'Write the guide\'s opinion and one reason. Is the reason relevant to the point? R / NR — why?'],
+  ['C2', 'Read a placard', 'What does the writer want visitors to believe? Which detail shows it?'],
+  ['C3', 'The future of a room', 'Three sentences about 2126: one with will, one with might and one with If…, … would.'],
+  ['C4', 'Listen to two guides', 'Are their reasons consistent and reliable? Write one example.'],
+  ['C5', 'Read a timeline panel or a catalogue', 'Name the bug. Is the argument sufficient and acceptable? Why?'],
+  ['C6', 'Report what the guides said', 'Three sentences: … said that … · … told us that … · … claimed that …'],
+  ['C7', 'An argument in the guestbook', '60–80 words: Which bug is the most dangerous for 2126? Claim · reason · evidence · conclusion.']];
+const GUESTBOOK9 = ['Dear people of 2126, …', 'The bug I will remember is … because …', 'My advice for 2126: never trust … without …'];
+const CYC10 = { '7C': 'jue 4 mar', '7D': 'jue 4 mar', '7E': 'jue 4 mar' };
+const museumShift2 = k => Object.assign(museumShift(k), {
+  help: `${SHIFT9[k][1].split(' · ')[0]}: ${k ? 'abren las salas pares y visitan los equipos impares' : 'abren las salas impares y visitan los equipos pares'}. En cada sala abierta, los guías que el profe todavía no ha observado presentan primero. Los invitados se unen a una pareja de visitantes. Quien tiene tareas de la Archive Vault las hace en su pasaporte mientras visita.`,
+  note: () => `${SHIFT9[k][1]} (21 min, reloj 10 + 1 + 10). La cuadrícula conserva los guías observados el día 1 (números en blanco = falta observarlos): visite primero esas salas y, en cada recorrido, pida que los no observados presenten antes. Observe con la rúbrica (MRUB) y registre en el Registro Chronos. Los agentes de la Archive Vault trabajan como visitantes. ${course === '7D' ? 'PIAR: criterios ajustados (segmento de 1 minuto, una pregunta con marco).' : ''}` });
+const C95R = { stops: ['Welcome', 'The Vault', 'Shift A', 'Shift B', 'Guestbook'], era: '2126', plaque: 'Harry Bailly · Mission Control, 2126',
+  scene: { '-1': 'f-museum', 0: 'f-museum', 1: 'f-archive', 2: 'f-museum', 3: 'f-museum', 4: 'f-hq' },
+  arrive: { 0: ['2126 · The Museum of the Future', 'Welcome, Guests', 'Visitors from the present'], 1: ['2126 · The Archive Vault', 'The Archive Vault', 'A second chance · C1–C7'], 2: ['2126 · The Museum of the Future', 'Shift A', 'Not yet observed first'], 3: ['2126 · The Museum of the Future', 'Shift B', 'Not yet observed first'], 4: ['2126 · Mission Control', 'The Guestbook', 'Dear people of 2126'] },
+  slides: [
+  { stop: -1, host: ['present', 'Today we have <b>guests</b>!'],
+    help: 'Hoy es el segundo día de Museum Open, la prueba del periodo. Vienen invitados. En cada sala presentan primero los guías que el profe todavía no ha observado. Quien tiene criterios pendientes de C1 a C7 hace la Archive Vault mientras visita. Al final, todos firman el libro de visitas.',
+    note: () => `Objetivo e instalación (4 min, reloj 3 min). En español: MUSEUM OPEN · día 2 · Guests & Archive Vault (prueba · C8 · C9 · C10 · recuperación de C1–C7). Bienvenida (2 min), la Vault (3 min), turno A (min 9–30), turno B (min 30–48), libro de visitas (2 min). Antes de clase: invite a la docente de Literatura, a coordinación u otro grupo; ponga un pliego como libro de visitas junto a la puerta; anote qué agentes hacen la Vault y en qué criterios (máximo dos por agente, según el Registro Chronos). ${crewNote9()}`,
+    html: () => `${brand9()}<div class="kicker">Cycle 9 · Class 5 · MUSEUM OPEN · Guests &amp; Archive Vault · term test</div><h1>Today, curators, guests from the present visit the Museum of the Future.</h1>
+    <div class="goals"><span><b>C8 · C9</b> guides not yet observed first</span><span><b>🔐</b> the Archive Vault · C1–C7</span><span><b>🖊️</b> the guestbook</span></div>
+    ${timer([['Install your room', 180]])}` },
+  { stop: 0, dense: true, host: ['wave', 'Welcome, <b>guests</b>!'],
+    help: 'Esta pantalla es para los invitados: así se visita el museo. Un Herald les da la bienvenida en cada sala, hacen el recorrido de 8 minutos, juegan el Logic Simulator, hacen dos preguntas (en inglés o en español) y firman el libro de visitas.',
+    note: 'Welcome (2 min). Un Herald voluntario da la bienvenida general en inglés y usted la resume en español para los invitados. Cada invitado se une a una pareja de visitantes del turno A. El banco de preguntas queda en pantalla.',
+    html: () => `<div class="kicker">How to visit the Museum of the Future · Cómo visitar el museo</div>
+    <div class="st8 g8 g9">${GUEST9.map(([i, h, t]) => `<div><i>${i}</i><b>${h}</b><span>${t}</span></div>`).join('')}</div>
+    <div class="vq8"><b>Questions</b>${VISQ9.map(t => `<span>${t}</span>`).join('')}</div>` },
+  { stop: 1, dense: true, host: ['magnifier', 'The <b>Archive Vault</b>.'],
+    help: 'La Archive Vault es una segunda oportunidad para los criterios de C1 a C7 que todavía no has alcanzado. Tu profe te dice cuáles (máximo dos). Haz cada tarea en tu pasaporte mientras visitas, con el título «ARCHIVE VAULT · C…». Si no tienes criterios pendientes, solo visitas y haces preguntas.',
+    note: 'The Vault (3 min). Diga a cada agente, en privado, sus criterios (máximo dos de C1–C7). Las tareas se hacen durante los turnos, como visitantes, en el cuaderno; C7 se escribe en el libro de visitas o en el pasaporte. Revise los cuadernos al final o en el Restoration Shift del Ciclo 10.',
+    html: () => `<div class="kicker">The Archive Vault · a second chance for C1–C7 · max two criteria · in your passport</div>
+    <div class="va8">${VAULT9.map(([c, h, t]) => `<div><b>${c}</b><strong>${h}</strong><span>${t}</span></div>`).join('')}</div>` },
+  museumShift2(0),
+  museumShift2(1),
+  { stop: 4, dense: true, host: ['cheer', 'The Museum is <b>complete</b>!'],
+    help: 'Cerramos el museo. Cada agente y cada invitado escribe una línea en el libro de visitas. Quien hace la tarea C7 de la Vault escribe allí su argumento de 60 a 80 palabras. ¡Gracias, curadores!',
+    note: () => `Libro de visitas y cierre (2 min). Agradezca a los invitados. +10 XP a cada equipo de poder. Recoja las carpetas (las fichas son la evidencia de C10). Revise la cuadrícula: quien quedó sin observar presenta en el Restoration Shift del Ciclo 10. Próximo: Ciclo 10${course && CYC10[course] ? ' (desde el ' + CYC10[course] + ')' : ''}: Museum Debrief, Restoration Shift (recuperación) y la PAUSA del cierre.`,
+    html: () => `<div class="kicker">The guestbook · by the door · one line each · +10 XP to every power team</div>
+    <div class="up7"><div class="cframe"><ol>${GUESTBOOK9.map(t => `<li>${t}</li>`).join('')}</ol></div>${pxBoard(10, true)}</div>
+    <div class="info">The Museum of the Future is now <b>complete</b>. Thank you, curators — and remember: <b>truth or trick?</b></div>
+    <button type="button" class="endbtn" data-tomap="1">☰ Back to the cycle map</button>` },
+  ] };
+
 const LESSONS = {
   map: { stops: [], era: '2126', scene: { '-1': 'f-hq' }, arrive: {}, plaque: 'Harry Bailly · Mission Control, 2126', slides: [
     { stop: -1, era: '2126', scene: 'f-hq', host: ['wave', () => course ? 'Choose your class, curators!' : 'Greetings, agents! First, choose your course.'],
@@ -3036,6 +3087,7 @@ const LESSONS = {
   c2r: C92R,
   c3r: C93R,
   c4r: C94R,
+  c5r: C95R,
 
 };
 // ---------- engine
