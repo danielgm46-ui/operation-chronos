@@ -2706,7 +2706,7 @@ const C5R = { stops: ['The tour', 'Your 2 minutes', 'Tricky visitors', 'Rehearsa
     <div class="cframe sm8"><b>Transitions</b><ol>${TRANS8.map(t => `<li>${t}</li>`).join('')}</ol></div>` },
   { stop: 1, dense: true, host: ['point', 'Your <b>two minutes</b>.'],
     help: 'Tus 2 minutos tienen cinco pasos: una pregunta para enganchar, dónde nació el bug (citando el mensaje de 7°A o 7°B), cómo será en 2126, tu opinión con razones y una pregunta para el visitante. Mira el tiempo de cada paso.',
-    note: 'Five moves (6 min). Modele en voz alta un ejemplo con el bug #12 (2 min exactos, con el reloj del ensayo). Insista en el paso 2: citar el mensaje del pasado en estilo indirecto; y en el paso 4: opinión + razón + ejemplo (C9). Ajustes PIAR (7D): 1 minuto con los pasos 2, 3 y 5, con la tarjeta-guion en la mano.',
+    note: 'Five moves (6 min). Modele en voz alta un ejemplo con el bug #12 (2 min exactos, con el reloj del ensayo). Insista en el paso 2: citar el mensaje del pasado en estilo indirecto; y en el paso 4: opinión + razón + ejemplo (C9). Ajustes PIAR (7D): segmento de 1 minuto con la tarjeta-guion en la mano: qué es el bug (definición), dónde nació, cómo será en 2126 y su opinión con una razón; luego responde una pregunta del visitante con el marco.',
     html: () => `<div class="kicker">Your two minutes · five moves</div>
     <div class="pf8">${TOUR5.map(([h, t, s], k) => `<div><i>${k + 1}</i><b>${h} · ${t}</b><span>${s}</span></div>`).join('')}</div>` },
   { stop: 2, dense: true, host: ['oops', 'Watch out for <b>tricky visitors</b>!'],
