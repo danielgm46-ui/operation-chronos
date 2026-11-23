@@ -3136,6 +3136,54 @@ const C101R = { stops: ['The Museum', 'My self-check', 'Feedback', 'If I…', 'M
     <button type="button" class="endbtn" data-tomap="1">☰ Back to the cycle map</button>` },
   ] };
 
+
+// Class 2 · Restoration Shift I (recovery C8 · C9 · C10) · Time Capsule Letter for everybody else
+const RS10 = [['🧭', 'Second tour · C8 · C9', 'your 2 minutes again, at the front · then two questions · the same rubric'], ['✍️', 'Placard redraft · C10', 'at the back tables · version 3 with the checklist and the teacher\'s ➜'], ['✉️', 'Time Capsule Letter', 'everybody else · a letter to your future self · future forms'], ['🛂', 'The audience', 'letter writers listen to the second tours when the teacher calls them · two questions each']];
+const TOUR10 = ['What the bug is · its definition', 'Where it was born · 1380 or Rome · the message from 7A or 7B', 'How it will look in 2126 · will · If…, … would', 'My opinion · «I think … because … For example, …»', 'Then: two questions from the audience · keep your opinion'];
+const TCAP10 = ['Dear future me, …', 'This term I learned to detect … . It is a bug that … .', 'In 2030, I think I will … · I am going to … · I might …', 'If someone tried to trick me, I would …', 'A voice I will trust: … because …', 'Your friend from 2027, …'];
+const AUDQ10 = ['What is this bug, in simple words?', 'Where was it born? Who told you that?', 'How will it look in 2126?', 'Why do you think that?', 'What would you do if … ?'];
+const NEXT10b = { '7C': 'mar 9 mar, 10:15', '7D': 'mar 9 mar, 7:05', '7E': 'lun 8 mar, 10:15' };
+const C102R = { stops: ['The shift', 'Second tour', 'Redraft', 'The letter', 'Close'], era: '2126', plaque: 'Harry Bailly · Mission Control, 2126',
+  scene: { '-1': 'f-hq', 0: 'f-hq', 1: 'f-museum', 2: 'f-archive', 3: 'f-feed', 4: 'f-hq' },
+  arrive: { 0: ['2126 · Mission Control', 'Restoration Shift I', 'A second chance'], 1: ['2126 · The Museum wing', 'Second Tour', 'C8 · C9'], 2: ['2126 · The Restoration Lab', 'Placard Redraft', 'C10'], 3: ['2126 · The feed', 'Time Capsule Letter', 'Dear future me'], 4: ['2126 · Mission Control', 'Next: Restoration Shift II', 'Close every gap'] },
+  slides: [
+  { stop: -1, host: ['present', 'The <b>Restoration Shift</b> begins.'],
+    help: 'Hoy es la segunda oportunidad para C8, C9 y C10. Si en tu pasaporte el profe escribió «Restoration Shift», haces otra vez tu recorrido de guía (C8 · C9) o reescribes tu ficha (C10). Si no, escribes una carta «Time Capsule» a tu yo del futuro y eres público de los recorridos.',
+    note: () => `Objetivo (2 min). En español: Restoration Shift I (recuperación de C8 · C9 · C10). Antes de clase: la lista del Registro Chronos de quién va al segundo recorrido y quién reescribe la ficha (según la retroalimentación de la Clase 1). Organización: los recorridos al frente con un público de 3–4 escritores de la carta (unos 4 min cada guía); la reescritura en las mesas del fondo; la carta en los puestos. Si no alcanzan todos los recorridos, siguen en el Restoration Shift II.`,
+    html: () => `${brand10()}<div class="kicker">Cycle 10 · Timeline Stabilized · Class 2 · Restoration Shift I</div><h1>Today, curators, the timeline gets its repairs — and you write to your future self.</h1>
+    <div class="goals"><span><b>C8 · C9</b> the second tour</span><span><b>C10</b> the placard redraft</span><span><b>✉️</b> the Time Capsule Letter</span></div>` },
+  { stop: 0, dense: true, host: ['map', 'Find your <b>station</b>.'],
+    help: 'Busca tu estación. Segundo recorrido: al frente. Reescritura de la ficha: mesas del fondo. Carta «Time Capsule»: en tu puesto; cuando el profe te llame, eres público de un recorrido y haces dos preguntas.',
+    note: 'The stations (3 min). Diga en privado a cada agente su estación (nunca en voz alta ni en pantalla). Quien recupera C8 o C9 y también C10 empieza por el recorrido y luego pasa a las mesas del fondo.',
+    html: () => `<div class="kicker">Restoration Shift I · four stations</div>
+    <div class="st8 g8">${RS10.map(([i, h, t]) => `<div><i>${i}</i><b>${h}</b><span>${t}</span></div>`).join('')}</div>` },
+  { stop: 1, dense: true, host: ['listen', 'Your <b>second tour</b>.'],
+    help: 'Prepárate 2 minutos con tu tarjeta-guion. Luego das tus 2 minutos al público con estas partes y respondes dos preguntas sin cambiar tu opinión. Se valora con la misma rúbrica de Museum Open.',
+    note: () => `Second tour (unos 30 min). Cada guía: 2 min de preparación, 2 min de recorrido (reloj) con su ficha en la mano o pegada al tablero, y dos preguntas del público (C9). Use la rúbrica de Museum Open (MRUB) y marque abajo el número de quien ya lo hizo (se guarda en este computador; solo números). Registre en el Registro Chronos. ${course === '7D' ? 'PIAR: segmento de 1 minuto (definición, origen, 2126 y opinión con una razón) y una pregunta con marco, con los criterios ajustados.' : ''}`,
+    html: () => `<div class="kicker">Second tour · 2 minutes · then two questions · C8 · C9</div>
+    <div class="up7"><div><div class="cframe sm8"><ol>${TOUR10.map(t => `<li>${t}</li>`).join('')}</ol></div>${timer([['Prepare', 120], ['Your tour', 120], ['Two questions', 90]])}</div>
+    <div><p class="hint" style="margin:0 0 .6vh">Second tours done (list numbers · for the teacher)</p><div class="ob8" id="ob8" data-n="${ROSTER[course] || 30}" data-key="rt10"></div></div></div>
+    <div class="vq8"><b>Audience</b>${AUDQ10.map(t => `<span>${t}</span>`).join('')}</div>` },
+  { stop: 2, dense: true, host: ['write', 'Redraft your <b>placard</b>.'],
+    help: 'Si tu estación es la ficha, escribe la versión 3 en una hoja limpia, con tu ficha anterior y la flecha ➜ del profe a la vista. Revisa los siete puntos de la lista. Entrégala al final con tu nombre, número y poder detrás.',
+    note: () => `Placard redraft (en paralelo, unos 30 min). Pase por las mesas del fondo entre recorridos. La versión 3 se valora para C10 con la misma lista (75–100 palabras; Chronicler 120–150; dos fuentes, una de ellas el mensaje de 7A o 7B). ${course === '7D' ? 'PIAR: ficha de 50–70 palabras con la plantilla (título, definición, ejemplo y fuente), el banco de palabras y la lista.' : ''}`,
+    html: () => `<div class="kicker">Placard redraft · version 3 · C10 · at the back tables</div>
+    <div class="pk8">${PCHECK.map(([k, t, h]) => `<div class="pkb"><b>${t}</b><small>${h}</small></div>`).join('')}</div>
+    <div class="info">On a <b>clean sheet</b>: version 3 · your name, list number and power on the back.</div>` },
+  { stop: 3, dense: true, host: ['idea', 'Dear <b>future me</b>…'],
+    help: 'Si ya alcanzaste C8, C9 y C10, escribe en tu Chronos Passport una carta a tu yo del año 2030, de 80 a 120 palabras, con formas de futuro (will, be going to, might) y una oración con If… would. Usa estas partes.',
+    note: () => `Time Capsule Letter (en paralelo). Es de profundización: no se califica, pero practica C3 (futuro y segundo condicional). +5 XP al poder de quien lea una oración al final. Llame de a 3–4 escritores para ser público de cada recorrido. ${course === '7D' ? 'PIAR: carta de 40–60 palabras con las partes 1, 2, 3 y 6.' : ''}`,
+    html: () => `<div class="kicker">The Time Capsule Letter · to me in 2030 · 80–120 words · in my Chronos Passport</div>
+    <div class="up7"><div class="cframe"><ol>${TCAP10.map(t => `<li>${t}</li>`).join('')}</ol></div><div class="info">Use <b>will</b> · <b>be going to</b> · <b>might</b> · and one <b>If …, I would …</b></div></div>` },
+  { stop: 4, dense: true, host: ['cheer', 'The timeline is getting <b>stable</b>!'],
+    help: 'Cerramos el primer turno de restauración. Algunos leen una oración de su carta. Entrega tu ficha si la reescribiste. En la próxima clase se cierra toda recuperación pendiente.',
+    note: () => `Cierre (4 min). Dos o tres voluntarios leen una oración de su carta (+5 XP a su poder). Recoja las fichas de la versión 3. Quien no alcanzó a hacer el recorrido lo hace al inicio del Restoration Shift II${course && NEXT10b[course] ? ' (' + NEXT10b[course] + ')' : ''}, junto con la Archive Vault pendiente.`,
+    html: () => `<div class="kicker">Restoration Shift I complete · +5 XP for every sentence read</div>
+    ${pxBoard(5, true)}
+    <div class="info">Next class: <b>Restoration Shift II</b> — close every gap (C1–C10) · <b>Modern Pardoners</b> for everybody else.</div>
+    <button type="button" class="endbtn" data-tomap="1">☰ Back to the cycle map</button>` },
+  ] };
+
 const LESSONS = {
   map: { stops: [], era: '2126', scene: { '-1': 'f-hq' }, arrive: {}, plaque: 'Harry Bailly · Mission Control, 2126', slides: [
     { stop: -1, era: '2126', scene: 'f-hq', host: ['wave', () => course ? 'Choose your class, curators!' : 'Greetings, agents! First, choose your course.'],
@@ -3148,6 +3196,7 @@ const LESSONS = {
         <p class="credits">Music: «Virtutes Instrumenti», «Heroic Age» and «Floating Cities», Kevin MacLeod (incompetech.com), CC BY 4.0 · Quotations from Chaucer's <i>Canterbury Tales</i> and Shakespeare's <i>Julius Caesar</i> (adapted) · Illustrations: Operation Chronos</p>` },
   ] },
   c1r: C101R,
+  c2r: C102R,
 
 };
 // ---------- engine
