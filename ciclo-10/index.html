@@ -3238,6 +3238,51 @@ const C103R = { stops: ['The shift', 'Last tours', 'The Vault', 'Modern Pardoner
     <button type="button" class="endbtn" data-tomap="1">☰ Back to the cycle map</button>` },
   ] };
 
+
+// Class 4 · PAUSE · Timeline Stabilized (adapted from the 7A–7B PAUSE of Cycle 8 Class 5) · the Museum of the Future completes the Meter
+const C104R = { stops: ['The question', 'Discernment', 'My powers', 'Meter', 'Chrono-Masters'], era: '2126', plaque: 'Harry Bailly · Mission Control, 2126',
+  scene: { '-1': 'f-hq', 0: 'f-archive', 1: 'f-archive', 2: 'f-museum', 3: 'f-hq', 4: 'f-hq' },
+  arrive: { 0: ['2126 · The Museum of the Future', 'The Question Returns', 'Truth or trick?'], 1: ['2126 · The Chronos Archive', 'Discernment', 'Which voices will I trust?'], 2: ['2126 · The Museum wing', 'My Powers', 'At the service of others'], 3: ['2126 · Mission Control', 'Timeline Integrity Meter', '100 %'], 4: ['2126 · Mission Control', 'Chrono-Masters', 'Term 29 complete'] },
+  slides: [
+  { stop: -1, host: ['present', 'Agents, it is time for a <b>pause</b>.'],
+    help: 'Hoy es la PAUSA del periodo. Volvemos a la pregunta del periodo, escribimos en el Pilgrim\'s Book qué voces vamos a creer desde ahora y por qué, pensamos cómo ponemos nuestro poder al servicio de los demás y llevamos el Meter al 100 %.',
+    note: () => `Objetivo (2 min). En español: PAUSE · Timeline Stabilized (metacognición y reflexión ignaciana). La pregunta del periodo (6 min), el discernimiento en silencio y por escrito (15 min), mis poderes al servicio (8 min), el Meter al 100 % (4 min), rangos y cierre (12 min). Pida que tengan el Pilgrim's Book y un lápiz. La recuperación ya se cerró en el Restoration Shift II. En la Clase 5 (Closure) se entregan los portafolios. ${course === '7D' ? 'PIAR (7D): una oración por paso con los marcos.' : ''}`,
+    html: () => `${brand10()}<div class="kicker">Cycle 10 · Timeline Stabilized · Class 4 · PAUSE</div><h1>Today, agents, we stop the clocks — and look back at our journey.</h1>
+    <div class="goals"><span><b>❓</b> the question of the term</span><span><b>🧭</b> which voices will I trust?</span><span><b>100 %</b> the timeline, stabilized</span></div>` },
+  { stop: 0, dense: true, host: ['think', 'The question <b>returns</b>.'],
+    help: 'Esta es la pregunta del periodo. En el Ciclo 1 escribiste una primera respuesta a lápiz en el Pilgrim\'s Book. Búscala y léela en silencio. ¿Qué cambió desde entonces?',
+    note: 'The question (6 min). Lea la pregunta y la versión corta. Pida que busquen su primera respuesta del Ciclo 1 en el Pilgrim\'s Book y la lean en silencio (1 min). Dos o tres voluntarios dicen en una frase qué cambió.',
+    html: () => `<div class="kicker">The question of Term 29 · from the Tabard Inn to 2126</div>
+    <div class="tx6"><p><b>${GQS8}</b></p><p>${GQ8}</p></div>
+    <div class="info">Find your <b>first answer</b> from Cycle 1 in your Pilgrim's Book. Read it in silence. What has changed?</div>` },
+  { stop: 1, dense: true, host: ['listen', 'Remember · notice · <b>choose</b>.'],
+    help: 'Tres pasos en silencio: recuerda una voz de este periodo que intentó engañarte, nota cómo descubriste el engaño y elige qué voces vas a creer desde ahora. Luego escribe tu respuesta en el Pilgrim\'s Book, a lápiz.',
+    note: 'Discernment (15 min). Baje la luz si puede y deje la música suave. Guíe los tres pasos con pausas de 1 minuto (es la forma de examen ignaciano: recordar, notar, elegir). Luego 8 minutos de escritura en el Pilgrim\'s Book con los marcos. Nadie lee en voz alta si no quiere.',
+    html: () => `<div class="kicker">Discernment · in silence · then in your Pilgrim's Book</div>
+    <div class="jr7 sm">${EXAMEN8.map(([i, h, t], k) => `<div><i>${i}</i><b>${h}</b><span>${t}</span></div>${k < 2 ? '<em>→</em>' : ''}`).join('')}</div>
+    <div class="up7"><div class="cframe sm8"><b>Write in pencil</b><ol>${PAUSEW.map(t => `<li>${t}</li>`).join('')}</ol></div>${timer([['Silence', 180], ['Write', 480]])}</div>` },
+  { stop: 2, dense: true, host: ['point', 'Your power, <b>for others</b>.'],
+    help: 'Cada poder es también una forma de servir. Responde en el Pilgrim\'s Book: «¿Qué poder mío pongo al servicio de los demás?». Mira las ideas de cada poder y escribe un ejemplo real de tu vida o del colegio.',
+    note: 'My powers (8 min). Cada agente responde con un ejemplo concreto (en el curso, en casa, en el colegio). Un voluntario por poder comparte (+10 XP a su poder).',
+    html: () => `<div class="kicker">Which of my powers do I put at the service of others?</div>
+    <div class="pc7">${SERVE8.map(([k, n, t]) => `<div><img src="${IMG.emb[k]}" alt=""><b>${n}</b><span>${t}</span></div>`).join('')}</div>
+    ${nb('«I put my power of … at the service of others when I … . For example, … »')}` },
+  { stop: 3, host: ['alert', 'The timeline is almost <b>stable</b>…'],
+    help: 'Con la Evidencia 3 y la reflexión de hoy, el Timeline Integrity Meter llega al 100 %. La línea del tiempo quedó estable.',
+    note: 'Meter (4 min). Pulse «Stabilize the timeline»: el Meter sube de 90 % a 100 % y se ilumina el Museum of the Future como cuarto artefacto. Aplausos.',
+    html: () => `<div class="kicker">Timeline Integrity Meter · Term 29</div>
+    <div class="met6" id="met8"><div class="bar"><i id="met8i" style="width:90%"></i><span id="met8t">90 %</span></div>
+    <div class="arts"><span>🔍 Decoder Lens</span><span>⚱️ Pardoner's Relic</span><span>📜 Antony's Scroll</span><span class="a3">🏛️ The Museum of the Future</span></div></div>
+    <div class="revealbar"><button type="button" class="tbtn go" id="met8b">⏳ Stabilize the timeline</button></div>` },
+  { stop: 4, dense: true, host: ['cheer', 'Congratulations, <b>Chrono-Masters</b>!'],
+    help: 'Este es el puntaje de cada equipo de poder en todo el periodo y su rango. Gracias por cuidar la línea del tiempo, agentes. En la próxima clase cerramos el periodo y entregamos el portafolio.',
+    note: () => `Rangos y cierre (12 min). El tablero muestra el XP acumulado del curso en este computador (es el mismo de todos los ciclos). El rango de cada equipo se calcula con el promedio por agente (XP ÷ ${Math.max(1, Math.round((ROSTER[course] || 28) / 4))}): Recruit 0–149 · Field Agent 150–349 · Time Ranger 350–599 · Chrono-Master 600+. Entregue los certificados Chrono-Master que haya preparado (en papel solo si lo decide; si no, se proyecta este tablero). Cierre con la pregunta: «Truth or trick?». Reflexión del docente (PAUSA 2) en la guía.`,
+    html: () => `<div class="kicker">The timeline is stabilized · the ranks of your power teams</div>
+    <div class="rk8" id="rk8" data-n="${Math.max(1, Math.round((ROSTER[course] || 28) / 4))}"></div>
+    <div class="info">The timeline is <b>stabilized</b>. Thank you, agents of ${course || '7th grade'} — and remember: <b>truth or trick?</b></div>
+    <div class="hint">Next class: <b>Closure</b> — your portfolio and the last pending work.</div>
+    <button type="button" class="endbtn" data-tomap="1">☰ Back to the cycle map</button>` },
+  ] };
 const LESSONS = {
   map: { stops: [], era: '2126', scene: { '-1': 'f-hq' }, arrive: {}, plaque: 'Harry Bailly · Mission Control, 2126', slides: [
     { stop: -1, era: '2126', scene: 'f-hq', host: ['wave', () => course ? 'Choose your class, curators!' : 'Greetings, agents! First, choose your course.'],
@@ -3252,6 +3297,7 @@ const LESSONS = {
   c1r: C101R,
   c2r: C102R,
   c3r: C103R,
+  c4r: C104R,
 
 };
 // ---------- engine
