@@ -1543,6 +1543,8 @@ body.era-2126 .exit2 p { font-family: var(--f-body); font-size: 3.2vh; line-heig
 .mo9 { display: grid; grid-template-columns: 1.55fr 1fr; gap: 1vw; align-items: start; } .mo9 .rot9.one .rs9 table { font-size: 2.2vh; } .mo9 .ob8 { grid-template-columns: repeat(8, 1fr); } .mo9 .ob8 button { font-size: 1.9vh; padding: .5vh 0; }
 /* ---- Cycle 9 · Class 5 (20 nov) */
 .st8.g9 { grid-template-columns: repeat(5, 1fr); }
+/* ---- Cycle 10 · Class 5 (24 nov) */
+.tk8.c10q { grid-template-columns: repeat(4, 1fr); margin-bottom: 1vh; } .tk8.c10q .tkb b { font-size: 1.95vh; } .tk8.c10q .tkb span { font-family: var(--f-caps); font-size: 1.9vh; color: var(--red); }
 </style>
 </head>
 <body class="era-rome">
@@ -3283,6 +3285,54 @@ const C104R = { stops: ['The question', 'Discernment', 'My powers', 'Meter', 'Ch
     <div class="hint">Next class: <b>Closure</b> — your portfolio and the last pending work.</div>
     <button type="button" class="endbtn" data-tomap="1">☰ Back to the cycle map</button>` },
   ] };
+
+// Class 5 · Closure (FLEX) · pending work · portfolio · return of materials · farewell
+const CHALL10 = [['«Everybody in 7th grade has this game. You need it too!»', '#5 Everybody\'s doing it'], ['«Don\'t listen to Tom about the trip — he can\'t even tie his shoes.»', '#7 Attack the person'], ['«I ate a mango and then I passed the test. Mangoes make you smart!»', '#4 After it, so because of it'], ['«Either you buy the premium plan or your phone will die.»', '#11 False Dilemma'], ['«You are so intelligent — you will love this expensive course.»', '#13 Flattery'], ['«If we use phones in class, we will stop studying, then fail, then never get a job.»', '#8 The dangerous chain'], ['«Two students from that class were noisy, so it is the noisiest class in the school.»', '#3 Too fast, too few'], ['«Think of the poor puppies! Buy this chocolate today!»', '#12 Appeal to Emotion']];
+const PORT10 = ['My Chronos Passport (notebook section)', 'My Pilgrim\'s Book (half sheet)', 'My placard: version 1 and version 2 (notebook)', 'My clean placard or version 3 (from the room folder)', 'My Visitor Passport page', 'My Bugdex', 'My Time Capsule Letter or my Modern Pardoner', 'My name and list number on everything'];
+const RETURN10 = [['🏺', 'Room pieces', 'take your relic and your pieces home — or give them to the teacher'], ['📁', 'Room folders', 'empty and return them'], ['🃏', 'Source Cards', 'back to the teacher · the set is used again'], ['🧹', 'The classroom', 'tape off the walls · desks in rows']];
+const FAREWELL10 = 'Agents, the timeline is stable. You travelled from the Tabard Inn in 1380 to Caesar\'s Rome and to the year 2126 — and you learned to ask one question: truth or trick? Keep your voice honest. Mission Control out.';
+const C105R = { stops: ['Pending', 'Challenge', 'Portfolio', 'Return', 'Farewell'], era: '2126', plaque: 'Harry Bailly · Mission Control, 2126',
+  scene: { '-1': 'f-hq', 0: 'f-archive', 1: 'f-feed', 2: 'f-archive', 3: 'f-museum', 4: 'f-hq' },
+  arrive: { 0: ['2126 · The Chronos Archive', 'Pending Work', 'Last call'], 1: ['2126 · The feed', 'The Bugdex Challenge', 'Truth or trick?'], 2: ['2126 · The Chronos Archive', 'Your Portfolio', 'Everything in one place'], 3: ['2126 · The Museum wing', 'Return', 'Pack the time machine'], 4: ['2126 · Mission Control', 'Term 29 Complete', 'See you in Term 30'] },
+  slides: [
+  { stop: -1, host: ['present', 'Last day of <b>Term 29</b>!'],
+    help: 'Hoy cerramos el periodo: terminamos lo pendiente, jugamos el último reto de bugs, armamos y entregamos el portafolio y devolvemos los materiales. Es la última clase de Operation Chronos.',
+    note: () => `Objetivo (2 min). En español: Closure (FLEX, último día del periodo, jue 11 mar). Pendientes (10 min), Bugdex Challenge (10 min, para quien no tiene pendientes), portafolio (15 min), devolución de materiales (8 min), despedida (5 min). Antes de clase: devuelva a cada agente su ficha limpia o versión 3 de la carpeta de la sala para el portafolio, y tenga la lista de pendientes del Registro.`,
+    html: () => `${brand10()}<div class="kicker">Cycle 10 · Timeline Stabilized · Class 5 · Closure</div><h1>Today, agents, we close Term 29 — and pack the time machine.</h1>
+    <div class="goals"><span><b>⏳</b> last pending work</span><span><b>📁</b> your portfolio</span><span><b>👋</b> see you in Term 30</span></div>` },
+  { stop: 0, dense: true, host: ['write', 'Last call for <b>pending work</b>.'],
+    help: 'Si el profe te dijo que tienes algo pendiente (una revisión del cuaderno, una autoevaluación, una ficha), termínalo ahora. Si no tienes nada pendiente, prepárate para el Bugdex Challenge.',
+    note: 'Pendientes (10 min, reloj). Solo trabajo ya asignado (no es otra recuperación: los resultados de C1–C10 quedaron cerrados en el Restoration Shift II). Diga en privado quién tiene pendientes.',
+    html: () => `<div class="kicker">Pending work · last call · 10 minutes</div>
+    <div class="info">Finish what your teacher told you: your <b>self-check</b>, a <b>notebook</b> task or a <b>placard</b>. Nothing pending? Get ready for the <b>Bugdex Challenge</b>!</div>
+    ${timer([['Pending work', 600]])}` },
+  { stop: 1, dense: true, host: ['oops', 'The <b>Bugdex Challenge</b>!'],
+    help: 'El último reto: lee cada frase y di qué bug tiene. Los equipos de poder responden por turnos: el Herald dice el número y el nombre. Toca la tarjeta para ver la respuesta. Cada acierto da XP a su poder.',
+    note: 'Bugdex Challenge (10 min). Turnos por poder (Heralds, Timekeepers, Decoders, Chroniclers, y vuelve a empezar). +5 XP por acierto en el tablero. Claves: 1 #5 · 2 #7 · 3 #4 · 4 #11 · 5 #13 · 6 #8 · 7 #3 · 8 #12.',
+    html: () => `<div class="kicker">The Bugdex Challenge · which bug? · tap to check</div>
+    <div class="tk8 c10q">${CHALL10.map(([q, a], k) => `<button type="button" class="tkb"><b>${k + 1} · ${q}</b><span>${a}</span></button>`).join('')}</div>
+    ${pxBoard(5, true)}` },
+  { stop: 2, dense: true, host: ['magnifier', 'Your <b>portfolio</b>.'],
+    help: 'Arma tu portafolio del periodo con esta lista. Toca cada punto cuando lo tengas. Todo debe tener tu nombre y tu número de lista. Al final se lo entregas al profe.',
+    note: 'Portafolio (15 min). Devuelva las fichas limpias o versión 3 de las carpetas. El portafolio puede ir en un sobre o en el mismo cuaderno con las hojas sueltas pegadas o grapadas; recójalo al final o revíselo en la clase. La lista se reinicia al cambiar de pantalla.',
+    html: () => `<div class="kicker">My Term 29 portfolio · tap what you have</div>
+    <div class="rc9w">${PORT10.map((t, k) => `<button type="button" class="rc9"><i>${k + 1}</i>${t}</button>`).join('')}</div>` },
+  { stop: 3, dense: true, host: ['map', 'Pack the <b>time machine</b>.'],
+    help: 'Devolvemos los materiales: lleva a casa tu reliquia y las piezas de tu sala (o entrégalas al profe), devuelve las carpetas y las Source Cards, quita la cinta de las paredes y deja el salón en orden.',
+    note: 'Devolución de materiales (8 min). Guarde las Source Cards (se pueden reutilizar en el P30 o el próximo año). Los artefactos reales de la clase vuelven con usted.',
+    html: () => `<div class="kicker">Return of materials · leave the classroom ready</div>
+    <div class="st8 g8">${RETURN10.map(([i, h, t]) => `<div><i>${i}</i><b>${h}</b><span>${t}</span></div>`).join('')}</div>
+    ${timer([['Pack and clean', 480]])}` },
+  { stop: 4, dense: true, host: ['wave', 'Mission Control <b>out</b>.'],
+    help: 'Este es el último mensaje de Mission Control. Gracias por cuidar la línea del tiempo, agentes. ¡Nos vemos en el periodo 30!',
+    note: 'Despedida (5 min). Lea el mensaje en voz alta con calma. Aplausos para los cuatro equipos de poder. Fin del periodo 29.',
+    html: () => `<div class="kicker">Transmission · Mission Control · Term 29 complete</div>
+    <div class="tx6"><p>${FAREWELL10}</p></div>
+    ${pxBoard(10, true)}
+    <div class="info">See you in <b>Term 30</b>, agents of ${course || '7th grade'}!</div>
+    <button type="button" class="endbtn" data-tomap="1">☰ Back to the cycle map</button>` },
+  ] };
+
 const LESSONS = {
   map: { stops: [], era: '2126', scene: { '-1': 'f-hq' }, arrive: {}, plaque: 'Harry Bailly · Mission Control, 2126', slides: [
     { stop: -1, era: '2126', scene: 'f-hq', host: ['wave', () => course ? 'Choose your class, curators!' : 'Greetings, agents! First, choose your course.'],
@@ -3298,6 +3348,7 @@ const LESSONS = {
   c2r: C102R,
   c3r: C103R,
   c4r: C104R,
+  c5r: C105R,
 
 };
 // ---------- engine
