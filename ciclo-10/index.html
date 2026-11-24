@@ -3184,6 +3184,60 @@ const C102R = { stops: ['The shift', 'Second tour', 'Redraft', 'The letter', 'Cl
     <button type="button" class="endbtn" data-tomap="1">☰ Back to the cycle map</button>` },
   ] };
 
+
+// Class 3 · Restoration Shift II (recovery C1–C10 · last chance) · Modern Pardoners for everybody else
+const RS10b = [['🧭', 'Last tours · C8 · C9', 'the second tours that did not fit in Restoration Shift I'], ['✍️', 'Placard · C10', 'finish version 3 at the back tables'], ['🔐', 'Archive Vault · C1–C7', 'your pending tasks · in your passport'], ['📺', 'Modern Pardoners', 'everybody else · expose a real advert in reported speech']];
+const VAULT10 = [
+  ['C1', 'Listen to a last tour', 'Write the guide\'s opinion and one reason. Is the reason relevant? R / NR — why?'],
+  ['C2', 'Read a placard', 'The teacher gives you a placard from another room. What does the writer want visitors to believe? Which detail shows it?'],
+  ['C3', 'The future of a bug', 'Three sentences about 2126: one with will, one with might and one with If…, … would.'],
+  ['C4', 'Listen to two tours', 'Are their reasons consistent and reliable? Write one example.'],
+  ['C5', 'Read a catalogue entry', 'Name the bug. Is the argument sufficient and acceptable? Why?'],
+  ['C6', 'Report what the guides said', 'Three sentences: … said that … · … told us that … · … claimed that …'],
+  ['C7', 'An argument', '60–80 words: Which bug is the most dangerous for 2126? Claim · reason · evidence · conclusion.']];
+const MPARD10 = ['The advert: … (what it sells · where I saw it)', 'It said that … · It promised that … · It claimed that …', 'The bug: #… … because …', 'What it did not say: …', 'My advice: If my little brother saw it, I would tell him that …'];
+const MPARDQ10 = [['⚱️', '1380', 'The Pardoner sold fake relics: «This bone will cure your cows!»'], ['📺', 'Today', 'Adverts sell «miracles» too: «Everybody has it!» · «You deserve it!» · «Only today!»'], ['🔎', 'Your job', 'expose one real advert you remember · TV, YouTube, the street, a game']];
+const NEXT10c = { '7C': 'mié 10 mar, 8:55', '7D': 'mié 10 mar, 13:55', '7E': 'mar 9 mar, 11:10' };
+const C103R = { stops: ['The shift', 'Last tours', 'The Vault', 'Modern Pardoners', 'Close'], era: '2126', plaque: 'Harry Bailly · Mission Control, 2126',
+  scene: { '-1': 'f-hq', 0: 'f-hq', 1: 'f-museum', 2: 'f-archive', 3: 'f-feed', 4: 'f-hq' },
+  arrive: { 0: ['2126 · Mission Control', 'Restoration Shift II', 'Close every gap'], 1: ['2126 · The Museum wing', 'Last Tours', 'C8 · C9'], 2: ['2126 · The Archive Vault', 'The Vault', 'C1–C7 · last chance'], 3: ['2126 · The feed', 'Modern Pardoners', 'Expose the advert'], 4: ['2126 · Mission Control', 'Next: the PAUSE', 'Timeline stabilized'] },
+  slides: [
+  { stop: -1, host: ['present', 'Last repairs: <b>Restoration Shift II</b>.'],
+    help: 'Hoy se cierra toda recuperación pendiente: los últimos recorridos (C8 · C9), la ficha (C10) y la Archive Vault (C1–C7). Si no tienes nada pendiente, eres un «Modern Pardoner hunter»: desenmascaras un anuncio real en estilo indirecto.',
+    note: () => `Objetivo (2 min). En español: Restoration Shift II (cierre de toda recuperación, C1–C10). Antes de clase: la lista del Registro Chronos de lo pendiente por agente (recorridos que no alcanzaron en el Restoration Shift I, fichas versión 3 sin terminar, tareas de la Vault; máximo dos criterios de la Vault por agente). Es la última oportunidad del periodo: los resultados quedan definitivos para Control.`,
+    html: () => `${brand10()}<div class="kicker">Cycle 10 · Timeline Stabilized · Class 3 · Restoration Shift II</div><h1>Today, curators, we close every gap in the timeline.</h1>
+    <div class="goals"><span><b>C8 · C9</b> the last tours</span><span><b>C1–C7 · C10</b> the Vault and the placard</span><span><b>📺</b> Modern Pardoners</span></div>` },
+  { stop: 0, dense: true, host: ['map', 'Find your <b>station</b>.'],
+    help: 'Busca tu estación: últimos recorridos al frente, ficha en las mesas del fondo, Archive Vault en tu puesto. Si no tienes nada pendiente, vas a «Modern Pardoners».',
+    note: 'The stations (3 min). Asigne en privado. Los agentes de la Vault con tareas de escucha (C1, C4, C6) son el público de los últimos recorridos: así la escucha tiene una fuente real. Para C2 y C5, entregue una ficha o una entrada de catálogo de otra sala (de las carpetas).',
+    html: () => `<div class="kicker">Restoration Shift II · four stations · the last chance of the term</div>
+    <div class="st8 g8">${RS10b.map(([i, h, t]) => `<div><i>${i}</i><b>${h}</b><span>${t}</span></div>`).join('')}</div>` },
+  { stop: 1, dense: true, host: ['listen', 'The <b>last tours</b>.'],
+    help: 'Si tu recorrido quedó pendiente, hoy lo haces: 2 minutos de preparación, 2 de recorrido y dos preguntas. El público son los agentes de la Archive Vault que tienen tareas de escucha.',
+    note: () => `Last tours (unos 20 min). La misma cuadrícula del Restoration Shift I (rt10): los números ya marcados quedan guardados. Valore con la rúbrica de Museum Open y registre. ${course === '7D' ? 'PIAR: segmento de 1 minuto (definición, origen, 2126 y opinión con una razón) y una pregunta con marco.' : ''}`,
+    html: () => `<div class="kicker">Last tours · 2 minutes · then two questions · C8 · C9</div>
+    <div class="up7"><div><div class="cframe sm8"><ol>${TOUR10.map(t => `<li>${t}</li>`).join('')}</ol></div>${timer([['Prepare', 120], ['Your tour', 120], ['Two questions', 90]])}</div>
+    <div><p class="hint" style="margin:0 0 .6vh">Second tours done (list numbers · for the teacher)</p><div class="ob8" id="ob8" data-n="${ROSTER[course] || 30}" data-key="rt10"></div></div></div>` },
+  { stop: 2, dense: true, host: ['magnifier', 'The <b>Archive Vault</b> · last chance.'],
+    help: 'Si tienes tareas de la Archive Vault (máximo dos), termínalas hoy en tu pasaporte con el título «ARCHIVE VAULT · C…». Para escuchar, eres público de los últimos recorridos; para leer, el profe te da una ficha de otra sala.',
+    note: () => `The Vault (en paralelo, unos 35 min). Revise los pasaportes al final o recójalos. ${course === '7D' ? 'PIAR: una tarea con marco de inicio.' : ''}`,
+    html: () => `<div class="kicker">The Archive Vault · C1–C7 · in your passport · max two criteria</div>
+    <div class="va8">${VAULT10.map(([c, h, t]) => `<div><b>${c}</b><strong>${h}</strong><span>${t}</span></div>`).join('')}</div>` },
+  { stop: 3, dense: true, host: ['oops', 'The Pardoner is <b>still selling</b>!'],
+    help: 'El Bulero de 1380 vendía reliquias falsas; hoy los anuncios también venden «milagros». Elige un anuncio real que recuerdes (TV, YouTube, la calle, un juego) y desenmascáralo en tu pasaporte con estilo indirecto: qué dijo, qué prometió, cuál es su bug y qué no dijo.',
+    note: () => `Modern Pardoners (profundización, unos 30 min). Es individual, en el Chronos Passport, 60–90 palabras; practica C6 (estilo indirecto) y la detección de bugs. Sin celulares: el anuncio se describe de memoria. Al final, tres voluntarios leen su exposé (+5 XP a su poder). ${course === '7D' ? 'PIAR: tres oraciones (el anuncio · It said that … · el bug).' : ''}`,
+    html: () => `<div class="kicker">Modern Pardoners · expose one real advert · in reported speech</div>
+    <div class="st8 r9">${MPARDQ10.map(([i, h, t]) => `<div><i>${i}</i><b>${h}</b><span>${t}</span></div>`).join('')}</div>
+    <div class="up7"><div class="cframe sm8"><ol>${MPARD10.map(t => `<li>${t}</li>`).join('')}</ol></div><div class="vq8"><b>The bugs</b>${BUGLIST13.map((t, k) => `<span>#${k + 1} ${t}</span>`).join('')}</div></div>` },
+  { stop: 4, dense: true, host: ['cheer', 'Every gap is <b>closed</b>!'],
+    help: 'Se cerró la recuperación del periodo. Tres voluntarios leen su exposé de «Modern Pardoners». En la próxima clase llega la PAUSA: el Meter llega al 100 %.',
+    note: () => `Cierre (5 min). Tres exposés (+5 XP a su poder). Recoja las fichas versión 3 y revise los pasaportes de la Vault. Registre todo en el Registro Chronos: los resultados quedan listos para Control. Próxima clase: PAUSE · Timeline Stabilized${course && NEXT10c[course] ? ' (' + NEXT10c[course] + ')' : ''}.`,
+    html: () => `<div class="kicker">Restoration Shift II complete · +5 XP for every exposé read</div>
+    ${pxBoard(5, true)}
+    <div class="info">Next class: the <b>PAUSE</b> — the Timeline Integrity Meter reaches <b>100 %</b>.</div>
+    <button type="button" class="endbtn" data-tomap="1">☰ Back to the cycle map</button>` },
+  ] };
+
 const LESSONS = {
   map: { stops: [], era: '2126', scene: { '-1': 'f-hq' }, arrive: {}, plaque: 'Harry Bailly · Mission Control, 2126', slides: [
     { stop: -1, era: '2126', scene: 'f-hq', host: ['wave', () => course ? 'Choose your class, curators!' : 'Greetings, agents! First, choose your course.'],
@@ -3197,6 +3251,7 @@ const LESSONS = {
   ] },
   c1r: C101R,
   c2r: C102R,
+  c3r: C103R,
 
 };
 // ---------- engine
