@@ -877,8 +877,8 @@ const DATES = {
 const WHEN = {
   c1: { '7A': 'Thu Nov 19', '7B': 'Wed Nov 18', '7C': 'Wed Nov 18', '7D': 'Mon Nov 23', '7E': 'Wed Nov 18' },
   c2: { '7A': 'Mon Nov 23', '7B': 'Thu Nov 19', '7C': 'Mon Nov 23', '7D': 'Tue Nov 24', '7E': 'Mon Nov 23' },
-  c3: { '7A': 'Tue Nov 24', '7B': 'Mon Nov 23', '7C': 'Tue Nov 24', '7D': 'Wed Nov 25', '7E': 'Tue Nov 24' },
-  c4: { '7A': 'Wed Nov 25', '7B': 'Wed Nov 25', '7C': 'Wed Nov 25', '7D': 'Thu Nov 26', '7E': 'Thu Nov 26' },
+  c3: { '7A': 'Tue Nov 24', '7B': 'Mon Nov 23', '7C': 'Tue Nov 24', '7D': 'Thu Nov 26', '7E': 'Tue Nov 24' },
+  c4: { '7A': 'Wed Nov 25', '7B': 'Wed Nov 25', '7C': 'Wed Nov 25', '7D': '!box + bugs #5 #6 in Cycle 3 · Class 1', '7E': 'Thu Nov 26' },
   c5: { '7A': 'Thu Nov 26', '7B': 'Thu Nov 26', '7C': 'Thu Nov 26', '7D': '—', '7E': '—' },
 };
 // ---------- Cycle 2 · common
@@ -1115,7 +1115,7 @@ const LESSONS = {
         <div class="courserow"><span class="kicker">Course</span><div class="courses small">${COURSES.map(c => `<button type="button" data-course="${c}" aria-pressed="${c === course}">${c}</button>`).join('')}</div></div></div>
         <div class="lessons five">${[['c1', 'Class 1', "Welcome to Chaucer's England"], ['c2', 'Class 2', 'Reason Detectives'], ['c3', 'Class 3', "Pilgrims' Voices"], ['c4', 'Class 4', 'The Mystery Box'], ['c5', 'Class 5', 'Future Shock']].map(([k, n, t]) => {
           const ready = !!LESSONS[k], w = course ? WHEN[k][course] : '';
-          return `<button type="button" class="lesson${ready ? '' : ' soon'}" data-lesson="${k}" ${ready && course ? '' : 'disabled'} style="background-image:url('${IMG.card[k]}')">${!course && ready ? '<span class="lock">choose a course</span>' : ''}<span class="num">${n}</span><span class="ttl">${t}</span><span class="when">${course ? (w === '—' ? course + ': opens Cycle 3' : course + ' · ' + w) : ''}</span></button>`; }).join('')}</div>
+          return `<button type="button" class="lesson${ready ? '' : ' soon'}" data-lesson="${k}" ${ready && course && w[0] !== '!' ? '' : 'disabled'} style="background-image:url('${IMG.card[k]}')">${!course && ready ? '<span class="lock">choose a course</span>' : ''}<span class="num">${n}</span><span class="ttl">${t}</span><span class="when">${course ? (w === '—' ? course + ': opens Cycle 3' : w[0] === '!' ? course + ': ' + w.slice(1) : course + ' · ' + w) : ''}</span></button>`; }).join('')}</div>
         <p class="credits">Music: «Pippin the Hunchback», Kevin MacLeod (incompetech.com), CC BY 3.0 · Video: TED-Ed, «Everything you need to know to read The Canterbury Tales» (Iseult Gillespie) · Illustrations: Operation Chronos</p>` },
   ] },
   c1: { stops: ['Field Log', 'Video', 'Pilgrims', 'Gallery', 'Pardoner'], scene: { '-1': 'inn', 0: 'bogota', 1: 'inn', 2: 'roch', 3: 'inn', 4: 'osp' }, plaque: 'Harry Bailly · The Host · 1380',
@@ -1293,9 +1293,9 @@ const LESSONS = {
       ${timer(MOTIONS.slice(0, isImm() ? 3 : 4).flatMap((d, n) => DEBT.map(([t, s]) => [`M${n + 1} · ${t}`, s])))}
       ${pxBoard(5, true)}` },
     { stop: 4, host: ['wave', 'Next time: open the <b>Mystery Box</b>…'],
-      help: "Ya tienes cuatro bugs en tu Bugdex. ¿Cuál escuchaste en el debate? La próxima clase hay una caja misteriosa…", note: 'Cierre (2 min). Repase los dos bugs nuevos (#3 y #4) y pregunte cuál apareció en el debate. Para el registro de C1, revise el listening en algunos cuadernos o pida a cada agente su puntaje. Próxima clase: The Mystery Box (la caja de reliquias del Bulero). Pida que guarden la Bugdex: ya tiene cuatro bugs.',
+      help: "Ya tienes cuatro bugs en tu Bugdex. ¿Cuál escuchaste en el debate? La próxima clase hay una caja misteriosa…", note: 'Cierre (2 min). Repase los dos bugs nuevos (#3 y #4) y pregunte cuál apareció en el debate. Para el registro de C1, revise el listening en algunos cuadernos o pida a cada agente su puntaje. Próxima clase: The Mystery Box (la caja de reliquias del Bulero). Pida que guarden la Bugdex: ya tiene cuatro bugs. En 7D (26 nov) esta es la última clase del Ciclo 2: la caja y los bugs #5 y #6 abren la Clase 1 del Ciclo 3 (vie 27).',
       html: () => `<div class="kicker">Class 3 complete</div><h1>Six conversations heard. Two new bugs in the Bugdex.</h1>
-      <div class="info">Next class: <b>The Mystery Box</b> — the Pardoner opens his box of relics. Will you buy one… or catch his tricks?</div>
+      <div class="info">${course === '7D' ? 'Next class: <b>Cycle 3</b> begins — and it opens with the Pardoner\'s <b>Mystery Box</b>!' : 'Next class: <b>The Mystery Box</b> — the Pardoner opens his box of relics. Will you buy one… or catch his tricks?'}</div>
       <button type="button" class="endbtn" data-tomap="1">☰ Back to the cycle map</button>` },
   ] },
   c4: { stops: ['Mystery Box', 'Words', 'Reading', 'Decode the Pitch', 'Bugdex'], scene: { '-1': 'osp', 0: 'osp', 1: 'inn', 2: 'inn', 3: 'osp', 4: 'buglab' }, plaque: 'Harry Bailly · The Host · 1380',

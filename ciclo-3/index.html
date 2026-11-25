@@ -1169,6 +1169,40 @@ const CRAFT = [
   ['Rules', 'On the back, write your three lens rules as questions — one next to each window.'],
   ['Sign', 'Write the four names of your group on the handle and draw the four power emblems.']];
 const CRAFTJOBS = [['timekeeper', 'Timekeeper', 'materials and time: 18 minutes!'], ['decoder', 'Decoder', 'traces and cuts the windows'], ['herald', 'Herald', 'checks the rules: real questions?'], ['chronicler', 'Chronicler', 'writes the rules and the four names']];
+
+// ---------- 7D only (25 nov 2026): Cycle 2 Class 4 (The Mystery Box) was lost to the Christmas celebration → short box + Bugdex #5 #6 open Class 1
+const BOX = ['It is very, very old.', 'It came from Rome.', 'If you put it in water, sick animals get better.', 'In 1380, people paid a lot of money to touch it.'];
+const BOXIN = ['an old <b>bone</b> — «the shoulder bone of a holy sheep»', 'an old <b>glove</b> — «the magic glove»', 'a <b>paper</b> with a red seal — «a letter from the Pope»'];
+const PITCH = [
+  { p: 'Look at the Pope\'s seal on my papers!', hid: 'My papers are real, so you must believe everything I say.', bug: 1, ras: 'A', why: 'Nobody can read the papers or check the seal: the evidence is not acceptable.' },
+  { p: 'Put this bone in your well, and your animals will never be ill again!', hid: 'This old bone has magic power.', bug: 1, ras: 'A', why: 'It is a sheep bone. A bone cannot cure animals: not acceptable.' },
+  { p: 'Three farmers tried it, and their animals got better!', hid: 'My bone works for everybody.', bug: 6, ras: 'S', why: 'He shows the three «hits» and hides the twenty «misses».' },
+  { p: 'Everybody in Canterbury has already bought a relic from me!', hid: 'If everybody buys it, it must be good.', bug: 5, ras: 'R', why: 'Many people buying something does not make it true or good.' },
+  { p: 'Only sinners will not give!', hid: 'If you don\'t give me money, you are a bad person — and your neighbours will know it.', bug: 0, ras: 'R', why: 'The Guilt Trap: giving money has nothing to do with being good. He uses fear and shame, not reasons.' },
+  { p: 'Put your hand in my magic glove, and you will have more wheat than you can carry!', hid: 'Pay me, and you will be rich.', bug: 1, ras: 'A', why: 'A glove cannot make wheat grow: not acceptable. And you pay first!' },
+  { p: 'Greed is the root of all evil — so give your money to me!', hid: 'Don\'t love your money… give it to me!', bug: 0, ras: 'R', why: 'The reason does not support the claim: being against greed is not a reason to pay <u>him</u>. It is greed in disguise!' }];
+const BUGS4 = [
+  { n: 5, name: 'Everybody\'s doing it', who: 'the Pardoner, in his sermon, 1380', said: '«Everybody in Canterbury has already bought a relic from me. Don\'t be the only village without one!»',
+    why: 'The reason is not <b>relevant</b>: if many people do something, it is not automatically true or good.', catch: 'Ask: «Is it good because it is good — or only because many people do it?»' },
+  { n: 6, name: 'Draw the target after shooting', who: 'the Pardoner, about the farmers of Rochester, 1380', said: '«Three farmers tried my bone, and their animals got better!» (He never talks about the twenty farmers whose animals stayed ill.)',
+    why: 'The evidence is not <b>sufficient</b>: he chooses only the examples that help him and hides the others.', catch: 'Ask: «What about the other cases? How many did NOT work?»' }];
+const C1_7D_EXTRA = [
+    { stop: 0, dense: true, host: ['key', 'What is inside? <b>It must be…</b>'],
+      help: "¿Qué hay en la caja? Con cada pista, tu grupo escribe su apuesta: «It must be…» (estoy seguro), «It might be…» (es posible), «It can't be… because…» (es imposible).", note: 'Solo 7D (25 nov: perdió la Clase 4 del Ciclo 2 por la celebración de Navidad). Mystery Box corta (4 min). Ponga la caja sellada sobre el escritorio, sin abrirla. Toque «Next clue» para revelar las pistas una a una. Después de cada pista, cada grupo escribe su apuesta en un papel con el marco de deducción (It must be… / It might be… / It can\'t be… because…). El Herald la lee. Luego pulse «Open the box» y saque los objetos uno por uno. Pregunta final: «Would you pay for it? Why / why not?».',
+      html: () => `<div class="kicker">Warm-up · The Mystery Box · sealed in Rome</div>
+      <div class="mbox"><img src="${IMG.v.relic}" alt=""><div><ol class="clues" id="clues">${BOX.map((c, n) => `<li><b>Clue ${n + 1}</b> ${c}</li>`).join('')}</ol>
+        <div class="boxin" id="boxin"><b>Inside the box:</b><ul>${BOXIN.map(x => `<li>${x}</li>`).join('')}</ul><span>Would you pay for it? Why / why not?</span></div></div></div>
+      <div class="scroll"><p class="frame" style="margin:0">It <u>must</u> be ______, because ______. · It <u>might</u> be ______. · It <u>can't</u> be ______, because ______.</p></div>
+      <div class="revealbar"><button type="button" class="tbtn go" id="clueNext">Next clue</button><button type="button" class="tbtn" id="boxOpen">Open the box</button><span class="hint">Groups: write your guess after every clue</span></div>` },
+    { stop: 0, dense: true, host: ['oops', 'Everybody bought one… so it <b>must</b> be good?!'],
+      help: "Bug #5: «todos lo compraron, así que debe ser bueno». Cópialo en tu Bugdex. Ejemplo de hoy: «Todo el mundo tiene este celular, así que es el mejor».", note: 'Bugdex · Bug sighting #5 (2 min). Antes de mostrarlo, lea con teatro la frase del Bulero «Everybody in Canterbury has already bought a relic from me!»: de pie = BUY, brazos en X = BUG. Viene de la frase 4 del discurso. Cada agente lo copia en su Bugdex (cuaderno). Pida un ejemplo de hoy («Everybody has this phone, so it is the best»). Nombre técnico (solo para usted; Ciclo 4 con el Genially): Bandwagon.',
+      html: () => `<div class="kicker">The Bugdex · Bug sighting #${BUGS4[0].n}</div><h2>${BUGS4[0].name}</h2>
+      <div class="bugdex"><img src="${IMG.bug.normal}" alt=""><table><tr><th>Who used it?</th><td>${BUGS4[0].who}</td></tr><tr><th>What did he say?</th><td>${BUGS4[0].said}</td></tr><tr><th>Why is it a bug?</th><td>${BUGS4[0].why}</td></tr><tr><th>How to catch it</th><td>${BUGS4[0].catch}</td></tr></table></div>` },
+    { stop: 0, dense: true, host: ['point', 'Three hits… and <b>twenty misses</b>!'],
+      help: "Bug #6: mostrar solo los aciertos y esconder los fallos, como pintar el blanco alrededor de las flechas DESPUÉS de disparar. Cópialo en tu Bugdex.", note: 'Bugdex · Bug sighting #6 (2 min). Antes, lea «Three farmers tried it, and their animals got better!»: BUY o BUG. Viene de la frase 3. Dibuje en el tablero una pared con tres flechas y pinte el blanco alrededor después: así se ve el bug. Diferencia con el #3 (Too fast, too few): allí hay pocos ejemplos; aquí hay muchos, pero el Bulero esconde los que no le sirven. Nombre técnico (Ciclo 4): Texas Sharpshooter.',
+      html: () => `<div class="kicker">The Bugdex · Bug sighting #${BUGS4[1].n}</div><h2>${BUGS4[1].name}</h2>
+      <div class="bugdex"><img src="${IMG.bug.jar}" alt=""><table><tr><th>Who used it?</th><td>${BUGS4[1].who}</td></tr><tr><th>What did he say?</th><td>${BUGS4[1].said}</td></tr><tr><th>Why is it a bug?</th><td>${BUGS4[1].why}</td></tr><tr><th>How to catch it</th><td>${BUGS4[1].catch}</td></tr></table></div>` },
+];
 const LESSONS = {
   map: { stops: [], scene: { '-1': 'hq' }, arrive: {}, plaque: 'Harry Bailly · Chronos Agent', slides: [
     { stop: -1, host: ['map', () => course ? 'Choose your class, agents!' : 'Good morrow, agents! First, choose your course.'],
@@ -1415,6 +1449,13 @@ const LESSONS = {
       <button type="button" class="endbtn" data-tomap="1">☰ Back to the cycle map</button>` },
   ] },
 };
+// 7D variant of Class 1: an extra first stop «Box & bugs», the other stops shift by one
+LESSONS.c1_7D = (() => { const b = LESSONS.c1, sh = o => { const r = {}; Object.keys(o).forEach(k => { r[+k < 0 ? k : String(+k + 1)] = o[k]; }); return r; };
+  const sc = sh(b.scene), ar = sh(b.arrive); sc[0] = 'osp'; ar[0] = ['Missing from Cycle 2', 'The Mystery Box', 'and bugs #5 and #6'];
+  const sl = b.slides.map(s => Object.assign({}, s, { stop: s.stop < 0 ? s.stop : s.stop + 1 }));
+  const sr = sl.findIndex(s => s.stop === 1); if (sr > -1) { const o = sl[sr].note; sl[sr] = Object.assign({}, sl[sr], { note: () => 'Hoy en 7D: haga solo la ronda 1 (la Mystery Box ocupó ese tiempo). ' + (typeof o === 'function' ? o() : o) }); }
+  return Object.assign({}, b, { stops: ['Box & bugs', ...b.stops], scene: sc, arrive: ar, slides: [sl[0], ...C1_7D_EXTRA, ...sl.slice(1)] }); })();
+
 // ---------- engine
 let L = 'map', i = 0, tick = null, AC = null, ANIM = true, lastStop = -2;
 const cur = () => LESSONS[L].slides[i];
@@ -1573,7 +1614,11 @@ function mountWidgets() {
   if ($('meter3')) { let p = 0; const go = () => { if (!$('meter3')) return; p = Math.min(33, p + 1); $('mfill3').style.width = p + '%'; $('mpct3').textContent = p + ' %'; if (p < 33) setTimeout(go, 45); else chime(); }; setTimeout(go, 900); }
   document.querySelectorAll('#fit [data-tomap]').forEach(b => b.onclick = () => openLesson('map'));
   document.querySelectorAll('#fit [data-course]').forEach(b => b.onclick = () => { setCourse(b.dataset.course); startMusic(); render(); });
-  document.querySelectorAll('#fit [data-lesson]').forEach(b => b.onclick = () => { if (!b.disabled) { startMusic(); openLesson(b.dataset.lesson); } });
+  // ---- 7D variant · Mystery Box clues (copied from Cycle 2)
+  if ($('clues')) { const li = [...$('clues').children]; let k = 0;
+    $('clueNext').onclick = () => { if (k < li.length) { li[k++].classList.add('show'); chime(); fitStage(); } };
+    $('boxOpen').onclick = () => { li.forEach(x => x.classList.add('show')); $('boxin').classList.add('show'); chime(); fitStage(); }; }
+  document.querySelectorAll('#fit [data-lesson]').forEach(b => b.onclick = () => { if (!b.disabled) { startMusic(); openLesson(LESSONS[b.dataset.lesson + '_' + course] ? b.dataset.lesson + '_' + course : b.dataset.lesson); } });
 }
 function render() {
   clearInterval(tick); tick = null;
