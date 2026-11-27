@@ -967,17 +967,17 @@ let course = null; try { course = localStorage.getItem('chronos-course'); if (!C
 function setCourse(c) { course = c; try { localStorage.setItem('chronos-course', c); } catch (e) {} }
 const DATES = {
   '7A': ['Wednesday, December 2', 'Thursday, February 4', 'February 18 and 19', 'archive'],
-  '7B': ['Tuesday, December 1', 'Tuesday, February 2', 'February 17 and 18', 'archive'],
+  '7B': ['Thursday, December 3', 'Tuesday, February 2', 'February 17 and 18', 'archive'],
   '7C': ['Thursday, December 3', 'Friday, February 12', 'March 2 and 3', 'museum'],
   '7D': ['Thursday, December 3', 'Thursday, February 11', 'March 2 and 3', 'museum'],
   '7E': ['Wednesday, December 2', 'Wednesday, February 10', 'March 1 and 3', 'museum'],
 };
 const WHEN = {
-  c1: { '7A': 'Mon Nov 30', '7B': 'Fri Nov 27', '7C': 'Fri Nov 27', '7D': 'Fri Nov 27', '7E': 'Fri Nov 27' },
-  c2: { '7A': 'Tue Dec 1', '7B': 'Mon Nov 30', '7C': 'Tue Dec 1', '7D': 'Tue Dec 1', '7E': 'Mon Nov 30' },
+  c1: { '7A': 'Mon Nov 30', '7B': 'Mon Nov 30', '7C': 'Fri Nov 27', '7D': 'Fri Nov 27', '7E': 'Fri Nov 27' },
+  c2: { '7A': 'Tue Dec 1', '7B': 'Tue Dec 1', '7C': 'Tue Dec 1', '7D': 'Tue Dec 1', '7E': 'Mon Nov 30' },
   c3: { '7A': '!lightning round in Class 2', '7B': '!lightning round in Class 2', '7C': 'Wed Dec 2', '7D': 'Wed Dec 2', '7E': 'Tue Dec 1' },
-  c4: { '7A': 'Wed Dec 2', '7B': 'Tue Dec 1', '7C': 'Thu Dec 3', '7D': 'Thu Dec 3', '7E': 'Wed Dec 2' },
-  c5: { '7A': 'Thu Dec 3', '7B': 'Thu Dec 3', '7C': 'Fri Dec 4', '7D': 'Fri Dec 4', '7E': 'Fri Dec 4' },
+  c4: { '7A': 'Wed Dec 2', '7B': 'Thu Dec 3', '7C': 'Thu Dec 3', '7D': 'Thu Dec 3', '7E': 'Wed Dec 2' },
+  c5: { '7A': 'Thu Dec 3', '7B': '!January · start of Cycle 4', '7C': 'Fri Dec 4', '7D': 'Fri Dec 4', '7E': 'Fri Dec 4' },
 };
 // ---------- Cycle 3 · common
 const isImm = () => ['7A', '7B'].includes(course);
@@ -1021,7 +1021,7 @@ const SPEED = [
    ['Pilgrims should travel in groups,', 'because robbers attack people who are alone.', 'R'],
    ['The Host\'s game is fun,', 'because the Host has a big hat.', 'NR']]];
 const TEMPUS = [
-  ['INT', 'Welcome to Chronos Radio. Today in the studio we have Dr Mira Tempus, a time historian at the Museum of the Future. Dr Tempus, you have travelled to 1380 many times. Why is that year so interesting?'],
+  ['INT', 'Welcome to Chronos Radio. Today in the studio we have Dr Miro Tempus, a time historian at the Museum of the Future. Dr Tempus, you have travelled to 1380 many times. Why is that year so interesting?'],
   ['DT', 'Well, 1380 is the year of Chaucer\'s pilgrims, and for me it\'s a fantastic year to study persuasion — how people make other people believe things. There were no newspapers and no internet, so the most powerful thing in a village was a good speaker.'],
   ['INT', 'And who were the best speakers?'],
   ['DT', 'People often think it was the knights or the kings. But in my opinion, the best persuaders were the preachers and the pardoners. They spoke to whole villages every week, and most people couldn\'t read, so they couldn\'t check what they heard.'],
@@ -1035,19 +1035,19 @@ const TEMPUS = [
   ['DT', 'Not at all. Maybe the Miller steals flour — we know he does! — but that doesn\'t tell us anything about his story. When you attack the person instead of the reason, you lose the argument. I always tell my students: answer the idea, not the person.'],
   ['INT', 'Finally, what can young people today learn from 1380?'],
   ['DT', 'I think the most important lesson is to ask questions. Before you believe something, ask: is the reason connected? Is it true? Is there enough evidence? The pilgrims didn\'t have a card with those questions. You do. Use it!'],
-  ['INT', 'Dr Mira Tempus, thank you very much.']];
+  ['INT', 'Dr Miro Tempus, thank you very much.']];
 const TQ = [
   { q: 'Why does Dr Tempus think 1380 is a good year to study persuasion?', opts: ['People read a lot of newspapers.', 'A good speaker was the most powerful thing in a village.', 'The kings wrote many books about it.'], key: 1, why: '«There were no newspapers and no internet, so the most powerful thing in a village was a good speaker.»' },
-  { q: 'In her opinion, who were the best persuaders in 1380?', opts: ['the preachers and the pardoners', 'the knights and the kings', 'the pilgrims and the innkeepers'], key: 0, why: '«People often think it was the knights or the kings. But in my opinion…» — careful: the knights are a distractor!' },
-  { q: 'What does she think about the people who believed in relics?', opts: ['They were stupid.', 'They knew the relics were fake.', 'They wanted to feel close to a saint.'], key: 2, why: '«I don\'t think they were stupid! For them, a relic was a way to feel close to a saint.»' },
+  { q: 'In his opinion, who were the best persuaders in 1380?', opts: ['the preachers and the pardoners', 'the knights and the kings', 'the pilgrims and the innkeepers'], key: 0, why: '«People often think it was the knights or the kings. But in my opinion…» — careful: the knights are a distractor!' },
+  { q: 'What does he think about the people who believed in relics?', opts: ['They were stupid.', 'They knew the relics were fake.', 'They wanted to feel close to a saint.'], key: 2, why: '«I don\'t think they were stupid! For them, a relic was a way to feel close to a saint.»' },
   { q: 'Which of the Pardoner\'s «tools» still works today, according to Dr Tempus?', opts: ['the fear of robbers in the forest', 'selling pig bones in a glass box', 'saying that everybody else has bought one'], key: 2, why: '«And other people… That last one still works today — just think of adverts!»' },
   { q: 'What does the Reeve do wrong?', opts: ['He attacks the Miller instead of answering the story.', 'He tells a funny story about a miller.', 'He agrees with everything the Miller says.'], key: 0, why: '«He doesn\'t answer the story. He attacks the Miller.»' },
-  { q: 'What is the most important lesson for young people, in her opinion?', opts: ['to travel to 1380', 'to ask questions before you believe something', 'never to buy anything in a shop'], key: 1, why: '«I think the most important lesson is to ask questions.»' }];
+  { q: 'What is the most important lesson for young people, in his opinion?', opts: ['to travel to 1380', 'to ask questions before you believe something', 'never to buy anything in a shop'], key: 1, why: '«I think the most important lesson is to ask questions.»' }];
 const RATE = [
   { who: 'Dr Tempus', claim: 'The preachers were the best persuaders in 1380,', reason: 'because they spoke to whole villages every week, and most people couldn\'t check what they heard.', r: 'R', why: 'Relevant: speaking to many people who can\'t check is connected to being a good persuader.' },
   { who: 'Dr Tempus', claim: 'The people who believed in relics were not stupid,', reason: 'because a relic was a way to feel close to a saint.', r: 'R', why: 'Relevant: it explains why people believed — it is connected to the claim.' },
   { who: 'The Reeve', claim: 'The Miller\'s story is bad,', reason: 'because the Miller is a fool and a thief.', r: 'NR', why: 'Not relevant: stealing flour says nothing about the story. He attacks the person — a new bug!' },
-  { who: 'Dr Tempus', claim: 'The Reeve lost the argument,', reason: 'because he attacked the Miller instead of answering the story.', r: 'R', why: 'Relevant: she judges how he argued, which is exactly the claim.' }];
+  { who: 'Dr Tempus', claim: 'The Reeve lost the argument,', reason: 'because he attacked the Miller instead of answering the story.', r: 'R', why: 'Relevant: he judges how the Reeve argued, which is exactly the claim.' }];
 const BUG7 = { n: 7, name: 'Attack the person', who: 'the Reeve, on the road to Canterbury, 1380', said: '«Don\'t listen to the Miller — he\'s a fool and a thief!»',
   why: 'The reason is not <b>relevant</b>: what the Miller is like tells us nothing about his story. The Reeve attacks the person, not the idea.', catch: 'Ask: «Is he answering the idea — or attacking the person?»' };
 // ---------- Class 2 content · Decoder Workshop
@@ -1215,13 +1215,13 @@ const LESSONS = {
         <p class="credits">Music: «Pippin the Hunchback», Kevin MacLeod (incompetech.com), CC BY 3.0 · Illustrations: Operation Chronos</p>` },
   ] },
   c1: { stops: ['Speed Reason', 'Prepare', 'Interview', 'Rate', 'Bugdex'], scene: { '-1': 'museum', 0: 'mission', 1: 'museum', 2: 'museum', 3: 'inn', 4: 'buglab' }, plaque: 'Harry Bailly · Chronos Agent',
-    arrive: { 0: ['Class 1 · Interview with a Time Historian', 'Speed Reason', 'Five reasons · sixty seconds'], 1: ['Chronos Radio · 2126', 'Before You Listen', 'Read the questions · predict'], 2: ['On air', 'Dr Mira Tempus', 'a time historian · B1 Preliminary Part 4'], 3: ['Groups at work', 'Rate the Arguments', 'Relevant or not?'], 4: ['The Bug Lab', 'A New Bug', 'Bug sighting #7'] },
+    arrive: { 0: ['Class 1 · Interview with a Time Historian', 'Speed Reason', 'Five reasons · sixty seconds'], 1: ['Chronos Radio · 2126', 'Before You Listen', 'Read the questions · predict'], 2: ['On air', 'Dr Miro Tempus', 'a time historian · B1 Preliminary Part 4'], 3: ['Groups at work', 'Rate the Arguments', 'Relevant or not?'], 4: ['The Bug Lab', 'A New Bug', 'Bug sighting #7'] },
     slides: [
     { stop: -1, host: ['present', 'Our guest today comes from the year <b>2126</b>!'],
-      help: "Hoy escuchas una entrevista con una historiadora del año 2126. Tu misión: reconocer sus opiniones y decidir si sus razones son relevantes.", note: 'Objetivo (1 min). En español: reconocer las opiniones de una hablante en una entrevista larga (tipo B1 Preliminary Part 4) y juzgar si sus razones son relevantes, justificando con «It is (not) relevant because…» (C1). Es la primera clase del Ciclo 3: de aquí a la Evidencia 1 quedan dos o tres clases.',
-      html: () => `<div class="kicker">Cycle 3 · Forging the Decoder Lens · Class 1 · Interview with a Time Historian</div><h1>Today, agents, you will interview a time historian — and judge her reasons.</h1>
+      help: "Hoy escuchas una entrevista con un historiador del año 2126. Tu misión: reconocer sus opiniones y decidir si sus razones son relevantes.", note: 'Objetivo (1 min). En español: reconocer las opiniones de un hablante en una entrevista larga (tipo B1 Preliminary Part 4) y juzgar si sus razones son relevantes, justificando con «It is (not) relevant because…» (C1). Es la primera clase del Ciclo 3: de aquí a la Evidencia 1 quedan dos o tres clases.',
+      html: () => `<div class="kicker">Cycle 3 · Forging the Decoder Lens · Class 1 · Interview with a Time Historian</div><h1>Today, agents, you will interview a time historian — and judge his reasons.</h1>
       <div class="goals"><span><b>C1</b> whose opinion? which reason? relevant?</span><span><b>+</b> It is (not) relevant because…</span><span><b>+</b> Bugdex #7</span></div>
-      <div class="info">Evidence 1 · Mission Log 1 is coming: <b>${course ? { '7A': 'Wed Dec 2', '7B': 'Tue Dec 1', '7C': 'Thu Dec 3', '7D': 'Thu Dec 3', '7E': 'Wed Dec 2' }[course] : '—'}</b>. Every class of this cycle is training for it.</div>` },
+      <div class="info">Evidence 1 · Mission Log 1 is coming: <b>${course ? { '7A': 'Wed Dec 2', '7B': 'Thu Dec 3', '7C': 'Thu Dec 3', '7D': 'Thu Dec 3', '7E': 'Wed Dec 2' }[course] : '—'}</b>. Every class of this cycle is training for it.</div>` },
     { stop: 0, dense: true, host: ['stand', 'Relevant? <b>Stand up!</b> Not relevant? Stay <b>seated</b>.'],
       help: "Cada razón aparece 12 segundos. Si es RELEVANTE (tiene que ver con la idea), ponte de pie. Si no, quédate sentado. Pregúntate siempre: ¿esta razón de verdad apoya la idea?", note: 'Warm-up «Speed Reason» (7 min). Dos rondas de cinco razones, 12 segundos cada una: la pantalla avanza sola. Si la razón es RELEVANTE, todos se ponen de pie; si NO, se quedan sentados. Al final de cada razón aparece la respuesta. Después de cada ronda pregunte por una razón «Not relevant»: «Why isn\'t it relevant?». La 4 de la ronda 1 anticipa el bug de hoy (atacar a la persona).',
       html: () => `<div class="kicker">Warm-up · Speed Reason · five reasons in sixty seconds</div>
@@ -1229,15 +1229,15 @@ const LESSONS = {
         <div class="fores" id="spR"><b id="spT"></b></div><div class="spbar"><i id="spBar"></i></div></div>
       <div class="revealbar"><button type="button" class="tbtn go" id="sp1">▶ Round 1</button><button type="button" class="tbtn go" id="sp2">▶ Round 2</button><button type="button" class="tbtn" id="spStop">■ Stop</button><span class="hint">🧍 RELEVANT = stand up · 🪑 NOT RELEVANT = stay seated</span></div>` },
     { stop: 1, dense: true, host: ['book', 'Herald, you are the <b>radio presenter</b> today!'],
-      help: "Antes de escuchar, lee las seis preguntas y subraya una palabra clave en cada una. Copia en tu cuaderno los números 1 a 6 para responder.", note: () => `Before you listen (4 min). Un Herald voluntario es el presentador de Chronos Radio: recibe la Presenter Card (Anexo A) y ensaya sus preguntas con usted. Usted lee a la Dra. Mira Tempus. Mientras tanto, la clase lee las seis preguntas en la pantalla (botón «The 6 questions ▶»; no detiene el reloj), copia en el cuaderno una palabra clave por pregunta y predice. Pista de examen para la Part 4: las preguntas van en el orden de la entrevista, y la respuesta es lo que la hablante <b>piensa</b>, no lo que «la gente cree». ${isImm() ? 'En 7A y 7B, además, cada agente escribe en el cuaderno el «tool» de la Dra. Tempus que se usa hoy en un anuncio.' : ''}`,
+      help: "Antes de escuchar, lee las seis preguntas y subraya una palabra clave en cada una. Copia en tu cuaderno los números 1 a 6 para responder.", note: () => `Before you listen (4 min). Un Herald voluntario es el presentador de Chronos Radio: recibe la Presenter Card (Anexo A) y ensaya sus preguntas con usted. Usted lee al Dr. Miro Tempus. Mientras tanto, la clase lee las seis preguntas en la pantalla (botón «The 6 questions ▶»; no detiene el reloj), copia en el cuaderno una palabra clave por pregunta y predice. Pista de examen para la Part 4: las preguntas van en el orden de la entrevista, y la respuesta es lo que el hablante <b>piensa</b>, no lo que «la gente cree». ${isImm() ? 'En 7A y 7B, además, cada agente escribe en el cuaderno el «tool» del Dr. Tempus que se usa hoy en un anuncio.' : ''}`,
       html: () => `<div class="kicker">Before you listen · Chronos Radio · an interview with a time historian</div>
-      <div class="swap" id="qtg"><div class="sb">${qlist(TQ)}</div><div class="sa cols"><div><h3>Dr Mira Tempus</h3><p class="lead" style="font-size:2.6vh">A time historian at the Museum of the Future (2126). She has travelled to 1380 many times to study <b>persuasion</b>: how people make other people believe things.</p></div>
+      <div class="swap" id="qtg"><div class="sb">${qlist(TQ)}</div><div class="sa cols"><div><h3>Dr Miro Tempus</h3><p class="lead" style="font-size:2.6vh">A time historian at the Museum of the Future (2126). He has travelled to 1380 many times to study <b>persuasion</b>: how people make other people believe things.</p></div>
         <div><h3>Words you will hear</h3><div class="bank"><span>persuasion</span><span>persuader</span><span>preacher</span><span>relic</span><span>saint</span><span>fake</span><span>advert</span><span>fool</span><span>thief</span></div></div></div></div>
-      <div class="info">Exam tip (Part 4): the questions are <b>in order</b>. Listen for <b>her</b> opinion: «In my opinion…», «I don't think…», «I think…» — not what «people often think».</div>
+      <div class="info">Exam tip (Part 4): the questions are <b>in order</b>. Listen for <b>his</b> opinion: «In my opinion…», «I don't think…», «I think…» — not what «people often think».</div>
       <div class="task"><span class="step">Herald</span>rehearse your questions <span class="step">Everybody</span>read the 6 questions · copy one key word for each · predict A, B or C <button type="button" class="tbtn" id="qtgBtn">The 6 questions ▶</button></div>${timer([['Prepare', 240]])}` },
-    { stop: 2, dense: true, host: ['listen', 'Listen to <b>her</b> opinion, agents. Twice!'],
-      help: "Vas a escuchar la entrevista dos veces. Escribe A, B o C para cada pregunta. Cuando digan «Show me!», muestra tu respuesta con los dedos (1, 2 o 3). Pista: la pregunta pide lo que ELLA piensa, no lo que dice otra persona.", note: 'Listening (16 min). Usted lee a la Dra. Tempus y el Herald al presentador (Anexo A; la transcripción completa está en las claves de la guía). Lean la entrevista completa una vez, den 1 minuto para marcar, y léanla otra vez. Luego, pregunta por pregunta: «Show me!» (1, 2 o 3 dedos) y «Reveal», que muestra la respuesta y la frase que la prueba. «Transcript» proyecta el fragmento de la entrevista (úselo después del Reveal o para PIAR).',
-      html: () => `<div class="kicker">Listening · Chronos Radio: Dr Mira Tempus on medieval persuasion · B1 Preliminary Part 4</div>
+    { stop: 2, dense: true, host: ['listen', 'Listen to <b>his</b> opinion, agents. Twice!'],
+      help: "Vas a escuchar la entrevista dos veces. Escribe A, B o C para cada pregunta. Cuando digan «Show me!», muestra tu respuesta con los dedos (1, 2 o 3). Pista: la pregunta pide lo que ÉL piensa, no lo que dice otra persona.", note: 'Listening (16 min). Usted lee al Dr. Tempus y el Herald al presentador (Anexo A; la transcripción completa está en las claves de la guía). Lean la entrevista completa una vez, den 1 minuto para marcar, y léanla otra vez. Luego, pregunta por pregunta: «Show me!» (1, 2 o 3 dedos) y «Reveal», que muestra la respuesta y la frase que la prueba. «Transcript» proyecta el fragmento de la entrevista (úselo después del Reveal o para PIAR).',
+      html: () => `<div class="kicker">Listening · Chronos Radio: Dr Miro Tempus on medieval persuasion · B1 Preliminary Part 4</div>
       <div class="lq" id="tq"><div class="lqhead"><span class="lqn" id="tqN"></span><span class="lqst" id="tqSt"></span></div>
         <h2 class="lqq" id="tqQ"></h2><ol class="lqo" id="tqO" type="A"></ol>
         <div class="lqkey" id="tqK"><p id="tqW"></p></div><div class="lqt" id="tqT"></div></div>
@@ -1245,7 +1245,7 @@ const LESSONS = {
       <div class="revealbar"><button type="button" class="tbtn" id="tqPrev">◀</button><button type="button" class="tbtn" id="tqL1">① 1st listening</button><button type="button" class="tbtn" id="tqL2">② Listen again</button><button type="button" class="tbtn" id="tqShow">✋ Show me!</button><button type="button" class="tbtn go" id="tqRev">Reveal</button><button type="button" class="tbtn" id="tqTr">Transcript</button><button type="button" class="tbtn" id="tqNext">Next ▶</button></div>` },
     mixSlide(3, 31),
     { stop: 3, dense: true, host: ['scales', 'Relevant… or <b>not relevant</b>?'],
-      help: "En tu grupo, marca cada argumento: R (relevante) o NR (no relevante). Justifica con el marco: «It is (not) relevant because…». El Chronicler escribe la versión del grupo y el Herald la lee.", note: () => `Rate the Arguments (10 min, en el cuaderno). Cuatro argumentos de la entrevista: tres de la Dra. Tempus y uno del Reeve. En los grupos mixtos del día, cada agente marca R o NR y escribe la justificación con el marco. El <b>Chronicler</b> escribe la versión del grupo y el <b>Herald</b> la lee. Toque cada tarjeta para revelar. +5 XP para el poder del agente que da una justificación correcta.${isImm() ? ' En 7A y 7B, sin marco, y deben proponer una razón relevante para el argumento del Reeve.' : ''}`,
+      help: "En tu grupo, marca cada argumento: R (relevante) o NR (no relevante). Justifica con el marco: «It is (not) relevant because…». El Chronicler escribe la versión del grupo y el Herald la lee.", note: () => `Rate the Arguments (10 min, en el cuaderno). Cuatro argumentos de la entrevista: tres del Dr. Tempus y uno del Reeve. En los grupos mixtos del día, cada agente marca R o NR y escribe la justificación con el marco. El <b>Chronicler</b> escribe la versión del grupo y el <b>Herald</b> la lee. Toque cada tarjeta para revelar. +5 XP para el poder del agente que da una justificación correcta.${isImm() ? ' En 7A y 7B, sin marco, y deben proponer una razón relevante para el argumento del Reeve.' : ''}`,
       html: () => `<div class="kicker">Rate the Arguments · mixed groups · It is (not) relevant because…</div>
       <div class="rate">${RATE.map((a, n) => `<button type="button" class="rt"><b>${n + 1}</b><span class="rw">${a.who}</span><span><span class="pc">${a.claim}</span> <span class="pr">${a.reason}</span></span><em class="${a.r === 'R' ? 'y' : 'n'}">${a.r === 'R' ? 'RELEVANT' : 'NOT RELEVANT'}</em><i>${a.why}</i></button>`).join('')}</div>
       ${nb('1–4 · R or NR · It is (not) relevant because…')}
@@ -1255,10 +1255,10 @@ const LESSONS = {
       help: "Bug #7: atacar a la persona en vez de responder a lo que dice. Ejemplo: «No escuches su idea, siempre pierde en fútbol». Cópialo en tu Bugdex.", note: 'Bugdex · Bug sighting #7 (4 min). Viene del argumento 3 (el Reeve). Cada agente lo copia en su Bugdex. Pida un ejemplo de hoy («Don\'t listen to her idea — she always loses at football»). Nombre técnico (solo para usted; Ciclo 4 con el Genially de los Simpsons): Ad Hominem.',
       html: () => bugCard(BUG7, IMG.bug.normal) },
     { stop: 4, host: ['write', 'Do you agree with <b>Dr Tempus</b>?'],
-      help: () => `Responde en tu cuaderno: ¿estás de acuerdo con la Dra. Tempus? Da una razón RELEVANTE: «I agree / I don't agree because…».${isImm() ? " Agrega una pregunta para ella con «If you…, would you…?»." : ""}`, note: () => `Exit ticket (4 min, en el cuaderno). Cada agente responde con una razón RELEVANTE.${isImm() ? ' En 7A y 7B añaden una pregunta para la Dra. Tempus con el segundo condicional.' : ''} Revise algunos cuadernos para el registro de C1.`,
+      help: () => `Responde en tu cuaderno: ¿estás de acuerdo con el Dr. Tempus? Da una razón RELEVANTE: «I agree / I don't agree because…».${isImm() ? " Agrega una pregunta para él con «If you…, would you…?»." : ""}`, note: () => `Exit ticket (4 min, en el cuaderno). Cada agente responde con una razón RELEVANTE.${isImm() ? ' En 7A y 7B añaden una pregunta para el Dr. Tempus con el segundo condicional.' : ''} Revise algunos cuadernos para el registro de C1.`,
       html: () => `<div class="kicker">Exit ticket</div><div class="big-q" style="font-size:5vh">Dr Tempus says: «Ask questions before you believe something.»<br>Do you agree?</div>
       <div class="scroll"><p class="frame" style="margin:0">I <u>agree / don't agree</u> with Dr Tempus, because ______. (Your reason must be RELEVANT!)</p></div>
-      ${immBox('Add: <b>If I met Dr Tempus, I would ask her…</b>')}${timer([['Write', 240]])}` },
+      ${immBox('Add: <b>If I met Dr Tempus, I would ask him…</b>')}${timer([['Write', 240]])}` },
     { stop: 4, host: ['wave', 'Next time: the <b>Decoder Workshop</b>!'],
       help: "Tu Bugdex ya tiene siete bugs. La próxima clase: el taller del Decoder, con cinco sobres y una palabra secreta.", note: 'Cierre (1 min). La Bugdex tiene siete bugs. Próxima clase: Decoder Workshop (estaciones con los tres rufianes del Cuento del Bulero).',
       html: () => `<div class="kicker">Class 1 complete</div><h1>One interview. Six opinions. Seven bugs in the Bugdex.</h1>
@@ -1298,7 +1298,7 @@ const LESSONS = {
       help: () => isImm() ? 'Ronda relámpago: un ítem de cada tipo, como en la Evidencia 1. Responde solo en tu cuaderno y luego revisa. Es un ensayo: ¡aprovecha para ver qué necesitas repasar!' : 'Fin de la clase. La próxima es el ensayo general de la Evidencia 1.', note: () => isImm() ? 'Time Rift · ronda relámpago (9 min, solo 7A y 7B): simulacro de la Evidencia 1, un ítem por criterio. Cada agente escribe en el cuaderno; luego «Reveal». Recuerde la fecha de la Evidencia 1 y qué traer (lápiz, borrador).' : 'Cierre (2 min). Próxima clase: Time Rift Rounds, el ensayo general de la Evidencia 1.',
       html: () => isImm() ? `<div class="kicker">Time Rift · lightning round · Evidence 1 rehearsal</div>
       <div class="light">${LIGHT.map(l => `<button type="button" class="lt"><b>${l.c}</b><span>${l.q}</span><em>${l.a}</em></button>`).join('')}</div>
-      <div class="info">Evidence 1 · Mission Log 1: <b>${course === '7A' ? 'Wednesday, December 2' : 'Tuesday, December 1'}</b>. Bring two pencils and an eraser.</div>${timer([['Lightning', 300]])}`
+      <div class="info">Evidence 1 · Mission Log 1: <b>${course === '7A' ? 'Wednesday, December 2' : 'Thursday, December 3'}</b>. Bring two pencils and an eraser.</div>${timer([['Lightning', 300]])}`
         : `<div class="kicker">Class 2 complete</div><h1>Five texts decoded. One secret word: GREED.</h1>
       <div class="info">Next class: <b>Time Rift Rounds</b> — four rounds, four letters, the full rehearsal for Evidence 1.</div>
       <button type="button" class="endbtn" data-tomap="1">☰ Back to the cycle map</button>` },
